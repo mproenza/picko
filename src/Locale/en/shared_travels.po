@@ -1,0 +1,587 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2014-11-13 11:21-0500\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+
+#: View/Layouts/shared_rides.ctp:8
+msgid "IR AL INICIO"
+msgstr "HOMEPAGE"
+
+#: View/Layouts/shared_rides.ctp:8
+msgid "VER TRANSFERS DISPONIBLES"
+msgstr "SEE TRANSFERS AVAILABLE"
+
+#: View/Layouts/shared_rides.ctp:8
+msgid "VER RUTAS DISPONIBLES"
+msgstr "SEE ROUTES AVAILABLE"
+
+#: View/Layouts/shared_rides.ctp:8
+msgid "Características y Términos"
+msgstr "Features and Terms"
+
+#: View/Layouts/shared_rides.ctp:8
+msgid "CARACTERÍSTICAS Y TÉRMINOS DEL SERVICIO"
+msgstr "FEATURES AND TERMS OF THE SERVICE"
+
+
+
+#: View/SharedTravels/home.ctp:8
+msgid "Ver rutas y precios disponibles"
+msgstr "See routes and prices available"
+
+#: View/SharedTravels/home.ctp:8
+msgid "y otros destinos"
+msgstr "and other destinations"
+
+
+#: View/SharedTravels/home.ctp:8
+msgid "¿Necesitas <code><big>ir de un destino a otro</big></code> durante tu viaje a {0}?"
+msgstr "Need to <code><big>go from one destination to another</big></code> during your trip to <code><big><big>Cuba</big></big></code>?"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Paga menos por un taxi"
+msgstr "Pay less for a taxi"
+ 
+#: View/SharedTravels/home.ctp:8
+msgid "Paga sólo por los asientos que ocupes en el taxi y no por el viaje completo. Si ustedes son menos de 4 personas, es conveniente compartir los asientos sobrantes con otros pasajeros para que ellos paguen parte del viaje. Lo bueno es que todos pagan menos."
+msgstr "Pay only for the seats you occupy in the taxi and not for the whole taxi. If you are less than 4 people, it is convenient to share the empty seats with other passengers and let them pay part of the trip. The good thing is that everyone gets to pay less."
+ 
+#: View/SharedTravels/home.ctp:8
+msgid "Reserva, y listo!"
+msgstr "Book, and that's it!"
+ 
+#: View/SharedTravels/home.ctp:8
+msgid "En cuanto reservas, nosotros arreglamos todo de manera que compartas el viaje con otros viajeros que van al mismo destino en la misma fecha y horario. De esta manera no tienes que encontrar tú a otros pasajeros que quieran unirse."
+msgstr "As soon as you book, we arrange everything in a way that you share your trip with other travelers going to the same destination in the same date and time. This way you don't have to worry about finding other passengers to join you."
+ 
+#: View/SharedTravels/home.ctp:8
+msgid "Llega cómodo y rápido"
+msgstr "Get there quickly and easy"
+ 
+#: View/SharedTravels/home.ctp:8
+msgid "Te buscamos donde te estás hospedando (casa, hotel u otro) y te llevamos exactamente hasta el lugar donde te hospedarás en tu destino. Junto a tus compañeros harás un recorrido muy cómodo y rápido hasta tu destino en un auto moderno con mucho confort."
+msgstr "We pick you up where you are staying (guest house, hotel or other) and take you to the exact place you will stay at your destination. You will do a confortable and quick trip to your destination in a modern car, along with your travel partners."
+
+
+#: View/SharedTravels/home.ctp:8
+msgid "Selecciona una de nuestras rutas y horarios para reservar un taxi"
+msgstr "Select one of our routes and departure times to book a taxi"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Uno de nuestros choferes te recogerá en el lugar y fecha que indiques"
+msgstr "One of our drivers will pick you up at the place and date you indicate"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Choferes y autos registrados y con licencia para realizar este servicio"
+msgstr "All drivers and cars are registered and licensed for this service"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Pago en efectivo directamente al chofer en el momento de la recogida"
+msgstr "Payment is in cash and directly to the driver at the moment of the pick up"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Cada viaje confirmado queda en nuestra agenda para su realización"
+msgstr "Each confirmed trip is in our agenda and will happen as agreed"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Rutas disponibles desde {0}"
+msgstr "Routes available from {0}"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Preguntas frecuentes"
+msgstr "Frequently asked questions"
+
+#: View/SharedTravels/home.ctp:8
+msgid "¿Cuánto demoran en confirmarme la realización del viaje?"
+msgstr "How long will it take you to confirm my transfer?"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Usualmente confirmamos instantáneamente porque tenemos otras solicitudes pendientes que se pueden emparejar en el mismo viaje con usted."
+msgstr "Usually we confirm instantly because we have other pending requests that can be paired with yours in the same trip."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Cuando esto no ocurre entonces usamos otras vías para recibir solicitudes, por lo cual lo normal es que confirmemos  en las primeras 24 horas."
+msgstr "When that doesn't happen, we use other ways to receive requests and normally we will always confirm within the first 24 hours."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Una vez que le confirmamos, ya su viaje queda en nuestra agenda y el viaje se realizará sin problemas."
+msgstr "Once we confirm, your transfer is already in our agenda and it is going to happen without troubles."
+
+#: View/SharedTravels/home.ctp:8
+msgid "¿Puedo llevar mucho equipaje?"
+msgstr "Can I carry lots of luggage?"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Siempre sugerimos considerar NO solicitar nuestro servicio si se lleva mucho equipaje. Esto se debe a que el auto va a ser compartido, y por tanto también el espacio del maletero."
+msgstr "We always suggest to consider NOT requesting our service if you carry lots of luggage. This is because you are going to share the car, and also the space in the truck."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Una maleta mediana por cada persona es aceptable, pero si las maletas son demasiado grandes entonces es mejor considerar viajar en bus."
+msgstr "A medium sized suitcase by each person is good, but if the suitcases are too large then it is better to consider to travel by bus."
+
+#: View/SharedTravels/home.ctp:8
+msgid "¿Puedo hacer paradas para hacer fotos en lugares que me interesen dentro del recorrido?"
+msgstr "Can we stop to take pictures in places I'm interested in within the route?"
+
+#: View/SharedTravels/home.ctp:8
+msgid "NO realizamos paradas de tipo excursionistas porque el auto debe llegar a su destino a una hora adecuada para prestar otro servicio."
+msgstr "We DON'T make excursion-like stops during  the journey because the car must get to its destination at a proper time to start another service."
+
+#: View/SharedTravels/home.ctp:8
+msgid "En los tramos largos (ej. La Habana - Trinidad) realizamos una parada en cafetería para merendar e ir al baño, y además se pueden solicitar otras paradas para cualquier otra necesidad."
+msgstr "We DO stop during long journeys (ex. La Habana - Trinidad) to go for a coffee, have a snack or use the bathroom. Also, you can ask for a stop for any other need you have."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Ver las rutas y horarios disponibles"
+msgstr "See all the routes and departure times available"
+
+
+
+#: View/Elements/modality_info.ctp:8
+msgid "Hora de recogida {0}"
+msgstr "Pick up time {0}"
+
+#: View/Elements/modality_info.ctp:8
+msgid "{0} por persona"
+msgstr "{0} per person"
+
+#: View/Elements/modality_info.ctp:8
+msgid "<span class="text-muted"><small>- mejor que</small></span> <s>{0}</s> <span class="text-muted"><small>por viaje privado -</small></span>"
+msgstr "<span class="text-muted"><small>- better than</small></span> <s>{0}</s> <span class="text-muted"><small>for a private trip -</small></span>"
+
+#: View/Elements/modality_info.ctp:8
+msgid "<big>Compartir este viaje</big> <div>y pagar sólo <b>{0}</b> por persona</div>"
+msgstr "<big>Share this trip</big> <div>and pay only <b>{0}</b> per person</div>"
+
+
+
+
+#: View/SharedTravels/create.ctp:8
+msgid "¿Necesitas ir desde {0} hasta {1} durante tu viaje a Cuba?"
+msgstr "Need to go from {0} to {1} during your trip to Cuba?"
+
+#: View/SharedTravels/create.ctp:8
+msgid "Comparte un taxi cómodo con otros viajeros."
+msgstr "Share a confortable taxi with other travelers."
+
+#: View/SharedTravels/create.ctp:8
+msgid "Llega a cada destino por un precio muy conveniente."
+msgstr "Go to each destination for a very convenient price."
+
+#: View/SharedTravels/create.ctp:8
+msgid "Autos modernos con aire acondicionado. Sólo 4 pasajeros en un auto. Recogida en casa u hotel."
+msgstr "Modern cars with air conditioner. Only 4 passengers in one car. Pick up at guest house or hotel."
+
+#: View/SharedTravels/create.ctp:8
+msgid "¿Cómo funciona?"
+msgstr "How it works"
+
+#: View/SharedTravels/create.ctp:8
+msgid "Solicitas el servicio y nos dices cuándo y dónde recogerte en {0}."
+msgstr "You request the service and tell us when and where to pick you up in {0}."
+
+#: View/SharedTravels/create.ctp:8
+msgid "Enseguida hacemos todos los arreglos y te confirmamos en menos de 24 horas."
+msgstr "We do all the arrangements right away and confirm in less than 24 hours."
+
+#: View/SharedTravels/create.ctp:8
+msgid "Te asignamos un operador con quien mantendrás comunicación todo el tiempo."
+msgstr "We assign an operator that will keep communicating with you all the time."
+
+#: View/SharedTravels/create.ctp:8
+msgid "Cuando llega la fecha, enviamos el auto a recogerte y haces tu viaje hasta {0}."
+msgstr "When the date arrives, we send the car to pick you up and you do your trip to {0}."
+
+
+#: View/SharedTravels/create.ctp:8
+msgid "Solicita un transfer de {0} a {1}"
+msgstr "Request a transfer from {0} to {1}"
+
+#: View/SharedTravels/create.ctp:8
+msgid "Precio"
+msgstr "Price"
+
+#: View/SharedTravels/create.ctp:8
+msgid "Recogida a las {0} en el lugar y fecha que indiques"
+msgstr "Pick up at {0} at the place and date you indicate"
+
+#: View/SharedTravels/create.ctp:8
+msgid "Taxi compartido por <code><big><big>{0} pasajeros</big></big></code>"
+msgstr "Taxi shared by <code><big><big>{0} passengers</big></big></code>"
+
+#: View/SharedTravels/create.ctp:8
+msgid "TÉRMINOS DEL SERVICIO"
+msgstr "TERMS OF THE SERVICE"
+
+#: View/SharedTravels/create.ctp:8
+msgid "Servicio de <b>taxi compartido</b> en <b>auto moderno</b> con <b>aire acondicionado</b> y excelente confort para <b>4 pasajeros</b>."
+msgstr "<b>Shared taxi</b> service in a <b>modern car</b> with <b>air conditioner</b> and excellent confort for <b>4 passengers</b>."
+
+#: View/SharedTravels/create.ctp:8
+msgid "Servicio <b>compartido</b> en <b>auto moderno</b> de <b>4 plazas</b> con <b>aire acondicionado</b> y excelente confort."
+msgstr "<b>Shared</b> service in <b>modern car</b> with <b>4 pax</b>, <b>air conditioner</b> and excellent confort."
+
+#: View/SharedTravels/create.ctp:8
+msgid "Servicio <b>puerta a puerta</b> (recogida en casa u hotel y se deja en casa u hotel del destino)."
+msgstr "<b>Door to door</b> service (pick up at guest-house or hotel and drop off at guest-house or hotel in destination)."
+
+#: View/SharedTravels/create.ctp:8
+msgid "Servicio <b>puerta a puerta</b>. Recogida en casa u hotel y se deja en casa u hotel del destino."
+msgstr "<b>Door to door</b> service. Pick up at guest-house or hotel and drop off at guest-house or hotel in destination."
+
+#: View/SharedTravels/create.ctp:8
+msgid "La <b>recogida puede demorar hasta 30 minutos</b> después de la hora establecida para el servicio, pues el chofer planifica su recorrido para recoger a los 4 viajeros."
+msgstr "<b>Pick up can be delayed up to 30 minutes</b> after the indicated time of the service, because the driver plans its own way to go pick up all 4 travelers."
+
+#: View/SharedTravels/create.ctp:8
+msgid "El <b>pago es en efectivo y en CUC</b> directamente al chofer al efectuarse la recogida."
+msgstr "<b>Payment is in cash and in CUC</b> directly to the driver right after pick up."
+
+#: View/SharedTravels/create.ctp:8
+msgid "<b>Un operador asistente le atenderá por correo</b> en cuanto haga la reservación y mientras llega la fecha del viaje, para cualquier pregunta, cambios o cancelaciones."
+msgstr "<b>An operator will assist you by email</b> as soon as you book and while the date of the trip arrives, for any questions, changes or cancellations."
+
+
+#: View/Elements/shared_travel_form.ctp:8
+msgid "DATOS DEL TRANSFER"
+msgstr "TRANSFER INFO"
+
+#: View/Elements/shared_travel_form.ctp:8
+msgid "Fecha en que necesitas el servicio"
+msgstr "Date you need the service"
+
+#: View/Elements/shared_travel_form.ctp:8
+msgid "Cantidad de personas"
+msgstr "People count"
+
+#: View/Elements/shared_travel_form.ctp:8
+msgid "Dirección de recogida en {0}"
+msgstr "Pick up address in {0}"
+
+#: View/Elements/shared_travel_form.ctp:8
+msgid "Dirección exacta de la casa o nombre del hotel donde debemos recogerle"
+msgstr "Exact address of the guest-house or hotel name where we must pick you up"
+
+#: View/Elements/shared_travel_form.ctp:8
+msgid "Dirección de destino en {0}"
+msgstr "Drop off address in {0}"
+
+#: View/Elements/shared_travel_form.ctp:8
+msgid "Dirección de la casa o nombre del hotel"
+msgstr "Guest-house address or hotel name"
+
+#: View/Elements/shared_travel_form.ctp:8
+msgid "DATOS DE CONTACTO"
+msgstr "CONTACT INFO"
+
+#: View/Elements/shared_travel_form.ctp:8
+msgid "Tu correo electrónico"
+msgstr "Your email"
+
+#: View/Elements/shared_travel_form.ctp:8
+msgid "Tu nombre completo para fácil identificación"
+msgstr "Your full name for easy identification"
+
+#: View/Elements/shared_travel_form.ctp:8
+msgid "Solicitar este transfer {0} - {1}"
+msgstr "Request this transfer {0} - {1}"
+
+#: View/SharedTravels/thanks.ctp:8
+msgid "Muchísimas gracias"
+msgstr "Thank you very much"
+
+#: View/SharedTravels/thanks.ctp:8
+msgid "Ya tenemos tu solicitud de transfer."
+msgstr "We already have your transfer request."
+
+
+#: View/SharedTravels/thanks.ctp:8
+msgid "{0} personas desde {1} hasta {2} el {3} a las {4}."
+msgstr "{0} people from {1} to {2} on {3} at {4}"
+
+#: View/SharedTravels/thanks.ctp:8
+msgid "Te enviamos un correo a {0} con un enlace para confirmar la solicitud."
+msgstr "We sent an email to your account {0} with a link to confirm the request."
+
+#: View/SharedTravels/thanks.ctp:8
+msgid "Debes confirmarla para nosotros comenzar a arreglar todo."
+msgstr "You must confirm it before we start arranging everything."
+
+#: View/SharedTravels/thanks.ctp:8
+msgid "Estos son todos los datos de tu solicitud"
+msgstr "This is all the info of your request"
+
+#: View/Elements/shared_travel.ctp:8
+msgid "Referencia"
+msgstr "Reference"
+
+#: View/Elements/shared_travel.ctp:8
+msgid "Precio {0} personas x {1}"
+msgstr "Price {0} people x {1}"
+
+#: View/Elements/shared_travel.ctp:8
+msgid "Fecha recogida"
+msgstr "Pick up date"
+
+#: View/Elements/shared_travel.ctp:8
+msgid "{0} <span class="text-muted">a las</span> {1}"
+msgstr "{0} <span class="text-muted">at</span> {1}"
+
+#: View/Elements/shared_travel.ctp:8
+msgid "Lugar de recogida en {0}"
+msgstr "Pick up place in {0}"
+
+#: View/Elements/shared_travel.ctp:8
+msgid "Lugar de destino en {0}"
+msgstr "Drop off place in {0}"
+
+#: View/Elements/shared_travel.ctp:8
+msgid "Nombre"
+msgstr "Name"
+
+#: View/Elements/shared_travel.ctp:8
+msgid "Correo"
+msgstr "Email"
+
+#: View/Elements/shared_travel.ctp:8
+msgid "Contactos"
+msgstr "Contacts"
+
+#: View/Elements/shared_travel.ctp:8
+msgid "Estado"
+msgstr "Status"
+
+
+#: View/SharedTravel/activate.ctp:8
+msgid "Muchas gracias {0}"
+msgstr "Thanks {0}"
+
+#: View/SharedTravel/activate.ctp:8
+msgid "Nuestros operadores acaban de recibir los datos de tu solicitud y enseguida empiezan a organizar todo. En menos de 24 horas recibirás la confirmación."
+msgstr "Our operators just received the info of your request and they will start arranging everything right away. You will get the confirmation within 24 hours."
+
+#: View/SharedTravel/activate.ctp:8
+msgid "En cuanto todo esté listo recibirás un correo de tu operador asistente, con quien quedarás en contacto mientras llega la fecha del servicio."
+msgstr "The moment everything is ready you will receive an email from your assistant, with whom you'll be in contact while the date of the service arrives."
+
+#: View/SharedTravel/activate.ctp:8
+msgid "Idioma"
+msgstr "Language"
+
+#: View/SharedTravel/activate.ctp:8
+msgid "SOLICITA OTROS TRANSFERS PARA EL RESTO DE TU VIAJE"
+msgstr "REQUEST OTHER TRANSFERS FOR THE REST OF YOUR TRIP"
+
+
+#: View/SharedTravel/activate.ctp:8
+msgid "Buenas noticias"
+msgstr "Good news"
+
+#: View/SharedTravel/activate.ctp:8
+msgid "Su solicitud fue confirmada automáticamente porque {0}."
+msgstr "Your request was automatically confirmed because {0}."
+
+
+#: Controller/SharedTravelsController.php:8
+msgid "llena uno de nuestros autos de 4 plazas"
+msgstr "it fills one of our 4 pax cars"
+
+#: Controller/SharedTravelsController.php:8
+msgid "fue emparejada con otras solicitudes para llenar las 4 plazas de uno de nuestros autos"
+msgstr "it was paired with other requests to fill one of our 4 pax cars"
+
+
+
+#: Controller/SharedTravelsController.php:8
+msgid "Confirma tu solicitud de viaje compartido"
+msgstr "Confirm your request for a shared ride"
+
+#: View/Emails/email2user_activate_request.ctp:8
+msgid "Usted solicitó un transfer de {0} personas desde {1} hasta {2} el día {3} con recogida a las {4}."
+msgstr "You requested a transfer for {0} people from {1} to {2} on {3} with pick up time at {4}."
+
+#: View/Emails/email2user_activate_request.ctp:8
+msgid "Precio total por las {0} personas: {1}"
+msgstr "Total price for {0} people: {1}"
+
+#: View/Emails/email2user_activate_request.ctp:8
+msgid "Antes de comenzar los arreglos, usted debe confirmar la solicitud haciendo click en el siguiente enlace"
+msgstr "Before we start the arrangements, you must confirm the request by clicking in the following link"
+
+#: View/Emails/email2user_activate_request.ctp:8
+msgid "Confirmar los datos de mi solicitud"
+msgstr "Confirm the info of my request"
+
+#: View/Emails/email2user_activate_request.ctp:8
+msgid "Gracias de antemano, y saludos"
+msgstr "Thanks in advance, and regards"
+
+#: View/Emails/email2user_activate_request.ctp:8
+msgid "El equipo de"
+msgstr "The team at"
+
+
+
+#: View/Emails/email2user_request_confirmed.ctp:8
+msgid "Buenas noticias: su viaje desde {0} hasta {1} el día {2} ya fue gestionado y confirmado."
+msgstr "Good news: your trip from {0} to {1} on {2} has already been arranged and it is confirmed."
+
+#: View/Emails/email2user_request_confirmed.ctp:8
+msgid "El chofer le recogerá en esa fecha a las {0} en {1}."
+msgstr "The driver will pick you up on that date at {0} at {1}."
+
+#: View/Emails/email2user_request_confirmed.ctp:8
+msgid "Usted compartirá un auto moderno de 4 plazas con aire acondicionado con otros {0} viajeros."
+msgstr "You are going to share a 4 pax, air conditioned modern car with other {0} travelers."
+
+#: View/Emails/email2user_request_confirmed.ctp:8
+msgid "Recuerde que puede ver los datos de su solicitud en este enlace"
+msgstr "Remember you can see all the info of your request in this link"
+
+#: View/Emails/email2user_request_confirmed.ctp:8
+msgid "Hasta ahora este es su plan de viajes"
+msgstr "So far this is your travel plan"
+
+#: View/Emails/email2user_request_confirmed.ctp:8
+msgid "Siéntase libre de contactarme en cualquier momento que necesite ayuda."
+msgstr "Feel free to reach back to me any time you need help."
+
+#: View/Emails/email2user_request_confirmed.ctp:8
+msgid "Le deseo un feliz viaje a Cuba y un cómodo recorrido hasta {0}"
+msgstr "I wish you have a happy trip to Cuba and a confortable journey to {0}"
+
+#: View/Emails/email2user_request_confirmed.ctp:8
+msgid "{0} y el equipo de"
+msgstr "{0} and the team at"
+
+
+#: Controller/SharedTravelsController.ctp:8
+msgid "Tenemos los datos de su solicitud"
+msgstr "We have the info of your request"
+
+#: View/Emails/email2user_assistant_intro.ctp:8
+msgid "Le quiero informar que recibimos su solicitud de viaje compartido desde {0} hasta {1} para el día {2}"
+msgstr "I want to let you know that we have your request for a shared ride from {0} to {1} on {2}"
+
+#: View/Emails/email2user_assistant_intro.ctp:8
+msgid "Mi nombre es {0} y voy a ser su asistente mientras llega la fecha de la recogida, para este viaje y cualquier otro que usted solicite."
+msgstr "My name is {0} and I'm going to be your assistant while the pick up date arrives, for this trip and any other requests you create."
+
+#: View/Emails/email2user_assistant_intro.ctp:8
+msgid "Como asistente voy a estar a cargo de resolver cualquier problema que pueda surgir, problemas con el sitio y cualquier duda que usted pueda tener."
+msgstr "As your assistant, I'm going to deal with any problem that might come up, problems with the website or any doubts you might have."
+
+#: View/Emails/email2user_assistant_intro.ctp:8
+msgid "Por ahora <b>este viaje está sin confirmar</b> porque recién comenzamos a gestionarlo. Yo voy a estar al tanto de la confirmación de su viaje y le haré saber enseguida."
+msgstr "For now <b>this transfer is not confirmed</b> because we just started to arrange it. I am going to be watching for its confirmation and will let you know right away."
+
+#: View/Emails/email2user_assistant_intro.ctp:8
+msgid "En cualquier momento puede ver los datos de su solicitud en el siguiente enlace"
+msgstr "You can see the details of your request any time at this link"
+
+#: View/Emails/email2user_assistant_intro.ctp:8
+msgid "Un cordial saludo desde Cuba"
+msgstr "Warm regards from Cuba"
+
+
+#: Controller/SharedTravelsController.ctp:8
+msgid "Tenemos los datos de su nueva solicitud"
+msgstr "We have the info of your new request"
+
+
+
+#: Controller/AppController.ctp:8
+msgid "Comparte un taxi en Cuba"
+msgstr "Share a taxi in Cuba"
+
+#: Controller/AppController.ctp:8
+msgid "Gracias por la solicitud"
+msgstr "Thank you for your request"
+
+#: Controller/AppController.ctp:8
+msgid "Solicitud confirmada"
+msgstr "Request confirmed"
+
+#: Controller/AppController.ctp:8
+msgid "Datos de la solicitud"
+msgstr "Request info"
+
+
+#: View/Elements/requests_summary.ctp:8
+msgid "{0} personas desde {1} hasta {2} el día {3} con recogida a las {4}."
+msgstr "{0} people from {1} to {2} on {3} with pick up at {4}."
+
+#: View/Elements/requests_summary.ctp:8
+msgid "Ver datos de esta solicitud"
+msgstr "See info of this request"
+
+
+#: View/Emails/html/requests_summary.ctp:8
+msgid "Acabamos de recibir los datos de su solicitud de viaje compartido desde {0} hasta {1} para el día {2}."
+msgstr "We just received the info of your shared ride request from {0} to {1} on {2}."
+
+#: View/Emails/html/requests_summary.ctp:8
+msgid "Ahora usted tiene {0} solicitudes"
+msgstr "Now you have {0} requests"
+
+#: View/Emails/html/requests_summary.ctp:8
+msgid "Saludos"
+msgstr "Regards"
+
+
+### ESTADOS DE LAS SOLICITUDES
+
+#: Model/SharedTravel.ctp:8
+msgid "Pendiente"
+msgstr "Pending"
+
+#: Model/SharedTravel.ctp:8
+msgid "No has activado esta solicitud por lo cual no hemos empezado las gestiones. Revisa tu correo y dale click al enlace que te enviamos."
+msgstr "You haven't activated this request, so we haven't started to arrange it. Check your email and click the link we sent."
+
+#: Model/SharedTravel.ctp:8
+msgid "Activada / No confirmada"
+msgstr "Activated / Not confirmed"
+
+#: Model/SharedTravel.ctp:8
+msgid "Ya activaste la solicitud y ahora estamos haciendo las gestiones. Te enviaremos un email con la confirmación de la recogida en la fecha y dirección indicada."
+msgstr "You activated the request and now we are arranging the agenda. We will send an email to you confirming the pick up on the date and place you indicated."
+
+#: Model/SharedTravel.ctp:8
+msgid "Confirmada"
+msgstr "Confirmed"
+
+#: Model/SharedTravel.ctp:8
+msgid "Ya tu viaje se encuentra en nuestra agenda para la fecha, hora y lugar indicado. Un taxi te buscará ese día a tu puerta!"
+msgstr "You trip is already in our agenda for the date, time and place you indicated. A taxi will pick you up at your door!"
+
+#: Model/SharedTravel.ctp:8
+msgid "Cancelada"
+msgstr "Cancelled"
+
+#: Model/SharedTravel.ctp:8
+msgid "La solicitud fue cancelada por tí o por los administradores. La recogida está suspendida."
+msgstr "The request was cancelled by you or the administrators. The pick up is suspended."
+
+#----------------------------
+
+
+#: View/SharedTravels/view.ctp:8
+msgid "Transfer desde {0} hasta {1} el {2}"
+msgstr "Transfer from {0} to {1} on {2}"
+
+#: View/Layouts/shared_rides.ctp:8
+msgid "Por los creadores de {0}, la plataforma para contratar choferes privados en Cuba"
+msgstr "By the creators of {0}, the platform to hire private drivers in Cuba"

@@ -1,0 +1,57 @@
+#------------------COMMON-----------------------
+msgid "Enero"
+msgstr "January"
+
+msgid "Febrero"
+msgstr "February"
+
+msgid "Marzo"
+msgstr "March"
+
+msgid "Abril"
+msgstr "April"
+
+msgid "Mayo"
+msgstr "May"
+
+msgid "Junio"
+msgstr "June"
+
+msgid "Julio"
+msgstr "July"
+
+msgid "Agosto"
+msgstr "August"
+
+msgid "Septiembre"
+msgstr "September"
+
+msgid "Octubre"
+msgstr "October"
+
+msgid "Noviembre"
+msgstr "November"
+
+msgid "Diciembre"
+msgstr "December"
+
+msgid "Domingo"
+msgstr "Sunday"
+
+msgid "Lunes"
+msgstr "Monday"
+
+msgid "Martes"
+msgstr "Tuesday"
+
+msgid "Miércoles"
+msgstr "Wednesday"
+
+msgid "Jueves"
+msgstr "Thursday"
+
+msgid "Viernes"
+msgstr "Friday"
+
+msgid "Sábado"
+msgstr "Saturday"
