@@ -207,7 +207,11 @@ Type::build('timestamp')
  *
  */
 Plugin::load('EmailQueue', ['autoload' => true]);
-Plugin::load('ADmad/I18n');
+//Plugin::load('ADmad/I18n');
+
+Configure::write('Users.reCaptcha.registration', false);
+Plugin::load('CakeDC/Users', ['routes' => true, 'bootstrap' => true]);
+
 
 /*
  * Only try to load DebugKit in development mode
@@ -221,7 +225,7 @@ Plugin::load('ADmad/I18n');
 // MARTIN
 
 Configure::write('customer_assistant', array('name'=>'Ana'));
-Configure::write('shared_rides_facilitator', array('name'=>'Andiel', 'email'=>'andielsl@nauta.cu'));
+Configure::write('shared_rides_facilitator', array('name'=>'Andiel', 'email'=>'martin@yotellevocuba.com'/*'andielsl@nauta.cu'*/));
 
 
 

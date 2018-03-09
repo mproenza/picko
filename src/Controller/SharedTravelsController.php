@@ -10,8 +10,16 @@ use App\Util\TimeUtil;
 use Cake\Core\Configure;
 use Cake\Datasource\ConnectionManager;
 use Cake\Network\Exception\InternalErrorException;
+use \Cake\Event\Event;
+use \Cake\Mailer\Email;
 
 class SharedTravelsController extends AppController {
+    
+    public function beforeFilter(Event $event) {
+        parent::beforeFilter($event);
+        $this->Auth->allow(['home', 'create', 'thanks', 'activate', 'view']);
+    }
+    
 
     public function home() {
         $this->viewBuilder()->setLayout('shared_rides');
@@ -57,13 +65,13 @@ class SharedTravelsController extends AppController {
                         $request['SharedTravel']['email'],
                         __d('shared_travels', 'Confirma tu solicitud de viaje compartido'),
                         array('request' => $request),
-                        'no_responder',
+                        'hola',
                         'activate_request',
                         array('lang'=>Configure::read('Config.language'), 'enqueue'=>false)
                     );
                     
                     // Email para mi
-                    $Email = new Email('no_responder');
+                    $Email = new Email('hola');
                     $Email->to('martin@yotellevocuba.com')->subject('Nueva solicitud')->send('Hay una nueva solicitud...');
                 } else {
                     return $this->redirect(array('action' => 'activate/' . $activationToken));
@@ -104,7 +112,7 @@ class SharedTravelsController extends AppController {
         
         // Sanity checks
         if($request == null || empty ($request)) throw new NotFoundException();
-        //if($request['SharedTravel']['activated']) throw new ExpiredLinkException();
+        if($request['SharedTravel']['activated']) throw new ExpiredLinkException();
         // TODO: Verificar que la solicitud no este expirada
         
         $datasource = ConnectionManager::get('default');
@@ -148,7 +156,7 @@ class SharedTravelsController extends AppController {
                     $facilitator['email'],
                     'Viaje de 4 pax completo',
                     ['request' => $request], 
-                    'shared_travel', 
+                    'compartido', 
                     'new_full_ride'
                 );
                 
@@ -181,7 +189,7 @@ class SharedTravelsController extends AppController {
                         $facilitator['email'],
                         'Solicitudes emparejadas (4 pax completo)',
                         array('requests' => $coupled ), 
-                        'shared_travel', 
+                        'compartido',
                         'new_requests_coupled'
                     );
                     
@@ -206,7 +214,7 @@ class SharedTravelsController extends AppController {
                                 $request['SharedTravel']['email'], 
                                 __d('shared_travels', 'Tenemos los datos de su solicitud'),
                                 array('request' => $request), 
-                                'customer_assistant_shr', 
+                                'customer_assistant', 
                                 'assistant_intro',
                                 array('lang'=>$request['SharedTravel']['lang'])
                             );
@@ -215,7 +223,7 @@ class SharedTravelsController extends AppController {
                                 $request['SharedTravel']['email'], 
                                 __d('shared_travels', 'Tenemos los datos de su nueva solicitud'),
                                 array('request' => $request, 'all_requests'=>$all_requests),
-                                'customer_assistant_shr', 
+                                'customer_assistant',
                                 'requests_summary',
                                 array('lang'=>$request['SharedTravel']['lang'])
                             );
@@ -229,8 +237,8 @@ class SharedTravelsController extends AppController {
                             $facilitator['email']/*'martin@yotellevocuba.com'*/,
                             '#'.$request['SharedTravel']['id'].' '.$modality['origin'].'-'.$modality['destination'].' [['.$request['SharedTravel']['id_token'].']]',
                             array('request' => $request), 
-                            'shared_travel', 
-                            'SharedTravels.new_request'
+                            'compartido', 
+                            'new_request'
                             );
                     }
                 }

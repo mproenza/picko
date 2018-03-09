@@ -45,7 +45,7 @@ return [
         'webroot' => 'webroot',
         'wwwRoot' => WWW_ROOT,
         // 'baseUrl' => env('SCRIPT_NAME'),
-        'fullBaseUrl' => false,
+        'fullBaseUrl' => 'http://pickocar.com',
         'imageBaseUrl' => 'img/',
         'cssBaseUrl' => 'css/',
         'jsBaseUrl' => 'js/',
@@ -64,7 +64,7 @@ return [
      *   You should treat it as extremely sensitive data.
      */
     'Security' => [
-        'salt' => env('SECURITY_SALT', '6326028e5eae668eb57e4974a89786c711c9da9b06581a52819b96a2e2828165'),
+        'salt' => env('SECURITY_SALT', '6326lmf8qerqodfj803rnjqwdinwdk90jn77056975mkj6m50'/*'6326028e5eae668eb57e4974a89786c711c9da9b06581a52819b96a2e2828165'*/),
     ],
 
     /**
@@ -201,17 +201,17 @@ return [
      * for more information.
      */
     'Email' => [
-        'no_responder' => [
+        'hola' => [
             'transport' => 'default',
             'from' => ['martin@yotellevocuba.com' => 'PickoCar'],
             //'charset' => 'utf-8',
             //'headerCharset' => 'utf-8',
         ],
-        'shared_travel' => [
+        'compartido' => [
             'transport' => 'default',
             'from' => ['martin@yotellevocuba.com' => 'Viaje compartido, PickoCar'],
         ],
-        'customer_assistant_shr' => [
+        'customer_assistant' => [
             'transport' => 'default',
             'from' => ['ana@yotellevocuba.com' => 'Ana, PickoCar'],
         ],
@@ -238,7 +238,7 @@ return [
              */
             //'port' => 'non_standard_port_number',
             'username' => 'root',
-            'password' => '',
+            'password' => 'Iv23ZmB3AQHDdX',
             'database' => 'pickocar',
             'encoding' => 'utf8',
             'timezone' => 'UTC',

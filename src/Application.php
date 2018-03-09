@@ -47,7 +47,7 @@ class Application extends BaseApplication
             // Add routing middleware.
             ->add(new RoutingMiddleware($this))
                 
-            ->add(new \ADmad\I18n\Middleware\I18nMiddleware([
+            /*->add(new \ADmad\I18n\Middleware\I18nMiddleware([
                 // If `true` will attempt to get matching languges in "languages" list based on browser locale and redirect to that when going to site root.
                 'detectLanguage' => true,
                 // Default language for app. If language detection is disabled or no matching language is found redirect to this language
@@ -57,7 +57,7 @@ class Application extends BaseApplication
                     'en' => ['locale' => 'en'],
                     'es' => ['locale' => 'es']
                 ],
-            ]));
+            ]))*/;
 			
 
         return $middlewareQueue;

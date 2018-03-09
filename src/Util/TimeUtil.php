@@ -2,15 +2,25 @@
 
 namespace App\Util;
 
+use \Cake\Core\Exception\Exception;
+
 class TimeUtil {
     
     public static $months_es = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
     public static $days_es = array('Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado');
     
-    public static function prettyDate(\Cake\I18n\FrozenTime $date, $dayOfWeek = true) {
-        $day = $date->format('j');
-        $month = __(TimeUtil::$months_es[$date->format('n') - 1]);
-        $year = $date->format('Y');
+    public static function prettyDate($date, $dayOfWeek = true) {
+        
+        if($date instanceof \Cake\I18n\FrozenTime) {
+            $day = $date->format('j');
+            $month = __(TimeUtil::$months_es[$date->format('n') - 1]);
+            $year = $date->format('Y');
+        } else if(is_string ($date)) {
+            $date_converted = strtotime($date);
+            $day = date('j', $date_converted);
+            $month = __(TimeUtil::$months_es[date('n', $date_converted) - 1]);
+            $year = date('Y', $date_converted);
+        } else throw new Exception('Date should be \Cake\I18n\FrozenTime or String(YYYY/mm/dd)');
         
         $pretty_date = $day.' '.$month.', '.$year;
         
@@ -21,6 +31,23 @@ class TimeUtil {
         
         return $pretty_date;
     }
+    
+    /*public static function prettyDateFromString(String $date, $dayOfWeek = true) {
+        
+        $date_converted = strtotime($date);
+        $day = date('j', $date_converted);
+        $month = __(TimeUtil::$months_es[date('n', $date_converted) - 1]);
+        $year = date('Y', $date_converted);
+        
+        $pretty_date = $day.' '.$month.', '.$year;
+        
+        if($dayOfWeek) {
+            $day_of_week = __(TimeUtil::$days_es[date('w', $date_converted)]);
+            $pretty_date .= ' ('.$day_of_week.')';
+        }
+        
+        return $pretty_date;
+    }*/
     
     public static function wasBefore($timeInterval, $dateString, $timezone = null) {
         $tmp = str_replace(' ', '', $timeInterval);

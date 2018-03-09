@@ -1,0 +1,1 @@
+"bin/cake" EmailQueue.Sender

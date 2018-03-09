@@ -40,6 +40,8 @@ return array(
     'Cake\\Chronos\\' => array($vendorDir . '/cakephp/chronos/src'),
     'Cake\\' => array($vendorDir . '/cakephp/cakephp/src'),
     'CakePHP\\' => array($vendorDir . '/cakephp/cakephp-codesniffer/CakePHP'),
+    'CakeDC\\Users\\' => array($vendorDir . '/cakedc/users/src'),
+    'CakeDC\\Auth\\' => array($vendorDir . '/cakedc/auth/src'),
     'Bake\\' => array($vendorDir . '/cakephp/bake/src'),
     'Aura\\Intl\\' => array($vendorDir . '/aura/intl/src'),
     'App\\Test\\' => array($baseDir . '/tests'),

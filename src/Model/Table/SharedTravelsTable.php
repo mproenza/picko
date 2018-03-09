@@ -5,12 +5,9 @@ namespace App\Model\Table;
 use Cake\ORM\Table;
 use App\Model\Entity\SharedTravel;
 use App\Util\EmailsUtil;
-use App\Util\TimeUtil;
 use Cake\Event\Event;
 use Cake\ORM\Query;
 use ArrayObject;
-use Cake\I18n\Time;
-
 
 class SharedTravelsTable extends Table {
 
@@ -120,7 +117,7 @@ class SharedTravelsTable extends Table {
                 $request['SharedTravel']['email'],
                 $subject,
                 array('request' => $request, 'all_requests'=>$all_requests),
-                'customer_assistant_shr',
+                'customer_assistant',
                 'request_confirmed',
                 array('lang'=>$lang)
             );
