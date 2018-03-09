@@ -203,17 +203,17 @@ return [
     'Email' => [
         'hola' => [
             'transport' => 'default',
-            'from' => ['martin@yotellevocuba.com' => 'PickoCar'],
+            'from' => ['martin@pickocar.com' => 'PickoCar'],
             //'charset' => 'utf-8',
             //'headerCharset' => 'utf-8',
         ],
         'compartido' => [
             'transport' => 'default',
-            'from' => ['martin@yotellevocuba.com' => 'Viaje compartido, PickoCar'],
+            'from' => ['martin@pickocar.com' => 'Viaje compartido, PickoCar'],
         ],
         'customer_assistant' => [
             'transport' => 'default',
-            'from' => ['ana@yotellevocuba.com' => 'Ana, PickoCar'],
+            'from' => ['martin@pickocar.com' => 'Ana, PickoCar'],
         ],
     ],
 
