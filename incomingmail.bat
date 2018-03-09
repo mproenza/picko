@@ -1,2 +1,2 @@
 @echo off
-"Console/cake" IncomingMail process2 < email.txt
+"bin/cake" IncomingMail process < trash/email.txt
