@@ -90,7 +90,6 @@ class ComposerStaticInit3e804d55d47dfa1c9376553401f8cfc4
             'Aura\\Intl\\' => 10,
             'App\\Test\\' => 9,
             'App\\' => 4,
-            'ADmad\\I18n\\' => 11,
         ),
     );
 
@@ -254,10 +253,6 @@ class ComposerStaticInit3e804d55d47dfa1c9376553401f8cfc4
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
-        ),
-        'ADmad\\I18n\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/admad/cakephp-i18n/src',
         ),
     );
 

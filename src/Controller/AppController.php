@@ -80,5 +80,57 @@ class AppController extends Controller
         ) {
             $this->set('_serialize', true);
         }
+        
+        $this->_setPageTitle();
     }
+    
+    
+    
+    private function _setPageTitle() {
+        $defaultTitle = $this->_getPageTitle('default');        
+        $page_title = $defaultTitle['title'];
+        $page_description = $defaultTitle['description'];
+        
+        $key = $this->request->getParam('controller').'.'.$this->request->getParam('action'); 
+        $partialTitle = $this->_getPageTitle($key);
+        
+        if($partialTitle != null) {
+            if($this->request->params['controller'] === 'pages') {
+                if(isset($partialTitle[$this->request->params['pass'][0]])) {
+                    $page_title = $partialTitle[$this->request->params['pass'][0]]['title'];
+                    if(isset ($partialTitle[$this->request->params['pass'][0]]['description'])) $page_description = $partialTitle[$this->request->params['pass'][0]]['description'];
+                }
+                    
+            } else {
+                $page_title = $partialTitle['title'];
+                if(isset ($partialTitle['description'])) $page_description = $partialTitle['description'];
+            }
+        }
+        $this->set('page_title', $page_title);
+        $this->set('page_description', $page_description);
+    }
+    
+    private function _getPageTitle($key) {
+        $pageTitles = array(
+            'default' =>array('title'=>__d('meta', 'Taxi barato en Cuba'), 'description'=>__d('meta', '...')),
+            
+            // Access to all
+            'pages.display' =>array(
+                'contact'=>array('title'=>__d('meta', 'Contactar'), 'description'=>__d('meta', 'Contáctanos para cualquier pregunta o duda sobre cómo conseguir un taxi para moverte por Cuba usando YoTeLlevo')), 
+                'faq'=>array('title'=>__d('meta', 'Preguntas Frecuentes'), 'description'=>__d('meta', 'Preguntas y respuestas sobre cómo conseguir un taxi para moverte por Cuba usando YoTeLlevo')),
+                'testimonials'=>array('title'=>__d('meta', 'Testimonios de viajeros sorprendentes en Cuba'), 'description'=>__d('meta', 'Testimonios de viajeros que contrataron choferes con YoTeLlevo, Cuba')),
+                'catalog-drivers-cuba'=>array('title'=>__d('meta', 'Choferes en Cuba: fotos y testimonios de viajeros'))),
+
+            'SharedTravels.home' =>array('title'=>__d('meta', 'Taxi compartido en Cuba'), 'description'=>__d('meta', '...')),
+            'SharedTravels.thanks' =>array('title'=>__d('meta', 'Gracias'), 'description'=>__d('meta', '...')),
+            'SharedTravels.activate' =>array('title'=>__d('meta', 'Activar solicitud'), 'description'=>__d('meta', '...')),
+            'SharedTravels.view' =>array('title'=>__d('meta', 'Datos de mi solicitud'), 'description'=>__d('meta', '...')),
+        );
+        
+        if(isset ($pageTitles[$key])) return $pageTitles[$key];
+        
+        return null;
+    }
+    
+    
 }

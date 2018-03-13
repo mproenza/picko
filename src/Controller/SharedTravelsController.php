@@ -10,8 +10,9 @@ use App\Util\TimeUtil;
 use Cake\Core\Configure;
 use Cake\Datasource\ConnectionManager;
 use Cake\Network\Exception\InternalErrorException;
-use \Cake\Event\Event;
-use \Cake\Mailer\Email;
+use Cake\Event\Event;
+use Cake\Mailer\Email;
+use Cake\Network\Exception\NotFoundException;
 
 class SharedTravelsController extends AppController {
     
@@ -44,7 +45,7 @@ class SharedTravelsController extends AppController {
             $this->request->data('activation_token', $activationToken);
             $this->request->data('lang', ini_get('intl.default_locale'));
             $this->request->data('state', SharedTravel::$STATE_PENDING);
-            $this->request->data('original_date', $this->request->getData('date'));
+            $this->request->data('original_date', str_replace('-', '/', TimeUtil::dmY_to_Ymd($this->request->getData('date'))));
 
             $STTable = TableRegistry::get('SharedTravels');
             $STEntity = $STTable->newEntity($this->request->getData());

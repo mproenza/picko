@@ -2,7 +2,7 @@
 namespace App\Shell;
 
 use Cake\Console\Shell;
-use \Cake\Mailer\Email;
+use Cake\Mailer\Email;
 
 class IncomingMailShell extends Shell
 {

@@ -2,7 +2,8 @@
 <html>
     <head>        
         <?php echo $this->Html->charset(); ?>
-        <title>AAAA</title>
+        <title><?php echo $page_title.' | '.'PickoCar'?></title>
+        <meta name="description" content="<?php echo $page_description?>"/>
 
         <style type="text/css">
 
@@ -59,8 +60,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <?php echo $this->Html->link(__d('shared_travels', 'IR AL INICIO'), '/', array('class' => 'nav-link', 'escape' => false)); ?>
-                        <?php echo $this->Html->link('<button type="button" class="btn btn-info navbar-btn">' . __d('shared_travels', 'VER RUTAS DISPONIBLES') . '</button>', '/#transfers-available', array('escape' => false, 'style' => 'padding:0px;padding-right:10px')) ?>
+                        <?php echo $this->Html->link(__d('shared_travels', 'IR AL INICIO'), ['_name'=>'homepage'], array('class' => 'nav-link', 'escape' => false)); ?>
+                        <?php echo $this->Html->link('<button type="button" class="btn btn-info navbar-btn">' . __d('shared_travels', 'VER RUTAS DISPONIBLES') . '</button>', ['_name'=>'homepage'], array('escape' => false, 'style' => 'padding:0px;padding-right:10px')) ?>
+                        <?php echo $this->User->logout();?>
                     </div>
                 </div>
             </nav>

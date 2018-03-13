@@ -46,5 +46,4 @@ return array(
     'Aura\\Intl\\' => array($vendorDir . '/aura/intl/src'),
     'App\\Test\\' => array($baseDir . '/tests'),
     'App\\' => array($baseDir . '/src'),
-    'ADmad\\I18n\\' => array($vendorDir . '/admad/cakephp-i18n/src'),
 );

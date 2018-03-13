@@ -7,7 +7,6 @@ echo $this->Html->css('datepicker.css');
 echo $this->Html->script('datepicker');
 ?>
 
-
 <div class="container">
     <div class="row">
         <div class="col-md-10 offset-md-1">

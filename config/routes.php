@@ -22,6 +22,8 @@ use Cake\Core\Plugin;
 use Cake\Routing\RouteBuilder;
 use Cake\Routing\Router;
 use Cake\Routing\Route\DashedRoute;
+use Cake\I18n\I18n;
+use \Cake\Core\Configure;
 
 /**
  * The default class to use for all routes
@@ -43,15 +45,30 @@ use Cake\Routing\Route\DashedRoute;
  */
 Router::defaultRouteClass(DashedRoute::class);
 
-Router::scope('/', function (RouteBuilder $routes) {
+Router::addUrlFilter(function ($params, $request) {
+	if (isset($request->params['language']) && !isset($params['language'])) {
+            $params['language'] = $request->params['language'];
+	} elseif (!isset($params['language'])) {
+            $params['language'] = Configure::read('default_language'); // set your default language here
+	}
+        
+        //I18n::setLocale($params['language']);
+        
+	return $params;
+});
+ 
+Router::scope('/:language', function (RouteBuilder $routes) {
     
-    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display'], ['routeClass' => 'ADmad/I18n.I18nRoute']);
+    $routes->connect('/', ['controller' => 'SharedTravels', 'action' => 'home'], ['_name'=>'homepage'])
+            ->setPatterns(['language' => 'en|es']);
+
+    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display'])
+            ->setPatterns(['language' => 'en|es']);
     
-    $routes->connect('/', ['controller' => 'SharedTravels', 'action' => 'home'], ['routeClass' => 'ADmad/I18n.I18nRoute']);
-    
-    // MARTIN
-    $routes->connect('/shared-rides/:action/*', ['controller' => 'SharedTravels'], ['routeClass' => 'ADmad/I18n.I18nRoute']);
-    $routes->connect('/shared-rides/*', ['controller' => 'SharedTravels', 'action' => 'index'], ['routeClass' => 'ADmad/I18n.I18nRoute']);
+    $routes->connect('/shared-rides/:action/*', ['controller' => 'SharedTravels'])
+            ->setPatterns(['language' => 'en|es']);
+    $routes->connect('/shared-rides/*', ['controller' => 'SharedTravels', 'action' => 'index'])
+            ->setPatterns(['language' => 'en|es']);
 
     /**
      * Connect catchall routes for all controllers.

@@ -209,7 +209,9 @@ Type::build('timestamp')
 Plugin::load('EmailQueue', ['autoload' => true]);
 //Plugin::load('ADmad/I18n');
 
+Configure::write('Users.Email.validate', false);
 Configure::write('Users.reCaptcha.registration', false);
+Configure::write('Users.Email.mailerClass', \App\Mailer\AppUsersMailer::class);
 Plugin::load('CakeDC/Users', ['routes' => true, 'bootstrap' => true]);
 
 
@@ -228,7 +230,5 @@ Configure::write('customer_assistant', array('name'=>'Ana'));
 Configure::write('shared_rides_facilitator', array('name'=>'Andiel', 'email'=>'martin@yotellevocuba.com'/*'andielsl@nauta.cu'*/));
 
 
-
 Configure::write('I18n.languages', ['en', 'es']);
-
 Configure::write('default_language', 'en');

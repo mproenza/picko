@@ -14,7 +14,7 @@ $modality = SharedTravel::$modalities[$modalityCode];
 
 <p><?php echo __d('shared_travels', 'Antes de comenzar los arreglos, usted debe confirmar la solicitud haciendo click en el siguiente enlace')?>:</p>
 
-<p><?php echo $this->Html->link(__d('shared_travels', 'Confirmar los datos de mi solicitud'), array('language'=>$request['SharedTravel']['lang'], 'controller' => 'shared-rides', 'action' => 'activate/' . $request['SharedTravel']['activation_token'], '_full'=>true) )?></p>
+<p><?php echo $this->Html->link(__d('shared_travels', 'Confirmar los datos de mi solicitud'), array('language'=>$request['SharedTravel']['lang'], 'controller' => 'shared-rides', 'action' => 'activate/' . $request['SharedTravel']['activation_token']/*, '_full'=>true*/), ['fullBase'=>true] )?></p>
 
 <p><?php echo __d('shared_travels', 'Gracias de antemano, y saludos')?>,</p>
 

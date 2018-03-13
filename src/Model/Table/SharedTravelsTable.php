@@ -8,6 +8,7 @@ use App\Util\EmailsUtil;
 use Cake\Event\Event;
 use Cake\ORM\Query;
 use ArrayObject;
+use App\Util\TimeUtil;
 
 class SharedTravelsTable extends Table {
 
@@ -17,11 +18,8 @@ class SharedTravelsTable extends Table {
 
     public function beforeMarshal(Event $event, ArrayObject $data, ArrayObject $options) {
         if (isset($data['date'])) {
-            // Guardar como YYYY/mm/dd, se asume que la fecha viene como dd/mm/YYYY
-            $d = str_replace('-', '/', $data['date']);
-            $d = explode('/', $d);
-            $newD = $d[2] . '-' . $d[1] . '-' . $d[0];
-            $data['date'] = $newD;
+            // Guardar como YYYY/mm/dd, se asume que la fecha viene como dd-mm-YYYY
+            $data['date'] = str_replace('-', '/', TimeUtil::dmY_to_Ymd($data['date']));
         }
 
         if (isset($data['email'])) {
