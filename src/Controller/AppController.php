@@ -30,9 +30,9 @@ class AppController extends Controller
 
 
 	public $helpers = array(
-        'Html'/* => array(
+        'Html' => array(
             'className' => 'EnhancedHtml'
-        )*/, 
+        ), 
         'Form' => array(
             'className' => 'BootstrapForm'
 		)

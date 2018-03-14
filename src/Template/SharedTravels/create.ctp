@@ -1,4 +1,10 @@
-<?php $modality = SharedTravel::$modalities[$this->request->query['s']]?>
+<?php
+use App\Model\Entity\SharedTravel;
+
+$modalityCode = $request['SharedTravel']['modality_code'];
+$modality = SharedTravel::$modalities[$this->request->query['s']]
+?>
+
 <div id="request-ride" data-h-offset="0" class="row arrow_box arrow_box_bottom"></div>
 <div class="row" style="background-color: #ebebeb;padding-bottom: 20px">
     <div class="row" style="padding-top: 80px;">

@@ -2,13 +2,14 @@
 namespace App\View\Helper;
 
 use Cake\View\Helper\HtmlHelper;
+use \Cake\Core\Configure;
 
 class EnhancedHtmlHelper extends HtmlHelper {
     
     private $_cssAliases = array(
         'bootstrap'=>array(
-            'debug'=>'common/bootstrap-3.1.1-dist/css/bootstrap.min',
-            'release'=>'common/bootstrap-3.1.1-dist/css/bootstrap.min'/*'http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.js'*/
+            'debug'=>'bootstrap',
+            'release'=>'bootstrap'/*'http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.js'*/
         ),
         'jquery-ui'=>array(
             'debug'=>'common/jquery-ui-1.10.0.custom',
@@ -34,12 +35,12 @@ class EnhancedHtmlHelper extends HtmlHelper {
     
     private $_scriptAliases = array(
         'bootstrap'=>array(
-            'debug'=>'common/bootstrap-3.1.1-dist/js/bootstrap.min',
-            'release'=>'common/bootstrap-3.1.1-dist/js/bootstrap.min'
+            'debug'=>'bootstrap',
+            'release'=>'bootstrap'
         ),
         'jquery'=>array(
-            'debug'=>'common/jquery-1.9.0.min',
-            'release'=>'common/jquery-1.9.0.min'
+            'debug'=>'jquery',
+            'release'=>'jquery'
         ),
         'jquery-ui'=>array(
             'debug'=>'common/jquery-ui-1.9.2.custom.min',
@@ -64,7 +65,7 @@ class EnhancedHtmlHelper extends HtmlHelper {
     );    
     
 
-    public function css($path, $options = array()) {
+    public function css($path, array $options = []) {
         $path = $this->_fixUrl($path, $this->_cssAliases);
         
         if (!is_array($options)) {
@@ -82,7 +83,7 @@ class EnhancedHtmlHelper extends HtmlHelper {
         return parent::css($path, $options);
     }
     
-    public function script($url, $options = array()) {
+    public function script($url, array $options = []) {
         $url = $this->_fixUrl($url, $this->_scriptAliases);
         
         return parent::script($url, $options);
@@ -101,9 +102,24 @@ class EnhancedHtmlHelper extends HtmlHelper {
     }
     
     
-    public function link($title, $url = null, $options = array(), $confirmMessage = false) {
-        if(is_array($url) && !isset ($url['plugin'])) $url['plugin'] = '';
-        return parent::link($title, $url, $options, $confirmMessage);
+    /*public function link($title, $url = null, array $options = []) {
+        //if(is_array($url) && !isset ($url['plugin'])) $url['plugin'] = '';
+        return parent::link($title, $url, $options);
+    }*/
+    
+    public function lang($currentLang, $request) {
+        $other = array('en' => 'es', 'es' => 'en');
+        $lang = $currentLang;
+
+        $lang_changed_url             = $request->getParam('pass');
+        $lang_changed_url['?']        = $request->getQueryParams();
+        $lang_changed_url['language'] = $other[$lang];
+
+        if($lang != null && $lang == 'en')
+            return $this->link($this->image('Spain.png'), $lang_changed_url, array('class'=>'nav-link', 'escape'=>false, 'style'=>'text-decoration:none'));
+        else
+            return $this->link($this->image('UK.png'), $lang_changed_url, array('class'=>'nav-link', 'escape'=>false, 'style'=>'text-decoration:none'));
+
     }
 
 }
