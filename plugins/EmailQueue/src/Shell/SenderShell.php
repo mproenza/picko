@@ -6,6 +6,7 @@ use Cake\ORM\TableRegistry;
 use Cake\Utility\Hash;
 use Cake\Mailer\Email;
 use Cake\Core\Configure;
+use Cake\I18n\I18n;
 
 class SenderShell extends Shell {
 
@@ -74,8 +75,8 @@ class SenderShell extends Shell {
                 
                 $lang = $e['EmailQueue']['lang'];
                 if($lang != null) {
-                    Configure::write ('Config.language', $lang);
-                    ini_set('intl.default_locale', $lang);
+                    I18n::locale($lang);
+                    Configure::write ('App.language', $lang);
                 }
                 
                 $this->out('Email language is '.$lang.', language '. Configure::read('Config.language').' was set');
@@ -101,7 +102,8 @@ class SenderShell extends Shell {
                 $this->out('<error>Email ' . $e['EmailQueue']['id'] . ' was not sent</error>');
             }
             
-            Configure::write('Config.language', Configure::read('default_language'));
+            I18n::locale(Configure::read('default_language'));
+            Configure::write('App.language', Configure::read('default_language'));
         }
         if(!empty($emails)) $emailQueue->releaseLocks(Hash::extract($emails, '{n}.EmailQueue.id'));
     }
