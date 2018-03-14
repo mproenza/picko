@@ -52,8 +52,6 @@ Router::addUrlFilter(function ($params, $request) {
             $params['language'] = Configure::read('default_language'); // set your default language here
 	}
         
-        //I18n::setLocale($params['language']);
-        
 	return $params;
 });
  
