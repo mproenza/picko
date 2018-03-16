@@ -13,6 +13,7 @@ use Cake\Network\Exception\InternalErrorException;
 use Cake\Event\Event;
 use Cake\Mailer\Email;
 use Cake\Network\Exception\NotFoundException;
+use App\Error\ExpiredLinkException;
 
 class SharedTravelsController extends AppController {
     
@@ -21,16 +22,17 @@ class SharedTravelsController extends AppController {
         $this->Auth->allow(['home', 'create', 'thanks', 'activate', 'view']);
     }
     
-
-    public function home() {
+    public function beforeRender(Event $event){
+        parent::beforeRender($event);
         $this->viewBuilder()->setLayout('shared_rides');
     }
+    
+
+    public function home() {}
     
     public function index() {
         $this->paginate = ['order'=>['SharedTravel.date'=>'ASC', 'SharedTravel.id'=>'ASC'], 'limit'=>100];
         $this->set('travels', $this->paginate($this->SharedTravels, ['conditions'=> ['email !=' => 'martin@yotellevocuba.com'] ]));
-        
-        $this->viewBuilder()->setLayout('shared_rides');
     }
 
     public function create() {
@@ -97,16 +99,12 @@ class SharedTravelsController extends AppController {
 
         if ($request == null || empty($request)) throw new NotFoundException();
 
-
-        $this->viewBuilder()->setLayout('shared_rides');
         $this->set('request', $request);
     }
     
     
     
     public function activate($activationToken) {
-        $this->viewBuilder()->setLayout('shared_rides');
-        
         $STTable = TableRegistry::get('SharedTravels');
         
         $request = $STTable->findByActivationToken($activationToken);
@@ -294,9 +292,7 @@ class SharedTravelsController extends AppController {
         // Sanity checks
         if($request == null || empty ($request)) throw new NotFoundException();
         if(!$request['SharedTravel']['activated']) throw new NotFoundException();
-
-
-        $this->viewBuilder()->setLayout('shared_rides');
+        
         $this->set('request', $request);
     }
     
@@ -308,7 +304,6 @@ class SharedTravelsController extends AppController {
         // Sanity checks
         if($request == null || empty ($request)) throw new NotFoundException();
         
-        $this->viewBuilder()->setLayout('shared_rides');
         $this->set('request', $request);
     }
     

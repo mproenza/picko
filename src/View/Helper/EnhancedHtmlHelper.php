@@ -3,70 +3,52 @@ namespace App\View\Helper;
 
 use Cake\View\Helper\HtmlHelper;
 use \Cake\Core\Configure;
+use \Cake\I18n\I18n;
 
 class EnhancedHtmlHelper extends HtmlHelper {
     
-    private $_cssAliases = array(
-        'bootstrap'=>array(
-            'debug'=>'bootstrap',
-            'release'=>'bootstrap'/*'http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.js'*/
-        ),
-        'jquery-ui'=>array(
-            'debug'=>'common/jquery-ui-1.10.0.custom',
-            'release'=>'common/jquery-ui-1.10.0.custom'
-        ),
-        'prettify'=>array(
-            'debug'=>'common/prettify',
-            'release'=>'common/prettify'
-        ),
-        'bootstrap-editable'=>array(
-            'debug'=>'bootstrap3-editable-1.5.1/bootstrap3-editable/css/bootstrap-editable',
-            'release'=>'bootstrap3-editable-1.5.1/bootstrap3-editable/css/bootstrap-editable'
-        ),
-        'bootstrap-select2'=>array(
-            'debug'=>array('bootstrap3-editable-1.5.1/select2/select2', 'bootstrap3-editable-1.5.1/select2/select2-bootstrap', 'bootstrap-editable'),
-            'release'=>array('bootstrap3-editable-1.5.1/select2/select2', 'bootstrap3-editable-1.5.1/select2/select2-bootstrap', 'bootstrap-editable')
-        ),
-        'default-bundle'=>array(/* common/font-awesome.min se usaba en el datepicker... lo cambie para que usara glyphicons */
-            'debug'=>array('bootstrap', /*'common/font-awesome.min',*/ 'default'),
-            'release'=>array('bootstrap', /*'common/font-awesome.min',*/ 'default')
-        )
-    );
+    private function _getCssAliases() {
+        return array(
+            'bootstrap'=>array(
+                'debug'=>'bootstrap',
+                'release'=>'bootstrap'
+            ),
+            'default-bundle'=>array(/* common/font-awesome.min se usaba en el datepicker... lo cambie para que usara glyphicons */
+                'debug'=>array('bootstrap', /*'common/font-awesome.min',*/ 'default'),
+                'release'=>array('bootstrap', /*'common/font-awesome.min',*/ 'default')
+            )
+        );
+    }
     
-    private $_scriptAliases = array(
-        'bootstrap'=>array(
-            'debug'=>'bootstrap',
-            'release'=>'bootstrap'
-        ),
-        'jquery'=>array(
-            'debug'=>'jquery',
-            'release'=>'jquery'
-        ),
-        'jquery-ui'=>array(
-            'debug'=>'common/jquery-ui-1.9.2.custom.min',
-            'release'=>'common/jquery-ui-1.9.2.custom.min'
-        ),
-        'prettify'=>array(
-            'debug'=>'common/prettify',
-            'release'=>'common/prettify'
-        ),
-        'bootstrap-editable'=>array(
-            'debug'=>'bootstrap3-editable-1.5.1/bootstrap3-editable/js/bootstrap-editable',
-            'release'=>'bootstrap3-editable-1.5.1/bootstrap3-editable/js/bootstrap-editable'
-        ),
-        'bootstrap-select2'=>array(
-            'debug'=>array('bootstrap', 'bootstrap3-editable-1.5.1/inputs-ext/select2/select2', 'bootstrap-editable'),
-            'release'=>array('bootstrap', 'bootstrap3-editable-1.5.1/inputs-ext/select2/select2', 'bootstrap-editable')
-        ),
-        'default-bundle'=>array(
-            'debug'=>array('jquery', 'bootstrap'),
-            'release'=>array('jquery', 'bootstrap')
-        )
-    );    
+    
+    private function _getScriptAliases() {
+        return array(
+            'bootstrap'=>array(
+                'debug'=>'bootstrap',
+                'release'=>'bootstrap'
+            ),
+            'jquery'=>array(
+                'debug'=>'jquery',
+                'release'=>'jquery'
+            ),
+            'datepicker'=>array(
+                'debug'=>'datepicker/bootstrap-datepicker',
+                'release'=>'datepicker/bootstrap-datepicker.min'
+            ),
+            'datepicker-locale'=>array(
+                'debug'=>'datepicker/locales/bootstrap-datepicker.'.I18n::getLocale().'.min',
+                'release'=>'datepicker/locales/bootstrap-datepicker.'.I18n::getLocale().'.min'
+            ),
+            'default-bundle'=>array(
+                'debug'=>array('jquery', 'bootstrap'),
+                'release'=>array('jquery', 'bootstrap')
+            )
+        );
+    }
     
 
     public function css($path, array $options = []) {
-        $path = $this->_fixUrl($path, $this->_cssAliases);
+        $path = $this->_fixUrl($path, $this->_getCssAliases());
         
         if (!is_array($options)) {
             $rel = $options;
@@ -84,7 +66,7 @@ class EnhancedHtmlHelper extends HtmlHelper {
     }
     
     public function script($url, array $options = []) {
-        $url = $this->_fixUrl($url, $this->_scriptAliases);
+        $url = $this->_fixUrl($url, $this->_getScriptAliases());
         
         return parent::script($url, $options);
     }
@@ -109,13 +91,12 @@ class EnhancedHtmlHelper extends HtmlHelper {
     
     public function lang($currentLang, $request) {
         $other = array('en' => 'es', 'es' => 'en');
-        $lang = $currentLang;
 
         $lang_changed_url             = $request->getParam('pass');
         $lang_changed_url['?']        = $request->getQueryParams();
-        $lang_changed_url['language'] = $other[$lang];
+        $lang_changed_url['language'] = $other[$currentLang];
 
-        if($lang != null && $lang == 'en')
+        if($currentLang != null && $currentLang == 'en')
             return $this->link($this->image('Spain.png'), $lang_changed_url, array('class'=>'nav-link', 'escape'=>false, 'style'=>'text-decoration:none'));
         else
             return $this->link($this->image('UK.png'), $lang_changed_url, array('class'=>'nav-link', 'escape'=>false, 'style'=>'text-decoration:none'));

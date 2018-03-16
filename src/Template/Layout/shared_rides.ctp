@@ -1,4 +1,4 @@
-<?php use Cake\Core\Configure;?>
+<?php use Cake\Core\Configure; use \Cake\I18n\I18n?>
 
 <!DOCTYPE html>
 <html>
@@ -62,7 +62,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <?php echo $this->Html->lang(Configure::read('App.language'), $this->request) ?>
+                        <?php echo $this->Html->lang(I18n::getLocale(), $this->request) ?>
                         <?php echo $this->Html->link(__d('shared_travels', 'IR AL INICIO'), ['_name'=>'homepage'], array('class' => 'nav-link', 'escape' => false)); ?>
                         <?php echo $this->Html->link('<button type="button" class="btn btn-info navbar-btn">' . __d('shared_travels', 'VER RUTAS DISPONIBLES') . '</button>', ['_name'=>'homepage'], array('escape' => false, 'style' => 'padding:0px;padding-right:10px')) ?>
                         <?php echo $this->User->logout();?>

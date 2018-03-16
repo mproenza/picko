@@ -24,6 +24,9 @@ class I18nMiddleware
      *   Default `true`.
      * - `defaultLanguage`: Default language for app. Default `en_US`.
      * - `languages`: Languages available in app. Default `[]`.
+     * - `useCookie`: If ´true´ will save a cookie with the prefered language 
+     *   of the user, and will change it when the language is changed. 
+     *   Default `true`.
      *
      * @var array
      */
@@ -31,6 +34,7 @@ class I18nMiddleware
         'detectLanguage' => true,
         'defaultLanguage' => 'en_US',
         'languages' => [],
+        'useCookie' => true,
     ];
 
     /**
@@ -62,80 +66,6 @@ class I18nMiddleware
         $config = $this->config();
         $url = $request->getUri()->getPath();
         
-        /*if ($url === '/') {
-            $statusCode = 301;
-            $lang = $config['defaultLanguage'];
-            if ($config['detectLanguage']) {
-                $statusCode = 302;
-                $lang = $this->detectLanguage($request, $lang);
-            }
-
-            $response = new RedirectResponse(
-                $request->getAttribute('webroot') . $lang,
-                $statusCode
-            );
-
-            return $response;
-        }*/
-        
-        /*$langs = $config['languages'];
-        
-        // Pôsibles comienzos de la url para que el idioma se considere que está presente (ej. '/en/')
-        $possibleLangUrlStart = [];
-        foreach($langs as $l) {
-            $possibleLangUrlStart[] = '/'.$l.'/';
-        }
-        
-        // Para que el idioma se considere que está en la url, los primeros caracteres hasta el primer '/' deben coincidir con uno de los posibles
-        // comienzos de la url
-        if(!in_array(substr($url, strpos($url, '/', 1)), $possibleLangUrlStart)) {
-            $statusCode = 301;
-            $lang = $this->_config['defaultLanguage'];
-            if ($this->_config['detectLanguage']) {
-                $statusCode = 302;
-                $lang = $this->detectLanguage($request, $lang);
-            }
-            
-            $response = new RedirectResponse(
-                $request->getAttribute('webroot') . $lang. $url,
-                $statusCode
-            );
-
-            return $response;
-        }*/
-        
-        /*if (empty($request->url) ||  !$request->param('language')) {
-            $statusCode = 301;
-            $lang = $this->_config['defaultLanguage'];
-            if ($this->_config['detectLanguage']) {
-                $statusCode = 302;
-                $lang = $this->detectLanguage($request, $lang);
-            }
-
-            $location = $request->webroot . $lang . (!empty($request->url) ? '/' . $request->url : '');
-            $response->statusCode($statusCode);
-            $response->header('Location', $location);
-
-            return $response;
-        }*/
-        
-        /*$params = $request->getAttribute('params');
-        if (isset($params['nolang']) && $params['nolang']) {
-            $statusCode = 301;
-            $lang = $this->_config['defaultLanguage'];
-            if ($this->_config['detectLanguage']) {
-                $statusCode = 302;
-                $lang = $this->detectLanguage($request, $lang);
-            }
-            
-            $response = new RedirectResponse(
-                $request->getAttribute('webroot') . $lang. $url,
-                $statusCode
-            );
-
-            return $response;
-        }*/
-        
         if(!$this->_isLangInUrl($url, $config['languages'])) {
             $statusCode = 301;
             $lang = $this->_config['defaultLanguage'];
@@ -153,21 +83,22 @@ class I18nMiddleware
         } else {
             $lang = substr($url, 1, 2);
             
-            I18n::locale($lang);
-            Configure::write('App.language', $lang);
+            if(I18n::getLocale() != $lang) {
+                I18n::setLocale($lang);
+                Configure::write('App.language', $lang);
+                
+                if($config['useCookie']) {
+                    $response = $response->withCookie('PickoCar.UserLang', [
+                        'value' => $lang,
+                        'path' => '/',
+                        'httpOnly' => true,
+                        'secure' => false, // Esto indica que se transmita tambien por http no seguro
+                        'expire' => strtotime('+1 month')
+                        ]);
+                }
+            }
+            
         }
-
-        /*$langs = $config['languages'];
-        $requestParams = $request->getAttribute('params');
-        echo $requestParams['language'];
-        $lang = isset($requestParams['language']) ? $requestParams['language'] : $config['defaultLanguage'];
-        if (isset($langs[$lang])) {
-            I18n::locale($langs[$lang]['locale']);
-        } else {
-            I18n::locale($lang);
-        }
-
-        Configure::write('App.language', $lang);*/
 
         return $next($request, $response);
     }
@@ -191,7 +122,19 @@ class I18nMiddleware
         } else {
             $lang = $default;
         }
+        
+        // Try to get language from cookie
+        if($this->_config['useCookie']) {
+            
+            $cookies = $request->getCookieParams();
+            $langCookie = Hash::get($cookies, 'PickoCar.UserLang');
+            
+            // TODO: Tratar de ver si la cookie tiene un idioma valido
+            
+            if($langCookie != null) return $langCookie;
+        }
 
+        // Try to get language from browser
         $browserLangs = $request->acceptLanguage();
         foreach ($browserLangs as $k => $langKey) {
             if (strpos($langKey, '-') !== false) {

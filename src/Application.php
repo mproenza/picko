@@ -46,12 +46,10 @@ class Application extends BaseApplication
             ->add(AssetMiddleware::class)
                 
             ->add(new I18nMiddleware([
-                // If `true` will attempt to get matching languges in "languages" list based on browser locale and redirect to that when going to site root.
                 'detectLanguage' => true,
-                // Default language for app. If language detection is disabled or no matching language is found redirect to this language
                 'defaultLanguage' => 'en',
-                // Languages available in app. Based on the language the locale will be also set.
                 'languages' => ['en', 'es'],
+                'useCookie' => true
             ]))
                 
             // Add routing middleware.

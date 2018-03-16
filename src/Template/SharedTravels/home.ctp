@@ -1,11 +1,6 @@
-<?php use App\Model\Entity\SharedTravel;?>
+<?php use App\Model\Entity\SharedTravel;use Cake\I18n\I18n;?>
 
 <?php $doBootbox = true?>
-
-<?php
-echo $this->Html->css('datepicker.css');
-echo $this->Html->script('datepicker');
-?>
 
 <div class="container">
     <div class="row">
@@ -124,44 +119,50 @@ echo $this->Html->script('datepicker');
 
 <?php if($doBootbox):?>
 
-<script type="text/javascript">    
-    $(document).ready(function() { 
-        
-        $( ".open-modal" ).click(function( event ) {
-            
-            event.preventDefault();
-            
-            bootbox.dialog({title:$(this).data('title'), message:$( '#' + $(this).data('modal') ).html(), size:'large'});
-            
-            form = $('.bootbox form');
-            datepicker = form.find('.datepicker');
+    <?php
+    echo $this->Html->css('datepicker');
+    echo $this->Html->script('datepicker');
+    echo $this->Html->script('datepicker-locale');
+    ?>
 
-            datepicker.datepicker({
-                format: "dd/mm/yyyy",
-                language: '<?php echo 'es'?>',
-                startDate: '+2d',
-                todayBtn: "linked",
-                autoclose: true,
-                todayHighlight: false
-            });
-            
-            form.validate({
-                wrapper: 'div',
-                errorClass: 'text-danger',
-                errorElement: 'div'
-            });
-            
-            form.submit(function() {
-                if (!$(this).valid()) return false;
+    <script type="text/javascript">    
+        $(document).ready(function() { 
 
-                var submit = $(this).find('submit');
+            $( ".open-modal" ).click(function( event ) {
 
-                submit.attr('disabled', true);
-                submit.val('<?php echo __('Espera')?> ...');
+                event.preventDefault();
+
+                bootbox.dialog({title:$(this).data('title'), message:$( '#' + $(this).data('modal') ).html(), size:'large'});
+
+                form = $('.bootbox form');
+                datepicker = form.find('.datepicker');
+
+                datepicker.datepicker({
+                    format: "dd/mm/yyyy",
+                    language: '<?php echo I18n::getLocale()?>',
+                    startDate: '+2d',
+                    todayBtn: "linked",
+                    autoclose: true,
+                    todayHighlight: false
+                });
+
+                form.validate({
+                    wrapper: 'div',
+                    errorClass: 'text-danger',
+                    errorElement: 'div'
+                });
+
+                form.submit(function() {
+                    if (!$(this).valid()) return false;
+
+                    var submit = $(this).find('submit');
+
+                    submit.attr('disabled', true);
+                    submit.val('<?php echo __('Espera')?> ...');
+                });
+
             });
-            
-        });
-    })
-</script>
+        })
+    </script>
 
 <?php endif?>
