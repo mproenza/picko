@@ -3,7 +3,7 @@
         <h2><?php echo $message; ?></h2>
         <p class="error">
             <?php
-            printf(__d('error', 'Ocurrió un error usando este enlace. Puede ser que esté caducado, ya haya sido usado o es incorrecto.'));
+            printf(__d('errors', 'Ocurrió un error usando este enlace. Puede ser que esté caducado, ya haya sido usado o es incorrecto.'));
             ?>
         </p>
     </div>

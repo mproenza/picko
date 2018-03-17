@@ -25,6 +25,8 @@ class I18nMiddleware
      * - `defaultLanguage`: Default language for app. Default `en_US`.
      * - `languages`: Languages available in app. Default `[]`.
      * - `useCookie`: If ´true´ will save a cookie with the prefered language 
+     * - `avoidInPlugin`: If ´true´ will NOT redirect to url with language if the url is in a plugin.
+     *   The value can be an array of plugins to be avoided.
      *   of the user, and will change it when the language is changed. 
      *   Default `true`.
      *
@@ -35,6 +37,7 @@ class I18nMiddleware
         'defaultLanguage' => 'en_US',
         'languages' => [],
         'useCookie' => true,
+        'avoidInPlugin' => true
     ];
 
     /**
@@ -88,7 +91,7 @@ class I18nMiddleware
                 Configure::write('App.language', $lang);
                 
                 if($config['useCookie']) {
-                    $response = $response->withCookie('PickoCar.UserLang', [
+                    $response = $response->withCookie('user_language', [
                         'value' => $lang,
                         'path' => '/',
                         'httpOnly' => true,
@@ -127,7 +130,7 @@ class I18nMiddleware
         if($this->_config['useCookie']) {
             
             $cookies = $request->getCookieParams();
-            $langCookie = Hash::get($cookies, 'PickoCar.UserLang');
+            $langCookie = Hash::get($cookies, 'user_language');// ¿Por qué la Cookie viene con un _ en vez de un . ?
             
             // TODO: Tratar de ver si la cookie tiene un idioma valido
             

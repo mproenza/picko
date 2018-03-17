@@ -16,17 +16,21 @@ msgstr ""
 
 
 #: App/Controller/AppController.php:8
-msgid "Taxi compartido en Cuba"
-msgstr "Shared taxi in Cuba"
+msgid "Taxi compartido en Cuba. Viajes hasta {0} y otros"
+msgstr "Shared taxi in Cuba. Trips to {0} and others"
 
 #: App/Controller/AppController.php:8
-msgid "Gracias"
-msgstr "Thanks"
+msgid "Gracias por su solicitud"
+msgstr "Thank you for your request"
 
 #: App/Controller/AppController.php:8
 msgid "Activar solicitud"
 msgstr "Activate request"
 
 #: App/Controller/AppController.php:8
-msgid "Datos de mi solicitud"
-msgstr "Info of my request"
+msgid "Datos de tu solicitud"
+msgstr "Info of you request"
+
+#: App/Controller/AppController.php:8
+msgid "Llega a destinos como {0} y otros por un buen precio usando nuestra amplia red de taxis compartidos"
+msgstr "Arrive to destinations like {0} and others for a good price using our big network of shared taxis"

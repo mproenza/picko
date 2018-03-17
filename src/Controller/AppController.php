@@ -27,8 +27,6 @@ use Cake\Event\Event;
  */
 class AppController extends Controller
 {
-
-
 	public $helpers = array(
         'Html' => array(
             'className' => 'EnhancedHtml'
@@ -54,7 +52,8 @@ class AppController extends Controller
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         
-        $this->loadComponent('CakeDC/Users.UsersAuth');
+        $this->loadComponent('Auth');        
+        //$this->loadComponent('CakeDC/Users.UsersAuth');
 
         /*
          * Enable the following components for recommended CakePHP security settings.
@@ -121,10 +120,10 @@ class AppController extends Controller
                 'testimonials'=>array('title'=>__d('meta', 'Testimonios de viajeros sorprendentes en Cuba'), 'description'=>__d('meta', 'Testimonios de viajeros que contrataron choferes con YoTeLlevo, Cuba')),
                 'catalog-drivers-cuba'=>array('title'=>__d('meta', 'Choferes en Cuba: fotos y testimonios de viajeros'))),
 
-            'SharedTravels.home' =>array('title'=>__d('meta', 'Taxi compartido en Cuba'), 'description'=>__d('meta', '...')),
-            'SharedTravels.thanks' =>array('title'=>__d('meta', 'Gracias'), 'description'=>__d('meta', '...')),
+            'SharedTravels.home' =>array('title'=>__d('meta', 'Taxi compartido en Cuba. Viajes hasta {0} y otros', 'La Habana, Viñales, Trinidad, Varadero'), 'description'=>__d('meta', 'Llega a destinos como {0} y otros por un buen precio usando nuestra amplia red de taxis compartidos', 'La Habana, Viñales, Trinidad, Varadero')),
+            'SharedTravels.thanks' =>array('title'=>__d('meta', 'Gracias por su solicitud'), 'description'=>__d('meta', '...')),
             'SharedTravels.activate' =>array('title'=>__d('meta', 'Activar solicitud'), 'description'=>__d('meta', '...')),
-            'SharedTravels.view' =>array('title'=>__d('meta', 'Datos de mi solicitud'), 'description'=>__d('meta', '...')),
+            'SharedTravels.view' =>array('title'=>__d('meta', 'Datos de tu solicitud'), 'description'=>__d('meta', '...')),
         );
         
         if(isset ($pageTitles[$key])) return $pageTitles[$key];

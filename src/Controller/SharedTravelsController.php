@@ -19,7 +19,7 @@ class SharedTravelsController extends AppController {
     
     public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
-        $this->Auth->allow(['home', 'create', 'thanks', 'activate', 'view']);
+        $this->Auth->allow(['home', 'create', 'thanks', 'activate', 'view', 'index']);
     }
     
     public function beforeRender(Event $event){

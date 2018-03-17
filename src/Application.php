@@ -14,7 +14,6 @@
  */
 namespace App;
 
-use Cake\Core\Configure;
 use Cake\Error\Middleware\ErrorHandlerMiddleware;
 use Cake\Http\BaseApplication;
 use Cake\Routing\Middleware\AssetMiddleware;
@@ -54,8 +53,7 @@ class Application extends BaseApplication
                 
             // Add routing middleware.
             ->add(new RoutingMiddleware($this))
-            
-            
+                
             ;
 			
 
