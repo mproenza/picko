@@ -19,7 +19,7 @@ class SharedTravelsController extends AppController {
     
     public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
-        $this->Auth->allow(['home', 'create', 'thanks', 'activate', 'view', 'index']);
+        $this->Auth->allow(['home', 'create', 'thanks', 'activate', 'view', 'index230216']);
     }
     
     public function beforeRender(Event $event){
@@ -30,9 +30,11 @@ class SharedTravelsController extends AppController {
 
     public function home() {}
     
-    public function index() {
+    public function index230216() {
         $this->paginate = ['order'=>['SharedTravel.date'=>'ASC', 'SharedTravel.id'=>'ASC'], 'limit'=>100];
         $this->set('travels', $this->paginate($this->SharedTravels, ['conditions'=> ['email !=' => 'martin@yotellevocuba.com'] ]));
+        
+        $this->render('index');
     }
 
     public function create() {
@@ -338,5 +340,3 @@ class SharedTravelsController extends AppController {
     }
 
 }
-
-?>

@@ -46,11 +46,17 @@ class IncomingMailShell extends Shell
                 
                 // Sanity checks
                 if($request == null || empty($request)) {
-                    echo 'No existe esta solicitud: '.$requestId;
+                    echo 'No existe esta solicitud';
                     return;
                 }
-                if($request['SharedTravel']['state'] != SharedTravel::$STATE_ACTIVATED) { // Solo se puede confirmar cuando esta en estado ACTIVATED
-                    echo 'La solicitud no está activada todavía: '.$requestId; 
+                
+                // TODO: Verificar que la solicitud no este expirada
+                
+                if($request['SharedTravel']['state'] == SharedTravel::$STATE_CONFIRMED) { // Solo se puede confirmar cuando esta en estado ACTIVATED
+                    echo 'La solicitud ya está confirmada'; 
+                    return;
+                } else if($request['SharedTravel']['state'] != SharedTravel::$STATE_ACTIVATED) { // Solo se puede confirmar cuando esta en estado ACTIVATED
+                    echo 'La solicitud no está activada todavía'; 
                     return;
                 } 
                 
