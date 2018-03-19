@@ -4,10 +4,10 @@
 $emailValue = null;
 $peopleCountValue = 1;
 $nameIdValue = null;
-if($this->request->session()->read('SharedTravels.email')) $emailValue = $this->Session->read('SharedTravels.email');
+if($this->request->session()->read('SharedTravels.email')) $emailValue = $this->request->session()->read('SharedTravels.email');
 //else if($userLoggedIn) $emailValue = AuthComponent::user('username');
-if($this->request->session()->read('SharedTravels.people_count')) $peopleCountValue = $this->Session->read('SharedTravels.people_count');
-if($this->request->session()->read('SharedTravels.name_id')) $nameIdValue = $this->Session->read('SharedTravels.name_id');
+if($this->request->session()->read('SharedTravels.people_count')) $peopleCountValue = $this->request->session()->read('SharedTravels.people_count');
+if($this->request->session()->read('SharedTravels.name_id')) $nameIdValue = $this->request->session()->read('SharedTravels.name_id');
 ?>
 
 <div>

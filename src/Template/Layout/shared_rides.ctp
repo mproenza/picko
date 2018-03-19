@@ -2,7 +2,19 @@
 
 <!DOCTYPE html>
 <html>
-    <head>        
+    <head>
+        <?php if (ROOT != 'C:\xampp\htdocs\pickocar'): ?>
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116001622-1"></script>
+            <script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'UA-116001622-1');
+            </script>
+        <?php endif; ?> 
+            
         <?php echo $this->Html->charset(); ?>
         <title><?php echo $page_title.' | '.'PickoCar'?></title>
         <meta name="description" content="<?php echo $page_description?>"/>
@@ -29,29 +41,16 @@
         echo $this->Html->css('default');
         echo $this->Html->css('bootstrap');
         echo $this->Html->css('font-awesome/css/font-awesome.min.css');
-
+        
         echo $this->Html->script('jquery');
         echo $this->Html->script('popper');
         echo $this->Html->script('bootstrap');
         echo $this->Html->script('bootbox');
+        
+        $this->fetch('meta');
+        $this->fetch('css');
+        $this->fetch('script');
         ?>
-
-        <?= $this->fetch('meta') ?>
-        <?= $this->fetch('css') ?>
-        <?= $this->fetch('script') ?>
-
-        <script type="text/javascript">
-            $(document).ready(function() {
-                
-                $.each($('.info'), function(pos, obj) {
-                    var placement = 'bottom';
-                    if($(obj).attr('data-placement') !== undefined) placement = $(obj).attr('data-placement');
-                    $(obj).tooltip({placement:placement, html:true});
-                });
-                
-                //$('.info').tooltip({placement:'bottom', html:true});
-            })
-        </script>
     </head>
     <body>
         <div id="container">
@@ -83,48 +82,7 @@
                 </footer>
             </div>
         </div>
-
-<!--<div id="features-terms" style="display: none"><?php /* echo $this->element('terms_of_service') */ ?></div>
-<script type="text/javascript">
-    $('#menu-features-terms').click(function(event) {
-        event.preventDefault();
-    
-        bootbox.dialog({title:'<?php echo __d('shared_travels', 'CARACTERÍSTICAS Y TÉRMINOS DEL SERVICIO') ?>', message:$( '#' + $(this).data('modal') ).html(), size:'large'});
-    });
-    
- </script>-->
-<!--
-        <?php if (ROOT != 'C:\xamp\htdocs\pickocar' /* && (!$userLoggedIn || $userRole === 'regular') */): ?>
-            
-            <script language="JavaScript">
-                var data = '&r=' + escape(document.referrer)
-                    + '&n=' + escape(navigator.userAgent)
-                    + '&p=' + escape(navigator.userAgent)
-                    + '&g=' + escape(document.location.href);
-
-                if (navigator.userAgent.substring(0,1)>'3')
-                    data = data + '&sd=' + screen.colorDepth 
-                    + '&sw=' + escape(screen.width+'x'+screen.height);
-
-                document.write('<a href="http://www.1freecounter.com/stats.php?i=109722" target=\"_blank\" >');
-                document.write('<img alt="Free Counter" border=0 hspace=0 '+'vspace=0 src="http://www.1freecounter.com/counter.php?i=109722' + data + '">');
-                document.write('</a>');
-            </script>
-
-            
-            <script>
-                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-                ga('create', 'UA-60694533-1', 'auto');
-                ga('send', 'pageview');
-            </script>
-
-        <?php endif; ?> 
-            -->
-
+        
         <script type="text/javascript">
             function goTo(id, time, offset) {
                 $('html, body').animate({
@@ -132,11 +90,53 @@
                 }, time);
             };
             
-            <?php if (isset($this->request->query['highlight'])): ?>
-                $(document).ready(function() {
-                    goTo('<?php echo $this->request->query['highlight'] ?>', 500, -70);
+            $(document).ready(function() {
+                
+                $.each($('.info'), function(pos, obj) {
+                    var placement = 'bottom';
+                    if($(obj).attr('data-placement') !== undefined) placement = $(obj).attr('data-placement');
+                    $(obj).tooltip({placement:placement, html:true});
                 });
-            <?php endif ?>
+                
+                <?php if (isset($this->request->query['highlight'])): ?>
+                    goTo('<?php echo $this->request->query['highlight'] ?>', 500, -70);  
+                <?php endif ?>
+                    
+                // Hacer que el formulario de solicitud se abra
+                $( ".open-request-form" ).click(function( event ) {
+                    event.preventDefault();
+
+                    bootbox.dialog({title:$(this).data('title'), message:$( '#' + $(this).data('modal') ).html(), size:'large'});
+
+                    form = $('.bootbox form');
+                    datepicker = form.find('.datepicker');
+
+                    datepicker.datepicker({
+                        format: "dd/mm/yyyy",
+                        language: '<?php echo I18n::getLocale()?>',
+                        startDate: '+2d',
+                        todayBtn: "linked",
+                        autoclose: true,
+                        todayHighlight: false
+                    });
+
+                    form.validate({
+                        wrapper: 'div',
+                        errorClass: 'text-danger',
+                        errorElement: 'div'
+                    });
+
+                    form.submit(function() {
+                        if (!$(this).valid()) return false;
+
+                        var submit = $(this).find('submit');
+
+                        submit.attr('disabled', true);
+                        submit.val('<?php echo __('Espera')?> ...');
+                    });
+
+                });
+            });
         </script>
 
     </body>

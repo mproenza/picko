@@ -29,7 +29,7 @@ msgstr "Activate request"
 
 #: App/Controller/AppController.php:8
 msgid "Datos de tu solicitud"
-msgstr "Info of you request"
+msgstr "Info of your request"
 
 #: App/Controller/AppController.php:8
 msgid "Llega a destinos como {0} y otros por un buen precio usando nuestra amplia red de taxis compartidos"
