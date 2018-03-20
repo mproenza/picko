@@ -16,6 +16,7 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use App\Model\Entity\SharedTravel;
 
 /**
  * Application Controller
@@ -121,6 +122,21 @@ class AppController extends Controller
                 'catalog-drivers-cuba'=>array('title'=>__d('meta', 'Choferes en Cuba: fotos y testimonios de viajeros'))),
 
             'SharedTravels.home' =>array('title'=>__d('meta', 'Taxi compartido en Cuba. Viajes hasta {0} y otros', 'La Habana, Viñales, Trinidad, Varadero'), 'description'=>__d('meta', 'Llega a destinos como {0} y otros por un buen precio usando nuestra amplia red de taxis compartidos', 'La Habana, Viñales, Trinidad, Varadero')),
+            
+            'SharedTravels.create' =>array(
+                'title'=>function($viewVars, $queryParams) {
+                    $modalityCode = $queryParams['s'];
+                    $modality = SharedTravel::$modalities[$modalityCode];
+                    
+                    return __d('meta', 'Taxi compartido desde {0} hasta {1}', $modality['origin'], $modality['destination']);
+                }, 
+                'description'=>function($viewVars, $queryParams) {
+                    $modalityCode = $queryParams['s'];
+                    $modality = SharedTravel::$modalities[$modalityCode];
+                    
+                    return __d('meta', 'Reserva un taxi para ir de {0} a {1}. Haz un viaje cómodo en un auto moderno con aire acondicionado y con sólo 4 pasajeros dentro', $modality['origin'], $modality['destination']);
+                }
+            ),
             'SharedTravels.thanks' =>array('title'=>__d('meta', 'Gracias por su solicitud'), 'description'=>__d('meta', '...')),
             'SharedTravels.activate' =>array('title'=>__d('meta', 'Activar solicitud'), 'description'=>__d('meta', '...')),
             'SharedTravels.view' =>array('title'=>__d('meta', 'Datos de tu solicitud'), 'description'=>__d('meta', '...')),

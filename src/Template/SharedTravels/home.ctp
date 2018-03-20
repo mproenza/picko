@@ -1,4 +1,7 @@
-<?php use App\Model\Entity\SharedTravel;use Cake\I18n\I18n;?>
+<?php 
+use App\Model\Entity\SharedTravel;
+use Cake\I18n\I18n;
+?>
 
 <?php $doBootbox = true?>
 
@@ -17,9 +20,9 @@
             <ul>
                 <p><b><?php echo __d('home', 'Ofrecemos') ?>:</b></p>
                 <li><?php echo __d('home', 'Una amplia red de taxis que conectan destinos como {0} y muchos otros', 'La Habana, Viñales, Trinidad, Varadero, Cayo Guillermo') ?></li>
-                <li><?php echo __d('home', 'Viajes confortables en autos modernos con aire acondicionado con sólo 4 pasajeros dentro, todos yendo al mismo destino') ?></li>
+                <li><?php echo __d('home', 'Sólo 4 pasajeros en un auto, todos yendo al mismo destino en un viaje confortable en auto moderno con aire acondicionado') ?></li>
                 <li><?php echo __d('home', 'Servicio puerta a puerta: el taxi te recoge en tu casa de estancia u hotel y te lleva hasta tu próxima estancia') ?></li>
-                <li><?php echo __d('home', 'Precios muy buenos si viajas solo, en pareja o son tres personas y no quieren pagar el viaje completo en un taxi privado como si fueran cuatro personas') ?></li>
+                <li><?php echo __d('home', 'Precios muy convenientes si viajas solo, en pareja o son tres personas y no quieren pagar el viaje completo en un taxi privado como si fueran cuatro personas') ?></li>
             </ul>
         </div> 
     </div>
@@ -34,7 +37,7 @@
     
     <div class="row" style="margin-top: 60px;text-align: center">
         <div class="col-md-4 center" style="padding-bottom: 30px">
-            <h3><?php echo __d('home', 'Paga menos por un taxi')?></h3>
+            <h3><?php echo __d('home', 'Gasta menos para llegar a tus destinos')?></h3>
             <p><big><?php echo __d('home', 'Paga sólo por los asientos que ocupes en el taxi y no por el viaje completo. Si ustedes son menos de 4 personas, es conveniente compartir los asientos sobrantes con otros pasajeros para que ellos paguen parte del viaje. Lo bueno es que todos pagan menos.')?></big></p>
         </div>
         <div class="col-md-4 center" style="padding-bottom: 30px">
@@ -43,7 +46,7 @@
         </div>
         <div class="col-md-4 center" style="padding-bottom: 30px">
             <h3><?php echo __d('home', 'Reserva, y listo!')?></h3>
-            <p><big><?php echo __d('home', 'En cuanto reservas, nosotros arreglamos todo de manera que compartas el viaje con otros viajeros que van al mismo destino en la misma fecha y horario. De esta manera no tienes que encontrar tú a otros pasajeros que quieran unirse.')?></big></p>
+            <p><big><?php echo __d('home', 'En cuanto reservas, nosotros arreglamos todo de manera que compartas el viaje con otros viajeros que van al mismo destino en la misma fecha y horario. De esta manera no tienes que encontrar tú a otros pasajeros que quieran unirse y no hay que esperar a que el taxi se llene a la hora de partir.')?></big></p>
         </div>
     </div>
     

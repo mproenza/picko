@@ -32,16 +32,16 @@ msgid "Una amplia red de taxis que conectan destinos como {0} y muchos otros"
 msgstr "A big network of taxis connecting destinations like {0} and many others"
 
 #: View/SharedTravels/home.ctp:8
-msgid "Viajes confortables en autos modernos con aire acondicionado con sólo 4 pasajeros dentro, todos yendo al mismo destino"
-msgstr "Confortable trips in air-conditioned modern cars with only 4 passengers in it, all of whom are going to the same destination"
+msgid "Sólo 4 pasajeros en un auto, todos yendo al mismo destino en un viaje confortable en auto moderno con aire acondicionado"
+msgstr "Only 4 passengers in one car, all going to the same destination in a confortable trip inside an air-conditioned modern car"
 
 #: View/SharedTravels/home.ctp:8
 msgid "Servicio puerta a puerta: el taxi te recoge en tu casa de estancia u hotel y te lleva hasta tu próxima estancia"
 msgstr "Door to door service: the taxi will go pick you up at your guest house or hotel and drop you off at your next accomodation"
 
 #: View/SharedTravels/home.ctp:8
-msgid "Precios muy buenos si viajas solo, en pareja o son tres personas y no quieren pagar el viaje completo en un taxi privado como si fueran cuatro personas"
-msgstr "Very affordable prices if you travel alone, in a couple or a trio and don't want to pay the whole trip in a private ride, as if you were four people"
+msgid "Precios muy convenientes si viajas solo, en pareja o son tres personas y no quieren pagar el viaje completo en un taxi privado como si fueran cuatro personas"
+msgstr "Very affordable prices if you travel alone, in a couple or a three-people pack and don't want to pay the whole trip in a private ride as if you were four people"
 
 #: View/SharedTravels/home.ctp:8
 msgid "Ver rutas y precios disponibles"
@@ -52,8 +52,8 @@ msgid "y otros destinos"
 msgstr "and other destinations"
 
 #: View/SharedTravels/home.ctp:8
-msgid "Paga menos por un taxi"
-msgstr "Pay less for a taxi"
+msgid "Gasta menos para llegar a tus destinos"
+msgstr "Spend less to get to your destinations"
  
 #: View/SharedTravels/home.ctp:8
 msgid "Paga sólo por los asientos que ocupes en el taxi y no por el viaje completo. Si ustedes son menos de 4 personas, es conveniente compartir los asientos sobrantes con otros pasajeros para que ellos paguen parte del viaje. Lo bueno es que todos pagan menos."
@@ -72,8 +72,8 @@ msgid "Reserva, y listo!"
 msgstr "Book, and that's it!"
  
 #: View/SharedTravels/home.ctp:8
-msgid "En cuanto reservas, nosotros arreglamos todo de manera que compartas el viaje con otros viajeros que van al mismo destino en la misma fecha y horario. De esta manera no tienes que encontrar tú a otros pasajeros que quieran unirse."
-msgstr "As soon as you book, we arrange everything in a way that you share your trip with other travelers going to the same destination in the same date and time. This way you don't have to worry about finding other passengers to join you."
+msgid "En cuanto reservas, nosotros arreglamos todo de manera que compartas el viaje con otros viajeros que van al mismo destino en la misma fecha y horario. De esta manera no tienes que encontrar tú a otros pasajeros que quieran unirse y no hay que esperar a que el taxi se llene a la hora de partir."
+msgstr "As soon as you book, we arrange everything in a way that you share your trip with other travelers going to the same destination in the same date and time. This way you don't have to worry about finding other passengers to join you and no need to wait until the taxi is full at the moment of departure."
  
 #: View/SharedTravels/home.ctp:8
 msgid "Selecciona una de nuestras rutas y horarios para reservar un taxi"

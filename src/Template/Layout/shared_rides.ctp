@@ -16,8 +16,12 @@
         <?php endif; ?> 
             
         <?php echo $this->Html->charset(); ?>
+        
+        <?php if(is_callable($page_title)) $page_title = $page_title($this->viewVars, $this->request->query);?>
         <title><?php echo $page_title.' | '.'PickoCar'?></title>
-        <meta name="description" content="<?php echo $page_description?>"/>
+        
+        <?php if(is_callable($page_description)) $page_description = $page_description($this->viewVars, $this->request->query);?>
+        <meta name="description" content="<?php echo $page_description;?>"/>
 
         <style type="text/css">
 

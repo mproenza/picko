@@ -9,12 +9,19 @@ use Cake\Event\Event;
 use Cake\ORM\Query;
 use ArrayObject;
 use App\Util\TimeUtil;
-use \Cake\Mailer\Email;
+use Cake\Mailer\Email;
+use Cake\Validation\Validator;
 
 class SharedTravelsTable extends Table {
 
     public function initialize(array $config) {
         $this->addBehavior('Timestamp');
+    }
+    
+    public function validationDefault(Validator $validator) {
+        /*$validator
+            ->notEmpty('address_origin');*/
+        return $validator;
     }
 
     public function beforeMarshal(Event $event, ArrayObject $data, ArrayObject $options) {
