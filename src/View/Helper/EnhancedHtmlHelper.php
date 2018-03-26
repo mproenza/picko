@@ -39,6 +39,14 @@ class EnhancedHtmlHelper extends HtmlHelper {
                 'debug'=>'datepicker/locales/bootstrap-datepicker.'.I18n::getLocale().'.min',
                 'release'=>'datepicker/locales/bootstrap-datepicker.'.I18n::getLocale().'.min'
             ),
+            'form-validator'=>[
+                'debug'=>'form-validator/jquery.form-validator.min',
+                'release'=>'form-validator/jquery.form-validator.min'
+            ],
+            'form-validator-locale'=>[
+                'debug'=>'form-validator/lang/'.I18n::getLocale(),
+                'release'=>'form-validator/lang/'.I18n::getLocale()
+            ],
             'default-bundle'=>array(
                 'debug'=>array('jquery', 'bootstrap'),
                 'release'=>array('jquery', 'bootstrap')
@@ -104,5 +112,3 @@ class EnhancedHtmlHelper extends HtmlHelper {
     }
 
 }
-
-?>

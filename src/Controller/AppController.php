@@ -123,7 +123,7 @@ class AppController extends Controller
 
             'SharedTravels.home' =>array('title'=>__d('meta', 'Taxi compartido en Cuba. Viajes hasta {0} y otros', 'La Habana, Viñales, Trinidad, Varadero'), 'description'=>__d('meta', 'Llega a destinos como {0} y otros por un buen precio usando nuestra amplia red de taxis compartidos', 'La Habana, Viñales, Trinidad, Varadero')),
             
-            'SharedTravels.create' =>array(
+            'SharedTravels.book' =>array(
                 'title'=>function($viewVars, $queryParams) {
                     $modalityCode = $queryParams['s'];
                     $modality = SharedTravel::$modalities[$modalityCode];

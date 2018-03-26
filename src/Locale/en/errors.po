@@ -38,5 +38,26 @@ msgstr "An error occurred using this link. It might be expired, has already been
 
 
 
+#: View/Elements/form_shared_travel.ctp:23
+msgid "Escriba una fecha válida: 2 días después de hoy como mínimo y en formato dd/mm/aaaa"
+msgstr "Type a valid date: 2 days after today as a minimum and in format dd/mm/yyyy"
 
+#: View/Elements/form_shared_travel.ctp:23
+msgid "La cantidad de personas debe ser un número entre 1 y 4"
+msgstr "The people count must be a number between 1 and 4"
 
+#: View/Elements/form_shared_travel.ctp:23
+msgid "La dirección de recogida es obligatoria"
+msgstr "The pickup address is needed"
+
+#: View/Elements/form_shared_travel.ctp:23
+msgid "La dirección de destino es obligatoria"
+msgstr "The destination address is needed"
+
+#: View/Elements/form_shared_travel.ctp:23
+msgid "Escriba una dirección de correo válida"
+msgstr "Type a valid email address"
+
+#: View/Elements/form_shared_travel.ctp:23
+msgid "Su nombre es necesario para la identificación. Por favor escríbalo."
+msgstr "Your name is needed for identification. Please type it."

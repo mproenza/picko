@@ -23,10 +23,10 @@ class BootstrapFormHelper extends FormHelper {
     public function create($context = null, array $options = []) {
         
         $defaultOptions = array(
-            'inputDefaults' => array(
-			'div' => 'form-group',
-			'wrapInput' => false,
-			'class' => 'form-control'
+                'inputDefaults' => array(
+                'div' => 'form-group',
+                'wrapInput' => false,
+                'class' => 'form-control'
             ),
         );
 
@@ -85,7 +85,11 @@ class BootstrapFormHelper extends FormHelper {
         $defaultOptions = array( 
             'class'=>'form-control'
         );
+        
+        if(isset($options['invalid-feedback'])) $options['templates']['inputContainer'] = '<div class="input {{type}}{{required}}">{{content}}<div class="invalid-feedback">'.$options['invalid-feedback'].'</div></div>';
+        
         $options = array_merge_recursive($defaultOptions, $options);
+        
         $result = parent::input($fieldName, $options);
         
         /* Hacer cosas específicas para cada tipo de input >>> */

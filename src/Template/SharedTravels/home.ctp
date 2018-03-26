@@ -18,11 +18,11 @@ use Cake\I18n\I18n;
             <hr/>
             
             <ul>
-                <p><b><?php echo __d('home', 'Ofrecemos') ?>:</b></p>
-                <li><?php echo __d('home', 'Una amplia red de taxis que conectan destinos como {0} y muchos otros', 'La Habana, Viñales, Trinidad, Varadero, Cayo Guillermo') ?></li>
-                <li><?php echo __d('home', 'Sólo 4 pasajeros en un auto, todos yendo al mismo destino en un viaje confortable en auto moderno con aire acondicionado') ?></li>
-                <li><?php echo __d('home', 'Servicio puerta a puerta: el taxi te recoge en tu casa de estancia u hotel y te lleva hasta tu próxima estancia') ?></li>
-                <li><?php echo __d('home', 'Precios muy convenientes si viajas solo, en pareja o son tres personas y no quieren pagar el viaje completo en un taxi privado como si fueran cuatro personas') ?></li>
+                <p><?php echo __d('home', 'Ofrecemos') ?>:</p>
+                <li><?php echo __d('home', '<b>Una amplia red de taxis</b> que conectan destinos como {0} y otros', 'La Habana, Viñales, Trinidad, Varadero, Cayo Guillermo') ?></li>
+                <li><?php echo __d('home', '<b>Sólo 4 pasajeros en un auto</b>, todos yendo al mismo destino en un viaje confortable en auto moderno con aire acondicionado') ?></li>
+                <li><?php echo __d('home', '<b>Servicio puerta a puerta</b>: el taxi te recoge en tu casa de estancia u hotel y te lleva hasta tu próxima estancia') ?></li>
+                <li><?php echo __d('home', '<b>Precios muy convenientes</b> si viajas solo, en pareja o son tres personas y no quieren pagar el viaje completo en un taxi privado como si fueran cuatro personas') ?></li>
             </ul>
         </div> 
     </div>
@@ -67,18 +67,18 @@ use Cake\I18n\I18n;
         </div>
         
         <div class="row alert alert-warning" style="margin-top: 50px;text-align: center">
-			<div class="col-md-4 center">
-				<div style="float:left;width:20%;font-size:40px"><i class="fa fa-drivers-license-o"></i></div>
-				<div style="float:left;width:80%"><p><big><?php echo __d('home', 'Choferes y autos registrados y con licencia para realizar este servicio')?></big></p></div>
-			</div>
-			<div class="col-md-4 center">
-				<div style="float:left;width:20%;font-size:40px"><i class="fa fa-money"></i></div>
-				<div style="float:left;width:80%"><p><big><?php echo __d('home', 'Pago en efectivo directamente al chofer en el momento de la recogida')?></big></p></div>
-			</div>
-			<div class="col-md-4 center">
-				<div style="float:left;width:20%;font-size:40px"><i class="fa fa-check-square-o"></i></div>
-				<div style="float:left;width:80%"><p><big><?php echo __d('home', 'Cada viaje confirmado queda en nuestra agenda para su realización')?></big></p></div>
-			</div>
+            <div class="col-md-4 center">
+                <div style="float:left;width:20%;font-size:40px"><i class="fa fa-drivers-license-o"></i></div>
+                <div style="float:left;width:80%"><p><big><?php echo __d('home', 'Choferes y autos registrados y con licencia para realizar este servicio')?></big></p></div>
+            </div>
+            <div class="col-md-4 center">
+                <div style="float:left;width:20%;font-size:40px"><i class="fa fa-money"></i></div>
+                <div style="float:left;width:80%"><p><big><?php echo __d('home', 'Pago en efectivo directamente al chofer en el momento de la recogida')?></big></p></div>
+            </div>
+            <div class="col-md-4 center">
+                <div style="float:left;width:20%;font-size:40px"><i class="fa fa-check-square-o"></i></div>
+                <div style="float:left;width:80%"><p><big><?php echo __d('home', 'Cada viaje confirmado queda en nuestra agenda para su realización')?></big></p></div>
+            </div>
         </div>
         
         <?php foreach (SharedTravel::$localities as $locality_id => $locality):?>

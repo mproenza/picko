@@ -28,6 +28,9 @@ $modality = SharedTravel::$modalities[$modalityCode];
 echo $this->Html->css('datepicker');
 echo $this->Html->script('datepicker');
 echo $this->Html->script('datepicker-locale');
+
+/*echo $this->Html->script('form-validator');
+echo $this->Html->script('form-validator-locale');*/
 ?>
 
 <script>
@@ -38,5 +41,14 @@ echo $this->Html->script('datepicker-locale');
         todayBtn: "linked",
         autoclose: true,
         todayHighlight: false
+    });
+    
+    var form = $('form');
+    form.submit(function(event) {
+        if (this.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        this.classList.add('was-validated');
     });
 </script>

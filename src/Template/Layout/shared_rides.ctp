@@ -113,8 +113,8 @@
                     bootbox.dialog({title:$(this).data('title'), message:$( '#' + $(this).data('modal') ).html(), size:'large'});
 
                     form = $('.bootbox form');
+                    
                     datepicker = form.find('.datepicker');
-
                     datepicker.datepicker({
                         format: "dd/mm/yyyy",
                         language: '<?php echo I18n::getLocale()?>',
@@ -124,19 +124,12 @@
                         todayHighlight: false
                     });
 
-                    form.validate({
-                        wrapper: 'div',
-                        errorClass: 'text-danger',
-                        errorElement: 'div'
-                    });
-
-                    form.submit(function() {
-                        if (!$(this).valid()) return false;
-
-                        var submit = $(this).find('submit');
-
-                        submit.attr('disabled', true);
-                        submit.val('<?php echo __('Espera')?> ...');
+                    form.submit(function(event) {
+                        if (this.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        this.classList.add('was-validated');
                     });
 
                 });

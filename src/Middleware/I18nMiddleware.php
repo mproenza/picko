@@ -77,6 +77,7 @@ class I18nMiddleware
                 $lang = $this->detectLanguage($request, $lang);
             }
             
+            if($url == '/') $url = ''; // Fix url's '/' at end
             $response = new RedirectResponse(
                 $request->getAttribute('webroot') . $lang. $url,
                 $statusCode

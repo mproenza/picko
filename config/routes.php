@@ -24,6 +24,7 @@ use Cake\Routing\Router;
 use Cake\Routing\Route\DashedRoute;
 use Cake\I18n\I18n;
 use \Cake\Core\Configure;
+use App\Model\Entity\SharedTravel;
 
 /**
  * The default class to use for all routes
@@ -45,15 +46,42 @@ use \Cake\Core\Configure;
  */
 Router::defaultRouteClass(DashedRoute::class);
 
+// Filtro para crear urls con el idioma actual al principio
 Router::addUrlFilter(function ($params, $request) {
-	if (isset($request->params['language']) && !isset($params['language'])) {
-            $params['language'] = $request->params['language'];
-	} elseif (!isset($params['language'])) {
-            $params['language'] = Configure::read('default_language'); // set your default language here
-	}
-        
-	return $params;
+    if (isset($request->params['language']) && !isset($params['language'])) {
+        $params['language'] = $request->params['language'];
+    } elseif (!isset($params['language'])) {
+        $params['language'] = Configure::read('default_language');
+    }
+
+    return $params;
 });
+
+// Filtro para crear url traducidas al idioma actual
+/*Router::addUrlFilter(function ($params, $request) {
+    if(isset($params['controller'])) {
+        $params['controller'] = __d('urls', $params['controller']);
+    }
+    if(isset($params['action'])) {
+        $params['action'] = __d('urls', $params['action']);
+    }
+
+    return $params;
+});*/
+
+// Filtro para los slug para las solicitudes. Ej. para generar la url /book/taxi-from-la-habana-to-trinidad-2pm
+/*Router::addUrlFilter(function ($params, $request) {
+    if(isset($params['controller']) &&  $params['controller'] == 'shared-rides'
+        && isset($params['action']) &&  $params['action'] == 'book') {
+        
+        $modalityCode = $params['?']['s'];
+        $modality = SharedTravel::$modalities[$modalityCode];
+        
+        $params['?']['slug'] = 'taxi-from-'.strtolower(str_replace(' ', '-', $modality['origin'])).'-to-'.strtolower(str_replace(' ', '-', $modality['destination'])).'-'.str_replace(' ', '-', $modality['time']);
+    }
+
+    return $params;
+});*/
  
 Router::scope('/:language', function (RouteBuilder $routes) {
     

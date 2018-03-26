@@ -19,7 +19,7 @@ class SharedTravelsController extends AppController {
     
     public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
-        $this->Auth->allow(['home', 'create', 'thanks', 'activate', 'view', 'index230216']);
+        $this->Auth->allow(['home', 'book', 'thanks', 'activate', 'view', 'index230216']);
     }
     
     public function beforeRender(Event $event){
@@ -37,7 +37,7 @@ class SharedTravelsController extends AppController {
         $this->render('index');
     }
 
-    public function create() {
+    public function book() {
         if ($this->request->is('post') || $this->request->is('put')) {
 
             // Generar los token

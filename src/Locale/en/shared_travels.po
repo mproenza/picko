@@ -64,88 +64,88 @@ msgstr "<big>Share this trip</big> <div>and pay only <b>{0}</b> per person</div>
 
 
 
-#: View/SharedTravels/create.ctp:8
+#: View/SharedTravels/book.ctp:8
 msgid "¿Necesitas ir desde {0} hasta {1} durante tu viaje a Cuba?"
 msgstr "Need to go from {0} to {1} during your trip to Cuba?"
 
-#: View/SharedTravels/create.ctp:8
+#: View/SharedTravels/book.ctp:8
 msgid "Comparte un taxi cómodo con otros viajeros."
 msgstr "Share a confortable taxi with other travelers."
 
-#: View/SharedTravels/create.ctp:8
+#: View/SharedTravels/book.ctp:8
 msgid "Llega a cada destino por un precio muy conveniente."
 msgstr "Go to each destination for a very convenient price."
 
-#: View/SharedTravels/create.ctp:8
+#: View/SharedTravels/book.ctp:8
 msgid "Autos modernos con aire acondicionado. Sólo 4 pasajeros en un auto. Recogida en casa u hotel."
 msgstr "Modern cars with air conditioner. Only 4 passengers in one car. Pick up at guest house or hotel."
 
-#: View/SharedTravels/create.ctp:8
+#: View/SharedTravels/book.ctp:8
 msgid "¿Cómo funciona?"
 msgstr "How it works"
 
-#: View/SharedTravels/create.ctp:8
+#: View/SharedTravels/book.ctp:8
 msgid "Solicitas el servicio y nos dices cuándo y dónde recogerte en {0}."
 msgstr "You request the service and tell us when and where to pick you up in {0}."
 
-#: View/SharedTravels/create.ctp:8
+#: View/SharedTravels/book.ctp:8
 msgid "Enseguida hacemos todos los arreglos y te confirmamos en menos de 24 horas."
 msgstr "We do all the arrangements right away and confirm in less than 24 hours."
 
-#: View/SharedTravels/create.ctp:8
+#: View/SharedTravels/book.ctp:8
 msgid "Te asignamos un operador con quien mantendrás comunicación todo el tiempo."
 msgstr "We assign an operator that will keep communicating with you all the time."
 
-#: View/SharedTravels/create.ctp:8
+#: View/SharedTravels/book.ctp:8
 msgid "Cuando llega la fecha, enviamos el auto a recogerte y haces tu viaje hasta {0}."
 msgstr "When the date arrives, we send the car to pick you up and you do your trip to {0}."
 
 
-#: View/SharedTravels/create.ctp:8
+#: View/SharedTravels/book.ctp:8
 msgid "Solicita un transfer de {0} a {1}"
 msgstr "Request a transfer from {0} to {1}"
 
-#: View/SharedTravels/create.ctp:8
+#: View/SharedTravels/book.ctp:8
 msgid "Precio"
 msgstr "Price"
 
-#: View/SharedTravels/create.ctp:8
+#: View/SharedTravels/book.ctp:8
 msgid "Recogida a las {0} en el lugar y fecha que indiques"
 msgstr "Pick up at {0} at the place and date you indicate"
 
-#: View/SharedTravels/create.ctp:8
+#: View/SharedTravels/book.ctp:8
 msgid "Taxi compartido por <code><big><big>{0} pasajeros</big></big></code>"
 msgstr "Taxi shared by <code><big><big>{0} passengers</big></big></code>"
 
-#: View/SharedTravels/create.ctp:8
+#: View/SharedTravels/book.ctp:8
 msgid "TÉRMINOS DEL SERVICIO"
 msgstr "TERMS OF THE SERVICE"
 
-#: View/SharedTravels/create.ctp:8
+#: View/SharedTravels/book.ctp:8
 msgid "Servicio de <b>taxi compartido</b> en <b>auto moderno</b> con <b>aire acondicionado</b> y excelente confort para <b>4 pasajeros</b>."
 msgstr "<b>Shared taxi</b> service in a <b>modern car</b> with <b>air conditioner</b> and excellent confort for <b>4 passengers</b>."
 
-#: View/SharedTravels/create.ctp:8
+#: View/SharedTravels/book.ctp:8
 msgid "Servicio <b>compartido</b> en <b>auto moderno</b> de <b>4 plazas</b> con <b>aire acondicionado</b> y excelente confort."
 msgstr "<b>Shared</b> service in <b>modern car</b> with <b>4 pax</b>, <b>air conditioner</b> and excellent confort."
 
-#: View/SharedTravels/create.ctp:8
+#: View/SharedTravels/book.ctp:8
 msgid "Servicio <b>puerta a puerta</b> (recogida en casa u hotel y se deja en casa u hotel del destino)."
 msgstr "<b>Door to door</b> service (pick up at guest-house or hotel and drop off at guest-house or hotel in destination)."
 
-#: View/SharedTravels/create.ctp:8
+#: View/SharedTravels/book.ctp:8
 msgid "Servicio <b>puerta a puerta</b>. Recogida en casa u hotel y se deja en casa u hotel del destino."
 msgstr "<b>Door to door</b> service. Pick up at guest-house or hotel and drop off at guest-house or hotel in destination."
 
-#: View/SharedTravels/create.ctp:8
+#: View/SharedTravels/book.ctp:8
 msgid "La <b>recogida puede demorar hasta 30 minutos</b> después de la hora establecida para el servicio, pues el chofer planifica su recorrido para recoger a los 4 viajeros."
 msgstr "<b>Pick up can be delayed up to 30 minutes</b> after the indicated time of the service, because the driver plans its own way to go pick up all 4 travelers."
 
-#: View/SharedTravels/create.ctp:8
+#: View/SharedTravels/book.ctp:8
 msgid "El <b>pago es en efectivo y en CUC</b> directamente al chofer al efectuarse la recogida."
 msgstr "<b>Payment is in cash and in CUC</b> directly to the driver right after pick up."
 
-#: View/SharedTravels/create.ctp:8
+#: View/SharedTravels/book.ctp:8
 msgid "<b>Un operador asistente le atenderá por correo</b> en cuanto haga la reservación y mientras llega la fecha del viaje, para cualquier pregunta, cambios o cancelaciones."
 msgstr "<b>An operator will assist you by email</b> as soon as you book and while the date of the trip arrives, for any questions, changes or cancellations."
 
@@ -159,8 +159,8 @@ msgid "Fecha en que necesitas el servicio"
 msgstr "Date you need the service"
 
 #: View/Elements/shared_travel_form.ctp:8
-msgid "Cantidad de personas"
-msgstr "People count"
+msgid "Cantidad de personas (4 pasajeros máx.)"
+msgstr "People count (4 passengers max.)"
 
 #: View/Elements/shared_travel_form.ctp:8
 msgid "Dirección de recogida en {0}"
