@@ -134,7 +134,7 @@ class AppController extends Controller
                     $modalityCode = $queryParams['s'];
                     $modality = SharedTravel::$modalities[$modalityCode];
                     
-                    return __d('meta', 'Reserva un taxi para ir de {0} a {1}. Haz un viaje cómodo en un auto moderno con aire acondicionado y con sólo 4 pasajeros dentro', $modality['origin'], $modality['destination']);
+                    return __d('meta', 'Reserva un taxi para ir de {0} a {1} por un precio de {2} cuc por asiento. Sólo 4 pasajeros en un auto moderno con aire acondicionado y mucho confort.', $modality['origin'], $modality['destination'], $modality['price']);
                 }
             ),
             'SharedTravels.thanks' =>array('title'=>__d('meta', 'Gracias por su solicitud'), 'description'=>__d('meta', '...')),

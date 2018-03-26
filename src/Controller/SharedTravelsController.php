@@ -77,7 +77,7 @@ class SharedTravelsController extends AppController {
                     
                     // Email para mi
                     $Email = new Email('hola');
-                    $Email->to('martin@yotellevocuba.com')->subject('Nueva solicitud')->send('Hay una nueva solicitud...');
+                    $Email->to('martin@yotellevocuba.com')->subject('Nueva solicitud en PickoCar')->send('Hay una nueva solicitud...');
                 } else {
                     return $this->redirect(array('action' => 'activate/' . $activationToken));
                 }

@@ -78,9 +78,11 @@
                 <div style="height: 90px;clear: both"></div>
                 <?php echo $this->fetch('content'); ?>
                 
-                <footer class="footer bg-light">
-                    <hr/>
-                    <div class="container">
+                
+                <div style="height: 90px;clear: both"></div>
+                <hr/>
+                <footer class="footer bg-light">    
+                    <div class="col-md-12">
                         <?php echo $this->element('footer') ?>
                     </div>
                 </footer>

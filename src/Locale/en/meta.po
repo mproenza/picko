@@ -40,5 +40,5 @@ msgid "Llega a destinos como {0} y otros por un buen precio usando nuestra ampli
 msgstr "Arrive to destinations like {0} and others for a good price using our big network of shared taxis"
 
 #: App/Controller/AppController.php:8
-msgid "Reserva un taxi para ir de {0} a {1}. Haz un viaje cómodo en un auto moderno con aire acondicionado y con sólo 4 pasajeros dentro"
-msgstr "Book a taxi to go from {0} to {1}. Do a confortable trip in a modern car with air conditioner and only 4 passengers in it"
+msgid "Reserva un taxi para ir de {0} a {1} por un precio de {2} cuc por asiento. Sólo 4 pasajeros en un auto moderno con aire acondicionado y mucho confort."
+msgstr "Book a taxi to go from {0} to {1} for a price of {2} cuc per seat. Only 4 passengers in one modern car with air conditioner and great confort."

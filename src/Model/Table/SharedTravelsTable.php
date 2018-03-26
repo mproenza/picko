@@ -130,12 +130,10 @@ class SharedTravelsTable extends Table {
 
               // Email para mi
             $Email = new Email('hola');
-            $Email->to('martin@yotellevocuba.com')->subject('Viaje compartido confirmado')->send('http://pickocar.com/shared-rides/view/'.$request['SharedTravel']['id_token']);
+            $Email->to('martin@yotellevocuba.com')->subject('Viaje compartido confirmado en PickoCar')->send('http://pickocar.com/shared-rides/view/'.$request['SharedTravel']['id_token']);
         }
 
         return $OK;
     }
 
 }
-
-?>
