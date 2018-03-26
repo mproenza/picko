@@ -16,8 +16,8 @@ msgstr ""
 
 
 #: View/SharedTravels/home.ctp:8
-msgid "PAGA MENOS PARA LLEGAR A TUS DESTINOS EN CUBA"
-msgstr "PAY LESS TO GET TO YOUR DESTINATIONS IN CUBA"
+msgid "PAGA MENOS PARA LLEGAR A TUS DESTINOS EN {0}"
+msgstr "PAY LESS TO GET TO YOUR DESTINATIONS IN {0}"
 
 #: View/SharedTravels/home.ctp:8
 msgid "Comparte un taxi cómodo con otros viajeros que van al mismo destino que tú y paga sólo por los asientos que ocupes"

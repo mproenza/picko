@@ -142,8 +142,8 @@ class AppController extends Controller
             'SharedTravels.view' =>array('title'=>__d('meta', 'Datos de tu solicitud'), 'description'=>__d('meta', '...')),
               
             // ADMIN
-            'SharedTravels.index230216' =>array('title'=>__d('meta', 'Solicitudes')),
-            'SharedTravels.admin' =>array('title'=>__d('meta', 'Admin')),
+            'SharedTravels.index230216' =>array('title'=>'Compartidos'),
+            'SharedTravels.admin' =>array('title'=>'Admin'),
         );
         
         if(isset ($pageTitles[$key])) return $pageTitles[$key];

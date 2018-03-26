@@ -10,7 +10,7 @@ use Cake\I18n\I18n;
         <div class="col-md-10 offset-md-1">
             <br/>
             <h1 style="text-align: center">
-                <?php echo __d('home', 'PAGA MENOS PARA LLEGAR A TUS DESTINOS EN CUBA') ?>
+                <?php echo __d('home', 'PAGA MENOS PARA LLEGAR A TUS DESTINOS EN {0}', '<code><big><b>CUBA</b></big></code>') ?>
             </h1>
             <br/>
             <h4 style="text-align: center"><?php echo __d('home', 'Comparte un taxi cómodo con otros viajeros que van al mismo destino que tú y paga sólo por los asientos que ocupes') ?></h4>
@@ -66,7 +66,7 @@ use Cake\I18n\I18n;
             </div>        
         </div>
         
-        <div class="row alert alert-warning" style="margin-top: 50px;text-align: center">
+        <div class="row alert alert-dark" style="margin-top: 50px;text-align: center">
             <div class="col-md-4 center">
                 <div style="float:left;width:20%;font-size:40px"><i class="fa fa-drivers-license-o"></i></div>
                 <div style="float:left;width:80%"><p><big><?php echo __d('home', 'Choferes y autos registrados y con licencia para realizar este servicio')?></big></p></div>
