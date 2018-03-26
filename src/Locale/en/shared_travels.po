@@ -163,6 +163,10 @@ msgid "Cantidad de personas (4 pasajeros máx.)"
 msgstr "People count (4 passengers max.)"
 
 #: View/Elements/shared_travel_form.ctp:8
+msgid "Cantidad de personas"
+msgstr "People count"
+
+#: View/Elements/shared_travel_form.ctp:8
 msgid "Dirección de recogida en {0}"
 msgstr "Pick up address in {0}"
 

@@ -46,11 +46,14 @@ if(!isset($admin)) $admin = false;
         <p><span class="text-muted"><?php echo __d('shared_travels', 'Precio <b>{0} personas</b> x <b>{1}</b>', $request['SharedTravel']['people_count'], $modality['price'].' cuc')?>:</span> <code><big><b><?php echo $request['SharedTravel']['people_count']*$modality['price']?> cuc</b></big></code></p>
             
         <?php if($showDetails):?>
+            <hr/>
             <p><span class="text-muted"><?php echo __d('shared_travels', 'Idioma')?>:</span> <?php echo $request['SharedTravel']['lang']?></p>
-            <p><?php echo $this->Html->link('Permalink', array('controller'=>'shared_travels', 'action' => 'view/' . $request['SharedTravel']['id_token']))?></p>
-            <?php if($admin):?>
-               <p><?php echo $this->Html->link('admin', array('controller'=>'shared_travels', 'action' => 'admin/' . $request['SharedTravel']['id']))?></p>
-            <?php endif?>
+            <p><span class="text-muted">#</span><big><?php echo $request['SharedTravel']['id']?></big>
+                <?php echo $this->Html->link('Permalink', array('controller'=>'shared_travels', 'action' => 'view/' . $request['SharedTravel']['id_token']))?>
+                <?php if($admin):?>
+                    | <?php echo $this->Html->link('admin', array('controller'=>'shared_travels', 'action' => 'admin/' . $request['SharedTravel']['id']))?>
+                <?php endif?>
+            </p>
         <?php endif?>
     </div>
 </div>

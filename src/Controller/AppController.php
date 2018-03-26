@@ -53,8 +53,8 @@ class AppController extends Controller
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         
-        //$this->loadComponent('Auth');        
-        $this->loadComponent('CakeDC/Users.UsersAuth');
+        $this->loadComponent('Auth');        
+        //$this->loadComponent('CakeDC/Users.UsersAuth');
 
         /*
          * Enable the following components for recommended CakePHP security settings.
@@ -140,6 +140,10 @@ class AppController extends Controller
             'SharedTravels.thanks' =>array('title'=>__d('meta', 'Gracias por su solicitud'), 'description'=>__d('meta', '...')),
             'SharedTravels.activate' =>array('title'=>__d('meta', 'Activar solicitud'), 'description'=>__d('meta', '...')),
             'SharedTravels.view' =>array('title'=>__d('meta', 'Datos de tu solicitud'), 'description'=>__d('meta', '...')),
+              
+            // ADMIN
+            'SharedTravels.index230216' =>array('title'=>__d('meta', 'Solicitudes')),
+            'SharedTravels.admin' =>array('title'=>__d('meta', 'Admin')),
         );
         
         if(isset ($pageTitles[$key])) return $pageTitles[$key];

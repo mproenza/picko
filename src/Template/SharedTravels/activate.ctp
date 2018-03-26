@@ -18,7 +18,7 @@ $modality = SharedTravel::$modalities[$modalityCode];
             <?php echo $this->element('shared_travel', compact('request'))?>
         </div>
         
-        <div class="col-md-3 alert alert-warning" style="display: inline-block">
+        <div class="col-md-3 alert alert-secondary" style="display: inline-block">
             <?php echo $this->element('suggest_transfers', compact('modality'))?>
         </div>
         
