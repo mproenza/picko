@@ -227,7 +227,7 @@ Plugin::load('CakeDC/Users', ['routes' => true, 'bootstrap' => true]);*/
 // MARTIN
 
 Configure::write('customer_assistant', array('name'=>'Ana'));
-Configure::write('shared_rides_facilitator', array('name'=>'Andiel', 'email'=>'martin@yotellevocuba.com'/*'andielsl@nauta.cu'*/));
+Configure::write('shared_rides_facilitator', array('name'=>'Andiel', 'email'=>/*'martin@yotellevocuba.com'*/'andielsl@nauta.cu'));
 
 
 Configure::write('I18n.languages', ['en', 'es']);
