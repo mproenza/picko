@@ -16,8 +16,8 @@ msgstr ""
 
 
 #: View/SharedTravels/home.ctp:8
-msgid "PAGA MENOS PARA LLEGAR A TUS DESTINOS EN {0}"
-msgstr "PAY LESS TO GET TO YOUR DESTINATIONS IN {0}"
+msgid "LLEGA A CADA UNO DE TUS DESTINOS EN {0} GASTANDO MENOS DINERO"
+msgstr "ARRIVE IN EACH OF YOUR DESTINATIONS IN {0} SPENDING LESS MONEY"
 
 #: View/SharedTravels/home.ctp:8
 msgid "Comparte un taxi cómodo con otros viajeros que van al mismo destino que tú y paga sólo por los asientos que ocupes"
@@ -36,8 +36,8 @@ msgid "<b>Sólo 4 pasajeros en un auto</b>, todos yendo al mismo destino en un v
 msgstr "<b>Only 4 passengers in one car</b>, all going to the same destination in a confortable trip inside an air-conditioned modern car"
 
 #: View/SharedTravels/home.ctp:8
-msgid "<b>Servicio puerta a puerta</b>: el taxi te recoge en tu casa de estancia u hotel y te lleva hasta tu próxima estancia"
-msgstr "<b>Door to door service</b>: the taxi will go pick you up at your guest house or hotel and drop you off at your next accomodation"
+msgid "<b>Servicio puerta a puerta:</b> el taxi te recoge en tu casa de estancia u hotel y te lleva hasta tu próxima estancia"
+msgstr "<b>Door to door service:</b> the taxi will go pick you up at your guest house or hotel and drop you off at your next accomodation"
 
 #: View/SharedTravels/home.ctp:8
 msgid "<b>Precios muy convenientes</b> si viajas solo, en pareja o son tres personas y no quieren pagar el viaje completo en un taxi privado como si fueran cuatro personas"

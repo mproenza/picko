@@ -17,7 +17,7 @@ foreach (SharedTravel::$modalities as $code=>$mod)
         <?php if($mod['origin_id'] == $modality['destination_id'] && ( !isset($mod['active']) || $mod['active'] )):?>
             <li style="padding-top: 5px">
                 <?php echo $this->Html->link(__d('shared_travels', '{0} - {1}, {2}','<b>'.$mod['origin'].'</b>', '<b>'.$mod['destination'].'</b>', '<b>'.$mod['time'].'</b>'), 
-                array('controller'=>'shared-rides', 'action'=>'book', '?'=>['s'=>$code], '#'=>'request-ride'), 
+                array('controller'=>'shared-rides', 'action'=>'book', '?'=>['s'=>$code]), 
                 array('data-modal'=>'info-'.$code, 'class'=>'open-request-form', 'style'=>'white-space: normal;color:inherit', 'escape'=>false))?>
                 <div style="display: none" id="info-<?php echo $code?>">
                     <?php echo $this->element('shared_travel_book_prompt', ['modality'=>$mod] + compact('code'))?>

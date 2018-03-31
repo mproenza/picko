@@ -84,7 +84,7 @@ class SharedTravelsController extends AppController {
             }
 
 
-            if($OK) return $this->redirect(['controller'=>'shared-rides', 'action' => 'thanks?t=' . $idToken]);
+            if($OK) return $this->redirect(['controller'=>'shared-rides', 'action' => 'thanks', '?'=>['t'=>$idToken]]);
             
             // else
             print_r($OK);

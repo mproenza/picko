@@ -273,7 +273,7 @@ msgid "Estado"
 msgstr "Status"
 
 #: View/Elements/shared_travel.ctp:8
-msgid "DATOS DE PAGO"
+msgid "DATOS DEL PAGO"
 msgstr "PAYMENT INFO"
 
 

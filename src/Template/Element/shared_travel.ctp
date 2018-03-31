@@ -42,7 +42,7 @@ if(!isset($admin)) $admin = false;
         <?php endif?>
         
         <hr/>
-        <p><b><?php echo __d('shared_travels', 'DATOS DE PAGO')?></b></p><hr/>
+        <p><b><?php echo __d('shared_travels', 'DATOS DEL PAGO')?></b></p><hr/>
         <p><span class="text-muted"><?php echo __d('shared_travels', 'Precio <b>{0} personas</b> x <b>{1}</b>', $request['SharedTravel']['people_count'], $modality['price'].' cuc')?>:</span> <code><big><b><?php echo $request['SharedTravel']['people_count']*$modality['price']?> cuc</b></big></code></p>
             
         <?php if($showDetails):?>

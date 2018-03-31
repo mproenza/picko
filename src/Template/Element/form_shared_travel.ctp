@@ -12,7 +12,7 @@ if($this->request->session()->read('SharedTravels.name_id')) $nameIdValue = $thi
 
 <div>
     <?php 
-    echo $this->Form->create('SharedTravel', array('url' => array('controller' => 'shared_travels', 'action' => 'book', '?'=>['s'=>$code]), 'id'=>'SharedTravelForm'.$code, 'novalidate'));?>
+    echo $this->Form->create('SharedTravel', array('url' => array('controller' => 'shared-rides', 'action' => 'book', '?'=>['s'=>$code]), 'id'=>'SharedTravelForm'.$code, 'novalidate'));?>
     <?php echo $this->Flash->render('form')?>
     <fieldset>
         <div class="row" style="margin: 0px;padding: 0px">

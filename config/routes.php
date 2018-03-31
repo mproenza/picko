@@ -25,6 +25,8 @@ use Cake\Routing\Route\DashedRoute;
 use Cake\I18n\I18n;
 use \Cake\Core\Configure;
 use App\Model\Entity\SharedTravel;
+use App\Routing\Route\UrlI18nRoute;
+use Cake\Utility\Inflector;
 
 /**
  * The default class to use for all routes
@@ -58,16 +60,40 @@ Router::addUrlFilter(function ($params, $request) {
 });
 
 // Filtro para crear url traducidas al idioma actual
-/*Router::addUrlFilter(function ($params, $request) {
+Router::addUrlFilter(function ($params, $request) {
+    // Si esta el lenguaje pero no esta ni el controller ni la action, entonces es el link de cambio de lenguaje.
+    // Debemos poner en los params
+    /*if(isset($params['language']) && !isset($params['_name']) && !(isset($params['controller']) || isset($params['action']))) {
+        
+        $currentLang = I18n::getLocale();
+        
+        I18n::setLocale($params['language']);
+        
+        $controller = $request->params['controller'];
+        if($controller == 'SharedTravels') $controller = 'shared-rides';
+        $params['controller'] = __d('urls', $controller);
+        $params['action'] = __d('urls', $request->params['action']);
+        
+        I18n::setLocale($currentLang);
+        
+        return $params;
+    }*/
+    
+    // Si esta el lenguaje en los parametros, cambiar a ese lenguaje en para las traducciones temporalmente
+    $currentLang = I18n::getLocale();
+    if(isset($params['language'])) I18n::setLocale($params['language']);
+    
     if(isset($params['controller'])) {
         $params['controller'] = __d('urls', $params['controller']);
     }
     if(isset($params['action'])) {
         $params['action'] = __d('urls', $params['action']);
     }
+    
+    I18n::setLocale($currentLang);
 
     return $params;
-});*/
+});
 
 // Filtro para los slug para las solicitudes. Ej. para generar la url /book/taxi-from-la-habana-to-trinidad-2pm
 /*Router::addUrlFilter(function ($params, $request) {
@@ -91,7 +117,7 @@ Router::scope('/:language', function (RouteBuilder $routes) {
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display'])
             ->setPatterns(['language' => 'en|es']);
     
-    $routes->connect('/shared-rides/:action/*', ['controller' => 'SharedTravels'])
+    $routes->connect('/shared-rides/:action/*', ['controller' => 'SharedTravels'], ['routeClass' => 'UrlI18nRoute'])
             ->setPatterns(['language' => 'en|es']);
     $routes->connect('/shared-rides/*', ['controller' => 'SharedTravels', 'action' => 'index'])
             ->setPatterns(['language' => 'en|es']);

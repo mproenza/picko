@@ -10,7 +10,7 @@ use Cake\I18n\I18n;
         <div class="col-md-10 offset-md-1">
             <br/>
             <h1 style="text-align: center">
-                <?php echo __d('home', 'PAGA MENOS PARA LLEGAR A TUS DESTINOS EN {0}', '<code><big><b>CUBA</b></big></code>') ?>
+                <?php echo __d('home', 'LLEGA A CADA UNO DE TUS DESTINOS EN {0} GASTANDO MENOS DINERO', '<code><big><b>CUBA</b></big></code>') ?>
             </h1>
             <br/>
             <h4 style="text-align: center"><?php echo __d('home', 'Comparte un taxi cómodo con otros viajeros que van al mismo destino que tú y paga sólo por los asientos que ocupes') ?></h4>
@@ -19,9 +19,9 @@ use Cake\I18n\I18n;
             
             <ul>
                 <p><?php echo __d('home', 'Ofrecemos') ?>:</p>
-                <li><?php echo __d('home', '<b>Una amplia red de taxis</b> que conectan destinos como {0} y otros', 'La Habana, Viñales, Trinidad, Varadero, Cayo Guillermo') ?></li>
+                <li><?php echo __d('home', '<b>Una amplia red de taxis</b> que conectan destinos como {0} y otros', '<code><b>La Habana</b></code>, <code><b>Viñales</b></code>, <code><b>Trinidad</b></code>, <code><b>Varadero</b></code>, <code><b>Cayo Guillermo</b></code>') ?></li>
                 <li><?php echo __d('home', '<b>Sólo 4 pasajeros en un auto</b>, todos yendo al mismo destino en un viaje confortable en auto moderno con aire acondicionado') ?></li>
-                <li><?php echo __d('home', '<b>Servicio puerta a puerta</b>: el taxi te recoge en tu casa de estancia u hotel y te lleva hasta tu próxima estancia') ?></li>
+                <li><?php echo __d('home', '<b>Servicio puerta a puerta:</b> el taxi te recoge en tu casa de estancia u hotel y te lleva hasta tu próxima estancia') ?></li>
                 <li><?php echo __d('home', '<b>Precios muy convenientes</b> si viajas solo, en pareja o son tres personas y no quieren pagar el viaje completo en un taxi privado como si fueran cuatro personas') ?></li>
             </ul>
         </div> 

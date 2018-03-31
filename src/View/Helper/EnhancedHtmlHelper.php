@@ -100,7 +100,16 @@ class EnhancedHtmlHelper extends HtmlHelper {
     public function lang($currentLang, $request) {
         $other = array('en' => 'es', 'es' => 'en');
 
-        $lang_changed_url             = $request->getParam('pass');
+        $lang_changed_url = $request->getParam('pass');
+        
+        // Poner controller y action si no es /shared-rides/home
+        if($request->getParam('action') != 'home') {
+            $lang_changed_url['controller'] = $request->getParam('controller');
+            if($lang_changed_url['controller'] == 'SharedTravels') $lang_changed_url['controller'] = 'shared-rides';
+            
+            $lang_changed_url['action'] = $request->getParam('action');
+        }
+        
         $lang_changed_url['?']        = $request->getQueryParams();
         $lang_changed_url['language'] = $other[$currentLang];
 
