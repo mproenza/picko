@@ -19,14 +19,14 @@ class SharedTravelsController extends AppController {
     
     public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
-        $this->Auth->allow(['home', 'book', 'thanks', 'activate', 'view', 'index230216', 'admin', 'cancel', 'changeDate']);
+        $this->Auth->allow(['home', 'book', 'thanks', 'activate', 'view', /*'index230216', 'admin', 'cancel', 'changeDate'*/]);
         
         $this->viewBuilder()->setLayout('shared_rides');
     }
 
     public function home() {$this->viewBuilder()->setLayout('homepage');}
     
-    public function index230216() {
+    public function index() {
         $this->paginate = ['order'=>['date'=>'ASC', 'id'=>'ASC'], 'limit'=>100];
         $this->set('travels', $this->paginate($this->SharedTravels, ['conditions'=> ['email !=' => 'martin@yotellevocuba.com'] ]));
         

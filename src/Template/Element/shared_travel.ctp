@@ -49,9 +49,9 @@ if(!isset($admin)) $admin = false;
             <hr/>
             <p><span class="text-muted"><?php echo __d('shared_travels', 'Idioma')?>:</span> <?php echo $request['SharedTravel']['lang']?></p>
             <p><span class="text-muted">#</span><big><?php echo $request['SharedTravel']['id']?></big>
-                <?php echo $this->Html->link('Permalink', array('controller'=>'shared_travels', 'action' => 'view/' . $request['SharedTravel']['id_token']))?>
+                <?php echo $this->Html->link('Permalink', array('controller'=>'shared-rides', 'action' => 'view', $request['SharedTravel']['id_token']))?>
                 <?php if($admin):?>
-                    | <?php echo $this->Html->link('admin', array('controller'=>'shared_travels', 'action' => 'admin/' . $request['SharedTravel']['id']))?>
+                    | <?php echo $this->Html->link('admin', array('controller'=>'shared-rides', 'action' => 'admin', $request['SharedTravel']['id']))?>
                 <?php endif?>
             </p>
         <?php endif?>

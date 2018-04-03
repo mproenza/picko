@@ -119,8 +119,16 @@ Router::scope('/:language', function (RouteBuilder $routes) {
     
     $routes->connect('/shared-rides/:action/*', ['controller' => 'SharedTravels'], ['routeClass' => 'UrlI18nRoute'])
             ->setPatterns(['language' => 'en|es']);
-    $routes->connect('/shared-rides/*', ['controller' => 'SharedTravels', 'action' => 'index'])
+    $routes->connect('/shared-rides/*', ['controller' => 'SharedTravels', 'action' => 'index'], ['routeClass' => 'UrlI18nRoute'])
             ->setPatterns(['language' => 'en|es']);
+    
+    // CAKEDC/USERS PLUGIN
+    $routes->plugin('CakeDC/Users', ['path' => '/users'], function ($routes) {
+        $routes->fallbacks('DashedRoute');
+    });
+    $routes->connect('/login', ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'login']);
+    $routes->connect('/logout', ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'logout']);
+    $routes->connect('/profile/*', ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'profile']);
 
     /**
      * Connect catchall routes for all controllers.

@@ -209,10 +209,10 @@ Type::build('timestamp')
 Plugin::load('EmailQueue', ['autoload' => true]);
 //Plugin::load('ADmad/I18n');
 
-/*Configure::write('Users.Email.validate', false);
+Configure::write('Users.Email.validate', false);
 Configure::write('Users.reCaptcha.registration', false);
 Configure::write('Users.Email.mailerClass', \App\Mailer\AppUsersMailer::class);
-Plugin::load('CakeDC/Users', ['routes' => true, 'bootstrap' => true]);*/
+Plugin::load('CakeDC/Users', ['routes' => false, 'bootstrap' => true]);
 
 
 /*

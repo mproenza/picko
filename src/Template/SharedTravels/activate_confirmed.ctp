@@ -9,7 +9,7 @@ $modality = SharedTravel::$modalities[$modalityCode];
         <div class="col-md-8 offset-md-1">
             <p class="lead"><?php echo __d('shared_travels', 'Muchas gracias {0}', $request['SharedTravel']['name_id'])?>!</p> 
             <p class="lead">
-                <?php echo __d('shared_travels', 'Buenas noticias')?>! 
+                <b><?php echo __d('shared_travels', 'Buenas noticias')?>!</b> 
                 <?php echo __d('shared_travels', 'Su solicitud fue confirmada automáticamente porque {0}.', $confirmed_reason)?>
             </p> 
             <p><?php echo __d('shared_travels', 'Estos son todos los datos de tu solicitud')?>:</p>
