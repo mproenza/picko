@@ -164,7 +164,7 @@ class SharedTravelsController extends AppController {
                 
             } else {
                 // Intentar emparejar con otras solicitudes
-                $couplings = $this->findCouplings($request);
+                $couplings = $STTable->findCouplings($request);
                 
                 if($couplings != null) {// Se encontro coupling!
                     $coupled = array_merge ($couplings, array($request));
@@ -246,7 +246,8 @@ class SharedTravelsController extends AppController {
         
         // Ponerle algunos datos a la solicitud para que en la vista salga bien
         if($OK) {
-            $request['SharedTravel']['state'] = SharedTravel::$STATE_ACTIVATED;
+            if($confirmed) $request['SharedTravel']['state'] = SharedTravel::$STATE_CONFIRMED;
+            else $request['SharedTravel']['state'] = SharedTravel::$STATE_ACTIVATED;
         }
         
         // Guardar algunos datos en la session para si el cliente quiere crear mas solicitudes que no tenga que repetirlas
@@ -258,31 +259,6 @@ class SharedTravelsController extends AppController {
         
         return array('success'=>$OK, 'confirmed'=>$confirmed, 'confirmed_reason'=>$confirmedReason, 'coupled'=>$coupled);
     }
-    
-    
-    private function findCouplings($request) {
-        
-        $STTable = TableRegistry::get('SharedTravels');
-        
-        // Buscar posibles emparejamiento para esta solicitud
-        $candidates = $STTable->findCoupligCandidates($request);       
-        
-        // Armar los emparejamientos
-        $count = $request['SharedTravel']['people_count'];
-        $couplings = array();
-        foreach ($candidates as $r) {
-            if($count + $r['SharedTravel']['people_count'] > 4) continue;
-            
-            $couplings[] = $r;
-            $count += $r['SharedTravel']['people_count'];
-        }
-        if($count == 4) { // Emparejamiento exitoso
-            return $couplings;
-        } 
-        
-        return null;
-    }
-    
     
     public function view($token) {
         

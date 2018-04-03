@@ -84,6 +84,26 @@ class SharedTravelsTable extends Table {
         ->order('date ASC, id ASC');
     }
     
+    public function findCouplings($request) {
+        // Buscar posibles emparejamiento para esta solicitud
+        $candidates = $this->findCoupligCandidates($request);       
+        
+        // Armar los emparejamientos
+        $count = $request['SharedTravel']['people_count'];
+        $couplings = array();
+        foreach ($candidates as $r) {
+            if($count + $r['SharedTravel']['people_count'] > 4) continue;
+            
+            $couplings[] = $r;
+            $count += $r['SharedTravel']['people_count'];
+        }
+        if($count == 4) { // Emparejamiento exitoso
+            return $couplings;
+        } 
+        
+        return null;
+    }
+    
     public function findCoupligCandidates($request) {
         //$today = date('Y-m-d', strtotime('today'));
 
