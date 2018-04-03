@@ -20,15 +20,11 @@ class SharedTravelsController extends AppController {
     public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
         $this->Auth->allow(['home', 'book', 'thanks', 'activate', 'view', 'index230216', 'admin', 'cancel', 'changeDate']);
-    }
-    
-    public function beforeRender(Event $event){
-        parent::beforeRender($event);
+        
         $this->viewBuilder()->setLayout('shared_rides');
     }
-    
 
-    public function home() {}
+    public function home() {$this->viewBuilder()->setLayout('homepage');}
     
     public function index230216() {
         $this->paginate = ['order'=>['date'=>'ASC', 'id'=>'ASC'], 'limit'=>100];
