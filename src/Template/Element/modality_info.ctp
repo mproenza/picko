@@ -4,7 +4,7 @@ if(!isset ($doBootbox)) $doBootbox = false;
 
 <div>
 <?php 
-echo __d('shared_travels', '{0} - {1}', '<code><big>'.$modality['origin'].'</big></code>', '<code><big><big><big>'.$modality['destination'].'</big></big></big></code>')
+echo __d('shared_travels', '{0} > {1}', '<code>'.$modality['origin'].'</code>', '<code><big><big><big><b>'.$modality['destination'].'</b></big></big></big></code>')
 ?>
 </div>
 <div><?php echo __d('shared_travels', 'Hora de recogida {0}', '<code><big><big><big>'.$modality['time'].'</big></big></big></code>')?></div>

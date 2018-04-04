@@ -47,7 +47,7 @@ use Cake\I18n\I18n;
                 <ul class="fa-ul">
                     <p class="lead"><?php echo __d('home', 'Con PickoCar podrás') ?>:</p>
                     <li class="lead"><i class="fa-li fa fa-check fa-flip-horizontal"></i><?php echo __d('home', 'Llegar a muchos de tus destinos en Cuba mediante nuestra <b>amplia red de taxis</b> que conectan lugares favoritos como {0} y otros.', '<code><b>La Habana</b></code>, <code><b>Viñales</b></code>, <code><b>Trinidad</b></code>, <code><b>Varadero</b></code>, <code><b>Cayo Guillermo</b></code>') ?></li>
-                    <li class="lead"><i class="fa-li fa fa-check fa-flip-horizontal"></i><?php echo __d('home', 'Viajar cómodo en autos modernos con aire acondicionado y con <b>sólo 4 pasajeros</b> dentro, todos yendo al mismo destino y con reservación de antemano.') ?></li>
+                    <li class="lead"><i class="fa-li fa fa-check fa-flip-horizontal"></i><?php echo __d('home', 'Viajar cómodo en un auto moderno con aire acondicionado y con <b>sólo 4 pasajeros</b> dentro, todos yendo al mismo destino y con reservación de antemano.') ?></li>
                     <li class="lead"><i class="fa-li fa fa-check fa-flip-horizontal"></i><?php echo __d('home', 'Recibir un <b>servicio puerta a puerta</b> en el cual el taxi te recoge en tu casa de estancia u hotel y te lleva hasta tu próxima estancia.') ?></li>
                     <li class="lead"><i class="fa-li fa fa-check fa-flip-horizontal"></i><?php echo __d('home', '<b>Ahorrar dinero</b> si viajas solo, en pareja o son tres personas y no quieren pagar el viaje completo en un taxi privado como si fueran cuatro personas.') ?></li>
                 </ul>
@@ -76,39 +76,38 @@ use Cake\I18n\I18n;
         </div>
 
     </div>
-
+    
     <div id="transfers-available" data-h-offset="0" class="row arrow_box arrow_box_bottom" style="margin-top: 60px"></div>
     <div class="row" style="background-color: #ebebeb;padding-bottom: 80px">
         <div class="container">
             <div class="row" style="padding-top: 80px;">
                 <div class="col-md-10 offset-md-1" style="text-align: center">
                     <p class="lead">
-                        <big><?php echo __d('home', 'Selecciona una de nuestras rutas y horarios para reservar un taxi')?></big>
+                        <big><b><?php echo __d('home', 'Selecciona una o varias de nuestras rutas y horarios para reservar un taxi')?></b></big>
                     </p>
                     <p>
-                        <?php echo __d('home', 'Uno de nuestros choferes te recogerá en el lugar y fecha que indiques')?>
+                        <?php echo __d('home', 'Uno de nuestros taxis siempre te recogerá en el lugar y fecha que indiques')?>
                     </p>
                 </div>        
-            </div>
-
-            <div class="row alert alert-dark" style="margin-top: 50px;text-align: center">
-                <div class="col-md-4 center">
-                    <div style="float:left;width:20%;font-size:40px"><i class="fa fa-drivers-license-o"></i></div>
-                    <div style="float:left;width:80%"><p><big><?php echo __d('home', 'Choferes y autos registrados y con licencia para realizar este servicio')?></big></p></div>
-                </div>
-                <div class="col-md-4 center">
-                    <div style="float:left;width:20%;font-size:40px"><i class="fa fa-money"></i></div>
-                    <div style="float:left;width:80%"><p><big><?php echo __d('home', 'Pago en efectivo directamente al chofer en el momento de la recogida')?></big></p></div>
-                </div>
-                <div class="col-md-4 center">
-                    <div style="float:left;width:20%;font-size:40px"><i class="fa fa-check-square-o"></i></div>
-                    <div style="float:left;width:80%"><p><big><?php echo __d('home', 'Cada viaje confirmado queda en nuestra agenda para su realización')?></big></p></div>
-                </div>
-            </div>
+            </div>            
+            
+            <nav id="nav-routes" class="navbar navbar-light bg-light" data-toggle="sticky-onscroll">
+                <a class="navbar-brand" href="#"><?php echo __d('home', 'Rutas saliendo desde:')?></a>
+                <ul class="nav nav-pills">
+                    <!--<li class="nav-item">
+                        <a class="dropdown-item"><?php echo __d('home', 'Saliendo desde:')?></a>
+                    </li>-->
+                    <?php foreach (SharedTravel::$localities as $locality_id => $locality):?>
+                    <li class="nav-item">
+                        <a class="dropdown-item show-routes" href="#routes-from-<?php echo $locality_id?>"><?php echo $locality?></a>
+                    </li>
+                    <?php endforeach?>
+                </ul>
+            </nav>
 
             <?php foreach (SharedTravel::$localities as $locality_id => $locality):?>
                 <div class="row" style="margin-top: 60px;">
-                    <div style="padding: 20px;" class="col-md-12"><big><?php echo __d('home', 'Rutas disponibles desde {0}', '<b><code><big><big>'.$locality.'</big></big></code></b>')?></big></div>
+                    <div id="<?php echo 'routes-from-'.$locality_id?>" style="padding: 20px;" class="col-md-12"><big><?php echo __d('home', 'Rutas saliendo desde {0}', '<code><big><big>'.$locality.'</big></big></code>')?></big></div>
                     <br/>
                     <?php $i=0?>
                     <?php foreach (SharedTravel::$modalities as $code=>$modality):?>

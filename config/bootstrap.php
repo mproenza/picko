@@ -209,6 +209,7 @@ Type::build('timestamp')
 Plugin::load('EmailQueue', ['autoload' => true]);
 //Plugin::load('ADmad/I18n');
 
+Configure::write('Users.Registration.active', false);
 Configure::write('Users.Email.validate', false);
 Configure::write('Users.reCaptcha.registration', false);
 Configure::write('Users.Email.mailerClass', \App\Mailer\AppUsersMailer::class);

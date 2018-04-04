@@ -24,26 +24,6 @@ msgid "Comparte un taxi cómodo con otros viajeros que van al mismo destino que 
 msgstr "Share a confortable taxi with other travelers going to the same destination as you and pay only for the seats you occupy"
 
 #: View/SharedTravels/home.ctp:8
-msgid "Ofrecemos"
-msgstr "We offer"
-
-#: View/SharedTravels/home.ctp:8
-msgid "<b>Una amplia red de taxis</b> que conectan destinos como {0} y otros"
-msgstr "<b>A big network of taxis</b> connecting destinations like {0} and others"
-
-#: View/SharedTravels/home.ctp:8
-msgid "<b>Sólo 4 pasajeros en un auto</b>, todos yendo al mismo destino en un viaje confortable en auto moderno con aire acondicionado"
-msgstr "<b>Only 4 passengers in one car</b>, all going to the same destination in a confortable trip inside an air-conditioned modern car"
-
-#: View/SharedTravels/home.ctp:8
-msgid "<b>Servicio puerta a puerta:</b> el taxi te recoge en tu casa de estancia u hotel y te lleva hasta tu próxima estancia"
-msgstr "<b>Door to door service:</b> the taxi will go pick you up at your guest house or hotel and drop you off at your next accomodation"
-
-#: View/SharedTravels/home.ctp:8
-msgid "<b>Precios muy convenientes</b> si viajas solo, en pareja o son tres personas y no quieren pagar el viaje completo en un taxi privado como si fueran cuatro personas"
-msgstr "<b>Very affordable prices</b> if you travel alone, in a couple or a three-people pack and don't want to pay the whole trip in a private ride as if you were four people"
-
-#: View/SharedTravels/home.ctp:8
 msgid "Con PickoCar podrás"
 msgstr "With PickoCar you will"
 
@@ -52,8 +32,8 @@ msgid "Llegar a muchos de tus destinos en Cuba mediante nuestra <b>amplia red de
 msgstr "Be able to get to many of your destinations in Cuba using our <b>wide network of taxis</b> connecting favourite places like {0} and others."
 
 #: View/SharedTravels/home.ctp:8
-msgid "Viajar cómodo en autos modernos con aire acondicionado y con <b>sólo 4 pasajeros</b> dentro, todos yendo al mismo destino y con reservación de antemano."
-msgstr "Travel confortably in air-conditioned modern cars with <b>only 4 passengers</b> inside, all going to the same destination and with their bookings before hand."
+msgid "Viajar cómodo en un auto moderno con aire acondicionado y con <b>sólo 4 pasajeros</b> dentro, todos yendo al mismo destino y con reservación de antemano."
+msgstr "Travel confortably in an air-conditioned modern car with <b>only 4 passengers</b> inside, all going to the same destination and with their bookings before hand."
 
 #: View/SharedTravels/home.ctp:8
 msgid "Recibir un <b>servicio puerta a puerta</b> en el cual el taxi te recoge en tu casa de estancia u hotel y te lleva hasta tu próxima estancia."
@@ -96,28 +76,20 @@ msgid "En cuanto reservas, nosotros arreglamos todo de manera que compartas el v
 msgstr "As soon as you book, we arrange everything in a way that you share your trip with other travelers going to the same destination in the same date and time. This way you don't have to worry about finding other passengers to join you and no need to wait until the taxi is full at the moment of departure."
  
 #: View/SharedTravels/home.ctp:8
-msgid "Selecciona una de nuestras rutas y horarios para reservar un taxi"
-msgstr "Select one of our routes and departure times to book a taxi"
+msgid "Selecciona una o varias de nuestras rutas y horarios para reservar un taxi"
+msgstr "Select one or some of our routes and departure times to book a taxi"
 
 #: View/SharedTravels/home.ctp:8
-msgid "Uno de nuestros choferes te recogerá en el lugar y fecha que indiques"
-msgstr "One of our drivers will pick you up at the place and date you indicate"
+msgid "Uno de nuestros taxis siempre te recogerá en el lugar y fecha que indiques"
+msgstr "One of our taxis will always pick you up at the place and date you indicate"
 
 #: View/SharedTravels/home.ctp:8
-msgid "Choferes y autos registrados y con licencia para realizar este servicio"
-msgstr "All drivers and cars are registered and licensed for this service"
+msgid "Rutas saliendo desde:"
+msgstr "Routes departing from:"
 
 #: View/SharedTravels/home.ctp:8
-msgid "Pago en efectivo directamente al chofer en el momento de la recogida"
-msgstr "Payment is in cash and directly to the driver at the moment of the pick up"
-
-#: View/SharedTravels/home.ctp:8
-msgid "Cada viaje confirmado queda en nuestra agenda para su realización"
-msgstr "Each confirmed trip is in our agenda and will happen as agreed"
-
-#: View/SharedTravels/home.ctp:8
-msgid "Rutas disponibles desde {0}"
-msgstr "Routes available from {0}"
+msgid "Rutas saliendo desde {0}"
+msgstr "Routes departing from {0}"
 
 #: View/SharedTravels/home.ctp:8
 msgid "Preguntas frecuentes"
