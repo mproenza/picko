@@ -81,22 +81,22 @@ use Cake\I18n\I18n;
     <div class="row" style="background-color: #ebebeb;padding-bottom: 80px">
         <div class="container">
             <div class="row" style="padding-top: 80px;">
-                <div class="col-md-10 offset-md-1" style="text-align: center">
-                    <p class="lead">
+                <div class="col-md-10 offset-md-1">
+                    <p class="lead" style="text-align: center">
                         <big><b><?php echo __d('home', 'Selecciona una o varias de nuestras rutas y horarios para reservar un taxi')?></b></big>
                     </p>
-                    <p>
-                        <?php echo __d('home', 'Uno de nuestros taxis siempre te recogerá en el lugar y fecha que indiques')?>
-                    </p>
+                    
+                    <div class="col-md-10 offset-md-1">
+                        <ul class="fa-ul">
+                            <li><i class="fa-li fa fa-check fa-flip-horizontal"></i><?php echo __d('home', 'Al reservar estarás en contacto por email con uno de nuestros asistentes mientras llega la fecha del viaje, quien atenderá cualquier duda o petición que tengas, incluyendo cancelaciones.')?></li>
+                        </ul>
+                    </div>
                 </div>        
             </div>            
             
             <nav id="nav-routes" class="navbar navbar-light bg-light" data-toggle="sticky-onscroll">
                 <a class="navbar-brand" href="#"><?php echo __d('home', 'Rutas saliendo desde:')?></a>
                 <ul class="nav nav-pills">
-                    <!--<li class="nav-item">
-                        <a class="dropdown-item"><?php echo __d('home', 'Saliendo desde:')?></a>
-                    </li>-->
                     <?php foreach (SharedTravel::$localities as $locality_id => $locality):?>
                     <li class="nav-item">
                         <a class="dropdown-item show-routes" href="#routes-from-<?php echo $locality_id?>"><?php echo $locality?></a>
@@ -109,19 +109,18 @@ use Cake\I18n\I18n;
                 <div class="row" style="margin-top: 60px;">
                     <div id="<?php echo 'routes-from-'.$locality_id?>" style="padding: 20px;" class="col-md-12"><big><?php echo __d('home', 'Rutas saliendo desde {0}', '<code><big><big>'.$locality.'</big></big></code>')?></big></div>
                     <br/>
-                    <?php $i=0?>
+
                     <?php foreach (SharedTravel::$modalities as $code=>$modality):?>
                         <?php if($modality['origin_id'] == $locality_id && ( !isset($modality['active']) || $modality['active'] )):?>
                             <div class="col-md-4 col-sm-6" style="padding: 20px"><?php echo $this->element('modality_info', compact('modality') + compact('code') + compact('doBootbox'))?></div>
-                            <?php $i++?>
-                            <?php if($i == 3):?><?php $i = 0?><br/><br/><?php endif?>
                         <?php endif?>
                     <?php endforeach?>
                 </div>
-
+            
                 <br/>
                 <hr/>
             <?php endforeach?>
+            
 
         </div>
     </div>

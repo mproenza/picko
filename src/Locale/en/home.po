@@ -80,6 +80,14 @@ msgid "Selecciona una o varias de nuestras rutas y horarios para reservar un tax
 msgstr "Select one or some of our routes and departure times to book a taxi"
 
 #: View/SharedTravels/home.ctp:8
+msgid "Al reservar estarás en contacto por email con uno de nuestros asistentes mientras llega la fecha del viaje, quien atenderá cualquier duda o petición que tengas, incluyendo cancelaciones."
+msgstr "When you book you will be in contact with one of our assistants via email while the date of the trip arrives, who will answer any question or request you may have, including cancellations."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Al llegar el momento uno de nuestros taxis te recogerá en el lugar que hayas indicado."
+msgstr "When the moment arrives one of our taxis will pick you up at the place you indicated."
+
+#: View/SharedTravels/home.ctp:8
 msgid "Uno de nuestros taxis siempre te recogerá en el lugar y fecha que indiques"
 msgstr "One of our taxis will always pick you up at the place and date you indicate"
 
