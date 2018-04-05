@@ -24,11 +24,23 @@ msgid "Comparte un taxi cómodo con otros viajeros que van al mismo destino que 
 msgstr "Share a confortable taxi with other travelers going to the same destination as you and pay only for the seats you occupy"
 
 #: View/SharedTravels/home.ctp:8
+msgid "Autos confortables"
+msgstr "Confortable cars"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Sólo 4 pasajeros en un taxi"
+msgstr "Only 4 passengers in one taxi"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Recogida en tu estancia u hotel"
+msgstr "Pick up at your accomodation or hotel"
+
+#: View/SharedTravels/home.ctp:8
 msgid "Con PickoCar podrás"
 msgstr "With PickoCar you will"
 
 #: View/SharedTravels/home.ctp:8
-msgid "Llegar a muchos de tus destinos en Cuba mediante nuestra <b>amplia red de taxis</b> que conectan lugares favoritos como {0} y otros."
+msgid "Llegar a muchos de tus destinos en Cuba usando nuestra <b>amplia red de taxis</b> que conectan lugares favoritos como {0} y otros."
 msgstr "Be able to get to many of your destinations in Cuba using our <b>wide network of taxis</b> connecting favourite places like {0} and others."
 
 #: View/SharedTravels/home.ctp:8

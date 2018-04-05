@@ -4,7 +4,7 @@ if(!isset ($doBootbox)) $doBootbox = false;
 <div class="card">
   <div class="card-body">
     <h6 class="card-title">
-        <?php echo __d('shared_travels', '{0} > {1}', '<code>'.$modality['origin'].'</code>', '<code><big><big><big><b>'.$modality['destination'].'</b></big></big></big></code>')?>
+        <?php echo __d('shared_travels', '{0} > {1}', '<span style="display:inline-block"><code>'.$modality['origin'].'</code></span>', '<span style="display:inline-block"><code><big><big><big><b>'.$modality['destination'].'</b></big></big></big></code></span>')?>
     </h6>
     <div><?php echo __d('shared_travels', 'Hora de recogida {0}', '<code><big><big><big>'.$modality['time'].'</big></big></big></code>')?></div>
     <div><?php echo __d('shared_travels', '{0} por persona', '<code><big>'.$modality['price'].' cuc'.'</big></code>')?></div>
