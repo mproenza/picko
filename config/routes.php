@@ -117,9 +117,16 @@ Router::scope('/:language', function (RouteBuilder $routes) {
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display'])
             ->setPatterns(['language' => 'en|es']);
     
+    // Shared Rides
     $routes->connect('/shared-rides/:action/*', ['controller' => 'SharedTravels'], ['routeClass' => 'UrlI18nRoute'])
             ->setPatterns(['language' => 'en|es']);
     $routes->connect('/shared-rides/*', ['controller' => 'SharedTravels', 'action' => 'index'], ['routeClass' => 'UrlI18nRoute'])
+            ->setPatterns(['language' => 'en|es']);
+    
+    // Email Queue
+    $routes->connect('/email-queue/:action/*', ['plugin'=>'EmailQueue', 'controller' => 'EmailQueues'])
+            ->setPatterns(['language' => 'en|es']);
+    $routes->connect('/email-queue/*', ['plugin'=>'EmailQueue', 'controller' => 'EmailQueues', 'action' => 'index'])
             ->setPatterns(['language' => 'en|es']);
     
     // CAKEDC/USERS PLUGIN

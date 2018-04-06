@@ -144,6 +144,8 @@ class AppController extends Controller
             // ADMIN
             'SharedTravels.index' =>array('title'=>'Compartidos'),
             'SharedTravels.admin' =>array('title'=>'Admin'),
+                    
+            'EmailQueues.index' =>array('title'=>'Email Queue'),
         );
         
         if(isset ($pageTitles[$key])) return $pageTitles[$key];

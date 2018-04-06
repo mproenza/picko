@@ -34,7 +34,7 @@ use Cake\I18n\I18n;
                     <br/>
                     <h4 style="text-align: center"><?php echo __d('home', 'Comparte un taxi cómodo con otros viajeros que van al mismo destino que tú y paga sólo por los asientos que ocupes') ?></h4>
                     <hr/>
-                    <h6><?php echo __d('home', 'Autos confortables')?> • <?php echo __d('home', 'Sólo 4 pasajeros en un taxi')?> • <?php echo __d('home', 'Recogida en tu estancia u hotel')?></h6>
+                    <h6><?php echo __d('home', 'Recogida en tu estancia u hotel')?> • <?php echo __d('home', 'Sólo 4 pasajeros en un taxi')?> • <?php echo __d('home', 'Autos confortables')?></h6>
                 </div> 
             </div>
         </div>
