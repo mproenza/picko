@@ -129,6 +129,12 @@ Router::scope('/:language', function (RouteBuilder $routes) {
     $routes->connect('/email-queue/*', ['plugin'=>'EmailQueue', 'controller' => 'EmailQueues', 'action' => 'index'])
             ->setPatterns(['language' => 'en|es']);
     
+    // Calendar
+    $routes->connect('/calendar/:action/*', ['plugin'=>'Calendar', 'controller' => 'Calendars'])
+            ->setPatterns(['language' => 'en|es']);
+    $routes->connect('/calendar/*', ['plugin'=>'Calendar', 'controller' => 'Calendars', 'action' => 'index'])
+            ->setPatterns(['language' => 'en|es']);
+    
     // CAKEDC/USERS PLUGIN
     $routes->plugin('CakeDC/Users', ['path' => '/users'], function ($routes) {
         $routes->fallbacks('DashedRoute');

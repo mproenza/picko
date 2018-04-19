@@ -13,6 +13,10 @@ class EnhancedHtmlHelper extends HtmlHelper {
                 'debug'=>'bootstrap',
                 'release'=>'bootstrap'
             ),
+            'calendar'=>array(
+                'debug'=>['fullcalendar/fullcalendar', 'fullcalendar/fullcalendar.print'],
+                'release'=>['fullcalendar/fullcalendar', 'fullcalendar/fullcalendar.print']
+            ),
             'default-bundle'=>array(/* common/font-awesome.min se usaba en el datepicker... lo cambie para que usara glyphicons */
                 'debug'=>array('bootstrap', /*'common/font-awesome.min',*/ 'default'),
                 'release'=>array('bootstrap', /*'common/font-awesome.min',*/ 'default')
@@ -47,6 +51,10 @@ class EnhancedHtmlHelper extends HtmlHelper {
                 'debug'=>'form-validator/lang/'.I18n::getLocale(),
                 'release'=>'form-validator/lang/'.I18n::getLocale()
             ],
+            'calendar'=>array(
+                'debug'=>['fullcalendar/lib/moment.min', 'fullcalendar/lib/jquery.min', 'fullcalendar/fullcalendar'],
+                'release'=>['fullcalendar/lib/moment.min', 'fullcalendar/lib/jquery.min', 'fullcalendar/fullcalendar']
+            ),
             'default-bundle'=>array(
                 'debug'=>array('jquery', 'bootstrap'),
                 'release'=>array('jquery', 'bootstrap')

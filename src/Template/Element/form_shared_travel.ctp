@@ -26,7 +26,7 @@ if($this->request->session()->read('SharedTravels.name_id')) $nameIdValue = $thi
                 <br/>
                 <div class="form-group required">
                     <label for="AddressOrigin"><?php echo __d('shared_travels', 'Dirección de recogida en {0}', '<code><big>'.$modality['origin'].'</big></code>')?></label>
-                    <textarea name="address_origin" class="form-control" placeholder="<?php echo __d('shared_travels', 'Dirección exacta de la casa o nombre del hotel donde debemos recogerle')?>" rows="2" id="AddressOrigin" required="required"></textarea>
+                    <textarea name="address_origin" class="form-control" placeholder="<?php echo __d('shared_travels', 'Dirección de la casa o nombre del hotel')?>" rows="2" id="AddressOrigin" required="required"></textarea>
                     <div class="invalid-feedback"><?php echo __d('errors', 'La dirección de recogida es obligatoria')?></div>
                 </div>
                 <div class="form-group required">
@@ -49,8 +49,8 @@ if($this->request->session()->read('SharedTravels.name_id')) $nameIdValue = $thi
         <div class="row">
             <div class="submit col-md-12" style="text-align: center">
                 <?php 
-                $submitOptions = array('class'=>'btn btn-block btn-primary', 'style' => 'font-size:14pt;white-space: normal;', 'id'=>'SharedTravelSubmit', 'escape'=>false, 'rel'=>'nofollow');
-                echo $this->Form->submit(__d('shared_travels', 'Solicitar este transfer {0} - {1}', $modality['origin'], $modality['destination']), $submitOptions);
+                $submitOptions = ['class'=>'btn btn-block btn-primary', 'style' => 'font-size:14pt;white-space: normal;', 'id'=>'SharedTravelSubmit', 'escape'=>false, 'rel'=>'nofollow'];
+                echo $this->Form->submit(__d('shared_travels', 'Compartir este viaje de {0} a {1} y pagar sólo {2} por persona', $modality['origin'], $modality['destination'], $modality['price']. ' cuc'), $submitOptions);
                 ?>
             </div> 
         </div>

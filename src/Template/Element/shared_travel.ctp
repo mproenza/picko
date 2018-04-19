@@ -47,6 +47,17 @@ if(!isset($admin)) $admin = false;
             
         <?php if($showDetails):?>
             <hr/>
+            <p>
+                <?php echo TimeUtil::prettyDate($request['SharedTravel']['created'], false)?>
+                <?php 
+                $time = new \Cake\I18n\Time($request['SharedTravel']['created']);
+                echo $time->timeAgoInWords([
+                    //'format' => ['month'=>'month'],
+                    'accuracy' => ['month'=>'month', 'day'=>'day'],
+                    'end' => '1 year'
+                    ]);
+                ?>
+            </p>
             <p><span class="text-muted"><?php echo __d('shared_travels', 'Idioma')?>:</span> <?php echo $request['SharedTravel']['lang']?></p>
             <p><span class="text-muted">#</span><big><?php echo $request['SharedTravel']['id']?></big>
                 <?php echo $this->Html->link('Permalink', array('controller'=>'shared-rides', 'action' => 'view', $request['SharedTravel']['id_token']))?>

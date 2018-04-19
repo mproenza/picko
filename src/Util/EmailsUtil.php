@@ -20,7 +20,6 @@ class EmailsUtil {
             
             $OK = TableRegistry::get('EmailQueue.EmailQueues')->enqueue($to, $vars, $options);
         } else {
-            // Send email and redirect to a welcome page
             $Email = new Email($config);
             $Email->template($template)
             ->viewVars($vars)

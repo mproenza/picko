@@ -207,6 +207,7 @@ Type::build('timestamp')
  *
  */
 Plugin::load('EmailQueue', ['autoload' => true]);
+Plugin::load('Calendar', ['autoload' => true]);
 //Plugin::load('ADmad/I18n');
 
 Configure::write('Users.Registration.active', false);

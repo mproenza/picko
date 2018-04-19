@@ -1,10 +1,5 @@
-<?php use App\Model\Entity\SharedTravel;?>
-
-<p>Hola Andiel, tenemos un viaje completo de 4 pax formado con <?php echo count($requests) - 1?> solicitudes que aún no habías confirmado y una que acabamos de recibir.</p>
-
-<p><b>NOTA: Este viaje ya fue confirmado a los clientes.</b></p>
-
-<p>A continuación los detalles de las solicitudes:</p>
+<p>Viaje completo de 4 pax formado por <?php echo count($requests) - 1?> solicitudes pendientes y una que acabamos de recibir:</p>
+<hr/>
 
 <?php for ($i=0;$i<count($requests);$i++):?>
     <?php $request = $requests[$i]?>
@@ -15,3 +10,6 @@
     <br/>
     <br/>
 <?php endfor;?>
+
+<hr/>
+<p><b>NOTA: Este es un viaje completo y por tanto ya fueron confirmados a los clientes.</b></p>

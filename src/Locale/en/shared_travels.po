@@ -62,8 +62,6 @@ msgid "<big>Compartir este viaje</big> <div>y pagar sólo <b>{0}</b> por persona
 msgstr "<big>Share this trip</big> <div>and pay only <b>{0}</b> per person</div>"
 
 
-
-
 #: View/SharedTravels/book.ctp:8
 msgid "¿Necesitas ir desde {0} hasta {1} durante tu viaje a Cuba?"
 msgstr "Need to go from {0} to {1} during your trip to Cuba?"
@@ -102,8 +100,8 @@ msgstr "When the date arrives, we send the car to pick you up and you do your tr
 
 
 #: View/SharedTravels/book.ctp:8
-msgid "Solicita un transfer de {0} a {1}"
-msgstr "Request a transfer from {0} to {1}"
+msgid "Reserva un taxi compartido para ir de {0} a {1}"
+msgstr "Book a shared taxi to go from {0} to {1}"
 
 #: View/SharedTravels/book.ctp:8
 msgid "Precio"
@@ -150,53 +148,50 @@ msgid "<b>Un operador asistente le atenderá por correo</b> en cuanto haga la re
 msgstr "<b>An operator will assist you by email</b> as soon as you book and while the date of the trip arrives, for any questions, changes or cancellations."
 
 
-#: View/Elements/shared_travel_form.ctp:8
+#: View/Elements/form_shared_travel.ctp:8
 msgid "DATOS DEL TRANSFER"
 msgstr "TRANSFER INFO"
 
-#: View/Elements/shared_travel_form.ctp:8
+#: View/Elements/form_shared_travel.ctp:8
 msgid "Fecha en que necesitas el servicio"
 msgstr "Date you need the service"
 
-#: View/Elements/shared_travel_form.ctp:8
+#: View/Elements/form_shared_travel.ctp:8
 msgid "Cantidad de personas (4 pasajeros máx.)"
 msgstr "People count (4 passengers max.)"
 
-#: View/Elements/shared_travel_form.ctp:8
+#: View/Elements/form_shared_travel.ctp:8
 msgid "Cantidad de personas"
 msgstr "People count"
 
-#: View/Elements/shared_travel_form.ctp:8
+#: View/Elements/form_shared_travel.ctp:8
 msgid "Dirección de recogida en {0}"
 msgstr "Pick up address in {0}"
 
-#: View/Elements/shared_travel_form.ctp:8
-msgid "Dirección exacta de la casa o nombre del hotel donde debemos recogerle"
-msgstr "Exact address of the guest-house or hotel name where we must pick you up"
-
-#: View/Elements/shared_travel_form.ctp:8
+#: View/Elements/form_shared_travel.ctp:8
 msgid "Dirección de destino en {0}"
 msgstr "Drop off address in {0}"
 
-#: View/Elements/shared_travel_form.ctp:8
+#: View/Elements/form_shared_travel.ctp:8
 msgid "Dirección de la casa o nombre del hotel"
-msgstr "Guest-house address or hotel name"
+msgstr "Guest-house address or name of the hotel"
 
-#: View/Elements/shared_travel_form.ctp:8
+#: View/Elements/form_shared_travel.ctp:8
 msgid "DATOS DE CONTACTO"
 msgstr "CONTACT INFO"
 
-#: View/Elements/shared_travel_form.ctp:8
+#: View/Elements/form_shared_travel.ctp:8
 msgid "Tu correo electrónico"
 msgstr "Your email"
 
-#: View/Elements/shared_travel_form.ctp:8
+#: View/Elements/form_shared_travel.ctp:8
 msgid "Tu nombre completo para fácil identificación"
 msgstr "Your full name for easy identification"
 
-#: View/Elements/shared_travel_form.ctp:8
-msgid "Solicitar este transfer {0} - {1}"
-msgstr "Request this transfer {0} - {1}"
+#: View/Elements/form_shared_travel.ctp:8
+msgid "Compartir este viaje de {0} a {1} y pagar sólo {2} por persona"
+msgstr "Share this trip from {0} to {1} and pay only {2} per person"
+
 
 #: View/SharedTravels/thanks.ctp:8
 msgid "Muchísimas gracias"
