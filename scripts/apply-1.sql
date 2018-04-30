@@ -1,0 +1,1 @@
+ALTER TABLE `shared_travels` ADD `price_x_seat` DECIMAL NOT NULL AFTER `modality_code`;

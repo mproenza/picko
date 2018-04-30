@@ -10,7 +10,7 @@ $modality = SharedTravel::$modalities[$modalityCode];
 
 <p><?php echo __d('shared_travels', 'Usted solicitó un transfer de {0} personas desde {1} hasta {2} el día {3} con recogida a las {4}.', '<b>'.$request['SharedTravel']['people_count'].'</b>', '<b>'.$modality['origin'].'</b>', '<b>'.$modality['destination'].'</b>', '<b>'.TimeUtil::prettyDate($request['SharedTravel']['date'], false).'</b>', '<b>'.$modality['time'].'</b>')?></p>
 
-<p><?php echo __d('shared_travels', 'Precio total por las {0} personas: {1}', $request['SharedTravel']['people_count'], '<b>'.$request['SharedTravel']['people_count']*$modality['price'].' CUC</b>')?></p>
+<p><?php echo __d('shared_travels', 'Precio total por las {0} personas: {1}', $request['SharedTravel']['people_count'], '<b>'.$request['SharedTravel']['people_count']*$request['SharedTravel']['price_x_seat'].' cuc</b>')?></p>
 
 <p><?php echo __d('shared_travels', 'Antes de comenzar los arreglos, usted debe confirmar la solicitud haciendo click en el siguiente enlace')?>:</p>
 

@@ -46,6 +46,7 @@ class SharedTravelsController extends AppController {
             $this->request->data('lang', ini_get('intl.default_locale'));
             $this->request->data('state', SharedTravel::$STATE_PENDING);
             $this->request->data('original_date', str_replace('-', '/', TimeUtil::dmY_to_Ymd($this->request->getData('date'))));
+            $this->request->data('price_x_seat', SharedTravel::$modalities[$this->request->getData('modality_code')]['price']);
 
             $STTable = TableRegistry::get('SharedTravels');
             $STEntity = $STTable->newEntity($this->request->getData());
@@ -156,7 +157,8 @@ class SharedTravelsController extends AppController {
                     'Viaje de 4 pax completo',
                     ['request' => $request], 
                     'compartido', 
-                    'new_full_ride'
+                    'new_full_ride',
+                    ['lang'=>'es']
                 );
                 
                 $confirmed = true;
@@ -189,7 +191,8 @@ class SharedTravelsController extends AppController {
                         'Solicitudes emparejadas (4 pax completo)',
                         array('requests' => $coupled ), 
                         'compartido',
-                        'new_requests_coupled'
+                        'new_requests_coupled',
+                        ['lang'=>'es']
                     );
                     
                     $confirmed = true;
@@ -233,11 +236,12 @@ class SharedTravelsController extends AppController {
                         $facilitator = Configure::read('shared_rides_facilitator');
                         $modality = SharedTravel::$modalities[$request['SharedTravel']['modality_code']];
                         $OK = EmailsUtil::email(
-                            $facilitator['email']/*'martin@yotellevocuba.com'*/,
+                            $facilitator['email'],
                             '#'.$request['SharedTravel']['id'].' '.$modality['origin'].'-'.$modality['destination'].' [['.$request['SharedTravel']['id_token'].']]',
                             array('request' => $request), 
                             'compartido', 
-                            'new_request'
+                            'new_request',
+                            ['lang'=>'es']
                             );
                     }
                 }
