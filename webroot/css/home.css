@@ -31,4 +31,6 @@
 }
 
 .white{color:white !important}
+.white a{color:white !important;text-decoration: none}
+
 .center{text-align:center}

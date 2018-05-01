@@ -24,15 +24,16 @@
         <meta name="description" content="<?php echo $page_description;?>"/>
 
         <style type="text/css">
-
-            #navbar #nav a.nav-link{
-                /*color:white;*/
-                font-family:'Montserrat', sans-serif;
-                font-size:13px;
-                /*margin-top:4px;*/
+            
+            #navbar {
+                background-color: #003f54 !important;
+            }
+            
+            .navbar-nav a.nav-link {
+                color:white !important;
                 text-transform:uppercase
             }
-            #navbar #nav a.nav-link:hover,#navbar #nav a.nav-link:focus{
+            .navbar-nav a.nav-link:hover,#navbar #nav a.nav-link:focus{
                 background-color:transparent;
                 text-decoration:none
             }
@@ -58,8 +59,8 @@
     </head>
     <body>
         <div id="container">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-                <a class="navbar-brand" href="#">PickoCar</a>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="navbar">
+                <a class="navbar-brand white" href="#">PickoCar</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -73,7 +74,7 @@
                 </div>
             </nav>
 
-            <div id="content" class="container-fluid">
+            <div id="content">
                 
                 <div style="height: 90px;clear: both"></div>
                 <?php echo $this->fetch('content'); ?>
@@ -81,7 +82,7 @@
                 
                 <div style="height: 90px;clear: both"></div>
                 <hr/>
-                <footer class="footer bg-light">    
+                <footer class="footer white" style="background-color: #003f54 !important">
                     <div class="col-md-12">
                         <?php echo $this->element('footer') ?>
                     </div>
