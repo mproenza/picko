@@ -79,7 +79,7 @@ Router::addUrlFilter(function ($params, $request) {
         return $params;
     }*/
     
-    // Si esta el lenguaje en los parametros, cambiar a ese lenguaje en para las traducciones temporalmente
+    // Si esta el lenguaje en los parametros, cambiar a ese lenguaje para las traducciones temporalmente
     $currentLang = I18n::getLocale();
     if(isset($params['language'])) I18n::setLocale($params['language']);
     
@@ -88,6 +88,13 @@ Router::addUrlFilter(function ($params, $request) {
     }
     if(isset($params['action'])) {
         $params['action'] = __d('urls', $params['action']);
+    }
+    
+    // Cambiar los parametros tambien
+    $i = 0;
+    while(array_key_exists($i, $params)) {
+        $params[$i] = __d('urls', $params[$i]);
+        $i++;
     }
     
     I18n::setLocale($currentLang);
@@ -114,7 +121,10 @@ Router::scope('/:language', function (RouteBuilder $routes) {
     $routes->connect('/', ['controller' => 'SharedTravels', 'action' => 'home'], ['_name'=>'homepage'])
             ->setPatterns(['language' => 'en|es']);
 
-    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display'])
+    // Pages
+    /*$routes->connect('/about', ['controller' => 'Pages', 'action' => 'display', 'about'], ['routeClass' => 'UrlI18nRoute'])
+            ->setPatterns(['language' => 'en|es']);*/
+    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display'], ['routeClass' => 'UrlI18nRoute'])
             ->setPatterns(['language' => 'en|es']);
     
     // Shared Rides

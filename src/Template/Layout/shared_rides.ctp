@@ -59,20 +59,7 @@
     </head>
     <body>
         <div id="container">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="navbar">
-                <a class="navbar-brand white" href="#">PickoCar</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <?php echo $this->Html->lang(I18n::getLocale(), $this->request) ?>
-                        <?php echo $this->Html->link(__d('shared_travels', 'IR AL INICIO'), ['_name'=>'homepage'], array('class' => 'nav-link', 'escape' => false)); ?>
-                        <?php echo $this->Html->link('<button type="button" class="btn btn-info navbar-btn">' . __d('shared_travels', 'VER RUTAS DISPONIBLES') . '</button>', ['_name'=>'homepage', '#'=>'transfers-available'], array('escape' => false, 'style' => 'padding:0px;padding-right:10px')) ?>
-                        <?php echo $this->User->logout();?>
-                    </div>
-                </div>
-            </nav>
+            <?php echo $this->element('menu')?>
 
             <div id="content">
                 

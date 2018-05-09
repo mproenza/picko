@@ -95,10 +95,12 @@ class AppController extends Controller
         $partialTitle = $this->_getPageTitle($key);
         
         if($partialTitle != null) {
-            if($this->request->params['controller'] === 'pages') {
-                if(isset($partialTitle[$this->request->params['pass'][0]])) {
-                    $page_title = $partialTitle[$this->request->params['pass'][0]]['title'];
-                    if(isset ($partialTitle[$this->request->params['pass'][0]]['description'])) $page_description = $partialTitle[$this->request->params['pass'][0]]['description'];
+            if($this->request->getParam('controller') === 'Pages') {
+                if(isset($partialTitle[$this->request->getParam('pass')[0]])) {
+                    $pass = $this->request->getParam('pass')[0];
+                    
+                    $page_title = $partialTitle[$pass]['title'];
+                    if(isset ($partialTitle[$pass]['description'])) $page_description = $partialTitle[$pass]['description'];
                 }
                     
             } else {
@@ -115,11 +117,10 @@ class AppController extends Controller
             'default' =>array('title'=>__d('meta', 'Taxi barato en Cuba'), 'description'=>__d('meta', '...')),
             
             // Access to all
-            'pages.display' =>array(
-                'contact'=>array('title'=>__d('meta', 'Contactar'), 'description'=>__d('meta', 'Contáctanos para cualquier pregunta o duda sobre cómo conseguir un taxi para moverte por Cuba usando YoTeLlevo')), 
+            'Pages.display' =>array(
+                'about'=>array('title'=>__d('meta', 'Sobre Nosotros'), 'description'=>__d('meta', 'PickoCar es un servicio de taxi compartido en Cuba, con excelentes precios y rutas que cubren {0} y otros', 'La Habana, Viñales, Trinidad, Varadero')), 
                 'faq'=>array('title'=>__d('meta', 'Preguntas Frecuentes'), 'description'=>__d('meta', 'Preguntas y respuestas sobre cómo conseguir un taxi para moverte por Cuba usando YoTeLlevo')),
-                'testimonials'=>array('title'=>__d('meta', 'Testimonios de viajeros sorprendentes en Cuba'), 'description'=>__d('meta', 'Testimonios de viajeros que contrataron choferes con YoTeLlevo, Cuba')),
-                'catalog-drivers-cuba'=>array('title'=>__d('meta', 'Choferes en Cuba: fotos y testimonios de viajeros'))),
+                'testimonials'=>array('title'=>__d('meta', 'Testimonios de viajeros sorprendentes en Cuba'), 'description'=>__d('meta', 'Testimonios de viajeros que contrataron choferes con YoTeLlevo, Cuba'))),
 
             'SharedTravels.home' =>array('title'=>__d('meta', 'Taxi compartido en Cuba. Viajes hasta {0} y otros', 'La Habana, Viñales, Trinidad, Varadero'), 'description'=>__d('meta', 'Llega a destinos como {0} y otros por un buen precio usando nuestra amplia red de taxis compartidos', 'La Habana, Viñales, Trinidad, Varadero')),
             

@@ -1,26 +1,12 @@
 <?php 
 use App\Model\Entity\SharedTravel;
-use Cake\I18n\I18n;
 ?>
 
 <?php $doBootbox = true?>
 
 <div id="container">
     <div id="front-page-bg">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="navbar">
-            <a class="navbar-brand white" href="#">PickoCar</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon" id='nav-toggler'></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <?php echo $this->Html->lang(I18n::getLocale(), $this->request) ?>
-                    <?php echo $this->Html->link(__d('shared_travels', 'IR AL INICIO'), ['_name'=>'homepage'], array('class' => 'nav-link', 'escape' => false)); ?>
-                    <?php echo $this->Html->link('<button type="button" class="btn btn-info navbar-btn">' . __d('shared_travels', 'VER RUTAS DISPONIBLES') . '</button>', ['_name'=>'homepage', '#'=>'transfers-available'], array('escape' => false, 'style' => 'padding:0px;padding-right:10px')) ?>
-                    <?php echo $this->User->logout();?>
-                </div>
-            </div>
-        </nav>
+        <?php echo $this->element('menu', ['isHome'=>true])?>
             
         <div style="height: 100px;clear: both"></div>
 
@@ -34,7 +20,7 @@ use Cake\I18n\I18n;
                     <br/>
                     <h4 style="text-align: center"><?php echo __d('home', 'Comparte un taxi cómodo con otros viajeros que van al mismo destino que tú y paga sólo por los asientos que ocupes') ?></h4>
                     <hr/>
-                    <h6><?php echo __d('home', 'Recogida en tu estancia u hotel')?> • <?php echo __d('home', 'Sólo 4 pasajeros en un taxi')?> • <?php echo __d('home', 'Autos confortables')?></h6>
+                    <h6><?php echo __d('home', 'Sólo 4 pasajeros en un taxi')?> • <?php echo __d('home', 'Recogida en tu estancia u hotel')?> • <?php echo __d('home', 'Autos muy confortables')?></h6>
                 </div> 
             </div>
         </div>
@@ -51,7 +37,7 @@ use Cake\I18n\I18n;
                     <li><i class="fa-li fa fa-check fa-flip-horizontal"></i><big><?php echo __d('home', '<b>Ahorrar dinero</b> si viajas solo, en pareja o son tres personas y no quieren pagar el viaje completo en un taxi privado como si fueran cuatro personas.') ?></big></li>
                     <li class="mt-3"><i class="fa-li fa fa-check fa-flip-horizontal"></i><big><?php echo __d('home', 'Viajar cómodo en un auto moderno con aire acondicionado y con <b>sólo 4 pasajeros</b> dentro, todos yendo al mismo destino y con reservación de antemano.') ?></big></li>
                     <li class="mt-3"><i class="fa-li fa fa-check fa-flip-horizontal"></i><big><?php echo __d('home', 'Recibir un <b>servicio puerta a puerta</b> en el cual el taxi te recoge en tu casa de estancia u hotel y te lleva hasta tu próxima estancia.') ?></big></li>
-                    <li class="mt-3"><i class="fa-li fa fa-check fa-flip-horizontal"></i><big><?php echo __d('home', 'Llegar a muchos de tus destinos en Cuba usando nuestra <b>amplia red de taxis</b> que conectan lugares favoritos como {0} y otros.', '<code><b>La Habana</b></code>, <code><b>Viñales</b></code>, <code><b>Trinidad</b></code>, <code><b>Varadero</b></code>, <code><b>Cayo Guillermo</b></code>') ?></big></li>
+                    <li class="mt-3"><i class="fa-li fa fa-check fa-flip-horizontal"></i><big><?php echo __d('home', 'Llegar a muchos de tus destinos en Cuba usando nuestra <b>amplia red de taxis</b> que conectan lugares favoritos como {0} y otros.', '<code><b>La Habana</b></code>, <code><b>Viñales</b></code>, <code><b>Varadero</b></code>, <code><b>Trinidad</b></code>, <code><b>Cayo Guillermo</b></code>') ?></big></li>
                     </ul>
                 
                 <div class="col-md-8 offset-md-2" style="margin-top: 40px">

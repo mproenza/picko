@@ -24,8 +24,8 @@ msgid "Comparte un taxi cómodo con otros viajeros que van al mismo destino que 
 msgstr "Share a confortable taxi with other travelers going to the same destination as you and pay only for the seats you occupy"
 
 #: View/SharedTravels/home.ctp:8
-msgid "Autos confortables"
-msgstr "Confortable cars"
+msgid "Autos muy confortables"
+msgstr "Very confortable cars"
 
 #: View/SharedTravels/home.ctp:8
 msgid "Sólo 4 pasajeros en un taxi"

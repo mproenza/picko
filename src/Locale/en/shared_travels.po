@@ -28,6 +28,10 @@ msgid "VER RUTAS DISPONIBLES"
 msgstr "SEE ROUTES AVAILABLE"
 
 #: View/Layouts/shared_rides.ctp:8
+msgid "Sobre Nosotros"
+msgstr "About Us"
+
+#: View/Layouts/shared_rides.ctp:8
 msgid "Características y Términos"
 msgstr "Features and Terms"
 

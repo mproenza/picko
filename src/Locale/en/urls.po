@@ -28,3 +28,6 @@ msgstr "activate"
 
 msgid "ver"
 msgstr "view"
+
+msgid "sobre-nosotros"
+msgstr "about"

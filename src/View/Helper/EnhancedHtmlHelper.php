@@ -113,18 +113,26 @@ class EnhancedHtmlHelper extends HtmlHelper {
         // Poner controller y action si no es /shared-rides/home
         if($request->getParam('action') != 'home') {
             $lang_changed_url['controller'] = $request->getParam('controller');
-            if($lang_changed_url['controller'] == 'SharedTravels') $lang_changed_url['controller'] = 'shared-rides';
-            
             $lang_changed_url['action'] = $request->getParam('action');
+            
+            if($lang_changed_url['controller'] == 'SharedTravels') $lang_changed_url['controller'] = 'shared-rides';
+            if($lang_changed_url['controller'] == 'Pages') {
+                unset($lang_changed_url['controller']);
+                unset($lang_changed_url['action']);
+            }
         }
         
-        $lang_changed_url['?']        = $request->getQueryParams();
-        $lang_changed_url['language'] = $other[$currentLang];
+        if(is_array($lang_changed_url)){
+            $lang_changed_url['?']        = $request->getQueryParams();
+            $lang_changed_url['language'] = $other[$currentLang];
+        } else {
+            $lang_changed_url = '/'.$other[$currentLang].'/'.$lang_changed_url;
+        }
 
         if($currentLang != null && $currentLang == 'en')
-            return $this->link($this->image('Spain.png'), $lang_changed_url, array('class'=>'nav-link', 'escape'=>false, 'style'=>'text-decoration:none'));
+            return $this->link($this->image('Spain.png').' <small>Español</small>', $lang_changed_url, array('class'=>'nav-link', 'escape'=>false, 'style'=>'text-decoration:none'));
         else
-            return $this->link($this->image('UK.png'), $lang_changed_url, array('class'=>'nav-link', 'escape'=>false, 'style'=>'text-decoration:none'));
+            return $this->link($this->image('UK.png').' <small>English</small>', $lang_changed_url, array('class'=>'nav-link', 'escape'=>false, 'style'=>'text-decoration:none'));
 
     }
 

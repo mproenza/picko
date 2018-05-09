@@ -33,3 +33,7 @@ msgstr "activar"
 #: View/SharedTravels/home.ctp:8
 msgid "view"
 msgstr "ver"
+
+#: View/SharedTravels/home.ctp:8
+msgid "about"
+msgstr "sobre-nosotros"

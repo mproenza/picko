@@ -20,6 +20,14 @@ msgid "Taxi compartido en Cuba. Viajes hasta {0} y otros"
 msgstr "Shared taxi in Cuba. Trips to {0} and others"
 
 #: App/Controller/AppController.php:8
+msgid "Sobre Nosotros"
+msgstr "About Us"
+
+#: App/Controller/AppController.php:8
+msgid "PickoCar es un servicio de taxi compartido en Cuba, con excelentes precios y rutas que cubren {0} y otros"
+msgstr "PickoCar is a shared taxi service in Cuba, with excellent prices and routes that include {0} and others"
+
+#: App/Controller/AppController.php:8
 msgid "Taxi compartido desde {0} hasta {1}"
 msgstr "Shared taxi from {0} to {1}"
 
