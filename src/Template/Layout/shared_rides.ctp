@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <?php if (ROOT != 'C:\xampp\htdocs\pickocar'): ?>
+        <?php if (ROOT != 'C:\xampp\htdocs\pickocar' && !$Auth->user()): ?>
             <!-- Global site tag (gtag.js) - Google Analytics -->
             <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116001622-1"></script>
             <script>

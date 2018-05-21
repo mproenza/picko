@@ -17,7 +17,7 @@ if(!isset($isHome)) $isHome = false;
 
         <ul class="navbar-nav ml-auto">
             <li><?php echo $this->Html->link('<button type="button" class="btn btn-info navbar-btn">' . __d('shared_travels', 'VER RUTAS DISPONIBLES') . '</button>', ['_name'=>'homepage', '#'=>'transfers-available'], array('class'=>'mx-3', 'escape' => false, 'style' => 'padding:0px;padding-right:10px')) ?></li>
-            <li><?php echo $this->Html->link(__d('shared_travels', 'Sobre Nosotros'), ['controller'=>'pages', 'action'=>'display', 'about'], ['class' => 'nav-link']); ?></li>
+            <li><?php echo $this->Html->link(__d('shared_travels', 'Sobre Nosotros'), ['plugin'=>null, 'controller'=>'pages', 'action'=>'display', 'about'], ['class' => 'nav-link']); ?></li>
             <li><?php echo $this->User->logout();?></li>
         </ul>
     </div>

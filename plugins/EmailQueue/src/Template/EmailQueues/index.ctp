@@ -13,7 +13,8 @@
             <td>
                 <?php if($e['EmailQueue']['sent'] || $e['EmailQueue']['send_tries'] > 3):?>
                     <ul class="list-inline">
-                        <li><?php echo $this->Html->link('<i class="glyphicon glyphicon-trash"></i> Eliminar', array('action'=>'remove/'.$e['EmailQueue']['id']), array('escape'=>false, 'confirm'=>'¿Está seguro que quiere eliminar este email?'))?></li>
+                        <li><?php echo $this->Html->link('Eliminar', array('action'=>'remove/'.$e['EmailQueue']['id']), array('escape'=>false, 'confirm'=>'¿Está seguro que quiere eliminar este email?'))?></li>
+                        <li><?php echo $this->Html->link('Reenviar', array('action'=>'resend/'.$e['EmailQueue']['id']), array('escape'=>false, 'confirm'=>'¿Está seguro que quiere volver a enviar este email?'))?></li>
                     </ul>
                 <?php endif?>
                 <?php if($e['EmailQueue']['locked']):?>

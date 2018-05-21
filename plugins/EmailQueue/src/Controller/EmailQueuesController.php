@@ -4,6 +4,7 @@ namespace EmailQueue\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
 
 class EmailQueuesController extends AppController {
     
@@ -26,6 +27,19 @@ class EmailQueuesController extends AppController {
     public function index() {
         $this->paginate = array('limit'=>500);
         $this->set('emails', $this->paginate());
+    }
+    
+    public function resend($id) {
+        $EQTable = TableRegistry::get('EmailQueue.EmailQueue');
+        $email = $EQTable->findById($id)->first();
+        
+        // Sanity checks
+        if($email == null || empty ($email)) throw new NotFoundException();
+        
+        $OK = $EQTable->updateAll(['sent' => false], ['id' => $email->id]);
+        if(!$OK) $this->Flash->error(__('ERROR: Email id > '.$email->id));
+        
+        return $this->redirect($this->referer());
     }
     
     public function remove($id = null) {

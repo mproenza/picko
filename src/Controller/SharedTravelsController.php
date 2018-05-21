@@ -85,7 +85,7 @@ class SharedTravelsController extends AppController {
             
             // else
             print_r($OK);
-            $this->Flash->error(__('Ocurrió un error realizando la solicitud.'), ['key'=>'form']);//$this->setErrorMessage(__('Ocurrió un error realizando la solicitud.'));
+            $this->Flash->error(__('Ocurrió un error realizando la solicitud.'), ['key'=>'form']);
         }
 
         if (!isset($this->request->query['s'])) throw new NotFoundException ();

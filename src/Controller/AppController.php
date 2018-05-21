@@ -82,6 +82,10 @@ class AppController extends Controller
         }
         
         $this->_setPageTitle();
+        
+        
+        // Enviar Auth hacia la vista para poderla usar de manera mas facil
+        $this->set('Auth', $this->Auth);
     }
     
     

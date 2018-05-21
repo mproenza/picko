@@ -92,8 +92,8 @@ msgid "... y no se queda ahí."
 msgstr "... and it doesn't stop there."
 
 #: View/Pages/about.php:8
-msgid "Estamos en una búsqueda para reducir los precios aún más, y estamos desarrollando tecnologías dentro de la plataforma que a través de un sistema eficiente de despacho de las solicitudes, puede encontrar oportunidades de descuentos para cada viaje."
-msgstr "We are on a quest to reduce prices even more, and we are developing technologies inside the platform which by using an efficient system of dispatching the orders, it can find opportunities to apply discounts for each trip."
+msgid "<b>Estamos en una búsqueda para reducir los precios aún más</b>, y estamos desarrollando tecnologías dentro de la plataforma que a través de un sistema eficiente de despacho de las solicitudes, puede encontrar oportunidades de descuentos para cada viaje."
+msgstr "<b>We are on a quest to reducing prices even more</b>, and we are developing technologies inside the platform which by using an efficient system of dispatching the orders, it can find opportunities to apply discounts for each trip."
 
 #: View/Pages/about.php:8
 msgid "Este es uno de los primeros pasos, pero estamos convencidos de que mediante análisis profundos podemos encontrar alternativas que hagan que el pasaje cueste menos."

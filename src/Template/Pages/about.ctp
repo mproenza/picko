@@ -28,7 +28,7 @@
             <p><?php echo __d('pages', 'Cada miembro del equipo ha traído diferentes habilidades que combinadas, hacen de PickoCar una plataforma que agrupa <b>experiencia, infraestructura y tecnología</b> para brindar un servicio de calidad, con precios mucho más bajos que contratando choferes privados y cercanos a las maneras más baratas disponibles (pero fácilmente agotables) para turistas en Cuba, como el bus Viazul.')?></p>
             
             <p><?php echo __d('pages', '... y no se queda ahí.')?></p>
-            <p><?php echo __d('pages', 'Estamos en una búsqueda para reducir los precios aún más, y estamos desarrollando tecnologías dentro de la plataforma que a través de un sistema eficiente de despacho de las solicitudes, puede encontrar oportunidades de descuentos para cada viaje.')?></p>
+            <p><?php echo __d('pages', '<b>Estamos en una búsqueda para reducir los precios aún más</b>, y estamos desarrollando tecnologías dentro de la plataforma que a través de un sistema eficiente de despacho de las solicitudes, puede encontrar oportunidades de descuentos para cada viaje.')?></p>
             <p><?php echo __d('pages', 'Este es uno de los primeros pasos, pero estamos convencidos de que mediante análisis profundos podemos encontrar alternativas que hagan que el pasaje cueste menos.')?></p>
             
             <p><?php echo __d('pages', 'Poco a poco iremos haciendo público nuestro esfuerzo y resultados, pero por ahora ya se puede disfrutar de nuestro servicio de taxis compartidos a precios muy convenientes.')?></p>
