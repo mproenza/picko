@@ -130,9 +130,9 @@ class EnhancedHtmlHelper extends HtmlHelper {
         }
 
         if($currentLang != null && $currentLang == 'en')
-            return $this->link($this->image('Spain.png').' <small>Español</small>', $lang_changed_url, array('class'=>'nav-link', 'escape'=>false, 'style'=>'text-decoration:none'));
+            return $this->link($this->image('Spain.png').' <small><small>Ver en</small> Español</small>', $lang_changed_url, array('class'=>'nav-link', 'escape'=>false, 'style'=>'text-decoration:none'));
         else
-            return $this->link($this->image('UK.png').' <small>English</small>', $lang_changed_url, array('class'=>'nav-link', 'escape'=>false, 'style'=>'text-decoration:none'));
+            return $this->link($this->image('UK.png').' <small><small>See in</small> English</small>', $lang_changed_url, array('class'=>'nav-link', 'escape'=>false, 'style'=>'text-decoration:none'));
 
     }
 

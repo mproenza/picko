@@ -31,7 +31,7 @@ class AppController extends Controller
 	public $helpers = array(
         'Html' => array(
             'className' => 'EnhancedHtml'
-        ), 
+        ),
         'Form' => array(
             'className' => 'BootstrapForm'
 		)
@@ -52,8 +52,8 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
-        
-        //$this->loadComponent('Auth');        
+
+        //$this->loadComponent('Auth');
         $this->loadComponent('CakeDC/Users.UsersAuth');
 
         /*
@@ -80,33 +80,33 @@ class AppController extends Controller
         ) {
             $this->set('_serialize', true);
         }
-        
+
         $this->_setPageTitle();
-        
-        
+
+
         // Enviar Auth hacia la vista para poderla usar de manera mas facil
         $this->set('Auth', $this->Auth);
     }
-    
-    
-    
+
+
+
     private function _setPageTitle() {
-        $defaultTitle = $this->_getPageTitle('default');        
+        $defaultTitle = $this->_getPageTitle('default');
         $page_title = $defaultTitle['title'];
         $page_description = $defaultTitle['description'];
-        
-        $key = $this->request->getParam('controller').'.'.$this->request->getParam('action'); 
+
+        $key = $this->request->getParam('controller').'.'.$this->request->getParam('action');
         $partialTitle = $this->_getPageTitle($key);
-        
+
         if($partialTitle != null) {
             if($this->request->getParam('controller') === 'Pages') {
                 if(isset($partialTitle[$this->request->getParam('pass')[0]])) {
                     $pass = $this->request->getParam('pass')[0];
-                    
+
                     $page_title = $partialTitle[$pass]['title'];
                     if(isset ($partialTitle[$pass]['description'])) $page_description = $partialTitle[$pass]['description'];
                 }
-                    
+
             } else {
                 $page_title = $partialTitle['title'];
                 if(isset ($partialTitle['description'])) $page_description = $partialTitle['description'];
@@ -115,48 +115,49 @@ class AppController extends Controller
         $this->set('page_title', $page_title);
         $this->set('page_description', $page_description);
     }
-    
-    private function _getPageTitle($key) {
-        $pageTitles = array(
-            'default' =>array('title'=>__d('meta', 'Taxi barato en Cuba'), 'description'=>__d('meta', '...')),
-            
-            // Access to all
-            'Pages.display' =>array(
-                'about'=>array('title'=>__d('meta', 'Sobre Nosotros'), 'description'=>__d('meta', 'PickoCar es un servicio de taxi compartido en Cuba, con excelentes precios y rutas que cubren {0} y otros', 'La Habana, Viñales, Trinidad, Varadero')), 
-                'faq'=>array('title'=>__d('meta', 'Preguntas Frecuentes'), 'description'=>__d('meta', 'Preguntas y respuestas sobre cómo conseguir un taxi para moverte por Cuba usando YoTeLlevo')),
-                'testimonials'=>array('title'=>__d('meta', 'Testimonios de viajeros sorprendentes en Cuba'), 'description'=>__d('meta', 'Testimonios de viajeros que contrataron choferes con YoTeLlevo, Cuba'))),
 
-            'SharedTravels.home' =>array('title'=>__d('meta', 'Taxi compartido en Cuba. Viajes hasta {0} y otros', 'La Habana, Viñales, Trinidad, Varadero'), 'description'=>__d('meta', 'Llega a destinos como {0} y otros por un buen precio usando nuestra amplia red de taxis compartidos', 'La Habana, Viñales, Trinidad, Varadero')),
-            
-            'SharedTravels.book' =>array(
-                'title'=>function($viewVars, $queryParams) {
+    private function _getPageTitle($key) {
+        $pageTitles = ['default' =>array('title'=>__d('meta', 'Taxi compartido en Cuba - {0} y otros', 'La Habana, Viñales, Trinidad, Varadero'), 'description'=>__d('meta', 'PickoCar es un servicio de taxi compartido en Cuba, con excelentes precios y rutas que cubren {0} y otros', 'La Habana, Viñales, Trinidad, Varadero')),
+
+            // HOMEPAGE
+            'SharedTravels.home' => ['title'=>__d('meta', 'Taxi compartido en Cuba - {0} y otros', 'La Habana, Viñales, Trinidad, Varadero'), 'description'=>__d('meta', 'PickoCar es un servicio de taxi compartido en Cuba, con excelentes precios y rutas que cubren {0} y otros', 'La Habana, Viñales, Trinidad, Varadero, Cayo Guillermo')],
+
+            // PAGES
+            'Pages.display' =>array(
+                'about'=>array('title'=>__d('meta', 'Sobre Nosotros'), 'description'=>__d('meta', 'Conoce lo que hacemos en PickoCar, nuestro servicio de taxi compartido en Cuba que conecta varios destinos')),
+                /*'faq'=>array('title'=>__d('meta', 'Preguntas Frecuentes'), 'description'=>__d('meta', 'Preguntas y respuestas sobre cómo conseguir un taxi para moverte por Cuba usando YoTeLlevo')),
+                'testimonials'=>array('title'=>__d('meta', 'Testimonios de viajeros sorprendentes en Cuba'), 'description'=>__d('meta', 'Testimonios de viajeros que contrataron choferes con YoTeLlevo, Cuba'))*/),
+
+
+            // USER ACTIONS
+            'SharedTravels.book' =>  ['title'=>function($viewVars, $queryParams) {
                     $modalityCode = $queryParams['s'];
                     $modality = SharedTravel::$modalities[$modalityCode];
-                    
+
                     return __d('meta', 'Taxi compartido desde {0} hasta {1}', $modality['origin'], $modality['destination']);
-                }, 
+                },
                 'description'=>function($viewVars, $queryParams) {
                     $modalityCode = $queryParams['s'];
                     $modality = SharedTravel::$modalities[$modalityCode];
-                    
+
                     return __d('meta', 'Reserva un taxi para ir de {0} a {1} por un precio de {2} cuc por asiento. Sólo 4 pasajeros en un auto moderno con aire acondicionado y mucho confort.', $modality['origin'], $modality['destination'], $modality['price']);
                 }
-            ),
+                ],
             'SharedTravels.thanks' =>array('title'=>__d('meta', 'Gracias por su solicitud'), 'description'=>__d('meta', '...')),
             'SharedTravels.activate' =>array('title'=>__d('meta', 'Activar solicitud'), 'description'=>__d('meta', '...')),
             'SharedTravels.view' =>array('title'=>__d('meta', 'Datos de tu solicitud'), 'description'=>__d('meta', '...')),
-              
+
             // ADMIN
             'SharedTravels.index' =>array('title'=>'Compartidos'),
             'SharedTravels.admin' =>array('title'=>'Admin'),
-                    
+
             'EmailQueues.index' =>array('title'=>'Email Queue'),
-        );
-        
+            ];
+
         if(isset ($pageTitles[$key])) return $pageTitles[$key];
-        
+
         return null;
     }
-    
-    
+
+
 }

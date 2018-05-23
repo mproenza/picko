@@ -16,6 +16,7 @@
         <?php endif; ?> 
             
         <?php echo $this->Html->charset(); ?>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <?php if(is_callable($page_title)) $page_title = $page_title($this->viewVars, $this->request->query);?>
         <title><?php echo $page_title.' | '.'PickoCar'?></title>
