@@ -20,7 +20,11 @@ class TimeUtil {
             $day = date('j', $date_converted);
             $month = __(TimeUtil::$months_es[date('n', $date_converted) - 1]);
             $year = date('Y', $date_converted);
-        } else throw new Exception('Date should be \Cake\I18n\FrozenTime or String(YYYY/mm/dd)');
+        } else {
+            $pretty_date = '<span style="color: red">FORMATO DESCONOCIDO: '.$date.'</span>';
+            return $pretty_date;
+            //throw new Exception('Date should be \Cake\I18n\FrozenTime or String(YYYY/mm/dd)');
+        }
         
         $pretty_date = $day.' '.$month.', '.$year;
         
