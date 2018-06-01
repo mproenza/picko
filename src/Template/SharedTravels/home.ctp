@@ -68,17 +68,17 @@ use App\Model\Entity\SharedTravel;
     <div id="transfers-available" data-h-offset="0" class="row arrow_box arrow_box_bottom" style="margin-top: 60px"></div>
     <div class="row" style="background-color: #ebebeb;padding-bottom: 80px">
         <div class="container">
-            <div class="row" style="padding-top: 80px;">
+            <div class="row" style="padding-top: 80px;padding-bottom: 40px">
                 <div class="col-md-10 offset-md-1">
-                    <p class="lead" style="text-align: center">
-                        <big><b><?php echo __d('home', 'Selecciona una o varias de nuestras rutas y horarios para reservar un taxi')?></b></big>
-                    </p>
+                    <h3 style="text-align: center">
+                        <?php echo __d('home', 'Selecciona tus rutas y horarios para reservar un taxi')?>
+                    </h3>
                     
-                    <div class="col-md-10 offset-md-1">
+                    <!--<div class="col-md-10 offset-md-1">
                         <ul class="fa-ul">
                             <li><i class="fa-li fa fa-check"></i><?php echo __d('home', 'Al reservar estarás en contacto por email con uno de nuestros asistentes mientras llega la fecha del viaje, quien atenderá cualquier duda o petición que tengas, incluyendo cancelaciones.')?></li>
                         </ul>
-                    </div>
+                    </div>-->
                 </div>        
             </div>            
             

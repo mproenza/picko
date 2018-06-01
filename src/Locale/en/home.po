@@ -88,8 +88,8 @@ msgid "En cuanto reservas, nosotros arreglamos todo de manera que compartas el v
 msgstr "As soon as you book, we arrange everything in a way that you share your trip with other travelers going to the same destination in the same date and time. This way you don't have to worry about finding other passengers to join you and no need to wait until the taxi is full at the moment of departure."
  
 #: View/SharedTravels/home.ctp:8
-msgid "Selecciona una o varias de nuestras rutas y horarios para reservar un taxi"
-msgstr "Select one or some of our routes and departure times to book a taxi"
+msgid "Selecciona tus rutas y horarios para reservar un taxi"
+msgstr "Select your routes and departure times to book a taxi"
 
 #: View/SharedTravels/home.ctp:8
 msgid "Al reservar estarás en contacto por email con uno de nuestros asistentes mientras llega la fecha del viaje, quien atenderá cualquier duda o petición que tengas, incluyendo cancelaciones."

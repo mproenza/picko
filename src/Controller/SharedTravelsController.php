@@ -310,9 +310,20 @@ class SharedTravelsController extends AppController {
         
         // Sanity checks
         if($request == null || empty ($request)) throw new NotFoundException();
+        // Verificar si ya esta cancelada
         
         $OK = $STTable->updateAll(['state' => SharedTravel::$STATE_CANCELLED], ['id' => $request['SharedTravel']['id']]);
-        if(!$OK) $this->setErrorMessage ('Error cancelando la solicitud.');
+        if($OK) {
+            // Aviso a facilitador
+            $facilitator = Configure::read('shared_rides_facilitator');
+            $modality = SharedTravel::$modalities[$request['SharedTravel']['modality_code']];
+            $Email = new Email('aviso');
+            $Email->to($facilitator['email'])
+                ->subject('CANCELADO > PickoCar #'.$request['SharedTravel']['id']. ' | '.TimeUtil::prettyDate($request['SharedTravel']['date'], false).' | '.$modality['origin'].' - '.$modality['destination'])
+                ->send();
+        } else {
+            $this->Flash->error(__('Error cancelando la solicitud.'));
+        }
         
         return $this->redirect($this->referer());
     }
