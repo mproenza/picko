@@ -35,7 +35,7 @@
         </div>
         
         <div class="col-md-8 offset-md-2" style="margin-top: 40px">
-            <?php echo $this->Html->link( '<big>'.__d('pages', 'Adelante y mira las rutas y precios disponibles').'</big>', ['_name'=>'homepage', '#'=>'transfers-available'], array('class'=>'btn btn-info btn-block', 'escape' => false)) ?>
+            <?php echo $this->Html->link( '<big>'.__d('pages', 'Adelante y mira las rutas y precios disponibles').'</big>', ['_name'=>'homepage', '#'=>'routes-and-prices'], array('class'=>'btn btn-info btn-block', 'escape' => false)) ?>
         </div>
     </div>
 </div>

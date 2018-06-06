@@ -15,18 +15,23 @@ use App\Model\Entity\SharedTravel;
                 <div class="col-md-8 offset-md-2 value-proposition">
                     <br/>
                     <h1 style="text-align: center">
-                        <?php echo __d('home', 'LLEGA A CADA UNO DE TUS DESTINOS EN {0} GASTANDO MENOS DINERO', '<code><big><b>CUBA</b></big></code>') ?>
+                        <big><?php echo __d('home', 'Llega a cada uno de tus destinos en {0} gastando menos dinero', '<code style="background-color:inherit"><big><b>Cuba</b></big></code>')?></big>
                     </h1>
                     <br/>
-                    <h4 style="text-align: center"><?php echo __d('home', 'Comparte un taxi cómodo con otros viajeros que van al mismo destino que tú y paga sólo por los asientos que ocupes') ?></h4>
+                    <h2 class="h4" style="text-align: center"><?php echo __d('home', 'Comparte un taxi cómodo con otros viajeros que van al mismo destino que tú y paga sólo por los asientos que ocupes') ?></h2>
                     <hr/>
                     <h6><?php echo __d('home', 'Sólo 4 pasajeros en un taxi')?> • <?php echo __d('home', 'Recogida en tu estancia u hotel')?> • <?php echo __d('home', 'Autos muy confortables')?></h6>
+                    <div class="scroll_icon_wrap" style="text-align: center">
+                        <a href="#offer" class="scroll_link">
+                            <span class="scroll_icon"><i class="fa fa-angle-down fa-2x" style="color: #D33C44"></i></span>
+                        </a>
+                    </div>
                 </div> 
             </div>
         </div>
     </div>
     
-    <div style="height: 40px;clear: both"></div>
+    <div id="offer" style="height: 40px;clear: both"></div>
     
     <div class="container">
         
@@ -41,7 +46,7 @@ use App\Model\Entity\SharedTravel;
                     </ul>
                 
                 <div class="col-md-8 offset-md-2" style="margin-top: 40px">
-                    <a class="btn btn-block btn-info" href="#transfers-available" style="white-space: normal;"><big><big><big><?php echo __d('home', 'Ver rutas y precios disponibles')?></big></big></big></a>
+                    <a class="btn btn-block btn-info" href="#routes-and-prices" style="white-space: normal;"><big><big><big><?php echo __d('home', 'Ver rutas y precios disponibles')?></big></big></big></a>
                     <div style="padding-top:10px;text-align: center"><code><big>La Habana</big></code> • <code><big>Viñales</big></code> • <code><big>Trinidad</big></code> • <code><big>Varadero</big></code></div>
                     <div style="text-align: center">... <?php echo __d('home', 'y otros destinos')?></div>
                 </div>
@@ -65,7 +70,7 @@ use App\Model\Entity\SharedTravel;
 
     </div>
     
-    <div id="transfers-available" data-h-offset="0" class="row arrow_box arrow_box_bottom" style="margin-top: 60px"></div>
+    <div id="routes-and-prices" data-h-offset="0" class="row arrow_box arrow_box_bottom" style="margin-top: 60px"></div>
     <div class="row" style="background-color: #ebebeb;padding-bottom: 80px">
         <div class="container">
             <div class="row" style="padding-top: 80px;padding-bottom: 40px">
@@ -133,7 +138,7 @@ use App\Model\Entity\SharedTravel;
                 <p><?php echo __d('home', 'En los tramos largos (ej. La Habana - Trinidad) realizamos una parada en cafetería para merendar e ir al baño, y además se pueden solicitar otras paradas para cualquier otra necesidad.')?></p>
                 <br/>            
                 <br/>
-                <a href="#transfers-available" class="btn btn-block btn-info"><big><?php echo __d('home', 'Ver las rutas y horarios disponibles')?></big></a>
+                <a href="#routes-and-prices" class="btn btn-block btn-info"><big><?php echo __d('home', 'Ver las rutas y horarios disponibles')?></big></a>
             </div>
         </div>
     </div>

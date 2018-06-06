@@ -16,8 +16,8 @@ msgstr ""
 
 
 #: View/SharedTravels/home.ctp:8
-msgid "LLEGA A CADA UNO DE TUS DESTINOS EN {0} GASTANDO MENOS DINERO"
-msgstr "ARRIVE IN EACH OF YOUR DESTINATIONS IN {0} SPENDING LESS MONEY"
+msgid "Llega a cada uno de tus destinos en {0} gastando menos dinero"
+msgstr "Arrive in each of your destinations in {0} spending less money"
 
 #: View/SharedTravels/home.ctp:8
 msgid "Comparte un taxi cómodo con otros viajeros que van al mismo destino que tú y paga sólo por los asientos que ocupes"

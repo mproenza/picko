@@ -20,12 +20,8 @@ msgid "IR AL INICIO"
 msgstr "HOMEPAGE"
 
 #: View/Layouts/shared_rides.ctp:8
-msgid "VER TRANSFERS DISPONIBLES"
-msgstr "SEE TRANSFERS AVAILABLE"
-
-#: View/Layouts/shared_rides.ctp:8
-msgid "VER RUTAS DISPONIBLES"
-msgstr "SEE ROUTES AVAILABLE"
+msgid "VER RUTAS Y PRECIOS"
+msgstr "SEE ROUTES AND PRICES"
 
 #: View/Layouts/shared_rides.ctp:8
 msgid "Sobre Nosotros"
