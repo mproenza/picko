@@ -36,8 +36,8 @@ msgid "Recogida en tu estancia u hotel"
 msgstr "Pick up at your accommodation or hotel"
 
 #: View/SharedTravels/home.ctp:8
-msgid "Con PickoCar podrás"
-msgstr "With PickoCar you will"
+msgid "<b>PickoCar es un servicio de taxi compartido</b> en que podrás:"
+msgstr "<b>PickoCar is a shared taxi service</b> in which you will:"
 
 #: View/SharedTravels/home.ctp:8
 msgid "Llegar a muchos de tus destinos en Cuba usando nuestra <b>amplia red de taxis</b> que conectan lugares favoritos como {0} y otros."

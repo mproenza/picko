@@ -16,9 +16,81 @@ class SharedTravel extends Entity {
         9=>'Playa Girón', 
     );
     
+    public static $routes_info = [
+        0 => [
+            1=>['kms'=>'360', 'hrs'=>'4'],
+            2=>['kms'=>'190', 'hrs'=>'2.30'],
+            3=>['kms'=>'180', 'hrs'=>'2'],
+            4=>['kms'=>'260', 'hrs'=>'3'],
+            5=>['kms'=>'560', 'hrs'=>'7'],
+            6=>['kms'=>'600', 'hrs'=>'7.30'],
+            7=>['kms'=>'300', 'hrs'=>'3.30'],
+            8=>['kms'=>'190', 'hrs'=>'2.30'],
+            9=>['kms'=>'220', 'hrs'=>'3'],
+        ],
+        
+        1 => [
+            2=>['kms'=>'560', 'hrs'=>'6.30'],
+            3=>['kms'=>'300', 'hrs'=>'4'],
+            4=>['kms'=>'80', 'hrs'=>'1'],
+            5=>['kms'=>'250', 'hrs'=>'3.30'],
+            6=>['kms'=>'290', 'hrs'=>'4'],
+            8=>['kms'=>'240', 'hrs'=>'3'],
+            9=>['kms'=>'280', 'hrs'=>'3.30'],
+        ],
+        
+        2 => [
+            3=>['kms'=>'400', 'hrs'=>'4.30'],
+            4=>['kms'=>'480', 'hrs'=>'5'],
+            5=>['kms'=>'780', 'hrs'=>'8'],
+            6=>['kms'=>'820', 'hrs'=>'8.30'],
+            7=>['kms'=>'500', 'hrs'=>'5.30'],
+            8=>['kms'=>'400', 'hrs'=>'4.30'],
+            9=>['kms'=>'440', 'hrs'=>'5'],
+        ],
+        
+        3 => [
+            4=>['kms'=>'200', 'hrs'=>'3'],
+            5=>['kms'=>'500', 'hrs'=>'6.30'],
+            6=>['kms'=>'540', 'hrs'=>'7'],
+            7=>['kms'=>'230', 'hrs'=>'3'],
+        ],
+        
+        4 => [
+            5=>['kms'=>'320', 'hrs'=>'4'],
+            6=>['kms'=>'360', 'hrs'=>'4.30'],
+            8=>['kms'=>'150', 'hrs'=>'2'],
+            9=>['kms'=>'110', 'hrs'=>'1.30'],
+        ],
+        
+        5 => [
+            7=>['kms'=>'250', 'hrs'=>'3'],
+        ],
+        
+        6 => [
+            7=>['kms'=>'290', 'hrs'=>'3.30'],
+        ],
+        
+        7 => [
+            8=>['kms'=>'160', 'hrs'=>'2'],
+            9=>['kms'=>'200', 'hrs'=>'2.30'],
+        ]
+        
+    ];
+    public static function _routeInfo($origin, $destination) {
+        if(isset(self::$routes_info[$origin])) {
+            if(isset(self::$routes_info[$origin][$destination])) return self::$routes_info[$origin][$destination];
+        }
+        if(isset(self::$routes_info[$destination])) {
+            if(isset(self::$routes_info[$destination][$origin])) return self::$routes_info[$destination][$origin];
+        }
+        
+        return null;
+    }
+    
     public static $modalities = array(
         // El origin_id y el destination_id son indicadores unicos de cada lugar que se usan para recomendar transfers
-        'HABTRI8'=>array('origin_id'=>0, 'destination_id'=>1, 'origin'=>'La Habana', 'destination'=>'Trinidad', 'time'=>'8 am', 'price'=>35, 'info'=>['kms'=>'365', 'hrs'=>'4']),
+        'HABTRI8'=>array('origin_id'=>0, 'destination_id'=>1, 'origin'=>'La Habana', 'destination'=>'Trinidad', 'time'=>'8 am', 'price'=>35),
         'HABTRI14'=>array('origin_id'=>0, 'destination_id'=>1, 'origin'=>'La Habana', 'destination'=>'Trinidad', 'time'=>'2 pm', 'price'=>35),
         'HABVIN8'=>array('origin_id'=>0, 'destination_id'=>2, 'origin'=>'La Habana', 'destination'=>'Viñales', 'time'=>'8 am', 'price'=>25, 'active'=>false),
         'HABVIN12'=>array('origin_id'=>0, 'destination_id'=>2, 'origin'=>'La Habana', 'destination'=>'Viñales', 'time'=>'12 pm', 'price'=>25, 'active'=>false),
