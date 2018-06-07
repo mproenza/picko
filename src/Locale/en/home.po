@@ -36,16 +36,16 @@ msgid "Recogida en tu estancia u hotel"
 msgstr "Pick up at your accommodation or hotel"
 
 #: View/SharedTravels/home.ctp:8
-msgid "<b>PickoCar es un servicio de taxi compartido</b> en que podrás:"
-msgstr "<b>PickoCar is a shared taxi service</b> in which you will:"
+msgid "<b>PickoCar es un servicio de taxi compartido en {0}</b> en el cual podrás:"
+msgstr "<b>PickoCar is a shared taxi service in {0}</b> with which you will be able to:"
 
 #: View/SharedTravels/home.ctp:8
-msgid "Llegar a muchos de tus destinos en Cuba usando nuestra <b>amplia red de taxis</b> que conectan lugares favoritos como {0} y otros."
-msgstr "Be able to get to many of your destinations in Cuba using our <b>wide network of taxis</b> connecting favourite places like {0} and others."
+msgid "<b>Llegar a muchos de tus destinos</b> en Cuba usando nuestra amplia red de taxis que conectan lugares favoritos como {0} y otros."
+msgstr "<b>Get to many of your destinations</b> in Cuba using our wide network of taxis connecting favourite places like {0} and others."
 
 #: View/SharedTravels/home.ctp:8
-msgid "Viajar cómodo en un auto moderno con aire acondicionado y con <b>sólo 4 pasajeros</b> dentro, todos yendo al mismo destino y con reservación de antemano."
-msgstr "Travel confortably in an air-conditioned modern car with <b>only 4 passengers</b> inside, all going to the same destination and with their bookings before hand."
+msgid "<b>Viajar cómodo</b> en un auto moderno con aire acondicionado y con <b>sólo 4 pasajeros</b> dentro, todos yendo al mismo destino y con reservación de antemano."
+msgstr "<b>Travel confortably</b> in an air-conditioned modern car with <b>only 4 passengers</b> inside, all going to the same destination and with their bookings before hand."
 
 #: View/SharedTravels/home.ctp:8
 msgid "Recibir un <b>servicio puerta a puerta</b> en el cual el taxi te recoge en tu casa de estancia u hotel y te lleva hasta tu próxima estancia."
