@@ -15,17 +15,21 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 
-#: View/Layouts/shared_rides.ctp:8
+#: View/Elements/menu.ctp:8
 msgid "IR AL INICIO"
 msgstr "HOMEPAGE"
 
-#: View/Layouts/shared_rides.ctp:8
+#: View/Elements/menu.ctp:8
 msgid "VER RUTAS Y PRECIOS"
 msgstr "SEE ROUTES AND PRICES"
 
-#: View/Layouts/shared_rides.ctp:8
+#: View/Elements/menu.ctp:8
 msgid "Sobre Nosotros"
 msgstr "About Us"
+
+#: View/Elements/menu.ctp:8
+msgid "Contactar"
+msgstr "Contact"
 
 #: View/Layouts/shared_rides.ctp:8
 msgid "Características y Términos"
@@ -494,3 +498,27 @@ msgstr "Transfer from {0} to {1} on {2}"
 #: View/Layouts/shared_rides.ctp:8
 msgid "Por los creadores de {0}, la plataforma para contratar choferes privados en Cuba"
 msgstr "By the creators of {0}, the platform to hire private drivers in Cuba"
+
+### CONTACT
+
+#: View/SharedTravels/view.ctp:8
+msgid "Contáctanos"
+msgstr "Contact us"
+
+#: View/SharedTravels/view.ctp:8
+msgid "Tu nombre"
+msgstr "Your name"
+
+#: View/SharedTravels/view.ctp:8
+msgid "Tu correo"
+msgstr "Your email"
+
+#: View/SharedTravels/view.ctp:8
+msgid "Mensaje"
+msgstr "Message"
+
+#: View/SharedTravels/view.ctp:8
+msgid "Enviar mensaje"
+msgstr "Send message"
+
+#----------------------------

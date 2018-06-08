@@ -37,3 +37,7 @@ msgstr "ver"
 #: View/SharedTravels/home.ctp:8
 msgid "about"
 msgstr "sobre-nosotros"
+
+#: View/SharedTravels/home.ctp:8
+msgid "contact"
+msgstr "contactar"

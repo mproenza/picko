@@ -127,6 +127,9 @@ class AppController extends Controller
                 'about'=>array('title'=>__d('meta', 'Sobre Nosotros'), 'description'=>__d('meta', 'Conoce lo que hacemos en PickoCar, nuestro servicio de taxi compartido en Cuba que conecta varios destinos')),
                 /*'faq'=>array('title'=>__d('meta', 'Preguntas Frecuentes'), 'description'=>__d('meta', 'Preguntas y respuestas sobre cómo conseguir un taxi para moverte por Cuba usando YoTeLlevo')),
                 'testimonials'=>array('title'=>__d('meta', 'Testimonios de viajeros sorprendentes en Cuba'), 'description'=>__d('meta', 'Testimonios de viajeros que contrataron choferes con YoTeLlevo, Cuba'))*/),
+            
+            // HOMEPAGE
+            'Contact.index' => ['title'=>__d('meta', 'Contactar'), 'description'=>__d('meta', 'PickoCar es un servicio de taxi compartido en Cuba. Contáctanos para cualquier pregunta.')],
 
 
             // USER ACTIONS
@@ -158,6 +161,4 @@ class AppController extends Controller
 
         return null;
     }
-
-
 }

@@ -84,7 +84,7 @@ Router::addUrlFilter(function ($params, $request) {
     if(isset($params['language'])) I18n::setLocale($params['language']);
     
     if(isset($params['controller'])) {
-        $params['controller'] = __d('urls', $params['controller']);
+        $params['controller'] = __d('urls', Inflector::dasherize($params['controller']));
     }
     if(isset($params['action'])) {
         $params['action'] = __d('urls', $params['action']);
@@ -169,7 +169,7 @@ Router::scope('/:language', function (RouteBuilder $routes) {
      * You can remove these routes once you've connected the
      * routes you want in your application.
      */
-    $routes->fallbacks(DashedRoute::class);
+    $routes->fallbacks(UrlI18nRoute::class);
 });
 
 /**

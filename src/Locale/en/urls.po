@@ -31,3 +31,6 @@ msgstr "view"
 
 msgid "sobre-nosotros"
 msgstr "about"
+
+msgid "contactar"
+msgstr "contact"
