@@ -24,6 +24,10 @@ msgid "VER RUTAS Y PRECIOS"
 msgstr "SEE ROUTES AND PRICES"
 
 #: View/Elements/menu.ctp:8
+msgid "VER OTRAS RUTAS DISPONIBLES"
+msgstr "SEE OTHER ROUTES AVAILABLE"
+
+#: View/Elements/menu.ctp:8
 msgid "Sobre Nosotros"
 msgstr "About Us"
 

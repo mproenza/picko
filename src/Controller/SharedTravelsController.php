@@ -165,7 +165,7 @@ class SharedTravelsController extends AppController {
                 $confirmedReason = __d('shared_travels', 'llena uno de nuestros autos de 4 plazas');
                 
             } else {
-                // Intentar emparejar con otras solicitudes
+                /*// Intentar emparejar con otras solicitudes
                 $couplings = $STTable->findCouplings($request);
                 
                 if($couplings != null) {// Se encontro coupling!
@@ -198,7 +198,7 @@ class SharedTravelsController extends AppController {
                     $confirmed = true;
                     $confirmedReason = __d('shared_travels', 'fue emparejada con otras solicitudes para llenar las 4 plazas de uno de nuestros autos');
 
-                } else { // No se encontraron couplings
+                } else { // No se encontraron couplings*/
                     
                     // Buscar si este cliente tiene otras solicitudes activadas
                     $all_requests = $STTable->findActiveRequests($request['SharedTravel']['email']);
@@ -244,7 +244,7 @@ class SharedTravelsController extends AppController {
                             ['lang'=>'es']
                             );
                     }
-                }
+                //}
             }
         }
         

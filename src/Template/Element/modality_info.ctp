@@ -19,7 +19,7 @@ if(!isset ($doBootbox)) $doBootbox = false;
             <div>
                 <?php echo $this->Html->link(__d('shared_travels', '<big>Compartir este viaje</big> <div>y pagar sólo <b>{0}</b> por persona</div>', $modality['price']. ' cuc'), 
                         array('controller'=>'shared-rides', 'action'=>'book', '?'=>['s'=>$code]), 
-                        array('data-modal'=>'info-'.$code, /*'data-title'=>__d('shared_travels', 'Solicita un transfer de {0} a {1}', '<code><big>'.$modality['origin'].'</big></code>','<code><big>'.$modality['destination'].'</big></code>'),*/ 'class'=>'btn btn-block btn-info open-request-form', 'style'=>'white-space: normal;', 'escape'=>false))?>
+                        array('data-modal'=>'info-'.$code, 'class'=>'btn btn-block btn-info open-request-form', 'style'=>'white-space: normal;', 'escape'=>false))?>
             </div>
             <div style="display: none" id="info-<?php echo $code?>">
                 <?php echo $this->element('shared_travel_book_prompt', compact('modality') + compact('code'))?>
