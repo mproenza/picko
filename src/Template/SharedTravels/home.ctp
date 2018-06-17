@@ -37,19 +37,20 @@ use App\Model\Entity\SharedTravel;
         
         <div class="row">
             <div class="col-md-10 offset-md-1 we-offer">
+                <h4 class="center"><?php echo __d('home', '<b>PickoCar es un servicio de taxi compartido en {0}</b> que te permitirá llegar a tus destinos por excelentes precios', '<code style="background-color:inherit"><big>Cuba</big></code>') ?></h4>
+                <br/>
+                <br/>
                 <ul class="fa-ul">
-                    <h4><?php echo __d('home', '<b>PickoCar es un servicio de taxi compartido en {0}</b> que te permitirá:', '<code style="background-color:inherit"><big>Cuba</big></code>') ?></h4>
-                    <br/>
-                    <li><i class="fa-li fa fa-check"></i><big><?php echo __d('home', '<b>Ahorrar dinero</b> si viajas solo, en pareja o son tres personas y no quieren pagar el viaje completo en un taxi privado como si fueran cuatro personas.') ?></big></li>
-                    <li class="mt-3"><i class="fa-li fa fa-check"></i><big><?php echo __d('home', '<b>Viajar cómodo</b> en un auto moderno con aire acondicionado y con <b>sólo 4 pasajeros</b> dentro, todos yendo al mismo destino y con reservación de antemano.') ?></big></li>
-                    <li class="mt-3"><i class="fa-li fa fa-check"></i><big><?php echo __d('home', 'Recibir un <b>servicio puerta a puerta</b> en el cual <b>el taxi te recoge en tu casa de estancia u hotel</b> y te lleva hasta tu próxima estancia.') ?></big></li>
-                    <li class="mt-3"><i class="fa-li fa fa-check"></i><big><?php echo __d('home', '<b>Llegar a muchos de tus destinos</b> en Cuba usando nuestra amplia red de taxis que conectan lugares favoritos como {0} y otros.', '<code><b>La Habana</b></code>, <code><b>Viñales</b></code>, <code><b>Varadero</b></code>, <code><b>Trinidad</b></code>, <code><b>Cayo Guillermo</b></code>') ?></big></li>
+                    <li><i class="fa-li fa fa-check"></i><big><?php echo __d('home', '<b>Ahorra dinero</b> si viajas solo, en pareja o son tres personas y no quieren pagar el viaje completo en un taxi privado como si fueran cuatro personas.') ?></big></li>
+                    <li class="mt-3"><i class="fa-li fa fa-check"></i><big><?php echo __d('home', '<b>Viaja cómodo</b> en un auto moderno con aire acondicionado y con <b>sólo 4 pasajeros</b> dentro, todos yendo al mismo destino y con reservación de antemano.') ?></big></li>
+                    <li class="mt-3"><i class="fa-li fa fa-check"></i><big><?php echo __d('home', 'Recibe un <b>servicio puerta a puerta</b> en el cual <b>el taxi te recoge en tu casa de estancia u hotel</b> y te lleva hasta tu próxima estancia.') ?></big></li>
+                    <li class="mt-3"><i class="fa-li fa fa-check"></i><big><?php echo __d('home', '<b>Llega a muchos de tus destinos</b> en Cuba usando nuestra amplia red de taxis que conectan lugares favoritos como {0} y otros.', '<code><b>La Habana</b></code>, <code><b>Viñales</b></code>, <code><b>Varadero</b></code>, <code><b>Trinidad</b></code>, <code><b>Cayo Guillermo</b></code>') ?></big></li>
                 </ul>
                 
                 <div class="col-md-8 offset-md-2" style="margin-top: 60px">
-                    <a class="btn btn-block btn-info" href="#routes-and-prices" style="white-space: normal;"><span class="fa-2x"><?php echo __d('home', 'Mira nuestras rutas y precios')?></span></a>
-                    <!--<div style="padding-top:10px;text-align: center"><code><big>La Habana</big></code> • <code><big>Viñales</big></code> • <code><big>Trinidad</big></code> • <code><big>Varadero</big></code></div>
-                    <div style="text-align: center">... <?php echo __d('home', 'y otros destinos')?></div>-->
+                    <a class="btn btn-block btn-info" href="#routes-and-prices" style="white-space: normal;">
+                        <span class="fa-2x"><?php echo __d('home', 'Mira las rutas y precios disponibles')?></span>
+                    </a>
                 </div>
             </div> 
         </div>
@@ -79,12 +80,6 @@ use App\Model\Entity\SharedTravel;
                     <h3 style="text-align: center">
                         <?php echo __d('home', 'Selecciona tus rutas y horarios para reservar un taxi')?>
                     </h3>
-                    
-                    <!--<div class="col-md-10 offset-md-1">
-                        <ul class="fa-ul">
-                            <li><i class="fa-li fa fa-check"></i><?php echo __d('home', 'Al reservar estarás en contacto por email con uno de nuestros asistentes mientras llega la fecha del viaje, quien atenderá cualquier duda o petición que tengas, incluyendo cancelaciones.')?></li>
-                        </ul>
-                    </div>-->
                 </div>        
             </div>            
             
