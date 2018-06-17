@@ -223,10 +223,6 @@ msgid "Debes confirmarla para nosotros comenzar a arreglar todo."
 msgstr "You must confirm it before we start arranging everything."
 
 #: View/SharedTravels/thanks.ctp:8
-msgid "Si no ves el correo en tu bandeja de entrada, revisa la carpeta de spams."
-msgstr "If you don't see the email in your inbox, check your spams folder."
-
-#: View/SharedTravels/thanks.ctp:8
 msgid "Estos son todos los datos de tu solicitud"
 msgstr "This is all the info of your request"
 
