@@ -88,8 +88,12 @@ msgid "En cuanto reservas, nosotros arreglamos todo de manera que compartas el v
 msgstr "As soon as you book, we arrange everything in a way that you share your trip with other travelers going to the same destination in the same date and time. This way you don't have to worry about finding other passengers to join you and no need to wait until the taxi is full at the moment of departure."
  
 #: View/SharedTravels/home.ctp:8
-msgid "Selecciona tus rutas y horarios para reservar un taxi"
-msgstr "Select your routes and departure times to book a taxi"
+msgid "Estas son las rutas, precios y horarios de nuestros taxis"
+msgstr "These are the routes, prices and departure times of our taxis"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Reserva nuestros servicios aquí:"
+msgstr "Book our services here:"
 
 #: View/SharedTravels/home.ctp:8
 msgid "Al reservar estarás en contacto por email con uno de nuestros asistentes mientras llega la fecha del viaje, quien atenderá cualquier duda o petición que tengas, incluyendo cancelaciones."
@@ -112,48 +116,64 @@ msgid "Rutas saliendo desde {0}"
 msgstr "Routes departing from {0}"
 
 #: View/SharedTravels/home.ctp:8
-msgid "Preguntas frecuentes"
-msgstr "Frequently asked questions"
+msgid "{0} cosas que debes tener en cuenta si vas a usar nuestros servicios"
+msgstr "{0} things you must take into account if you want to use our service"
 
 #: View/SharedTravels/home.ctp:8
-msgid "¿Cuánto demoran en confirmarme la realización del viaje?"
-msgstr "How long will it take you to confirm my transfer?"
+msgid "Los horarios de salida de nuestros taxis son fijos y no pueden cambiarse"
+msgstr "The departure times of our taxis are fixed and can not be changed"
 
 #: View/SharedTravels/home.ctp:8
-msgid "Usualmente confirmamos instantáneamente porque tenemos otras solicitudes pendientes que se pueden emparejar en el mismo viaje con usted."
-msgstr "Usually we confirm instantly because we have other pending requests that can be paired with yours in the same trip."
+msgid "Si necesitas salir hacia tu destino en un horario diferente a los que ofrecemos, entonces no podemos atender tu necesidad."
+msgstr "If you need to depart to your destination at a different time than the ones we offer, we cannot meet your need."
 
 #: View/SharedTravels/home.ctp:8
-msgid "Cuando esto no ocurre entonces usamos otras vías para recibir solicitudes, por lo cual lo normal es que confirmemos  en las primeras 24 horas."
-msgstr "When that doesn't happen, we use other ways to receive requests and normally we will always confirm within the first 24 hours."
+msgid "Ej. Si quieres ir de Varadero a La Habana a las 10 am, no podemos hacerlo porque ese horario no lo ofrecemos."
+msgstr "Ex. If you want to go from Varadero to La Habana at 10 am, we cannot do it because we don't offer that departure time."
 
 #: View/SharedTravels/home.ctp:8
-msgid "Una vez que le confirmamos, ya su viaje queda en nuestra agenda y el viaje se realizará sin problemas."
-msgstr "Once we confirm, your transfer is already in our agenda and it is going to happen without troubles."
+msgid "No hacemos recogidas en los aeropuertos"
+msgstr "We do not do airport pick ups"
 
 #: View/SharedTravels/home.ctp:8
-msgid "¿Puedo llevar mucho equipaje?"
-msgstr "Can I carry lots of luggage?"
+msgid "Ej. Si necesitas ir del aeropuerto de La Habana directamente a Viñales, no podemos hacerlo."
+msgstr "Ex. If you need to go from Havana airport to Viñales, we cannot do it."
 
 #: View/SharedTravels/home.ctp:8
-msgid "Siempre sugerimos considerar NO solicitar nuestro servicio si se lleva mucho equipaje. Esto se debe a que el auto va a ser compartido, y por tanto también el espacio del maletero."
-msgstr "We always suggest to consider NOT requesting our service if you carry lots of luggage. This is because you are going to share the car, and also the space in the truck."
+msgid "Debido a los horarios fijos de nuestros taxis, es muy difícil hacer que las personas lleguen y salgan del aeropuerto en el momento apropiado."
+msgstr "Due to our fixed departure times, it is very difficult to make people arrive at and leave the airport at the proper time."
 
 #: View/SharedTravels/home.ctp:8
-msgid "Una maleta mediana por cada persona es aceptable, pero si las maletas son demasiado grandes entonces es mejor considerar viajar en bus."
-msgstr "A medium sized suitcase by each person is good, but if the suitcases are too large then it is better to consider to travel by bus."
+msgid "Sin embargo, sí aceptamos aeropuertos como lugar de destino <em>-ej. si vas de Trinidad al aeropuerto de La Habana</em>."
+msgstr "However, we do accept airport as the drop off place <em>-ex. if you go from Trinidad to Havana airport</em>."
 
 #: View/SharedTravels/home.ctp:8
-msgid "¿Puedo hacer paradas para hacer fotos en lugares que me interesen dentro del recorrido?"
-msgstr "Can we stop to take pictures in places I'm interested in within the route?"
+msgid "La recogida (en casa u hotel) puede demorar hasta 30 minutos después del horario establecido"
+msgstr "Pick up (at casa or hotel) can take up to 30 minutes after the established time"
 
 #: View/SharedTravels/home.ctp:8
-msgid "NO realizamos paradas de tipo excursionistas porque el auto debe llegar a su destino a una hora adecuada para prestar otro servicio."
-msgstr "We DON'T make excursion-like stops during  the journey because the car must get to its destination at a proper time to start another service."
+msgid "Ej. Si reservas para ir de La Habana a Varadero a las 8 am, el taxi te pudiera recoger a las 8:30 am."
+msgstr "Ex. If you book to go from La Habana to Varadero at 8 am, the taxi could pick you up at 8:30 am."
 
 #: View/SharedTravels/home.ctp:8
-msgid "En los tramos largos (ej. La Habana - Trinidad) realizamos una parada en cafetería para merendar e ir al baño, y además se pueden solicitar otras paradas para cualquier otra necesidad."
-msgstr "We DO stop during long journeys (ex. La Habana - Trinidad) to go for a coffee, have a snack or use the bathroom. Also, you can ask for a stop for any other need you have."
+msgid "Esto se debe a que tenemos que recoger pasajeros en diferentes lugares (normalmente en dos lugares diferentes). El taxi recogerá a unos pasajeros antes que otros, y luego partirá hacia el destino."
+msgstr "This is because we need to pick passengers up at different places (normally at two different places). The taxi goes pick some passengers before and others after, and then departs to the destination."
+
+#: View/SharedTravels/home.ctp:8
+msgid "No realizamos paradas de tipo excursionista durante los viajes"
+msgstr "We do not make excursion-like stops during the journey"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Ej. En un viaje de La Habana a Trinidad, no hacemos parada para visitar Cienfuegos."
+msgstr "Ex. In a trip from La Habana to Trinidad, we do not stop to visit Cienfuegos."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Esto se debe a que el auto debe llegar a su destino a una hora adecuada para prestar otro servicio."
+msgstr "This is because the car must get to its destination at a proper time to start another service."
+
+#: View/SharedTravels/home.ctp:8
+msgid "En los tramos largos (<em>ej. La Habana - Trinidad</em>) realizamos una parada en cafetería para merendar e ir al baño, y además se pueden solicitar otras paradas para cualquier otra necesidad."
+msgstr "We do stop during long journeys (<em>ex. La Habana - Trinidad</em>) to go for a coffee, have a snack or use the bathroom. Also, you can ask for a stop for any other need you have."
 
 #: View/SharedTravels/home.ctp:8
 msgid "Ver las rutas y horarios disponibles"

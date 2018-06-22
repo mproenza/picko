@@ -48,7 +48,7 @@ use App\Model\Entity\SharedTravel;
                 </ul>
                 
                 <div class="col-md-8 offset-md-2" style="margin-top: 60px">
-                    <a class="btn btn-block btn-info" href="#routes-and-prices" style="white-space: normal;">
+                    <a class="btn btn-block btn-info" href="#<?php echo __d('meta', 'rutas-y-precios')?>" style="white-space: normal;">
                         <span class="fa-2x"><?php echo __d('home', 'Mira las rutas y precios disponibles')?></span>
                     </a>
                 </div>
@@ -72,14 +72,17 @@ use App\Model\Entity\SharedTravel;
 
     </div>
     
-    <div id="routes-and-prices" data-h-offset="0" class="row arrow_box arrow_box_bottom" style="margin-top: 60px"></div>
+    <div id="<?php echo __d('meta', 'rutas-y-precios')?>" data-h-offset="0" class="row arrow_box arrow_box_bottom" style="margin-top: 60px"></div>
     <div class="row" style="background-color: #ebebeb;padding-bottom: 80px">
         <div class="container">
             <div class="row" style="padding-top: 80px;padding-bottom: 40px">
                 <div class="col-md-10 offset-md-1">
                     <h3 style="text-align: center">
-                        <?php echo __d('home', 'Selecciona tus rutas y horarios para reservar un taxi')?>
+                        <?php echo __d('home', 'Estas son las rutas, precios y horarios de nuestros taxis')?>
                     </h3>
+                    <h4 style="text-align: center">
+                        <?php echo __d('home', 'Reserva nuestros servicios aquí:')?>
+                    </h4>
                 </div>        
             </div>            
             
@@ -117,26 +120,15 @@ use App\Model\Entity\SharedTravel;
     </div>
     <div class="row arrow_box arrow_box_top" style=""></div>
 
+    <div id="<?php echo __d('meta', 'debes-saber')?>" style="height: 120px;clear: both"></div>
+    
     <div class="row" style="padding-top: 80px">
         <div class="container">
             <div class="col-md-8 offset-md-2">
-                <p class="lead"><big><?php echo __d('home', 'Preguntas frecuentes')?></big></p>
-                <hr/>
-                <p class="lead">1. <?php echo __d('home', '¿Cuánto demoran en confirmarme la realización del viaje?')?></p>
-                <p><?php echo __d('home', 'Usualmente confirmamos instantáneamente porque tenemos otras solicitudes pendientes que se pueden emparejar en el mismo viaje con usted.')?></p>
-                <p><?php echo __d('home', 'Cuando esto no ocurre entonces usamos otras vías para recibir solicitudes, por lo cual lo normal es que confirmemos  en las primeras 24 horas.')?></p>
-                <p><?php echo __d('home', 'Una vez que le confirmamos, ya su viaje queda en nuestra agenda y el viaje se realizará sin problemas.')?></p>
-                <br/>
-                <p class="lead">2. <?php echo __d('home', '¿Puedo llevar mucho equipaje?')?></p>
-                <p><?php echo __d('home', 'Siempre sugerimos considerar NO solicitar nuestro servicio si se lleva mucho equipaje. Esto se debe a que el auto va a ser compartido, y por tanto también el espacio del maletero.')?></p>
-                <p><?php echo __d('home', 'Una maleta mediana por cada persona es aceptable, pero si las maletas son demasiado grandes entonces es mejor considerar viajar en bus.')?></p>
-                <br/>
-                <p class="lead">3. <?php echo __d('home', '¿Puedo hacer paradas para hacer fotos en lugares que me interesen dentro del recorrido?')?></p>
-                <p><?php echo __d('home', 'NO realizamos paradas de tipo excursionistas porque el auto debe llegar a su destino a una hora adecuada para prestar otro servicio.')?></p>
-                <p><?php echo __d('home', 'En los tramos largos (ej. La Habana - Trinidad) realizamos una parada en cafetería para merendar e ir al baño, y además se pueden solicitar otras paradas para cualquier otra necesidad.')?></p>
+                <?php echo $this->element('you_must_know')?>
                 <br/>            
                 <br/>
-                <a href="#routes-and-prices" class="btn btn-block btn-info"><big><?php echo __d('home', 'Ver las rutas y horarios disponibles')?></big></a>
+                <a href="#<?php echo __d('meta', 'rutas-y-precios')?>" class="btn btn-block btn-info"><big><?php echo __d('home', 'Ver las rutas y horarios disponibles')?></big></a>
             </div>
         </div>
     </div>

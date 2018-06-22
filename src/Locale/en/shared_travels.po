@@ -28,6 +28,10 @@ msgid "VER OTRAS RUTAS DISPONIBLES"
 msgstr "SEE OTHER ROUTES AVAILABLE"
 
 #: View/Elements/menu.ctp:8
+msgid "Debes saber"
+msgstr "You must know"
+
+#: View/Elements/menu.ctp:8
 msgid "Sobre Nosotros"
 msgstr "About Us"
 

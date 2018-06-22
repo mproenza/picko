@@ -27,7 +27,7 @@ foreach (SharedTravel::$modalities as $code=>$mod)
     <?php endforeach;?>
 </ul>
 <hr/>
-<?php echo $this->Html->link(__d('shared_travels', 'VER OTRAS RUTAS DISPONIBLES'), array('_name'=>'homepage', '#'=>'routes-and-prices'), array('class'=>'btn btn-block btn-info'))?>
+<?php echo $this->Html->link(__d('shared_travels', 'VER OTRAS RUTAS DISPONIBLES'), array('_name'=>'homepage', '#'=>__d('meta', 'rutas-y-precios')), array('class'=>'btn btn-block btn-info'))?>
 <?php endif;?>
 <?php
     echo $this->Html->css('datepicker');

@@ -189,7 +189,6 @@ class SharedTravel extends Entity {
     public static $STATE_CONFIRMED = 'C'; // Cuando se confirma que se puede realizar (Andiel confirma)
     public static $STATE_CANCELLED = 'X'; //
     public static $STATE_DONE = 'D'; //
-	
     public static function getStateDesc($state) {
         $desc = array('title'=>__d('shared_travels', 'Pendiente'), 'class'=>'badge badge-warning', 'description'=>__d('shared_travels', 'No has activado esta solicitud por lo cual no hemos empezado las gestiones. Revisa tu correo y dale click al enlace que te enviamos.'));
         if($state == SharedTravel::$STATE_ACTIVATED) $desc = array('title'=>__d('shared_travels', 'Activada / No confirmada'), 'class'=>'badge badge-info', 'description'=>__d('shared_travels', 'Ya activaste la solicitud y ahora estamos haciendo las gestiones. Te enviaremos un email con la confirmación de la recogida en la fecha y dirección indicada.'));
@@ -197,6 +196,6 @@ class SharedTravel extends Entity {
         else if($state == SharedTravel::$STATE_CANCELLED) $desc = array('title'=>__d('shared_travels', 'Cancelada'), 'class'=>'badge badge-danger', 'description'=>__d('shared_travels', 'La solicitud fue cancelada por tí o por los administradores. La recogida está suspendida.'));
         
         return $desc;
-    }
+    }   
 }
 ?>

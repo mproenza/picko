@@ -58,3 +58,11 @@ msgstr "Info of your request"
 #: App/Controller/AppController.php:8
 msgid "Reserva un taxi para ir de {0} a {1} por un precio de {2} cuc por asiento. Sólo 4 pasajeros en un auto moderno con aire acondicionado y mucho confort."
 msgstr "Book a taxi to go from {0} to {1} for a price of {2} cuc per seat. Only 4 passengers in one modern car with air conditioner and great confort."
+
+#: App/Controller/AppController.php:8
+msgid "rutas-y-precios"
+msgstr "routes-and-prices"
+
+#: App/Controller/AppController.php:8
+msgid "debes-saber"
+msgstr "you-must-know"
