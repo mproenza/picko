@@ -9,7 +9,7 @@
             <br/>
             <p><?php echo __d('pages', 'Hola por ahí')?>! <?php echo __d('pages', 'Te saluda el equipo de PickoCar.')?> <?php echo __d('pages', 'Somos un pequeño grupo de cubanos que vivimos en Cuba.')?></p>
             <p><?php echo __d('pages', 'Hace un tiempo en 2014 lanzamos una plataforma donde se podía contactar con varios choferes privados que operan en Cuba para acordar servicios de transportación con ellos un tiempo antes de llegar a la isla.')?></p>
-            <p><?php echo __d('pages', 'Esa plataforma es {0}, y aún funciona. En realidad ahora administramos dos negocios relacionados con taxis en Cuba.', 'YoTeLlevoCuba.com')?></p>
+            <p><?php echo __d('pages', 'Esa plataforma es {0}, y aún funciona. En realidad ahora administramos dos negocios relacionados con taxis en Cuba.', '<a href="http://yotellevocuba.com" style="color:inherit" target="_blank">YoTeLlevoCuba.com</a>')?></p>
             
             <p><?php echo __d('pages', '¿Por qué creamos otro sitio web que se relaciona con lo mismo que el primero?')?></p>
             <p><?php echo __d('pages', 'La razón principal es: <b>el precio de los choferes privados es demasiado alto</b> para la mayoría de nuestros clientes, por lo cual no todos pueden usarlos.')?></p>
