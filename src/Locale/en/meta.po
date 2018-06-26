@@ -40,6 +40,14 @@ msgid "PickoCar es un servicio de taxi compartido en Cuba. Contáctanos para cua
 msgstr "PickoCar is a shared taxi service in Cuba. Contact us for any question."
 
 #: App/Controller/AppController.php:8
+msgid "Lanzamiento de PickoCar | Reseña para la Prensa"
+msgstr "Launch of PickoCar | Press Release"
+
+#: App/Controller/AppController.php:8
+msgid "Reseña para la prensa del lanzamiento de PickoCar en Cuba"
+msgstr "Press release of the launch of PickoCar in Cuba"
+
+#: App/Controller/AppController.php:8
 msgid "Taxi compartido desde {0} hasta {1}"
 msgstr "Shared taxi from {0} to {1}"
 

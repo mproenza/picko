@@ -107,3 +107,8 @@ body {
 }
 
 .label a {color: white;text-decoration: none}
+
+.blockquote {
+    padding: .5rem 1rem;
+    border-left: .25rem solid #eceeef;
+}
