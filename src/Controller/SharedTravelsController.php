@@ -315,14 +315,16 @@ class SharedTravelsController extends AppController {
         // Verificar si ya esta cancelada
         
         $OK = $STTable->updateAll(['state' => SharedTravel::$STATE_CANCELLED], ['id' => $request['SharedTravel']['id']]);
-        if($OK) {
+        if($OK && !$request['SharedTravel']['date']->isPast()) {
             // Aviso a facilitador
             $facilitator = Configure::read('shared_rides_facilitator');
             $modality = SharedTravel::$modalities[$request['SharedTravel']['modality_code']];
+            
+            $notice = 'CANCELADO > PickoCar #'.$request['SharedTravel']['id']. ' | '.TimeUtil::prettyDate($request['SharedTravel']['date'], false).' | '.$modality['origin'].' - '.$modality['destination'];
             $Email = new Email('aviso');
             $Email->to($facilitator['email'])
-                ->subject('CANCELADO > PickoCar #'.$request['SharedTravel']['id']. ' | '.TimeUtil::prettyDate($request['SharedTravel']['date'], false).' | '.$modality['origin'].' - '.$modality['destination'])
-                ->send();
+                ->subject($notice)
+                ->send($notice);
         } else {
             $this->Flash->error(__('Error cancelando la solicitud.'));
         }
