@@ -76,7 +76,7 @@ class SharedTravelsController extends AppController {
                     $Email = new Email('hola');
                     $Email->to('martin@yotellevocuba.com')
                             ->subject('Nueva solicitud: PickoCar #'.$request['SharedTravel']['id'])
-                            ->send();
+                            ->send('http://pickocar.com/shared-rides/view/'.$request['SharedTravel']['id_token']);
                 } else {
                     return $this->redirect(array('action' => 'activate/' . $activationToken));
                 }
@@ -122,6 +122,12 @@ class SharedTravelsController extends AppController {
         
         $result = $this->doActivate($request); // Aqui es donde se hace todo el procesamiento!!!
         $OK = $result['success'];
+        
+        // Email para mi
+        $Email = new Email('compartido');
+        $Email->to('martin@yotellevocuba.com')
+            ->subject('ACTIVADA: PickoCar #'.$request['SharedTravel']['id'].' - [['.$request['SharedTravel']['id_token'].']]')
+            ->send('http://pickocar.com/shared-rides/view/'.$request['SharedTravel']['id_token']);
         
         if($OK) {
             $datasource->commit();
@@ -259,9 +265,9 @@ class SharedTravelsController extends AppController {
         // Guardar algunos datos en la session para si el cliente quiere crear mas solicitudes que no tenga que repetirlas
         // TODO: Guardarlos en una Cookie???
         $session = $this->request->session();
-        $session->write('SharedTravels.email', $request['SharedTravel']['email']);
-        $session->write('SharedTravels.people_count', $request['SharedTravel']['people_count']);
-        $session->write('SharedTravels.name_id', $request['SharedTravel']['name_id']);
+        $session->write('user_email', $request['SharedTravel']['email']);
+        $session->write('user_people_count', $request['SharedTravel']['people_count']);
+        $session->write('user_name_id', $request['SharedTravel']['name_id']);
         
         return array('success'=>$OK, 'confirmed'=>$confirmed, 'confirmed_reason'=>$confirmedReason, 'coupled'=>$coupled);
     }
@@ -315,7 +321,9 @@ class SharedTravelsController extends AppController {
         // Verificar si ya esta cancelada
         
         $OK = $STTable->updateAll(['state' => SharedTravel::$STATE_CANCELLED], ['id' => $request['SharedTravel']['id']]);
-        if($OK && !$request['SharedTravel']['date']->isPast()) {
+        
+        // Avisar al facilitador solo si la fecha del viaje no ha pasado y si estaba activado
+        if($OK && !$request['SharedTravel']['date']->isPast() && $request['SharedTravel']['activated']) {
             // Aviso a facilitador
             $facilitator = Configure::read('shared_rides_facilitator');
             $modality = SharedTravel::$modalities[$request['SharedTravel']['modality_code']];
