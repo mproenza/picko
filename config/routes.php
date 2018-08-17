@@ -131,9 +131,13 @@ Router::scope('/:language', function (RouteBuilder $routes) {
     });
     $routes->connect('/login', ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'login']);
     $routes->connect('/logout', ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'logout']);
-    $routes->connect('/profile/*', ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'profile']);
+    $routes->connect('/profile/*', ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'profile']);    
     
+    // SOME PAGES
+    $routes->connect('/contact', ['controller' => 'Contact', 'action' => 'index'], ['routeClass' => 'UrlI18nRoute'])
+            ->setPatterns(['language' => 'en|es']);
     
+    // ANYTHING ELSE GOES THORUGH PAGES
     $routes->connect('/*', ['controller' => 'Pages', 'action' => 'display'], ['routeClass' => 'UrlI18nRoute'])
             ->setPatterns(['language' => 'en|es']);
     
