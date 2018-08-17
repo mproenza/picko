@@ -48,8 +48,8 @@ msgid "Reseña para la prensa del lanzamiento de PickoCar en Cuba"
 msgstr "Press release of the launch of PickoCar in Cuba"
 
 #: App/Controller/AppController.php:8
-msgid "Taxi compartido desde {0} hasta {1}"
-msgstr "Shared taxi from {0} to {1}"
+msgid "Taxi compartido de {0} a {1}. Precio: ${2} por asiento"
+msgstr "Shared taxi from {0} to {1}. Price: ${2} per seat"
 
 #: App/Controller/AppController.php:8
 msgid "Gracias por su solicitud"
@@ -64,8 +64,17 @@ msgid "Datos de tu solicitud"
 msgstr "Info of your request"
 
 #: App/Controller/AppController.php:8
-msgid "Reserva un taxi para ir de {0} a {1} por un precio de {2} cuc por asiento. Sólo 4 pasajeros en un auto moderno con aire acondicionado y mucho confort."
-msgstr "Book a taxi to go from {0} to {1} for a price of {2} cuc per seat. Only 4 passengers in one modern car with air conditioner and great confort."
+msgid "Reserva un taxi para ir de {0} a {1} por un precio de {2} cuc por asiento. Recogida en casa u hotel. Sólo 4 pasajeros en un auto moderno con aire acondicionado y mucho confort."
+msgstr "Book a taxi to go from {0} to {1} for a price of {2} cuc per seat. Pick up at guest-house or hotel. Only 4 passengers in a modern car with air conditioner and great confort."
+
+#: App/Controller/AppController.php:8
+msgid "Taxi compartido en Cuba con precios similares al bus Viazul"
+msgstr "Shared taxi in Cuba with prices similar to Viazul bus's"
+
+#: App/Controller/AppController.php:8
+msgid "PickoCar es un servicio de taxi compartido en Cuba con excelentes precios y rutas que conectan destinos como {0} y otros"
+msgstr "PickoCar is a shared taxi service in Cuba with excellent prices and routes that connect destinations like {0} and others"
+
 
 #: App/Controller/AppController.php:8
 msgid "rutas-y-precios"
@@ -74,3 +83,7 @@ msgstr "routes-and-prices"
 #: App/Controller/AppController.php:8
 msgid "debes-saber"
 msgstr "you-must-know"
+
+#: App/Controller/AppController.php:8
+msgid "reservar"
+msgstr "book"

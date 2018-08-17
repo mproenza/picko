@@ -61,24 +61,6 @@ Router::addUrlFilter(function ($params, $request) {
 
 // Filtro para crear url traducidas al idioma actual
 Router::addUrlFilter(function ($params, $request) {
-    // Si esta el lenguaje pero no esta ni el controller ni la action, entonces es el link de cambio de lenguaje.
-    // Debemos poner en los params
-    /*if(isset($params['language']) && !isset($params['_name']) && !(isset($params['controller']) || isset($params['action']))) {
-        
-        $currentLang = I18n::getLocale();
-        
-        I18n::setLocale($params['language']);
-        
-        $controller = $request->params['controller'];
-        if($controller == 'SharedTravels') $controller = 'shared-rides';
-        $params['controller'] = __d('urls', $controller);
-        $params['action'] = __d('urls', $request->params['action']);
-        
-        I18n::setLocale($currentLang);
-        
-        return $params;
-    }*/
-    
     // Si esta el lenguaje en los parametros, cambiar a ese lenguaje para las traducciones temporalmente
     $currentLang = I18n::getLocale();
     if(isset($params['language'])) I18n::setLocale($params['language']);
@@ -102,15 +84,16 @@ Router::addUrlFilter(function ($params, $request) {
     return $params;
 });
 
-// Filtro para los slug para las solicitudes. Ej. para generar la url /book/taxi-from-la-habana-to-trinidad-2pm
+// Filtro para los slug para las solicitudes. Ej. para generar la url /book/taxi--la-habana-trinidad-2pm
 /*Router::addUrlFilter(function ($params, $request) {
-    if(isset($params['controller']) &&  $params['controller'] == 'shared-rides'
+    if(isset($params['controller']) &&  in_array($params['controller'], ['shared-rides', 'SharedTravels']) 
         && isset($params['action']) &&  $params['action'] == 'book') {
         
-        $modalityCode = $params['?']['s'];
+        $modalityCode = $params['pass'][0];
         $modality = SharedTravel::$modalities[$modalityCode];
         
-        $params['?']['slug'] = 'taxi-from-'.strtolower(str_replace(' ', '-', $modality['origin'])).'-to-'.strtolower(str_replace(' ', '-', $modality['destination'])).'-'.str_replace(' ', '-', $modality['time']);
+        $params['?'] = [];
+        $params['?']['slug'] = 'taxi--'.strtolower(str_replace(' ', '-', $modality['origin'])).'-'.strtolower(str_replace(' ', '-', $modality['destination'])).'-'.str_replace(' ', '', $modality['time']);
     }
 
     return $params;
@@ -120,11 +103,8 @@ Router::scope('/:language', function (RouteBuilder $routes) {
     
     $routes->connect('/', ['controller' => 'SharedTravels', 'action' => 'home'], ['_name'=>'homepage'])
             ->setPatterns(['language' => 'en|es']);
-
-    // Pages
-    /*$routes->connect('/about', ['controller' => 'Pages', 'action' => 'display', 'about'], ['routeClass' => 'UrlI18nRoute'])
-            ->setPatterns(['language' => 'en|es']);*/
-    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display'], ['routeClass' => 'UrlI18nRoute'])
+    
+    $routes->connect('/taxi-vs-viazul', ['controller' => 'Pages', 'action' => 'display', 'taxi-vs-viazul'], ['routeClass' => 'UrlI18nRoute'])
             ->setPatterns(['language' => 'en|es']);
     
     // Shared Rides
@@ -152,6 +132,13 @@ Router::scope('/:language', function (RouteBuilder $routes) {
     $routes->connect('/login', ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'login']);
     $routes->connect('/logout', ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'logout']);
     $routes->connect('/profile/*', ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'profile']);
+    
+    
+    $routes->connect('/*', ['controller' => 'Pages', 'action' => 'display'], ['routeClass' => 'UrlI18nRoute'])
+            ->setPatterns(['language' => 'en|es']);
+    
+    /*$routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display'], ['routeClass' => 'UrlI18nRoute'])
+            ->setPatterns(['language' => 'en|es']);*/
 
     /**
      * Connect catchall routes for all controllers.

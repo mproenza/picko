@@ -16,12 +16,12 @@ msgstr ""
 
 
 #: View/SharedTravels/home.ctp:8
-msgid "Llega a cada uno de tus destinos en {0} gastando menos dinero"
-msgstr "Arrive in each of your destinations in {0} spending less money"
+msgid "Comparte tu taxi en {0} y gasta menos para llegar a cada destino"
+msgstr "Share your taxi in {0} and spend less getting to each destination"
 
 #: View/SharedTravels/home.ctp:8
-msgid "Comparte un taxi cómodo con otros viajeros que van al mismo destino que tú y paga sólo por los asientos que ocupes"
-msgstr "Share a confortable taxi with other travelers going to the same destination as you and pay only for the seats you occupy"
+msgid "En PickoCar reservas un taxi a tu destino, haces el recorrido junto a otros viajeros que reservaron tu misma ruta y <span style="display: inline-block"><b>pagas sólo por tus asientos</b></span>"
+msgstr "At PickoCar you book a taxi to your destination, do the journey along with other travelers who booked the same route and <span style="display: inline-block"><b>you pay only for your seats</b></span>"
 
 #: View/SharedTravels/home.ctp:8
 msgid "Autos muy confortables"
@@ -36,32 +36,52 @@ msgid "Recogida en tu estancia u hotel"
 msgstr "Pick up at your accommodation or hotel"
 
 #: View/SharedTravels/home.ctp:8
-msgid "<b>PickoCar es un servicio de taxi compartido en {0}</b> que te permitirá llegar a tus destinos por excelentes precios"
-msgstr "<b>PickoCar is a shared taxi service in {0}</b> that will allow you to get to your destinations for amazing prices"
+msgid "Algunos de nuestros precios <span style="display: inline-block">(por asiento)</span>"
+msgstr "Some of our prices <span style="display: inline-block">(per seat)</span>"
 
 #: View/SharedTravels/home.ctp:8
-msgid "<b>Llega a muchos de tus destinos</b> en Cuba usando nuestra amplia red de taxis que conectan lugares favoritos como {0} y otros."
-msgstr "<b>Get to many of your destinations</b> in Cuba using our wide network of taxis connecting favourite places like {0} and others."
+msgid "También {0} y otros"
+msgstr "Also {0} and others"
 
 #: View/SharedTravels/home.ctp:8
-msgid "<b>Viaja cómodo</b> en un auto moderno con aire acondicionado y con <b>sólo 4 pasajeros</b> dentro, todos yendo al mismo destino y con reservación de antemano."
-msgstr "<b>Travel confortably</b> in an air-conditioned modern car with <b>only 4 passengers</b> inside, all going to the same destination and with their bookings before hand."
+msgid "Mira todas las rutas y precios"
+msgstr "See all routes and prices"
 
 #: View/SharedTravels/home.ctp:8
-msgid "Recibe un <b>servicio puerta a puerta</b> en el cual <b>el taxi te recoge en tu casa de estancia u hotel</b> y te lleva hasta tu próxima estancia."
-msgstr "Receive a <b>door to door service</b> in which <b>the taxi picks you up at your guest house or hotel</b> and drops you off at your next accommodation."
+msgid "En PickoCar organizamos viajes compartidos en taxi hacia diferentes destinos en la isla todos los días"
+msgstr "At PickoCar we organize shared rides in taxi to different destinations in the island every day"
 
 #: View/SharedTravels/home.ctp:8
-msgid "<b>Ahorra dinero</b> si viajas solo, en pareja o son tres personas y no quieren pagar el viaje completo en un taxi privado como si fueran cuatro personas."
-msgstr "<b>Save money</b> if you travel alone, in a couple or a three-people pack and don't want to pay the whole trip in a private ride as if you were four people."
+msgid "Con sólo reservar, arreglamos todo de manera que compartas el taxi con otros viajeros que van al mismo destino que tú y que han reservado con nosotros para la misma fecha y horario -sólo viajan 4 pasajeros en cada taxi."
+msgstr "After you book, we arrange everything in a way that you share your trip with other travelers going to the same destination, who booked with us for the same date and time -only 4 passengers travel in each taxi."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Esto es lo que ganas:"
+msgstr "Here is what you win:"
+
+#: View/SharedTravels/home.ctp:8
+msgid "<b>Llegas a muchos de tus destinos</b> en Cuba usando nuestra amplia red de taxis que conectan lugares favoritos como {0} y otros."
+msgstr "<b>You get to many of your destinations</b> in Cuba using our wide network of taxis connecting favourite places like {0} and others."
+
+#: View/SharedTravels/home.ctp:8
+msgid "<b>Viajas cómodo</b> en un auto moderno con aire acondicionado y con <b>sólo 4 pasajeros</b> dentro, todos yendo al mismo destino y con reservación de antemano."
+msgstr "<b>You travel confortably</b> in an air-conditioned modern car with <b>only 4 passengers</b> inside, all going to the same destination and with their bookings before hand."
+
+#: View/SharedTravels/home.ctp:8
+msgid "<b>Recibes un servicio puerta a puerta</b> en el cual <b>el taxi te recoge en tu casa de estancia u hotel</b> y te lleva hasta tu próxima estancia."
+msgstr "<b>You receive a door to door service</b> in which <b>the taxi picks you up at your guest house or hotel</b> and drops you off at your next accommodation."
+
+#: View/SharedTravels/home.ctp:8
+msgid "<b>Ahorras dinero</b> si viajas solo, en pareja o son tres personas y no quieren pagar el viaje completo en un taxi privado como si fueran cuatro personas."
+msgstr "<b>You save money</b> if you travel alone, in a couple or a three-people pack and don't want to pay the whole trip in a private ride as if you were four people."
+
+#: View/SharedTravels/home.php:8
+msgid "En un viaje de <b>La Habana a Trinidad</b> en que se pagarían {0} - {1} a un chofer privado -sin importar cuántas personas sean-, <b>a 2 personas les costaría en PickoCar {2} en total ({3} por asiento)</b>, ahorrándose entre {4} y {5}."
+msgstr "In a trip from <b>La Habana to Trinidad</b> in which you'd pay {0} - {1} to a private driver -no matter how many people you are-, <b>2 people would pay only {2} total at PickoCar ({3} per seat)</b>, saving between {4} and {5}."
 
 #: View/SharedTravels/home.ctp:8
 msgid "Mira las rutas y precios disponibles"
 msgstr "See the routes and prices available"
-
-#: View/SharedTravels/home.ctp:8
-msgid "y otros destinos"
-msgstr "and other destinations"
 
 #: View/SharedTravels/home.ctp:8
 msgid "Gasta menos para llegar a tus destinos"

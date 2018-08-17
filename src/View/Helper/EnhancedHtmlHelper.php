@@ -116,10 +116,10 @@ class EnhancedHtmlHelper extends HtmlHelper {
             $lang_changed_url['action'] = $request->getParam('action');
             
             if($lang_changed_url['controller'] == 'SharedTravels') $lang_changed_url['controller'] = 'shared-rides';
-            if($lang_changed_url['controller'] == 'Pages') {
+            /*if($lang_changed_url['controller'] == 'Pages') {
                 unset($lang_changed_url['controller']);
                 unset($lang_changed_url['action']);
-            }
+            }*/
         }
         
         if(is_array($lang_changed_url)){

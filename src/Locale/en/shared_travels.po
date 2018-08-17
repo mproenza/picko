@@ -66,8 +66,8 @@ msgid "{0} por persona"
 msgstr "{0} per person"
 
 #: View/Elements/modality_info.ctp:8
-msgid "<span class="text-muted"><small>- mejor que</small></span> <s>{0}</s> <span class="text-muted"><small>por viaje privado -</small></span>"
-msgstr "<span class="text-muted"><small>- better than</small></span> <s>{0}</s> <span class="text-muted"><small>for a private trip -</small></span>"
+msgid "<span class="text-muted"><small>- mejor que</small></span> <s>{0}</s> <span class="text-muted"><small>por taxi privado -</small></span>"
+msgstr "<span class="text-muted"><small>- better than</small></span> <s>{0}</s> <span class="text-muted"><small>for a private taxi -</small></span>"
 
 #: View/Elements/modality_info.ctp:8
 msgid "<big>Compartir este viaje</big> <div>y pagar sólo <b>{0}</b> por persona</div>"
@@ -203,6 +203,43 @@ msgstr "Your full name for easy identification"
 #: View/Elements/form_shared_travel.ctp:8
 msgid "Compartir este viaje de {0} a {1} y pagar sólo {2} por persona"
 msgstr "Share this trip from {0} to {1} and pay only {2} per person"
+
+
+#: View/Elements/form_shared_travel.ctp:8
+msgid "INFO DE ESTE SERVICIO"
+msgstr "INFO OF THIS SERVICE"
+
+#: View/Elements/form_shared_travel.ctp:8
+msgid "Taxi compartido de {0} a {1}"
+msgstr "Shared taxi from {0} to {1}"
+
+#: View/Elements/form_shared_travel.ctp:8
+msgid "Precio por asiento"
+msgstr "Price per seat"
+
+#: View/Elements/form_shared_travel.ctp:8
+msgid "Hora de recogida en estancia"
+msgstr "Pick up time at accomodation"
+
+#: View/Elements/form_shared_travel.ctp:8
+msgid "Distancia"
+msgstr "Distance"
+
+#: View/Elements/form_shared_travel.ctp:8
+msgid "Tiempo de recorrido"
+msgstr "Duration of ride"
+
+#: View/Elements/book.ctp:8
+msgid "Comparte un taxi de {0} a {1} y paga sólo ${2} por asiento"
+msgstr "Share a taxi from {0} to {1} and pay only ${2} per seat"
+
+#: View/Elements/book.ctp:8
+msgid "Tiempo de recorrido"
+msgstr "Duration of ride"
+
+#: View/Elements/book.ctp:8
+msgid "Tiempo de recorrido"
+msgstr "Duration of ride"
 
 
 #: View/SharedTravels/thanks.ctp:8

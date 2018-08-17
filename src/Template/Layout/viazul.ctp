@@ -18,12 +18,12 @@
         <?php echo $this->Html->charset(); ?>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <?php if(is_callable($page_title)) $page_title = $page_title($this->viewVars, $this->request);?>
+        <?php if(is_callable($page_title)) $page_title = $page_title($this->viewVars, $this->request->query);?>
         <title><?php echo $page_title.' | '.'PickoCar'?></title>
         
-        <?php if(is_callable($page_description)) $page_description = $page_description($this->viewVars, $this->request);?>
-        <meta name="description" content="<?php echo $page_description;?>"/> 
-        
+        <?php if(is_callable($page_description)) $page_description = $page_description($this->viewVars, $this->request->query);?>
+        <meta name="description" content="<?php echo $page_description;?>"/>       
+
         <?php
         echo $this->Html->meta('icon');
 
@@ -71,11 +71,7 @@
                 $( ".open-request-form" ).click(function( event ) {
                     event.preventDefault();
 
-                    bootbox.dialog({
-                        title:$(this).data('title'), 
-                        message:$( '#' + $(this).data('modal') ).html(), 
-                        size:'large'
-                    });
+                    bootbox.dialog({title:$(this).data('title'), message:$( '#' + $(this).data('modal') ).html(), size:'large'});
 
                     form = $('.bootbox form');
                     

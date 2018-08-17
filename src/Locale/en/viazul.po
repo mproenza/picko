@@ -1,0 +1,44 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2014-11-13 11:21-0500\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+
+#: View/SharedTravels/home.ctp:8
+msgid "¿No puedes reservar el bus Viazul en {0} porque los asientos se vendieron ya?"
+msgstr "Unable to book the Viazul bus in {0} because the seats are sold out?"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Prueba nuestro servicio de taxi compartido y disfruta de precios similares... no tienes que ir a la estación porque te recogemos en tu casa u hotel"
+msgstr "Try our shared taxi service and enjoy similar prices... you don't have to go to the station because we pick you up at your guest house or hotel."
+
+#: View/SharedTravels/home.ctp:8
+msgid "<b>PickoCar es un servicio de taxi compartido en {0}</b> como alternativa al bus Viazul, que te permitirá llegar a tus destinos por excelentes precios"
+msgstr "<b>PickoCar is a shared taxi service in {0}</b> as an alternative to the Viazul bus, that will allow you to get to your destinations for amazing prices"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Si no alcanzas pasaje"
+msgstr "If you can't buy tickets"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Si prefieres viajar rápido"
+msgstr "If you prefer a quick trip"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Si no quieres pagar precios altos por taxi privado"
+msgstr "If you won't pay high prices for a private taxi"
+
+#: View/SharedTravels/home.ctp:8
+msgid "<b>Ahorra dinero</b> si viajas solo, en pareja o son tres personas y no logras reservar Viazul, pero tampoco quieres pagar el viaje completo en un taxi privado como si fueran cuatro personas."
+msgstr "<b>Save money</b> if you travel alone, in a couple or a three-people pack and can't book Viazul, but also won't pay the whole trip in a private ride as if you were four people."

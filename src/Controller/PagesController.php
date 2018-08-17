@@ -66,6 +66,8 @@ class PagesController extends AppController
         $this->set(compact('page', 'subpage'));
 
         try {
+            if($page == 'taxi-vs-viazul') $this->viewBuilder()->setLayout('homepage'); 
+            
             $this->render(implode('/', $path));
         } catch (MissingTemplateException $exception) {
             if (Configure::read('debug')) {

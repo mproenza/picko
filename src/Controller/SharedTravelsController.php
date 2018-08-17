@@ -33,7 +33,7 @@ class SharedTravelsController extends AppController {
         $this->render('index');
     }
 
-    public function book() {
+    public function book($modalityCode = null) {
         if ($this->request->is('post') || $this->request->is('put')) {
 
             // Generar los token
@@ -85,13 +85,18 @@ class SharedTravelsController extends AppController {
 
             if($OK) return $this->redirect(['controller'=>'shared-rides', 'action' => 'thanks', '?'=>['t'=>$idToken]]);
             
-            // else
+            // else            
             print_r($OK);
             $this->Flash->error(__('Ocurrió un error realizando la solicitud.'), ['key'=>'form']);
         }
-
-        if (!isset($this->request->query['s'])) throw new NotFoundException ();
-        if (!array_key_exists($this->request->query['s'], SharedTravel::$modalities)) throw new NotFoundException();
+        
+        // Booking!
+            
+        // Sanity checks
+        if($modalityCode == null) throw new NotFoundException ();
+        if (!array_key_exists($modalityCode, SharedTravel::$modalities)) throw new NotFoundException();
+        
+        $this->viewBuilder()->setLayout('homepage');
     }
 
     public function thanks() {// Esta es una action que no hace ningun procesamiento, solamente es una thank you page

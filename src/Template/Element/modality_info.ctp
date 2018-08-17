@@ -8,8 +8,8 @@ if(!isset ($doBootbox)) $doBootbox = false;
         </h6>
         
         <div><?php echo __d('shared_travels', 'Hora de recogida {0}', '<code><big><big><big>'.$modality['time'].'</big></big></big></code>')?></div>
-        <div><?php echo __d('shared_travels', '{0} por persona', '<code><big>'.$modality['price'].' cuc'.'</big></code>')?></div>
-        <div><?php echo __d('shared_travels', '<span class="text-muted"><small>- mejor que</small></span> <s>{0}</s> <span class="text-muted"><small>por viaje privado -</small></span>', '<code><big><big>$'.(4*$modality['price']).'</big></big></code>')?></div>
+        <div><?php echo __d('shared_travels', '{0} por persona', '<code><big><big>'.$modality['price'].' cuc'.'</big></big></code>')?></div>
+        <div><?php echo __d('shared_travels', '<span class="text-muted"><small>- mejor que</small></span> <s>{0}</s> <span class="text-muted"><small>por taxi privado -</small></span>', '<code><big><big>$'.(4*$modality['price']).'</big></big></code>')?></div>
 
         <br/>
 
@@ -18,7 +18,7 @@ if(!isset ($doBootbox)) $doBootbox = false;
         <?php else:?>
             <div>
                 <?php echo $this->Html->link(__d('shared_travels', '<big>Compartir este viaje</big> <div>y pagar sólo <b>{0}</b> por persona</div>', $modality['price']. ' cuc'), 
-                        array('controller'=>'shared-rides', 'action'=>'book', '?'=>['s'=>$code]), 
+                        ['controller'=>'shared-rides', 'action'=>'book', $code], 
                         array('data-modal'=>'info-'.$code, 'class'=>'btn btn-block btn-info open-request-form', 'style'=>'white-space: normal;', 'escape'=>false))?>
             </div>
             <div style="display: none" id="info-<?php echo $code?>">
