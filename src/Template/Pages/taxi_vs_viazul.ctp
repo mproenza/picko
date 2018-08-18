@@ -93,7 +93,7 @@ use App\Model\Entity\SharedTravel;
                 <ul class="nav nav-pills">
                     <?php foreach (SharedTravel::$localities as $locality_id => $locality):?>
                     <li class="nav-item">
-                        <a class="dropdown-item show-routes" href="#taxi-from-<?php echo str_replace(' ', '-', $locality)?>"><?php echo $locality?></a>
+                        <a class="dropdown-item show-routes" href="#taxi-from-<?php echo str_replace(' ', '-', $locality['name'])?>"><?php echo $locality['name']?></a>
                     </li>
                     <?php endforeach?>
                 </ul>
@@ -101,8 +101,8 @@ use App\Model\Entity\SharedTravel;
 
             <?php foreach (SharedTravel::$localities as $locality_id => $locality):?>
                 <div class="row" style="margin-top: 60px;">
-                    <div id="taxi-from-<?php echo str_replace(' ', '-', $locality)?>" style="padding: 10px" class="col-md-12">
-                        <big><?php echo __d('home', 'Rutas saliendo desde {0}', '<code><big><big>'.$locality.'</big></big></code>')?></big>
+                    <div id="taxi-from-<?php echo str_replace(' ', '-', $locality['name'])?>" style="padding: 10px" class="col-md-12">
+                        <big><?php echo __d('home', 'Rutas saliendo desde {0}', '<code><big><big>'.$locality['name'].'</big></big></code>')?></big>
                     </div>
                     <br/>
 

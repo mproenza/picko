@@ -73,6 +73,10 @@ msgstr "<span class="text-muted"><small>- better than</small></span> <s>{0}</s> 
 msgid "<big>Compartir este viaje</big> <div>y pagar sólo <b>{0}</b> por persona</div>"
 msgstr "<big>Share this trip</big> <div>and pay only <b>{0}</b> per person</div>"
 
+#: View/Elements/modality_info.ctp:8
+msgid "<big>Compartir taxi <div><span class="inline-block">{0} - {1}</span></div></big> <div>y pagar sólo <b>{2}</b> por persona</div>"
+msgstr "<big>Share a taxi <div><span class="inline-block">{0} - {1}</span></div></big> <div>and pay only <b>{2}</b> per person</div>"
+
 
 #: View/SharedTravels/book.ctp:8
 msgid "¿Necesitas ir desde {0} hasta {1} durante tu viaje a Cuba?"

@@ -117,14 +117,20 @@ class AppController extends Controller
     }
 
     private function _getPageTitle($key) {
-        $pageTitles = ['default' =>array('title'=>__d('meta', 'Taxi compartido en Cuba - {0} y otros', 'La Habana, Viñales, Trinidad, Varadero'), 'description'=>__d('meta', 'PickoCar es un servicio de taxi compartido en Cuba, con excelentes precios y rutas que cubren {0} y otros', 'La Habana, Viñales, Trinidad, Varadero')),
+        $pageTitles = ['default' =>array('title'=>__d('meta', 'Taxi compartido en Cuba - {0} y otros', 'La Habana, Viñales, Trinidad, Varadero'), 'description'=>__d('meta', 'PickoCar es un servicio de taxi compartido en Cuba con excelentes precios y rutas que conectan {0} y otros', 'La Habana, Viñales, Trinidad, Varadero')),
 
             // HOMEPAGE
-            'SharedTravels.home' => ['title'=>__d('meta', 'Taxi compartido en Cuba - {0} y otros', 'La Habana, Viñales, Trinidad, Varadero'), 'description'=>__d('meta', 'PickoCar es un servicio de taxi compartido en Cuba, con excelentes precios y rutas que cubren {0} y otros', 'La Habana, Viñales, Trinidad, Varadero, Cayo Guillermo')],
+            'SharedTravels.home' => [
+                'title'=>__d('meta', 'Taxi compartido en Cuba - {0} y otros', 'La Habana, Viñales, Trinidad, Varadero'), 
+                'description'=>__d('meta', 'PickoCar es un servicio de taxi compartido en Cuba con excelentes precios y rutas que conectan {0} y otros', 'La Habana, Viñales, Trinidad, Varadero, Cayo Guillermo')
+                ],
 
             // PAGES
             'Pages.display' =>array(
-                'about'=>array('title'=>__d('meta', 'Sobre Nosotros'), 'description'=>__d('meta', 'Conoce lo que hacemos en PickoCar, nuestro servicio de taxi compartido en Cuba que conecta varios destinos')),
+                'about'=>array(
+                    'title'=>__d('meta', 'Sobre Nosotros'), 
+                    'description'=>__d('meta', 'Conoce lo que hacemos en PickoCar, nuestro servicio de taxi compartido en Cuba que conecta varios destinos')
+                ),
                 'press-release'=>array('title'=>__d('meta', 'Lanzamiento de PickoCar | Reseña para la Prensa'), 'description'=>__d('meta', 'Reseña para la prensa del lanzamiento de PickoCar en Cuba')),
                 'taxi-vs-viazul'=>array('title'=>__d('meta', 'Taxi compartido en Cuba con precios similares al bus Viazul'), 'description'=>__d('meta', 'PickoCar es un servicio de taxi compartido en Cuba con excelentes precios y rutas que conectan destinos como {0} y otros', 'La Habana, Viñales, Trinidad, Varadero, Cayo Guillermo')),
                 /*'faq'=>array('title'=>__d('meta', 'Preguntas Frecuentes'), 'description'=>__d('meta', 'Preguntas y respuestas sobre cómo conseguir un taxi para moverte por Cuba usando YoTeLlevo')),

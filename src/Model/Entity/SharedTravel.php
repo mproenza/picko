@@ -4,16 +4,17 @@ use Cake\ORM\Entity;
 
 class SharedTravel extends Entity {
     public static $localities = array(
-        0=>'La Habana', 
-        1=>'Trinidad', 
-        2=>'Viñales', 
-        3=>'Varadero', 
-        4=>'Cienfuegos', 
-        7=>'Santa Clara',
-        5=>'Cayo Coco', 
-        6=>'Cayo Guillermo', 
-        8=>'Playa Larga', 
-        9=>'Playa Girón', 
+        0=>['name'=>'La Habana', 'slug'=>'habana', 'code'=>'HAB'], 
+        1=>['name'=>'Trinidad', 'slug'=>'trinidad', 'code'=>'TRI'], 
+        2=>['name'=>'Viñales', 'slug'=>'vinales', 'code'=>'VIN'], 
+        3=>['name'=>'Varadero', 'slug'=>'varadero', 'code'=>'VAR'],
+        4=>['name'=>'Cienfuegos', 'slug'=>'cienfuegos', 'code'=>'CFG'], 
+        7=>['name'=>'Santa Clara', 'slug'=>'santa-clara', 'code'=>'SCL'],
+        5=>['name'=>'Cayo Coco', 'slug'=>'cayo-coco', 'code'=>'CAC'],
+        6=>['name'=>'Cayo Guillermo', 'slug'=>'cayo-guillermo', 'code'=>'CAG'],
+        8=>['name'=>'Playa Larga', 'slug'=>'playa-larga', 'code'=>'PLL'],
+        9=>['name'=>'Playa Girón', 'slug'=>'playa-giron', 'code'=>'PLG'],
+        10=>['name'=>'Cayo Santa María', 'slug'=>'cayo-santa-maria', 'code'=>'CAM', 'active'=>false],
     );
     
     public static $routes_info = [
@@ -37,6 +38,7 @@ class SharedTravel extends Entity {
             6=>['kms'=>'290', 'hrs'=>'4'],
             8=>['kms'=>'240', 'hrs'=>'3'],
             9=>['kms'=>'280', 'hrs'=>'3.30'],
+            10=>['kms'=>'200', 'hrs'=>'3.30'],
         ],
         
         2 => [
@@ -88,6 +90,16 @@ class SharedTravel extends Entity {
         return null;
     }
     
+    public static $routes = [
+        ['origin_id'=>0, 'destination_id'=>1, 'price'=>35, 'departure_times'=>[8, 14]], // HAB - TRI
+        ['origin_id'=>0, 'destination_id'=>2, 'price'=>25, 'departure_times'=>[11]], // HAB - VIN
+        ['origin_id'=>0, 'destination_id'=>3, 'price'=>25, 'departure_times'=>[8, 14]], // HAB - VAR
+        ['origin_id'=>0, 'destination_id'=>4, 'price'=>35, 'departure_times'=>[8, 14]], // HAB - CFG
+        ['origin_id'=>0, 'destination_id'=>7, 'price'=>35, 'departure_times'=>[8, 14]], // HAB - SCL
+        ['origin_id'=>0, 'destination_id'=>8, 'price'=>30, 'departure_times'=>[8, 14]], // HAB - PLL
+        ['origin_id'=>0, 'destination_id'=>9, 'price'=>30, 'departure_times'=>[8, 14]], // HAB - PLG
+    ];
+    
     public static $modalities = array(
         // El origin_id y el destination_id son indicadores unicos de cada lugar que se usan para recomendar transfers
         'HABTRI8'=>array('origin_id'=>0, 'destination_id'=>1, 'origin'=>'La Habana', 'destination'=>'Trinidad', 'time'=>'8 am', 'price'=>35),
@@ -111,7 +123,7 @@ class SharedTravel extends Entity {
         'TRIVIN8'=>array('origin_id'=>1, 'destination_id'=>2, 'origin'=>'Trinidad', 'destination'=>'Viñales', 'time'=>'8 am', 'price'=>50),
         'TRIVAR8'=>array('origin_id'=>1, 'destination_id'=>3, 'origin'=>'Trinidad', 'destination'=>'Varadero', 'time'=>'8 am', 'price'=>35),
         'TRIVAR14'=>array('origin_id'=>1, 'destination_id'=>3,'origin'=>'Trinidad', 'destination'=>'Varadero', 'time'=>'2 pm', 'price'=>35),
-        'TRICAM8'=>array('origin_id'=>1, 'destination_id'=>-1, 'origin'=>'Trinidad', 'destination'=>'Cayo Santa María', 'time'=>'8 am', 'price'=>35),
+        'TRICAM8'=>array('origin_id'=>1, 'destination_id'=>10, 'origin'=>'Trinidad', 'destination'=>'Cayo Santa María', 'time'=>'8 am', 'price'=>35),
         'TRICAC8'=>array('origin_id'=>1, 'destination_id'=>5, 'origin'=>'Trinidad', 'destination'=>'Cayo Coco', 'time'=>'8 am', 'price'=>35),
         'TRICAG8'=>array('origin_id'=>1, 'destination_id'=>6, 'origin'=>'Trinidad', 'destination'=>'Cayo Guillermo', 'time'=>'8 am', 'price'=>40),
         'TRIPLL8'=>array('origin_id'=>1, 'destination_id'=>8, 'origin'=>'Trinidad', 'destination'=>'Playa Larga', 'time'=>'8 am', 'price'=>30),

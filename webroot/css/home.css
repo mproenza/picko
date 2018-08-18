@@ -30,11 +30,6 @@
     text-align:center
 }
 
-.white{color:white !important}
-.white a{color:white !important;text-decoration: none}
-
-.center{text-align:center}
-
 .scroll_icon_wrap {text-align:center;}
 @media screen and (max-width: 480px){
     .scroll_icon_wrap{display:none}

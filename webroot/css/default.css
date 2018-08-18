@@ -24,6 +24,11 @@ code {
     border-left: .25rem solid #eceeef;
 }
 
+.white{color:white !important}
+.white a{color:white !important;text-decoration: none}
+
+.center{text-align:center}
+
 .footer {
   position: absolute;
   bottom: 0;
