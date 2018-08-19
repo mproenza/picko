@@ -1,9 +1,6 @@
 <?php 
 use App\Model\Entity\SharedTravel;
 use Cake\I18n\I18n;
-
-$modalityCode =  $this->request->getParam('pass')[0];
-$modality = SharedTravel::$modalities[$modalityCode];
 ?>
 
 <div id="container">
@@ -17,7 +14,7 @@ $modality = SharedTravel::$modalities[$modalityCode];
                 <div class="col-md-8 offset-md-2 value-proposition">
                     <br/>
                     <h1 style="text-align: center">
-                        <big><?php echo __d('shared_travels', 'Comparte un taxi de {0} a {1} y paga sólo ${2} por asiento', $modality['origin'], $modality['destination'], $modality['price'])?></big>
+                        <big><?php echo __d('shared_travels', 'Comparte un taxi de {0} a {1} y paga sólo ${2} por asiento', $route['origin'], $route['destination'], $route['price_x_seat'])?></big>
                     </h1>
                     <hr/>
                     <p class="lead"><b><?php echo __d('home', 'Sólo 4 pasajeros en un taxi')?> • <?php echo __d('home', 'Recogida en tu estancia u hotel')?> • <?php echo __d('home', 'Autos muy confortables')?></b></p>
@@ -38,19 +35,27 @@ $modality = SharedTravel::$modalities[$modalityCode];
         <div class="row">
             <div class="col-md-3 card" style="padding: 30px">
                 <b><?php echo __d('shared_travels', 'INFO DE ESTE SERVICIO')?></b>
-                <div><?php echo __d('shared_travels', 'Taxi compartido de {0} a {1}', $modality['origin'], $modality['destination'])?></div>
+                <div><?php echo __d('shared_travels', 'Taxi compartido de {0} a {1}', $route['origin'], $route['destination'])?></div>
                 <hr/>
-                <div><div><b><?php echo __d('shared_travels', 'Precio por asiento')?>:</b></div> <div class="fa-2x"><?php echo $modality['price']?> cuc</div></div>
+                <div><div><b><?php echo __d('shared_travels', 'Precio por asiento')?>:</b></div> <div class="fa-2x"><?php echo $route['price_x_seat']?> cuc</div></div>
                 <br/>
-                <div><div><b><?php echo __d('shared_travels', 'Hora de recogida en estancia')?>:</b></div> <div class="lead"><b><?php echo $modality['time']?></b></div></div>
+                <div><div><b><?php echo __d('shared_travels', 'Hora de recogida en estancia')?>:
+                    </b></div> <div class="lead"><b>
+                        <?php $sep = ''?>
+                        <?php foreach ($route['departure_times_desc'] as $time):?>
+                            <?php echo $sep.$time?>
+                            <?php $sep = ' | '?>
+                        <?php endforeach;?>
+                    </b></div>
+                </div>
                 <br/>
-                <?php $info = App\Model\Entity\SharedTravel::_routeInfo($modality['origin_id'], $modality['destination_id'])?>
+                <?php $info = App\Model\Entity\SharedTravel::_routeInfo($route['origin_id'], $route['destination_id'])?>
                 <div><div class="float-left"><b><?php echo __d('shared_travels', 'Distancia')?>:</b></div> <div class="float-right"><?php echo $info['kms']?> km</div></div>
                 <div><div class="float-left"><b><?php echo __d('shared_travels', 'Tiempo de recorrido')?>:</b></div> <div class="float-right"><?php echo $info['hrs']?> hrs</div></div>
                 
             </div>
             <div class="col-md-8 offset-md-1 card bg-light" style="padding: 30px">
-                <?php echo $this->element('shared_travel_book_prompt', compact('modality') + ['code'=>$modalityCode])?>
+                <?php echo $this->element('shared_travel_book_prompt', compact('route'))?>
             </div>
         </div>
         

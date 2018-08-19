@@ -33,7 +33,7 @@ class SharedTravelsController extends AppController {
         $this->render('index');
     }
 
-    public function book($modalityCode = null) {
+    public function book($routeSlug = null) {
         if ($this->request->is('post') || $this->request->is('put')) {
 
             // Generar los token
@@ -46,7 +46,6 @@ class SharedTravelsController extends AppController {
             $this->request->data('lang', ini_get('intl.default_locale'));
             $this->request->data('state', SharedTravel::$STATE_PENDING);
             $this->request->data('original_date', str_replace('-', '/', TimeUtil::dmY_to_Ymd($this->request->getData('date'))));
-            $this->request->data('price_x_seat', SharedTravel::$modalities[$this->request->getData('modality_code')]['price']);
 
             $STTable = TableRegistry::get('SharedTravels');
             $STEntity = $STTable->newEntity($this->request->getData());
@@ -93,8 +92,14 @@ class SharedTravelsController extends AppController {
         // Booking!
             
         // Sanity checks
-        if($modalityCode == null) throw new NotFoundException ();
-        if (!array_key_exists($modalityCode, SharedTravel::$modalities)) throw new NotFoundException();
+        if($routeSlug == null) throw new NotFoundException ();
+        
+        // TODO: Verificar la slug: debe decir 'taxi-' delante, debe tener el separador '--', deben existir los slug, etc...
+        
+        $route = SharedTravel::_routeFromSlug($routeSlug);
+        if($route == null) throw new NotFoundException ();
+        
+        $this->set('route', SharedTravel::_routeFull($route));
         
         $this->viewBuilder()->setLayout('homepage');
     }
@@ -247,10 +252,9 @@ class SharedTravelsController extends AppController {
                     // Correo a gestor para que confirme la solicitud
                     if($OK) {
                         $facilitator = Configure::read('shared_rides_facilitator');
-                        $modality = SharedTravel::$modalities[$request['SharedTravel']['modality_code']];
                         $OK = EmailsUtil::email(
                             $facilitator['email'],
-                            '#'.$request['SharedTravel']['id'].' '.$modality['origin'].'-'.$modality['destination'].' [['.$request['SharedTravel']['id_token'].']]',
+                            '#'.$request['SharedTravel']['id'].' '.$request['SharedTravel']['origin'].'-'.$request['SharedTravel']['destination'].' [['.$request['SharedTravel']['id_token'].']]',
                             array('request' => $request), 
                             'compartido', 
                             'new_request',
@@ -331,9 +335,8 @@ class SharedTravelsController extends AppController {
         if($OK && !$request['SharedTravel']['date']->isPast() && $request['SharedTravel']['activated']) {
             // Aviso a facilitador
             $facilitator = Configure::read('shared_rides_facilitator');
-            $modality = SharedTravel::$modalities[$request['SharedTravel']['modality_code']];
             
-            $notice = 'CANCELADO > PickoCar #'.$request['SharedTravel']['id']. ' | '.TimeUtil::prettyDate($request['SharedTravel']['date'], false).' | '.$modality['origin'].' - '.$modality['destination'];
+            $notice = 'CANCELADO > PickoCar #'.$request['SharedTravel']['id']. ' | '.TimeUtil::prettyDate($request['SharedTravel']['date'], false).' | '.$request['SharedTravel']['origin'].' - '.$request['SharedTravel']['destination'];
             $Email = new Email('aviso');
             $Email->to($facilitator['email'])
                 ->subject($notice)

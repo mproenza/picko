@@ -91,16 +91,133 @@ class SharedTravel extends Entity {
     }
     
     public static $routes = [
-        ['origin_id'=>0, 'destination_id'=>1, 'price'=>35, 'departure_times'=>[8, 14]], // HAB - TRI
-        ['origin_id'=>0, 'destination_id'=>2, 'price'=>25, 'departure_times'=>[11]], // HAB - VIN
-        ['origin_id'=>0, 'destination_id'=>3, 'price'=>25, 'departure_times'=>[8, 14]], // HAB - VAR
-        ['origin_id'=>0, 'destination_id'=>4, 'price'=>35, 'departure_times'=>[8, 14]], // HAB - CFG
-        ['origin_id'=>0, 'destination_id'=>7, 'price'=>35, 'departure_times'=>[8, 14]], // HAB - SCL
-        ['origin_id'=>0, 'destination_id'=>8, 'price'=>30, 'departure_times'=>[8, 14]], // HAB - PLL
-        ['origin_id'=>0, 'destination_id'=>9, 'price'=>30, 'departure_times'=>[8, 14]], // HAB - PLG
+        ['origin_id'=>0, 'destination_id'=>1, 'price_x_seat'=>35, 'departure_times'=>[8, 14]],
+        ['origin_id'=>0, 'destination_id'=>2, 'price_x_seat'=>25, 'departure_times'=>[11]],
+        ['origin_id'=>0, 'destination_id'=>3, 'price_x_seat'=>25, 'departure_times'=>[14]],
+        ['origin_id'=>0, 'destination_id'=>4, 'price_x_seat'=>35, 'departure_times'=>[8, 14]],
+        ['origin_id'=>0, 'destination_id'=>7, 'price_x_seat'=>35, 'departure_times'=>[8, 14]],
+        ['origin_id'=>0, 'destination_id'=>8, 'price_x_seat'=>30, 'departure_times'=>[8, 14]],
+        ['origin_id'=>0, 'destination_id'=>9, 'price_x_seat'=>30, 'departure_times'=>[8, 14]],
+        ['origin_id'=>1, 'destination_id'=>0, 'price_x_seat'=>35, 'departure_times'=>[8, 14]],
+        ['origin_id'=>1, 'destination_id'=>2, 'price_x_seat'=>50, 'departure_times'=>[8]],
+        ['origin_id'=>1, 'destination_id'=>3, 'price_x_seat'=>35, 'departure_times'=>[8, 14]],
+        ['origin_id'=>1, 'destination_id'=>10, 'price_x_seat'=>35, 'departure_times'=>[8]],
+        ['origin_id'=>1, 'destination_id'=>5, 'price_x_seat'=>35, 'departure_times'=>[8]],
+        ['origin_id'=>1, 'destination_id'=>6, 'price_x_seat'=>40, 'departure_times'=>[8]],
+        ['origin_id'=>1, 'destination_id'=>8, 'price_x_seat'=>30, 'departure_times'=>[8, 14]],
+        ['origin_id'=>1, 'destination_id'=>9, 'price_x_seat'=>30, 'departure_times'=>[8, 14]],
+        ['origin_id'=>2, 'destination_id'=>0, 'price_x_seat'=>25, 'departure_times'=>[8, 14]],
+        ['origin_id'=>2, 'destination_id'=>3, 'price_x_seat'=>45, 'departure_times'=>[8, 14]],
+        ['origin_id'=>2, 'destination_id'=>1, 'price_x_seat'=>50, 'departure_times'=>[8]],
+        ['origin_id'=>2, 'destination_id'=>4, 'price_x_seat'=>50, 'departure_times'=>[8]],
+        ['origin_id'=>2, 'destination_id'=>7, 'price_x_seat'=>45, 'departure_times'=>[8]],
+        ['origin_id'=>2, 'destination_id'=>8, 'price_x_seat'=>40, 'departure_times'=>[8]],
+        ['origin_id'=>2, 'destination_id'=>9, 'price_x_seat'=>45, 'departure_times'=>[8]],
+        ['origin_id'=>3, 'destination_id'=>0, 'price_x_seat'=>30, 'departure_times'=>[8, 14]],
+        ['origin_id'=>3, 'destination_id'=>1, 'price_x_seat'=>35, 'departure_times'=>[14]],
+        ['origin_id'=>3, 'destination_id'=>2, 'price_x_seat'=>50, 'departure_times'=>[8]],
+        ['origin_id'=>3, 'destination_id'=>4, 'price_x_seat'=>35, 'departure_times'=>[14]],
+        ['origin_id'=>4, 'destination_id'=>0, 'price_x_seat'=>35, 'departure_times'=>[8, 14]],
+        ['origin_id'=>4, 'destination_id'=>1, 'price_x_seat'=>15, 'departure_times'=>[7]],
+        ['origin_id'=>4, 'destination_id'=>2, 'price_x_seat'=>50, 'departure_times'=>[8]],
+        ['origin_id'=>4, 'destination_id'=>3, 'price_x_seat'=>35, 'departure_times'=>[8, 14]],
+        ['origin_id'=>4, 'destination_id'=>5, 'price_x_seat'=>40, 'departure_times'=>[8]],
+        ['origin_id'=>4, 'destination_id'=>6, 'price_x_seat'=>45, 'departure_times'=>[8]],
+        ['origin_id'=>4, 'destination_id'=>8, 'price_x_seat'=>30, 'departure_times'=>[8, 14]],
+        ['origin_id'=>4, 'destination_id'=>9, 'price_x_seat'=>30, 'departure_times'=>[8, 14]],
+        ['origin_id'=>5, 'destination_id'=>0, 'price_x_seat'=>50, 'departure_times'=>[14]],
+        ['origin_id'=>5, 'destination_id'=>1, 'price_x_seat'=>35, 'departure_times'=>[14]],
+        ['origin_id'=>5, 'destination_id'=>3, 'price_x_seat'=>50, 'departure_times'=>[14]],
+        ['origin_id'=>5, 'destination_id'=>7, 'price_x_seat'=>45, 'departure_times'=>[14]],
+        ['origin_id'=>6, 'destination_id'=>0, 'price_x_seat'=>55, 'departure_times'=>[14]],
+        ['origin_id'=>6, 'destination_id'=>1, 'price_x_seat'=>40, 'departure_times'=>[14]],
+        ['origin_id'=>6, 'destination_id'=>3, 'price_x_seat'=>55, 'departure_times'=>[14]],
+        ['origin_id'=>6, 'destination_id'=>7, 'price_x_seat'=>50, 'departure_times'=>[14]],
+        ['origin_id'=>7, 'destination_id'=>0, 'price_x_seat'=>35, 'departure_times'=>[8]],
+        ['origin_id'=>7, 'destination_id'=>2, 'price_x_seat'=>45, 'departure_times'=>[8]],
+        ['origin_id'=>7, 'destination_id'=>3, 'price_x_seat'=>35, 'departure_times'=>[8]],
+        ['origin_id'=>7, 'destination_id'=>8, 'price_x_seat'=>35, 'departure_times'=>[8]],
+        ['origin_id'=>7, 'destination_id'=>9, 'price_x_seat'=>35, 'departure_times'=>[8]],
+        ['origin_id'=>8, 'destination_id'=>0, 'price_x_seat'=>30, 'departure_times'=>[8, 10]],
+        ['origin_id'=>8, 'destination_id'=>2, 'price_x_seat'=>40, 'departure_times'=>[8, 10]],
+        ['origin_id'=>8, 'destination_id'=>1, 'price_x_seat'=>30, 'departure_times'=>[11, 16]],
+        ['origin_id'=>8, 'destination_id'=>4, 'price_x_seat'=>30, 'departure_times'=>[11, 16]],
+        ['origin_id'=>9, 'destination_id'=>0, 'price_x_seat'=>30, 'departure_times'=>[8, 10]],
+        ['origin_id'=>9, 'destination_id'=>2, 'price_x_seat'=>45, 'departure_times'=>[8, 10]],
+        ['origin_id'=>9, 'destination_id'=>1, 'price_x_seat'=>30, 'departure_times'=>[11, 16]],
+        ['origin_id'=>9, 'destination_id'=>4, 'price_x_seat'=>30, 'departure_times'=>[11, 16]]
     ];
+    public static function _routeFull($route) {
+        $route['origin'] = self::$localities[$route['origin_id']]['name'];
+        $route['destination'] = self::$localities[$route['destination_id']]['name'];
+        $route['code'] = self::$localities[$route['origin_id']]['code'].self::$localities[$route['destination_id']]['code'];
+        $route['slug'] = 'taxi-'.self::$localities[$route['origin_id']]['slug'].'--'.self::$localities[$route['destination_id']]['slug'];
+        
+        // Poner am y pm a la hora de salida
+        if(isset($route['departure_time'])) {
+            $d = 'am';
+            if($route['departure_time'] > 12) {
+                $route['departure_time'] -= 12;
+                $d = 'pm';
+            } else if( $route['departure_time'] == 12) $d = 'pm';
+            $route['departure_time_desc'] = $route['departure_time'].' '.$d;
+        }
+        
+        if(!isset($route['departure_times'])) {
+            foreach (self::$routes as $r) { // Poner los departure_times si le faltan
+                if($r['origin_id'] == $route['origin_id'] && $r['destination_id'] == $route['destination_id']) {
+                    $route['departure_times'] = $r['departure_times'];
+                }
+            }
+        }
+        
+        // Poner am y pm a los horarios de salida
+        foreach ($route['departure_times'] as $time) {
+            $d = 'am';
+            if($time > 12) {
+                $time -= 12;
+                $d = 'pm';
+            } else if( $time == 12) $d = 'pm';
+            $route['departure_times_desc'][] = $time.' '.$d;
+        }
+        
+        return $route;
+    }
+    public static function _routeFromSlug($slug) {
+        $slug = substr($slug, 5); // Eliminar 'taxi-'
+        
+        $pos = strpos($slug, '--');
+        
+        $originSlug = substr($slug, 0, $pos);
+        $destSlug = substr($slug, $pos + 2);
+        
+        $originId = null;
+        foreach (self::$localities as $k=>$l) {
+            if($l['slug'] == $originSlug) {
+                $originId = $k;
+                break;
+            }
+        }
+        $destId = null;
+        foreach (self::$localities as $k=>$l) {
+            if($l['slug'] == $destSlug) {
+                $destId = $k;
+                break;
+            }
+        }
+        
+        $route = null;
+        foreach (self::$routes as $r) {
+            if($r['origin_id'] == $originId && $r['destination_id'] == $destId) {
+                $route = $r;
+                break;
+            }
+        }
+        
+        return $route;
+    }
     
-    public static $modalities = array(
+    /*public static $modalities = array(
         // El origin_id y el destination_id son indicadores unicos de cada lugar que se usan para recomendar transfers
         'HABTRI8'=>array('origin_id'=>0, 'destination_id'=>1, 'origin'=>'La Habana', 'destination'=>'Trinidad', 'time'=>'8 am', 'price'=>35),
         'HABTRI14'=>array('origin_id'=>0, 'destination_id'=>1, 'origin'=>'La Habana', 'destination'=>'Trinidad', 'time'=>'2 pm', 'price'=>35),
@@ -194,7 +311,7 @@ class SharedTravel extends Entity {
         'PLGTRI16'=>array('origin_id'=>9, 'destination_id'=>1, 'origin'=>'Playa Girón', 'destination'=>'Trinidad', 'time'=>'4 pm', 'price'=>30),
         'PLGCFG11'=>array('origin_id'=>9, 'destination_id'=>4, 'origin'=>'Playa Girón', 'destination'=>'Cienfuegos', 'time'=>'11 am', 'price'=>30),
         'PLGCFG16'=>array('origin_id'=>9, 'destination_id'=>4, 'origin'=>'Playa Girón', 'destination'=>'Cienfuegos', 'time'=>'4 pm', 'price'=>30),
-    );
+    );*/
     
     public static $STATE_PENDING = 'P'; // Cuando se crea
     public static $STATE_ACTIVATED = 'A'; //Cuando se activa (se le envian los datos a Andiel para comenzar a gestionar)

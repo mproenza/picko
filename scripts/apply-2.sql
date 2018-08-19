@@ -1,0 +1,1 @@
+ALTER TABLE `shared_travels` ADD `origin_id` INT UNSIGNED NULL AFTER `modality_code`, ADD `destination_id` INT UNSIGNED NULL AFTER `origin_id`, ADD `departure_time` TINYINT UNSIGNED NULL AFTER `destination_id`;

@@ -3,8 +3,8 @@ use App\Model\Entity\SharedTravel;
 
 // Verificar si hay transfers desde el destino
 $suggestTransfers = false;
-foreach (SharedTravel::$modalities as $code=>$mod)
-    if($mod['origin_id'] == $modality['destination_id'] && ( !isset($mod['active']) || $mod['active'] )) {
+foreach (SharedTravel::$routes as $r)
+    if($r['origin_id'] == $route['destination_id'] && ( !isset($r['active']) || $r['active'] )) {
         $suggestTransfers = true; break;
     }
 ?>
@@ -17,14 +17,15 @@ foreach (SharedTravel::$modalities as $code=>$mod)
             <p class="center"><b><?php echo __d('shared_travels', 'SOLICITA OTROS TRANSFERS PARA EL RESTO DE TU VIAJE')?></b></p><hr/>
         </div>
         <ul class="list-unstyled">
-            <?php foreach (SharedTravel::$modalities as $code=>$mod):?>
-                <?php if($mod['origin_id'] == $modality['destination_id'] && ( !isset($mod['active']) || $mod['active'] )):?>
+            <?php foreach (SharedTravel::$routes as $r):?>
+                <?php if($r['origin_id'] == $route['destination_id'] && ( !isset($r['active']) || $r['active'] )):?>
+                    <?php $r = SharedTravel::_routeFull($r)?>
                     <li style="padding-top: 5px">
-                        <?php echo $this->Html->link(__d('shared_travels', '{0} - {1}, {2}','<b>'.$mod['origin'].'</b>', '<b>'.$mod['destination'].'</b>', '<b>'.$mod['time'].'</b>'),
-                        array('controller'=>'shared-rides', 'action'=>'book', $code),
-                        array('data-modal'=>'info-'.$code, 'class'=>'open-request-form', 'style'=>'white-space: normal;color:inherit', 'escape'=>false))?>
-                        <div style="display: none" id="info-<?php echo $code?>">
-                            <?php echo $this->element('shared_travel_book_prompt', ['modality'=>$mod] + compact('code'))?>
+                        <?php echo $this->Html->link(__d('shared_travels', '{0} > {1}','<b>'.$r['origin'].'</b>', '<b>'.$r['destination'].'</b>'),
+                        array('controller'=>'shared-rides', 'action'=>'book', $r['slug']),
+                        array('data-modal'=>'info-'.$r['slug'], 'class'=>'open-request-form', 'style'=>'white-space: normal;color:inherit', 'escape'=>false))?>
+                        <div style="display: none" id="info-<?php echo $r['slug']?>">
+                            <?php echo $this->element('shared_travel_book_prompt', compact('route'))?>
                         </div>
                     </li>
                 <?php endif;?>

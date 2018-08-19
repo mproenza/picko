@@ -66,16 +66,16 @@ msgid "{0} por persona"
 msgstr "{0} per person"
 
 #: View/Elements/modality_info.ctp:8
-msgid "<span class="text-muted"><small>- mejor que</small></span> <s>{0}</s> <span class="text-muted"><small>por taxi privado -</small></span>"
-msgstr "<span class="text-muted"><small>- better than</small></span> <s>{0}</s> <span class="text-muted"><small>for a private taxi -</small></span>"
+msgid "<span class="text-muted"><small>mejor que</small></span> <s>{0}</s> <span class="text-muted"><small>por taxi privado</small></span>"
+msgstr "<span class="text-muted"><small> better than</small></span> <s>{0}</s> <span class="text-muted"><small>for a private taxi</small></span>"
 
 #: View/Elements/modality_info.ctp:8
 msgid "<big>Compartir este viaje</big> <div>y pagar sólo <b>{0}</b> por persona</div>"
 msgstr "<big>Share this trip</big> <div>and pay only <b>{0}</b> per person</div>"
 
 #: View/Elements/modality_info.ctp:8
-msgid "<big>Compartir taxi <div><span class="inline-block">{0} - {1}</span></div></big> <div>y pagar sólo <b>{2}</b> por persona</div>"
-msgstr "<big>Share a taxi <div><span class="inline-block">{0} - {1}</span></div></big> <div>and pay only <b>{2}</b> per person</div>"
+msgid "<big>Reservar taxi <div><span class="inline-block">{0} - {1}</span></div></big> <div>y pagar sólo <b>{2}</b> por persona</div>"
+msgstr "<big>Book a taxi <div><span class="inline-block">{0} - {1}</span></div></big> <div>and pay only <b>{2}</b> per person</div>"
 
 
 #: View/SharedTravels/book.ctp:8

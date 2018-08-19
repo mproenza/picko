@@ -1,9 +1,3 @@
-<?php use App\Model\Entity\SharedTravel;?>
-
-<?php
-$modalityCode = $request['SharedTravel']['modality_code'];
-$modality = SharedTravel::$modalities[$modalityCode];
-?>
 <div class="container">
     <div class="row">
         <div class="col-md-8 offset-md-1">
@@ -21,7 +15,7 @@ $modality = SharedTravel::$modalities[$modalityCode];
         </div>
         
         <div class="col-md-3 alert alert-secondary" style="display: inline-block">
-            <?php echo $this->element('suggest_transfers', compact('modality'))?>
+            <?php echo $this->element('suggest_transfers', ['route'=>$request['SharedTravel']])?>
         </div>        
     </div>
 </div>

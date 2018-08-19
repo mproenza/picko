@@ -40,9 +40,8 @@ class SharedTravelsTable extends Table {
         $query->hydrate(false); //arrays, no objetos
         $query->formatResults(function (\Cake\Collection\CollectionInterface $results) {
             return $results->map(function ($row) {
-                // Poner el precio si no lo tiene puesto (esto es para las solicitudes viejas, porque las nuevas sí lo tienen)
-                if(!isset($row['price_x_seat']) || $row['price_x_seat'] == null)
-                    $row['price_x_seat'] = SharedTravel::$modalities[$row['modality_code']]['price'];
+                
+                $row = SharedTravel::_routeFull($row);
                 
                 $formatted = ['SharedTravel'=>$row];
                 

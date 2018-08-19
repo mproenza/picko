@@ -1,14 +1,9 @@
 <?php use App\Util\TimeUtil;?>
 <?php use App\Model\Entity\SharedTravel;?>
 
-<?php
-$modalityCode = $request['SharedTravel']['modality_code'];
-$modality = SharedTravel::$modalities[$modalityCode];
-?>
-
 <p>Hola <?php echo $request['SharedTravel']['name_id']?>,</p>
 
-<p><?php echo __d('shared_travels', 'Usted solicitó un transfer de {0} personas desde {1} hasta {2} el día {3} con recogida a las {4}.', '<b>'.$request['SharedTravel']['people_count'].'</b>', '<b>'.$modality['origin'].'</b>', '<b>'.$modality['destination'].'</b>', '<b>'.TimeUtil::prettyDate($request['SharedTravel']['date'], false).'</b>', '<b>'.$modality['time'].'</b>')?></p>
+<p><?php echo __d('shared_travels', 'Usted solicitó un transfer de {0} personas desde {1} hasta {2} el día {3} con recogida a las {4}.', '<b>'.$request['SharedTravel']['people_count'].'</b>', '<b>'.$request['SharedTravel']['origin'].'</b>', '<b>'.$request['SharedTravel']['destination'].'</b>', '<b>'.TimeUtil::prettyDate($request['SharedTravel']['date'], false).'</b>', '<b>'.$request['SharedTravel']['departure_time_desc'].'</b>')?></p>
 
 <p><?php echo __d('shared_travels', 'Precio total por las {0} personas: {1}', $request['SharedTravel']['people_count'], '<b>'.$request['SharedTravel']['people_count']*$request['SharedTravel']['price_x_seat'].' cuc</b>')?></p>
 

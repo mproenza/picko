@@ -138,9 +138,9 @@ use App\Model\Entity\SharedTravel;
                     </div>
                     <br/>
 
-                    <?php foreach (SharedTravel::$modalities as $code=>$modality):?>
-                        <?php if($modality['origin_id'] == $locality_id && ( !isset($modality['active']) || $modality['active'] )):?>
-                            <div class="col-md-4 col-sm-6" style="padding: 20px"><?php echo $this->element('modality_info', compact('modality') + compact('code') + compact('doBootbox'))?></div>
+                    <?php foreach (SharedTravel::$routes as $route):?>
+                        <?php if($route['origin_id'] == $locality_id && ( !isset($route['active']) || $route['active'] )):?>
+                            <div class="col-md-4 col-sm-6" style="padding: 20px"><?php echo $this->element('route_info', compact('route') + compact('doBootbox'))?></div>
                         <?php endif?>
                     <?php endforeach?>
                 </div>

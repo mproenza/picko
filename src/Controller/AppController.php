@@ -142,16 +142,10 @@ class AppController extends Controller
 
             // USER ACTIONS
             'SharedTravels.book' =>  ['title'=>function($viewVars, $request) {
-                    $modalityCode = $request->getParam('pass')[0];
-                    $modality = SharedTravel::$modalities[$modalityCode];
-
-                    return __d('meta', 'Taxi compartido de {0} a {1}. Precio: ${2} por asiento', $modality['origin'], $modality['destination'], $modality['price']);
+                    return __d('meta', 'Taxi compartido de {0} a {1}. Precio: ${2} por asiento', $viewVars['route']['origin'], $viewVars['route']['destination'], $viewVars['route']['price_x_seat']);
                 },
                 'description'=>function($viewVars, $request) {
-                    $modalityCode = $request->getParam('pass')[0];
-                    $modality = SharedTravel::$modalities[$modalityCode];
-
-                    return __d('meta', 'Reserva un taxi para ir de {0} a {1} por un precio de {2} cuc por asiento. Recogida en casa u hotel. Sólo 4 pasajeros en un auto moderno con aire acondicionado y mucho confort.', $modality['origin'], $modality['destination'], $modality['price']);
+                    return __d('meta', 'Reserva un taxi para ir de {0} a {1} por un precio de {2} cuc por asiento. Recogida en casa u hotel. Sólo 4 pasajeros en un auto moderno con aire acondicionado y mucho confort.', $viewVars['route']['origin'], $viewVars['route']['destination'], $viewVars['route']['price_x_seat']);
                 }
                 ],
             'SharedTravels.thanks' =>array('title'=>__d('meta', 'Gracias por su solicitud'), 'description'=>__d('meta', '...')),
