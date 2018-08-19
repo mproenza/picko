@@ -90,18 +90,17 @@ class I18nMiddleware
             if(I18n::getLocale() != $lang) {
                 I18n::setLocale($lang);
                 Configure::write('App.language', $lang);
-                
-                if($config['useCookie']) {
-                    $response = $response->withCookie('user_language', [
-                        'value' => $lang,
-                        'path' => '/',
-                        'httpOnly' => true,
-                        'secure' => false, // Esto indica que se transmita tambien por http no seguro
-                        'expire' => strtotime('+1 month')
-                        ]);
-                }
             }
-            
+                
+            if($config['useCookie']) {
+                $response = $response->withCookie('user_language', [
+                    'value' => $lang,
+                    'path' => '/',
+                    'httpOnly' => true,
+                    'secure' => false, // Esto indica que se transmita tambien por http no seguro
+                    'expire' => strtotime('+1 month')
+                    ]);
+            }
         }
 
         return $next($request, $response);
