@@ -183,10 +183,26 @@ class SharedTravel extends Entity {
         
         return $route;
     }
+    
+    /**
+     * Retorna null si no hay matcheo
+     * * Debe decir 'taxi-' delante, debe tener el separador '--', deben existir los slug, etc...
+     * @param type $slug
+     * @return type
+     * @throws NotFoundException
+     */
     public static function _routeFromSlug($slug) {
+        // Sanity checks
+        if($slug == null) return null;
+        if(substr($slug, 0, 5) != 'taxi-') return null;
+        
         $slug = substr($slug, 5); // Eliminar 'taxi-'
         
         $pos = strpos($slug, '--');
+        
+        if(!$pos) return null;
+        
+        // OK
         
         $originSlug = substr($slug, 0, $pos);
         $destSlug = substr($slug, $pos + 2);
@@ -198,6 +214,8 @@ class SharedTravel extends Entity {
                 break;
             }
         }
+        if($originId == null) return null;
+        
         $destId = null;
         foreach (self::$localities as $k=>$l) {
             if($l['slug'] == $destSlug) {
@@ -205,6 +223,7 @@ class SharedTravel extends Entity {
                 break;
             }
         }
+        if($destId == null) return null;
         
         $route = null;
         foreach (self::$routes as $r) {

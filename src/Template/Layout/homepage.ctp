@@ -74,7 +74,8 @@
                     bootbox.dialog({
                         title:$(this).data('title'), 
                         message:$( '#' + $(this).data('modal') ).html(), 
-                        size:'large'
+                        size:'large',
+                        onEscape:true
                     });
 
                     form = $('.bootbox form');

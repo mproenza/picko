@@ -91,16 +91,10 @@ class SharedTravelsController extends AppController {
         
         // Booking!
             
-        // Sanity checks
-        if($routeSlug == null) throw new NotFoundException ();
-        
-        // TODO: Verificar la slug: debe decir 'taxi-' delante, debe tener el separador '--', deben existir los slug, etc...
-        
         $route = SharedTravel::_routeFromSlug($routeSlug);
         if($route == null) throw new NotFoundException ();
         
         $this->set('route', SharedTravel::_routeFull($route));
-        
         $this->viewBuilder()->setLayout('homepage');
     }
 

@@ -101,7 +101,12 @@
                 $( ".open-request-form" ).click(function( event ) {
                     event.preventDefault();
 
-                    bootbox.dialog({title:$(this).data('title'), message:$( '#' + $(this).data('modal') ).html(), size:'large'});
+                    bootbox.dialog({
+                        title:$(this).data('title'), 
+                        message:$( '#' + $(this).data('modal') ).html(), 
+                        size:'large',
+                        onEscape:true
+                    });
 
                     form = $('.bootbox form');
                     
