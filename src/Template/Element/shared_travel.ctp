@@ -1,9 +1,7 @@
 <?php 
 use App\Model\Entity\SharedTravel;
 use App\Util\TimeUtil;
-?>
 
-<?php 
 if(!isset($fromEmail)) $fromEmail = false;
 if(!isset($showEmail)) $showEmail = true;
 if(!isset($showDetails)) $showDetails = false;
@@ -17,7 +15,7 @@ if(!isset($admin)) $admin = false;
     <div class="col-md-6">
         <p><b><?php echo __d('shared_travels', 'DATOS DEL TRANSFER')?></b></p><hr/>
         <?php $st = SharedTravel::getStateDesc($request['SharedTravel']['state'])?>
-        <p><span class="text-muted"><?php echo __d('shared_travels', 'Estado')?>:</span> <big><abbr class="info" title="<?php echo $st['description']?>" style="text-decoration: none"><span class="<?php echo $st['class']?>"><?php echo $st['title'] ?></span></abbr></big></p>
+        <p><span class="text-muted"><b><?php echo __d('shared_travels', 'Estado')?>:</b></span> <big><abbr class="info" title="<?php echo $st['description']?>" style="text-decoration: none"><span class="<?php echo $st['class']?>"><?php echo $st['title'] ?></span></abbr></big></p>
         <p><span class="text-muted"><?php echo __d('shared_travels', 'Ruta')?>:</span> <code><big><?php echo $request['SharedTravel']['origin']?></big></code> > <code><big><?php echo $request['SharedTravel']['destination']?></big></code></p>
         <p><span class="text-muted"><?php echo __d('shared_travels', 'Fecha')?>:</span> <?php echo  TimeUtil::prettyDate($request['SharedTravel']['date'], false)?></p>
         <p><span class="text-muted"><?php echo __d('shared_travels', 'Hora de recogida')?>:</span> <?php echo $request['SharedTravel']['departure_time_desc']?></p>

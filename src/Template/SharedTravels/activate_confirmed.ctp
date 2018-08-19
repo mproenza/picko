@@ -14,7 +14,7 @@
             <?php echo $this->element('shared_travel', compact('request'))?>
         </div>
         
-        <div class="col-md-3 alert alert-secondary" style="display: inline-block">
+        <div class="col-md-3">
             <?php echo $this->element('suggest_transfers', ['route'=>$request['SharedTravel']])?>
         </div>        
     </div>
