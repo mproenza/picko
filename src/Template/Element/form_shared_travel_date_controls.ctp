@@ -6,7 +6,7 @@
         <a href="#!" class="cancel-edit-date-change-<?php echo $request['SharedTravel']['id']?>">&ndash; <?php echo __('cancelar')?></a>
     </span>
     <div id='date-change-form-<?php echo $request['SharedTravel']['id']?>' style="display:none">
-        <?php echo $this->Form->create('SharedTravel', array('url' => array('controller' => 'shared_travels', 'action' => 'changeDate/'.$request['SharedTravel']['id'])));?>
+        <?php echo $this->Form->create('SharedTravel', array('url' => array('controller' => 'shared-rides', 'action' => 'changeDate/'.$request['SharedTravel']['id'])));?>
         <fieldset>
             <?php echo $this->Form->custom_date('date', array('label' => false, 'dateFormat' => 'dd/mm/yyyy', 'class'=>'input-sm'))?>
             <br/>
