@@ -2,10 +2,10 @@
 use Cake\Core\Configure;
 use Cake\Error\Debugger;
 
-$this->layout = 'error';
+$this->layout = 'shared_rides';
 
 if (Configure::read('debug')) :
-    $this->layout = 'dev_error';
+    $this->layout = 'shared_rides';
 
     $this->assign('title', $message);
     $this->assign('templateName', 'error500.ctp');
@@ -36,8 +36,13 @@ if (Configure::read('debug')) :
     $this->end();
 endif;
 ?>
-<h2><?= __d('errors', 'Ha ocurrido un error interno.') ?></h2>
-<p class="error">
-    <strong><?= __d('cake', 'Error') ?>: </strong>
-    <?= h($message) ?>
-</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h1><?php echo $message; ?></h1>
+            <p class="error">
+                <?= __d('errors', 'Ha ocurrido un error interno.') ?>
+            </p>
+        </div>
+    </div>
+</div>

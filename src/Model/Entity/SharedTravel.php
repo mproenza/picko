@@ -214,7 +214,7 @@ class SharedTravel extends Entity {
                 break;
             }
         }
-        if($originId == null) return null;
+        if($originId === null) return null;
         
         $destId = null;
         foreach (self::$localities as $k=>$l) {
@@ -223,7 +223,7 @@ class SharedTravel extends Entity {
                 break;
             }
         }
-        if($destId == null) return null;
+        if($destId === null) return null;
         
         $route = null;
         foreach (self::$routes as $r) {

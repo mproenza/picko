@@ -99,35 +99,10 @@ class EnhancedHtmlHelper extends HtmlHelper {
         return $url;
     }
     
-    
-    /*public function link($title, $url = null, array $options = []) {
-        //if(is_array($url) && !isset ($url['plugin'])) $url['plugin'] = '';
-        return parent::link($title, $url, $options);
-    }*/
-    
     public function lang($currentLang, $request) {
         $other = array('en' => 'es', 'es' => 'en');
 
-        $lang_changed_url = $request->getParam('pass');
-        
-        // Poner controller y action si no es /shared-rides/home
-        if($request->getParam('action') != 'home') {
-            $lang_changed_url['controller'] = $request->getParam('controller');
-            $lang_changed_url['action'] = $request->getParam('action');
-            
-            if($lang_changed_url['controller'] == 'SharedTravels') $lang_changed_url['controller'] = 'shared-rides';
-            /*if($lang_changed_url['controller'] == 'Pages') {
-                unset($lang_changed_url['controller']);
-                unset($lang_changed_url['action']);
-            }*/
-        }
-        
-        if(is_array($lang_changed_url)){
-            $lang_changed_url['?']        = $request->getQueryParams();
-            $lang_changed_url['language'] = $other[$currentLang];
-        } else {
-            $lang_changed_url = '/'.$other[$currentLang].'/'.$lang_changed_url;
-        }
+        $lang_changed_url = \App\Util\LangUtil::getUrlParamsForLanguage($other[$currentLang], $request);
 
         if($currentLang != null && $currentLang == 'en')
             return $this->link($this->image('Spain.png').' <small><small>Ver en</small> Español</small>', $lang_changed_url, array('class'=>'nav-link', 'escape'=>false, 'style'=>'text-decoration:none'));

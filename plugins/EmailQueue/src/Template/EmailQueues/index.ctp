@@ -30,31 +30,7 @@
             </td>
             <td><?php echo $e['EmailQueue']['lang']?></td>
             <td><?php echo $e['EmailQueue']['to_inbox']?></td>
-            <td>
-            <?php 
-            echo $e['EmailQueue']['subject'];
-            
-            if(isset ($e['EmailQueue']['template_vars']['conversation_id']) && substr($e['EmailQueue']['template'], 0, 8) === 'response') {
-                echo '<hr/>';
-                echo '<div>';
-                if($e['EmailQueue']['template'] == 'response_traveler2driver') {
-                    echo '<big><i class="glyphicon glyphicon-check"></i></big> ';
-                }
-                echo $this->Html->link('Ver esta conversación', array('controller'=>'driver_traveler_conversations', 'action'=>'view/'.$e['EmailQueue']['template_vars']['conversation_id']));
-                echo '</div>';
-            }
-            ?>
-            </td>
             <td><?php echo $e['EmailQueue']['template']?></td>
-            <td>
-            <?php 
-            if(isset ($e['EmailQueue']['template_vars']['travel'])) {
-                echo json_encode($e['EmailQueue']['template_vars']['travel']);
-            } else {
-                echo json_encode($e['EmailQueue']['template_vars']);
-            }
-            ?>
-            </td>
             <td><?php echo $e['EmailQueue']['sent']?></td>
             <td><?php echo $e['EmailQueue']['locked']?></td>
             <td><?php echo $e['EmailQueue']['send_tries']?></td>
@@ -63,5 +39,3 @@
     <?php endforeach; ?>
     </tbody>
 </table>
-
-<?php ?>

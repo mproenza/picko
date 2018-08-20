@@ -81,7 +81,7 @@ class AppController extends Controller
             $this->set('_serialize', true);
         }
 
-        $this->_setPageTitle();
+        $this->_setPageMeta();
 
 
         // Enviar Auth hacia la vista para poderla usar de manera mas facil
@@ -90,46 +90,42 @@ class AppController extends Controller
 
 
 
-    private function _setPageTitle() {
-        $defaultTitle = $this->_getPageTitle('default');
-        $page_title = $defaultTitle['title'];
-        $page_description = $defaultTitle['description'];
+    private function _setPageMeta() {
+        $defaultTitle = $this->_getPageMeta('default');
+        $meta = $defaultTitle;
 
         $key = $this->request->getParam('controller').'.'.$this->request->getParam('action');
-        $partialTitle = $this->_getPageTitle($key);
-
-        if($partialTitle != null) {
+        
+        $partialMeta = $this->_getPageMeta($key);
+        if($partialMeta != null) {
             if($this->request->getParam('controller') === 'Pages') {
-                if(isset($partialTitle[$this->request->getParam('pass')[0]])) {
-                    $pass = $this->request->getParam('pass')[0];
-
-                    $page_title = $partialTitle[$pass]['title'];
-                    if(isset ($partialTitle[$pass]['description'])) $page_description = $partialTitle[$pass]['description'];
+                if(isset($partialMeta[$this->request->getParam('pass')[0]])) {
+                    $meta = $partialMeta[$this->request->getParam('pass')[0]];
                 }
-
             } else {
-                $page_title = $partialTitle['title'];
-                if(isset ($partialTitle['description'])) $page_description = $partialTitle['description'];
+                $meta = $partialMeta;
             }
         }
-        $this->set('page_title', $page_title);
-        $this->set('page_description', $page_description);
+        
+        $this->set('meta', $meta);
     }
 
-    private function _getPageTitle($key) {
+    private function _getPageMeta($key) {
         $pageTitles = ['default' =>array('title'=>__d('meta', 'Taxi compartido en Cuba - {0} y otros', 'La Habana, Viñales, Trinidad, Varadero'), 'description'=>__d('meta', 'PickoCar es un servicio de taxi compartido en Cuba con excelentes precios y rutas que conectan {0} y otros', 'La Habana, Viñales, Trinidad, Varadero')),
 
             // HOMEPAGE
             'SharedTravels.home' => [
                 'title'=>__d('meta', 'Taxi compartido en Cuba - {0} y otros', 'La Habana, Viñales, Trinidad, Varadero'), 
-                'description'=>__d('meta', 'PickoCar es un servicio de taxi compartido en Cuba con excelentes precios y rutas que conectan {0} y otros', 'La Habana, Viñales, Trinidad, Varadero, Cayo Guillermo')
+                'description'=>__d('meta', 'PickoCar es un servicio de taxi compartido en Cuba con excelentes precios y rutas que conectan {0} y otros', 'La Habana, Viñales, Trinidad, Varadero, Cayo Guillermo'),
+                'hreflang'=>true
                 ],
 
             // PAGES
             'Pages.display' =>array(
                 'about'=>array(
                     'title'=>__d('meta', 'Sobre Nosotros'), 
-                    'description'=>__d('meta', 'Conoce lo que hacemos en PickoCar, nuestro servicio de taxi compartido en Cuba que conecta varios destinos')
+                    'description'=>__d('meta', 'Conoce lo que hacemos en PickoCar, nuestro servicio de taxi compartido en Cuba que conecta varios destinos'),
+                    'hreflang'=>true
                 ),
                 'press-release'=>array('title'=>__d('meta', 'Lanzamiento de PickoCar | Reseña para la Prensa'), 'description'=>__d('meta', 'Reseña para la prensa del lanzamiento de PickoCar en Cuba')),
                 'taxi-vs-viazul'=>array('title'=>__d('meta', 'Taxi compartido en Cuba con precios similares al bus Viazul'), 'description'=>__d('meta', 'PickoCar es un servicio de taxi compartido en Cuba con excelentes precios y rutas que conectan destinos como {0} y otros', 'La Habana, Viñales, Trinidad, Varadero, Cayo Guillermo')),
@@ -137,17 +133,23 @@ class AppController extends Controller
                 'testimonials'=>array('title'=>__d('meta', 'Testimonios de viajeros sorprendentes en Cuba'), 'description'=>__d('meta', 'Testimonios de viajeros que contrataron choferes con YoTeLlevo, Cuba'))*/),
             
             // HOMEPAGE
-            'Contact.index' => ['title'=>__d('meta', 'Contactar'), 'description'=>__d('meta', 'PickoCar es un servicio de taxi compartido en Cuba. Contáctanos para cualquier pregunta.')],
+            'Contact.index' => [
+                'title'=>__d('meta', 'Contactar'), 
+                'description'=>__d('meta', 'PickoCar es un servicio de taxi compartido en Cuba. Contáctanos para cualquier pregunta.'),
+                'hreflang'=>true
+            ],
 
 
             // USER ACTIONS
-            'SharedTravels.book' =>  ['title'=>function($viewVars, $request) {
+            'SharedTravels.book' =>  [
+                'title'=>function($viewVars, $request) {
                     return __d('meta', 'Taxi compartido de {0} a {1}. Precio: ${2} por asiento', $viewVars['route']['origin'], $viewVars['route']['destination'], $viewVars['route']['price_x_seat']);
                 },
                 'description'=>function($viewVars, $request) {
                     return __d('meta', 'Reserva un taxi para ir de {0} a {1} por un precio de {2} cuc por asiento. Recogida en casa u hotel. Sólo 4 pasajeros en un auto moderno con aire acondicionado y mucho confort.', $viewVars['route']['origin'], $viewVars['route']['destination'], $viewVars['route']['price_x_seat']);
-                }
-                ],
+                },
+                'hreflang'=>true
+            ],
             'SharedTravels.thanks' =>array('title'=>__d('meta', 'Gracias por su solicitud'), 'description'=>__d('meta', '...')),
             'SharedTravels.activate' =>array('title'=>__d('meta', 'Activar solicitud'), 'description'=>__d('meta', '...')),
             'SharedTravels.view' =>array('title'=>__d('meta', 'Datos de tu solicitud'), 'description'=>__d('meta', '...')),

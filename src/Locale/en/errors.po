@@ -25,8 +25,8 @@ msgid "Página no encontrada"
 msgstr "Page not found"
 
 #: View/Errors/error400.ctp:24
-msgid "La dirección requerida %s no se encuentra en este servidor."
-msgstr "The requested address %s was not found on this server."
+msgid "La dirección requerida {0} no se encuentra en este servidor."
+msgstr "The requested address {0} was not found on this server."
 
 #: View/Errors/error500.ctp:23
 msgid "Ha ocurrido un error interno."

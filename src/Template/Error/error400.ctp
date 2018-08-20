@@ -2,10 +2,10 @@
 use Cake\Core\Configure;
 use Cake\Error\Debugger;
 
-$this->layout = 'error';
+$this->layout = 'shared_rides';
 
 if (Configure::read('debug')) :
-    $this->layout = 'dev_error';
+    $this->layout = 'shared_rides';
 
     $this->assign('title', $message);
     $this->assign('templateName', 'error400.ctp');
@@ -31,8 +31,14 @@ endif;
 $this->end();
 endif;
 ?>
-<h2><?= h($message) ?></h2>
-<p class="error">
-    <strong><?= __d('error', 'Página no encontrada') ?>: </strong>
-    <?= __d('errors', 'La dirección requerida {0} no se encuentra en este servidor.', "<strong>'{$url}'</strong>") ?>
-</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h1><?php echo $message; ?></h1>
+            <p class="error">
+                <strong><?= __d('error', 'Página no encontrada') ?>: </strong>
+                <?= __d('errors', 'La dirección requerida {0} no se encuentra en este servidor.', "<strong>'{$url}'</strong>") ?>
+            </p>
+        </div>
+    </div>
+</div>

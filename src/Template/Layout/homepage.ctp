@@ -18,11 +18,22 @@
         <?php echo $this->Html->charset(); ?>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <?php if(is_callable($page_title)) $page_title = $page_title($this->viewVars, $this->request);?>
-        <title><?php echo $page_title.' | '.'PickoCar'?></title>
+        <?php if(is_callable($meta['title'])) $meta['title'] = $meta['title']($this->viewVars, $this->request);?>
+        <title><?php echo $meta['title'].' | '.'PickoCar'?></title>
         
-        <?php if(is_callable($page_description)) $page_description = $page_description($this->viewVars, $this->request);?>
-        <meta name="description" content="<?php echo $page_description;?>"/> 
+        <?php if(is_callable($meta['description'])) $meta['description'] = $meta['description']($this->viewVars, $this->request);?>
+        <meta name="description" content="<?php echo $meta['description'];?>"/>
+        
+        <?php if(isset($meta['hreflang']) && $meta['hreflang']):?>
+            <?php $langs = Configure::read('I18n.languages');?>
+            <?php foreach ($langs as $l):?>
+                <?php
+                    $urlParams = App\Util\LangUtil::getUrlParamsForLanguage($l, $this->request);
+                    $urlParams['_full'] = true;
+                ?>
+                <link rel="alternate" href="<?php echo \Cake\Routing\Router::url($urlParams)?>" hreflang="<?php echo $l?>">
+            <?php endforeach?>
+        <?php endif?>
         
         <?php
         echo $this->Html->meta('icon');

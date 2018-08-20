@@ -83,21 +83,6 @@ Router::addUrlFilter(function ($params, $request) {
 
     return $params;
 });
-
-// Filtro para los slug para las solicitudes. Ej. para generar la url /book/taxi--la-habana-trinidad-2pm
-/*Router::addUrlFilter(function ($params, $request) {
-    if(isset($params['controller']) &&  in_array($params['controller'], ['shared-rides', 'SharedTravels']) 
-        && isset($params['action']) &&  $params['action'] == 'book') {
-        
-        $modalityCode = $params['pass'][0];
-        $modality = SharedTravel::$modalities[$modalityCode];
-        
-        $params['?'] = [];
-        $params['?']['slug'] = 'taxi--'.strtolower(str_replace(' ', '-', $modality['origin'])).'-'.strtolower(str_replace(' ', '-', $modality['destination'])).'-'.str_replace(' ', '', $modality['time']);
-    }
-
-    return $params;
-});*/
  
 Router::scope('/:language', function (RouteBuilder $routes) {
     
@@ -114,10 +99,8 @@ Router::scope('/:language', function (RouteBuilder $routes) {
             ->setPatterns(['language' => 'en|es']);
     
     // Email Queue
-    $routes->connect('/email-queue/:action/*', ['plugin'=>'EmailQueue', 'controller' => 'EmailQueues'])
-            ->setPatterns(['language' => 'en|es']);
-    $routes->connect('/email-queue/*', ['plugin'=>'EmailQueue', 'controller' => 'EmailQueues', 'action' => 'index'])
-            ->setPatterns(['language' => 'en|es']);
+    $routes->connect('/email-queue/:action/*', ['plugin'=>'EmailQueue', 'controller' => 'EmailQueues']);
+    $routes->connect('/email-queue/*', ['plugin'=>'EmailQueue', 'controller' => 'EmailQueues', 'action' => 'index']);
     
     // Calendar
     $routes->connect('/calendar/:action/*', ['plugin'=>'Calendar', 'controller' => 'Calendars'])
