@@ -99,6 +99,26 @@ class EnhancedHtmlHelper extends HtmlHelper {
         return $url;
     }
     
+    public function hreflang($request) {
+        $output = '';
+        
+        $langs = Configure::read('I18n.languages');
+        foreach ($langs as $l) {
+            $urlParams = \App\Util\LangUtil::getUrlParamsForLanguage($l, $request);
+            $urlParams['_full'] = true;
+            
+            $output .= '<link rel="alternate" href="'.\Cake\Routing\Router::url($urlParams).'" hreflang="'.$l.'">';
+        }
+        // X-DEFAULT
+        $defaultLang = Configure::read('default_language');
+        $urlParams = \App\Util\LangUtil::getUrlParamsForLanguage($defaultLang, $request);
+        $urlParams['_full'] = true;
+        
+        $output .= '<link rel="alternate" href="'.\Cake\Routing\Router::url($urlParams).'" hreflang="x-default">';
+        
+        return $output;
+    }
+    
     public function lang($currentLang, $request) {
         $other = array('en' => 'es', 'es' => 'en');
 

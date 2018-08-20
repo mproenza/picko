@@ -310,6 +310,18 @@ class SharedTravelsController extends AppController {
             $OK = $STTable->updateAll(['date' => TimeUtil::dmY_to_Ymd($this->request->getData('date'))], ['id' => $request['SharedTravel']['id']]);
             if(!$OK) $this->setErrorMessage ('Error actualizando la fecha.');
             
+            // Aviso a facilitador
+            $facilitator = Configure::read('shared_rides_facilitator');
+            $request['SharedTravel']['new_date'] = TimeUtil::dmY_to_Ymd($this->request->getData('date'));
+            $notice = 'CAMBIO FECHA > PickoCar #'.$request['SharedTravel']['id'].' | '.$request['SharedTravel']['origin'].' - '.$request['SharedTravel']['destination'];
+            $Email = new Email('aviso');
+            $Email->to($facilitator['email'])
+                ->subject($notice)
+                ->setTemplate('notifications_facilitator/request_change_date')
+                ->setViewVars(['request'=>$request])
+                ->setEmailFormat('html')
+                ->send();
+            
             return $this->redirect($this->referer());
             
         } else throw new MethodNotAllowedException();

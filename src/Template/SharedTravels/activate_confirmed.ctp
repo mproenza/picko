@@ -7,9 +7,7 @@
                 <?php echo __d('shared_travels', 'Su solicitud fue confirmada automáticamente porque {0}.', $confirmed_reason)?>
             </p> 
             <p><?php echo __d('shared_travels', 'Estos son todos los datos de tu solicitud')?>:</p>
-        </div>
-        
-        <div class="col-md-8 offset-md-1">
+            
             <hr/>
             <?php echo $this->element('shared_travel', compact('request'))?>
         </div>

@@ -24,17 +24,6 @@
         <?php if(is_callable($meta['description'])) $meta['description'] = $meta['description']($this->viewVars, $this->request);?>
         <meta name="description" content="<?php echo $meta['description'];?>"/>
         
-        <?php if(isset($meta['hreflang']) && $meta['hreflang']):?>
-            <?php $langs = Configure::read('I18n.languages');?>
-            <?php foreach ($langs as $l):?>
-                <?php
-                    $urlParams = App\Util\LangUtil::getUrlParamsForLanguage($l, $this->request);
-                    $urlParams['_full'] = true;
-                ?>
-                <link rel="alternate" href="<?php echo \Cake\Routing\Router::url($urlParams)?>" hreflang="<?php echo $l?>">
-            <?php endforeach?>
-        <?php endif?>
-        
         <?php
         echo $this->Html->meta('icon');
 
@@ -44,7 +33,9 @@
         echo $this->Html->css('home');
         
         echo $this->Html->css('sticky');
-        //echo $this->Html->css('sticky.ini');
+        
+        // META HREFLANG
+        if(isset($meta['hreflang']) && $meta['hreflang']) echo $this->Html->hreflang($this->request);
         
         echo $this->Html->script('jquery');
         echo $this->Html->script('popper');
