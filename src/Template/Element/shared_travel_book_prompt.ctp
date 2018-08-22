@@ -4,9 +4,6 @@
         <div>
             <?php echo __d('shared_travels', 'Precio').': '.__d('shared_travels', '{0} por persona', '<code><big><big>'.$route['price_x_seat'].' cuc'.'</big></big></code>')?>
         </div>
-        <!--<div>
-            <?php echo __d('shared_travels', 'Recogida a las {0} en el lugar y fecha que indiques','<code><big><big>'.$route['time'].'</big></big></code>')?>
-        </div>-->
     </div>
 </div>
 <div class="row" style="margin-top: 20px;">
