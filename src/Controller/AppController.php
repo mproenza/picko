@@ -150,15 +150,15 @@ class AppController extends Controller
                 },
                 'hreflang'=>true
             ],
-            'SharedTravels.thanks' =>array('title'=>__d('meta', 'Gracias por su solicitud'), 'description'=>__d('meta', '...')),
-            'SharedTravels.activate' =>array('title'=>__d('meta', 'Activar solicitud'), 'description'=>__d('meta', '...')),
-            'SharedTravels.view' =>array('title'=>__d('meta', 'Datos de tu solicitud'), 'description'=>__d('meta', '...')),
+            'SharedTravels.thanks' =>array('title'=>__d('meta', 'Gracias por su solicitud'), 'description'=>'', 'robots-index'=>false),
+            'SharedTravels.activate' =>array('title'=>__d('meta', 'Activar solicitud'), 'description'=>'', 'robots-index'=>false),
+            'SharedTravels.view' =>array('title'=>__d('meta', 'Datos de tu solicitud'), 'description'=>'', 'robots-index'=>false),
 
             // ADMIN
-            'SharedTravels.index' =>array('title'=>'Compartidos'),
-            'SharedTravels.admin' =>array('title'=>'Admin'),
+            'SharedTravels.index' =>array('title'=>'Compartidos', 'description'=>''),
+            'SharedTravels.admin' =>array('title'=>'Admin', 'description'=>''),
 
-            'EmailQueues.index' =>array('title'=>'Email Queue'),
+            'EmailQueues.index' =>array('title'=>'Email Queue', 'description'=>''),
             ];
 
         if(isset ($pageTitles[$key])) return $pageTitles[$key];

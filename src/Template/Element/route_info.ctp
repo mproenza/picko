@@ -22,7 +22,7 @@ $route = SharedTravel::_routeFull($route);
         </div>
         <br/>
         
-        <div><?php echo __d('shared_travels', '{0} por persona', '<code><big><big><big>'.$route['price_x_seat'].' cuc'.'</big></big></big></code>')?></div>
+        <div><?php echo __d('shared_travels', '{0} por persona', '<code><span class="fa-2x">'.$route['price_x_seat'].' cuc'.'</span></code>')?></div>
         <div><?php echo __d('shared_travels', '<span class="text-muted"><small>mejor que</small></span> <s>{0}</s> <span class="text-muted"><small>por taxi privado</small></span>', '<code><big>$'.(4*$route['price_x_seat']).'</big></code>')?></div>
         <br/>
 
@@ -42,7 +42,7 @@ $route = SharedTravel::_routeFull($route);
         <?php $info = App\Model\Entity\SharedTravel::_routeInfo($route['origin_id'], $route['destination_id'])?>
         <?php if($info != null):?> 
             <br/>
-            <div class="text-muted"><small><i class="fa fa-road"></i> <?php echo $info['kms']?> kms | <?php echo $info['hrs']?> hrs</small></div>
+            <div><small><i class="fa fa-road"></i> <?php echo $info['kms']?> kms | <?php echo $info['hrs']?> hrs</small></div>
         <?php endif;?>
     </div>
 </div>

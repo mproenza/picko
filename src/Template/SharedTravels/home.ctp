@@ -37,11 +37,13 @@ use App\Model\Entity\SharedTravel;
                             <div class="card-title">
                                 <b><?php echo __d('home', 'Algunos de nuestros precios <span style="display: inline-block">(por asiento)</span>')?></b>
                             </div>
-                            <div>La Habana > Trinidad: <big>$35</big></div>
-                            <div>Viñales > La Habana: <big>$25</big></div>
-                            <div>La Habana > Varadero: <big>$25</big></div>
-                            <div>Viñales > Trinidad: <big>$50</big></div>
-                            <div>Cayo Guillermo > La Habana: <big>$55</big></div>
+                            <ul class="list-unstyled">
+                                <li>La Habana > Trinidad: &nbsp;<big>$35</big></li>
+                                <li>Viñales > La Habana: &nbsp;<big>$25</big></li>
+                                <li>La Habana > Varadero: &nbsp;<big>$25</big></li>
+                                <li>Viñales > Trinidad: &nbsp;<big>$50</big></li>
+                                <li>Cayo Guillermo > La Habana: &nbsp;<big>$55</big></li>
+                            </ul>
                             <br/>
                             <div>* <?php echo __d('home', 'También {0} y otros', 'Cienfuegos, Santa Clara, Playa Larga, Cayo Coco')?></div>
                             <hr/>
@@ -64,14 +66,25 @@ use App\Model\Entity\SharedTravel;
         
         <div class="row">
             <div class="col-md-10 offset-md-1 we-offer">
-                <h3 class="lead center"><big><b><?php echo __d('home', 'En PickoCar organizamos viajes compartidos en taxi hacia diferentes destinos en la isla todos los días')?>!</b></big></h3>
-                <p class="lead"><b><?php echo __d('home', 'Con sólo reservar, arreglamos todo de manera que compartas el taxi con otros viajeros que van al mismo destino que tú y que han reservado con nosotros para la misma fecha y horario -sólo viajan 4 pasajeros en cada taxi.')?></b></p>
+                <h3 class="lead center"><big><b><?php echo __d('home', 'En PickoCar organizamos viajes compartidos en taxi hacia diferentes destinos en {0} todos los días', 'Cuba')?>!</b></big></h3>
+                
+                <br/>
+                <p class="lead"><b><?php echo __d('home', 'Con sólo reservar, arreglamos todo de manera que compartas el taxi con otros viajeros que van al mismo destino que tú y que han reservado con nosotros para la misma fecha y horario.')?></b></p>
+                
+                <br/>
+                <ul class="fa-ul">
+                    <li><i class="fa-li fa fa-lg fa-snowflake-o pr-5"></i> &nbsp;<big><b><?php echo __d('home', 'Usamos autos confortables y con aire acondicionado') ?></b></big></li>
+                    <li class="mt-3"><i class="fa-li fa fa-lg fa-user-times pr-5"><b>4</b></i> &nbsp;<big><b><?php echo __d('home', 'Sólo 4 pasajeros viajan en cada auto') ?></b></big></li>
+                    <li class="mt-3"><i class="fa-li fa fa-lg fa-map-marker pr-5"></i> &nbsp;<big><b><?php echo __d('home', 'La recogida es en tu estancia (casa de alquiler, hotel u otro)') ?></b></big></li>
+                </ul>
+                
+                <br/>
                 <p class="lead"><b><?php echo __d('home', 'Esto es lo que ganas:')?></b></p>
                 <br/>
                 <ul class="fa-ul">
                     <li><i class="fa-li fa fa-check"></i>
                         <big><?php echo __d('home', '<b>Ahorras dinero</b> si viajas solo, en pareja o son tres personas y no quieren pagar el viaje completo en un taxi privado como si fueran cuatro personas.') ?></big>
-                        <p class="card" style="padding: 10px;margin-top: 20px;margin-bottom: 20px"><em><?php echo __d('home', 'En un viaje de <b>La Habana a Trinidad</b> en que se pagarían {0} - {1} a un chofer privado -sin importar cuántas personas sean-, <b>a 2 personas les costaría en PickoCar {2} en total ({3} por asiento)</b>, ahorrándose entre {4} y {5}.', '<big>$130</big>', '<big>$160</big>', '$70', '$35', '$60', '$90')?></em></p>
+                        <p style="padding: 10px;margin-top: 20px;margin-bottom: 20px"><em><?php echo __d('home', 'En un viaje de <b>La Habana a Trinidad</b> en que se pagarían <b>{0} - {1} a un chofer privado</b> -sin importar cuántas personas sean-, <b>a 2 personas les costaría en PickoCar {2} en total ({3} por asiento)</b>, ahorrándose entre {4} y {5}.', '<big>$130</big>', '<big>$160</big>', '$70', '$35', '$60', '$90')?></em></p>
                     </li>
                     <li class="mt-3"><i class="fa-li fa fa-check"></i><big><?php echo __d('home', '<b>Viajas cómodo</b> en un auto moderno con aire acondicionado y con <b>sólo 4 pasajeros</b> dentro, todos yendo al mismo destino y con reservación de antemano.') ?></big></li>
                     <li class="mt-3"><i class="fa-li fa fa-check"></i><big><?php echo __d('home', '<b>Recibes un servicio puerta a puerta</b> en el cual <b>el taxi te recoge en tu casa de estancia u hotel</b> y te lleva hasta tu próxima estancia.') ?></big></li>
@@ -177,8 +190,6 @@ use App\Model\Entity\SharedTravel;
     </footer>
  
 </div>
-
-
 
 <?php if($doBootbox):?>
     <?php

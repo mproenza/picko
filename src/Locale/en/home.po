@@ -48,12 +48,24 @@ msgid "Mira todas las rutas y precios"
 msgstr "See all routes and prices"
 
 #: View/SharedTravels/home.ctp:8
-msgid "En PickoCar organizamos viajes compartidos en taxi hacia diferentes destinos en la isla todos los días"
-msgstr "At PickoCar we organize shared rides in taxi to different destinations in the island every day"
+msgid "En PickoCar organizamos viajes compartidos en taxi hacia diferentes destinos en {0} todos los días"
+msgstr "At PickoCar we organize shared rides in taxi to different destinations in {0} every day"
 
 #: View/SharedTravels/home.ctp:8
-msgid "Con sólo reservar, arreglamos todo de manera que compartas el taxi con otros viajeros que van al mismo destino que tú y que han reservado con nosotros para la misma fecha y horario -sólo viajan 4 pasajeros en cada taxi."
-msgstr "After you book, we arrange everything in a way that you share your trip with other travelers going to the same destination, who booked with us for the same date and time -only 4 passengers travel in each taxi."
+msgid "Con sólo reservar, arreglamos todo de manera que compartas el taxi con otros viajeros que van al mismo destino que tú y que han reservado con nosotros para la misma fecha y horario."
+msgstr "After you book, we arrange everything in a way that you share your trip with other travelers going to the same destination, who booked with us for the same date and time."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Usamos autos confortables y con aire acondicionado"
+msgstr "We use confortable cars with air conditioner"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Sólo 4 pasajeros viajan en cada auto"
+msgstr "Only 4 passengers travel in each car"
+
+#: View/SharedTravels/home.ctp:8
+msgid "La recogida es en tu estancia (casa de alquiler, hotel u otro)"
+msgstr "Pick up is at your accommodation (guest-house, hotel or other)"
 
 #: View/SharedTravels/home.ctp:8
 msgid "Esto es lo que ganas:"
@@ -76,8 +88,8 @@ msgid "<b>Ahorras dinero</b> si viajas solo, en pareja o son tres personas y no 
 msgstr "<b>You save money</b> if you travel alone, in a couple or a three-people pack and don't want to pay the whole trip in a private ride as if you were four people."
 
 #: View/SharedTravels/home.php:8
-msgid "En un viaje de <b>La Habana a Trinidad</b> en que se pagarían {0} - {1} a un chofer privado -sin importar cuántas personas sean-, <b>a 2 personas les costaría en PickoCar {2} en total ({3} por asiento)</b>, ahorrándose entre {4} y {5}."
-msgstr "In a trip from <b>La Habana to Trinidad</b> in which you'd pay {0} - {1} to a private driver -no matter how many people you are-, <b>2 people would pay only {2} total at PickoCar ({3} per seat)</b>, saving between {4} and {5}."
+msgid "En un viaje de <b>La Habana a Trinidad</b> en que se pagarían <b>{0} - {1} a un chofer privado</b> -sin importar cuántas personas sean-, <b>a 2 personas les costaría en PickoCar {2} en total ({3} por asiento)</b>, ahorrándose entre {4} y {5}."
+msgstr "In a trip from <b>La Habana to Trinidad</b> in which you'd pay <b>{0} - {1} to a private driver</b> -no matter how many people you are-, <b>2 people would pay only {2} total at PickoCar ({3} per seat)</b>, saving between {4} and {5}."
 
 #: View/SharedTravels/home.ctp:8
 msgid "Mira las rutas y precios disponibles"

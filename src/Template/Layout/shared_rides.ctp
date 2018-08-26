@@ -23,6 +23,11 @@
         
         <?php if(is_callable($meta['description'])) $meta['description'] = $meta['description']($this->viewVars, $this->request);?>
         <meta name="description" content="<?php echo $meta['description'];?>"/>
+        
+        <?php
+        // ROBOTS NOINDEX
+        if(isset($meta['robots-index']) && !$meta['robots-index']) echo '<meta name="robots" content="noindex"/>';
+        ?>
 
         <style type="text/css">
             
