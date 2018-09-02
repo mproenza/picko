@@ -1,6 +1,5 @@
 <?php 
 use App\Model\Entity\SharedTravel;
-use Cake\I18n\I18n;
 ?>
 
 <div id="container">
@@ -33,7 +32,17 @@ use Cake\I18n\I18n;
     <div class="container">
         
         <div class="row">
-            <div class="col-md-3 card" style="padding: 30px">
+            
+            <div class="col-md-12 pb-3">
+                <nav aria-label="breadcrumb" role="navigation">
+                    <ol class="breadcrumb" style="background-color: inherit !important;">
+                        <li class="breadcrumb-item"><?php echo $this->Html->link(__d('shared_travels', 'Todas las rutas'), ['_name'=>'homepage', '#'=>__d('meta', 'rutas-y-precios')]); ?></li>
+                        <li class="breadcrumb-item active" aria-current="page"><?= __d('shared_travels', 'Ruta {0} > {1}', $route['origin'], $route['destination'])?></li>
+                    </ol>
+                </nav>
+            </div>
+            
+            <div class="col-md-3" style="padding: 30px;border-left: #efefef solid 1px;">
                 <b><?php echo __d('shared_travels', 'INFO DE ESTE SERVICIO')?></b>
                 <div><?php echo __d('shared_travels', 'Taxi compartido de {0} a {1}', $route['origin'], $route['destination'])?></div>
                 <hr/>
@@ -72,30 +81,14 @@ use Cake\I18n\I18n;
  
 </div>
 
-
-
 <?php
-echo $this->Html->css('datepicker');
-echo $this->Html->script('datepicker');
-echo $this->Html->script('datepicker-locale');
+$this->Html->css('datepicker', ['block'=>'css_top']);
+$this->Html->script('datepicker', ['block'=>'script_bottom']);
+$this->Html->script('datepicker-locale', ['block'=>'script_bottom']);
 ?>
 
-<script>
-    $('.datepicker').datepicker({
-        format: "dd/mm/yyyy",
-        language: '<?php echo I18n::getLocale()?>',
-        startDate: '+2d',
-        todayBtn: "linked",
-        autoclose: true,
-        todayHighlight: false
-    });
-    
-    var form = $('form');
-    form.submit(function(event) {
-        if (this.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-        this.classList.add('was-validated');
-    });
-</script>
+<?php
+$this->start('script_internal');
+echo $this->element('js/shared_travels/book/script1');
+$this->end();
+?>

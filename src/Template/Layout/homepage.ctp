@@ -30,26 +30,30 @@
         echo $this->Html->css('default');
         echo $this->Html->css('bootstrap');
         echo $this->Html->css('font-awesome/css/font-awesome.min.css');
-        echo $this->Html->css('home');
-        
+        echo $this->Html->css('home');        
         echo $this->Html->css('sticky');
         
         // META HREFLANG
         if(isset($meta['hreflang']) && $meta['hreflang']) echo $this->Html->hreflang($this->request);
         
-        echo $this->Html->script('jquery');
-        echo $this->Html->script('popper');
-        echo $this->Html->script('bootstrap');
-        echo $this->Html->script('bootbox');
-        
         $this->fetch('meta');
         $this->fetch('css');
-        $this->fetch('script');
+        echo $this->fetch('css_top');
         ?>
     </head>
     <body body data-spy="scroll" data-target="#nav-routes" data-offset="250">
         <?php echo $this->fetch('content'); ?>
         
+        <?php
+        echo $this->Html->script('jquery');
+        echo $this->Html->script('popper');
+        echo $this->Html->script('bootstrap');
+        echo $this->Html->script('bootbox');
+        echo $this->Html->script('sticky');
+        ?>
+        <?= $this->fetch('script');?>
+        <?= $this->fetch('script_bottom');?>
+        <?= $this->fetch('script_internal');?>
         <script type="text/javascript">
             function goTo(id, time, offset) {
                 $('html, body').animate({
@@ -134,8 +138,6 @@
             });
             
         </script>
-
-        <?php echo $this->Html->script('sticky');?>
         
     </body>
 </html>

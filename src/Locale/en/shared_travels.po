@@ -83,6 +83,14 @@ msgid "¿Necesitas ir desde {0} hasta {1} durante tu viaje a Cuba?"
 msgstr "Need to go from {0} to {1} during your trip to Cuba?"
 
 #: View/SharedTravels/book.ctp:8
+msgid "Todas las rutas"
+msgstr "All routes"
+
+#: View/SharedTravels/book.ctp:8
+msgid "Ruta {0} > {1}"
+msgstr "Route {0} > {1}"
+
+#: View/SharedTravels/book.ctp:8
 msgid "Comparte un taxi cómodo con otros viajeros."
 msgstr "Share a confortable taxi with other travelers."
 

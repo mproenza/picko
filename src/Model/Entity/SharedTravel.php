@@ -13,8 +13,8 @@ class SharedTravel extends Entity {
         5=>['name'=>'Cayo Coco', 'slug'=>'cayo-coco', 'code'=>'CAC'],
         6=>['name'=>'Cayo Guillermo', 'slug'=>'cayo-guillermo', 'code'=>'CAG'],
         8=>['name'=>'Playa Larga', 'slug'=>'playa-larga', 'code'=>'PLL'],
-        9=>['name'=>'Playa Girón', 'slug'=>'playa-giron', 'code'=>'PLG'],
-        10=>['name'=>'Cayo Santa María', 'slug'=>'cayo-santa-maria', 'code'=>'CAM', 'active'=>false],
+        9=>['name'=>'Playa Girón', 'slug'=>'playa-giron', 'code'=>'PLG', 'use_as_origin'=>false],
+        10=>['name'=>'Cayo Santa María', 'slug'=>'cayo-santa-maria', 'code'=>'CAM', 'use_as_origin'=>false],
     );
     
     public static $routes_info = [
@@ -148,6 +148,9 @@ class SharedTravel extends Entity {
         ['origin_id'=>9, 'destination_id'=>4, 'price_x_seat'=>30, 'departure_times'=>[11, 16]]
     ];
     public static function _routeFull($route) {
+        // Evitar ponerle los datos extra a las rutas si ya se hizo (esto es porque se pudiera llamar a _routeFull() varias veces en una ejecucion)
+        if(isset($route['isFull']) && $route['isFull']) return $route;
+        
         $route['origin'] = self::$localities[$route['origin_id']]['name'];
         $route['destination'] = self::$localities[$route['destination_id']]['name'];
         $route['code'] = self::$localities[$route['origin_id']]['code'].self::$localities[$route['destination_id']]['code'];
@@ -180,6 +183,8 @@ class SharedTravel extends Entity {
             } else if( $time == 12) $d = 'pm';
             $route['departure_times_desc'][] = $time.' '.$d;
         }
+        
+        $route['isFull'] = true;
         
         return $route;
     }

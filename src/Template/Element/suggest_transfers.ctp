@@ -25,7 +25,7 @@ foreach (SharedTravel::$routes as $r)
                         array('controller'=>'shared-rides', 'action'=>'book', $r['slug']),
                         array('data-modal'=>'info-'.$r['slug'], 'class'=>'open-request-form', 'style'=>'white-space: normal;color:inherit', 'escape'=>false))?>
                         <div style="display: none" id="info-<?php echo $r['slug']?>">
-                            <?php echo $this->element('shared_travel_book_prompt', compact('route'))?>
+                            <?php echo $this->element('shared_travel_book_prompt', ['route'=>$r])?>
                         </div>
                     </li>
                 <?php endif;?>
@@ -37,7 +37,7 @@ foreach (SharedTravel::$routes as $r)
 </div>
 <?php endif;?>
 <?php
-    echo $this->Html->css('datepicker');
-    echo $this->Html->script('datepicker');
-    echo $this->Html->script('datepicker-locale');
+    $this->Html->css('datepicker', ['block'=>'css_top']);
+    $this->Html->script('datepicker', ['block'=>'script_bottom']);
+    $this->Html->script('datepicker-locale', ['block'=>'script_bottom']);
 ?>

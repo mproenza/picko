@@ -56,14 +56,9 @@
         // META HREFLANG
         if(isset($meta['hreflang']) && $meta['hreflang']) echo $this->Html->hreflang($this->request);
         
-        echo $this->Html->script('jquery');
-        echo $this->Html->script('popper');
-        echo $this->Html->script('bootstrap');
-        echo $this->Html->script('bootbox');
-        
         $this->fetch('meta');
         $this->fetch('css');
-        $this->fetch('script');
+        echo $this->fetch('css_top');
         ?>
     </head>
     <body>
@@ -86,6 +81,15 @@
             </div>
         </div>
         
+        <?php
+        echo $this->Html->script('jquery');
+        echo $this->Html->script('popper');
+        echo $this->Html->script('bootstrap');
+        echo $this->Html->script('bootbox');
+        ?>
+        <?= $this->fetch('script');?>
+        <?= $this->fetch('script_bottom');?>
+        <?= $this->fetch('script_internal');?>
         <script type="text/javascript">
             function goTo(id, time, offset) {
                 $('html, body').animate({

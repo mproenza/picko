@@ -1,8 +1,4 @@
-<?php 
-use App\Model\Entity\SharedTravel;
-?>
-
-<?php $doBootbox = true?>
+<?php use App\Model\Entity\SharedTravel;?>
 
 <div id="container">
     <div id="front-page-bg">
@@ -101,82 +97,50 @@ use App\Model\Entity\SharedTravel;
 
         <div class="row" style="margin-top: 60px;text-align: center">
             <div class="col-md-4 center" style="padding-bottom: 30px">
-                <h3><?php echo __d('home', 'Gasta menos para llegar a tus destinos')?></h3>
+                <h3><?= __d('home', 'Gasta menos para llegar a tus destinos')?></h3>
                 <p><big><?php echo __d('home', 'Paga sólo por los asientos que ocupes en el taxi y no por el viaje completo. Si ustedes son menos de 4 personas, es conveniente compartir los asientos sobrantes con otros pasajeros para que ellos paguen parte del viaje. Lo bueno es que todos pagan menos.')?></big></p>
             </div>
             <div class="col-md-4 center" style="padding-bottom: 30px">
-                <h3><?php echo __d('home', 'Llega cómodo y rápido')?></h3>
+                <h3><?= __d('home', 'Llega cómodo y rápido')?></h3>
                 <p><big><?php echo __d('home', 'Te buscamos donde te estás hospedando (casa, hotel u otro) y te llevamos exactamente hasta el lugar donde te hospedarás en tu destino. Junto a tus compañeros harás un recorrido muy cómodo y rápido hasta tu destino en un auto moderno con mucho confort.')?></big></p>
             </div>
             <div class="col-md-4 center" style="padding-bottom: 30px">
-                <h3><?php echo __d('home', 'Reserva y listo!')?></h3>
-                <p><big><?php echo __d('home', 'En cuanto reservas, nosotros arreglamos todo de manera que compartas el viaje con otros viajeros que van al mismo destino en la misma fecha y horario. De esta manera no tienes que encontrar tú a otros pasajeros que quieran unirse y no hay que esperar a que el taxi se llene a la hora de partir.')?></big></p>
+                <h3><?= __d('home', 'Reserva y listo!')?></h3>
+                <p><big><?= __d('home', 'En cuanto reservas, nosotros arreglamos todo de manera que compartas el viaje con otros viajeros que van al mismo destino en la misma fecha y horario. De esta manera no tienes que encontrar tú a otros pasajeros que quieran unirse y no hay que esperar a que el taxi se llene a la hora de partir.')?></big></p>
             </div>
         </div>
 
     </div>
     
-    <div id="<?php echo __d('meta', 'rutas-y-precios')?>" data-h-offset="0" class="row arrow_box arrow_box_bottom" style="margin-top: 60px"></div>
+    <div id="<?= __d('meta', 'rutas-y-precios')?>" data-h-offset="0" class="row arrow_box arrow_box_bottom" style="margin-top: 60px"></div>
     <div class="row" style="background-color: #ebebeb;padding-bottom: 80px">
         <div class="container">
             <div class="row" style="padding-top: 80px;padding-bottom: 40px">
                 <div class="col-md-10 offset-md-1">
                     <h3 style="text-align: center">
-                        <?php echo __d('home', 'Estas son las rutas, precios y horarios de nuestros taxis')?>
+                        <?= __d('home', 'Estas son las rutas, precios y horarios de nuestros taxis')?>
                     </h3>
                     <h4 style="text-align: center">
-                        <?php echo __d('home', 'Reserva nuestros servicios aquí:')?>
+                        <?= __d('home', 'Reserva nuestros servicios aquí:')?>
                     </h4>
                 </div>        
-            </div>            
+            </div>
             
-            <nav id="nav-routes" class="navbar navbar-light bg-light" data-toggle="sticky-onscroll">
-                <a class="navbar-brand" href="#"><b><?php echo __d('home', 'Rutas saliendo desde:')?></b></a>
-                <ul class="nav nav-pills">
-                    <?php foreach (SharedTravel::$localities as $locality_id => $locality):?>
-                        <?php if(!isset($locality['active']) || $locality['active']):?>
-                        <li class="nav-item">
-                            <a class="dropdown-item show-routes" href="#taxi-from-<?php echo str_replace(' ', '-', $locality['name'])?>"><?php echo $locality['name']?></a>
-                        </li>
-                        <?php endif;?>
-                    <?php endforeach?>
-                </ul>
-            </nav>
-
-            <?php foreach (SharedTravel::$localities as $locality_id => $locality):?>
-                <?php if(!isset($locality['active']) || $locality['active']):?>
-                <div class="row" style="margin-top: 60px;">
-                    <div id="taxi-from-<?php echo str_replace(' ', '-', $locality['name'])?>" style="padding: 10px" class="col-md-12">
-                        <big><?php echo __d('home', 'Rutas saliendo desde {0}', '<code><big><big>'.$locality['name'].'</big></big></code>')?></big>
-                    </div>
-                    <br/>
-
-                    <?php foreach (SharedTravel::$routes as $route):?>
-                        <?php if($route['origin_id'] == $locality_id && ( !isset($route['active']) || $route['active'] )):?>
-                            <div class="col-md-4 col-sm-6" style="padding: 20px"><?php echo $this->element('route_info', compact('route') + compact('doBootbox'))?></div>
-                        <?php endif?>
-                    <?php endforeach?>
-                </div>
+            <?= $this->element('widgets/all_routes', ['doBootbo'])?>
             
-                <br/>
-                <br/>
-                <?php endif;?>
-            <?php endforeach?>
-            
-
         </div>
     </div>
     <div class="row arrow_box arrow_box_top" style=""></div>
 
-    <div id="<?php echo __d('meta', 'debes-saber')?>" style="height: 120px;clear: both"></div>
+    <div id="<?= __d('meta', 'debes-saber')?>" style="height: 120px;clear: both"></div>
     
     <div class="row" style="padding-top: 80px">
         <div class="container">
             <div class="col-md-8 offset-md-2">
-                <?php echo $this->element('you_must_know')?>
+                <?= $this->element('you_must_know')?>
                 <br/>            
                 <br/>
-                <a href="#<?php echo __d('meta', 'rutas-y-precios')?>" class="btn btn-block btn-info"><big><?php echo __d('home', 'Ver las rutas y horarios disponibles')?></big></a>
+                <a href="#<?= __d('meta', 'rutas-y-precios')?>" class="btn btn-block btn-info"><big><?= __d('home', 'Ver las rutas y horarios disponibles')?></big></a>
             </div>
         </div>
     </div>
@@ -185,16 +149,8 @@ use App\Model\Entity\SharedTravel;
     <hr/>
     <footer class="footer white" style="background-color: #003f54 !important">    
         <div class="col-md-12">
-            <?php echo $this->element('footer') ?>
+            <?= $this->element('footer') ?>
         </div>
     </footer>
  
 </div>
-
-<?php if($doBootbox):?>
-    <?php
-    echo $this->Html->css('datepicker');
-    echo $this->Html->script('datepicker');
-    echo $this->Html->script('datepicker-locale');
-    ?>
-<?php endif?>
