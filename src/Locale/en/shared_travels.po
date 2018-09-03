@@ -242,8 +242,12 @@ msgid "Tiempo de recorrido"
 msgstr "Duration of ride"
 
 #: View/Elements/book.ctp:8
-msgid "Comparte un taxi de {0} a {1} y paga sólo ${2} por asiento"
-msgstr "Share a taxi from {0} to {1} and pay only ${2} per seat"
+msgid "Comparte un taxi <div>de {0} a {1}</div>"
+msgstr "Share a taxi <div>from {0} to {1}</div>"
+
+#: View/Elements/book.ctp:8
+msgid "Paga sólo {0} por asiento"
+msgstr "Pay only {0} per seat"
 
 #: View/Elements/book.ctp:8
 msgid "Tiempo de recorrido"

@@ -65,7 +65,7 @@
                 <h3 class="lead center"><big><b><?php echo __d('home', 'En PickoCar organizamos viajes compartidos en taxi hacia diferentes destinos en {0} todos los días', 'Cuba')?>!</b></big></h3>
                 
                 <br/>
-                <p class="lead"><b><?php echo __d('home', 'Con sólo reservar, arreglamos todo de manera que compartas el taxi con otros viajeros que van al mismo destino que tú y que han reservado con nosotros para la misma fecha y horario.')?></b></p>
+                <p class="lead"><b><?php echo __d('home', 'Con sólo reservar, arreglamos todo de manera que compartas el taxi con otros viajeros que van al mismo destino que tú y que también han reservado con nosotros para la misma fecha y horario.')?></b></p>
                 
                 <br/>
                 <ul class="fa-ul">
@@ -126,7 +126,7 @@
                 </div>        
             </div>
             
-            <?= $this->element('widgets/all_routes', ['doBootbo'])?>
+            <?= $this->element('widgets/all_routes')?>
             
         </div>
     </div>

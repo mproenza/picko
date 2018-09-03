@@ -52,8 +52,8 @@ msgid "En PickoCar organizamos viajes compartidos en taxi hacia diferentes desti
 msgstr "At PickoCar we organize shared rides in taxi to different destinations in {0} every day"
 
 #: View/SharedTravels/home.ctp:8
-msgid "Con sólo reservar, arreglamos todo de manera que compartas el taxi con otros viajeros que van al mismo destino que tú y que han reservado con nosotros para la misma fecha y horario."
-msgstr "After you book, we arrange everything in a way that you share your trip with other travelers going to the same destination, who booked with us for the same date and time."
+msgid "Con sólo reservar, arreglamos todo de manera que compartas el taxi con otros viajeros que van al mismo destino que tú y que también han reservado con nosotros para la misma fecha y horario."
+msgstr "After you book, we arrange everything in a way that you share your trip with other travelers going to the same destination as you, who also booked with us for the same date and time."
 
 #: View/SharedTravels/home.ctp:8
 msgid "Usamos autos confortables y con aire acondicionado"
@@ -140,12 +140,12 @@ msgid "Uno de nuestros taxis siempre te recogerá en el lugar y fecha que indiqu
 msgstr "One of our taxis will always pick you up at the place and date you indicate"
 
 #: View/SharedTravels/home.ctp:8
-msgid "Rutas saliendo desde:"
-msgstr "Routes departing from:"
+msgid "Reservar un taxi saliendo desde:"
+msgstr "Book a taxi departing from:"
 
 #: View/SharedTravels/home.ctp:8
-msgid "Rutas saliendo desde {0}"
-msgstr "Routes departing from {0}"
+msgid "Rutas de taxi desde {0}"
+msgstr "Taxi routes from {0}"
 
 #: View/SharedTravels/home.ctp:8
 msgid "{0} cosas que debes tener en cuenta si vas a usar nuestros servicios"

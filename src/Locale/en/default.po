@@ -44,7 +44,7 @@ msgstr "Monday"
 msgid "Martes"
 msgstr "Tuesday"
 
-msgid "Miércoles"
+msgid "MiÃ©rcoles"
 msgstr "Wednesday"
 
 msgid "Jueves"
@@ -53,5 +53,8 @@ msgstr "Thursday"
 msgid "Viernes"
 msgstr "Friday"
 
-msgid "Sábado"
+msgid "SÃ¡bado"
 msgstr "Saturday"
+
+msgid "Enviando solicitud"
+msgstr "Sending request"

@@ -100,7 +100,12 @@
                         if (this.checkValidity() === false) {
                             event.preventDefault();
                             event.stopPropagation();
+                        } else {
+                            var submit = $(this).find('input[type=submit]');
+                            submit.attr('disabled', true);
+                            submit.val('<?= __('Enviando solicitud')?> ...');
                         }
+                            
                         this.classList.add('was-validated');
                     });
 

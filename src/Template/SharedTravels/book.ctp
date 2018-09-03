@@ -13,11 +13,12 @@ use App\Model\Entity\SharedTravel;
                 <div class="col-md-8 offset-md-2 value-proposition">
                     <br/>
                     <h1 style="text-align: center">
-                        <big><?php echo __d('shared_travels', 'Comparte un taxi de {0} a {1} y paga sólo ${2} por asiento', $route['origin'], $route['destination'], $route['price_x_seat'])?></big>
+                        <?php echo __d('shared_travels', 'Comparte un taxi <div>de {0} a {1}</div>', '<code><big>'.$route['origin'].'</big></code>', '<code><big>'.$route['destination'].'</big></code>')?>
                     </h1>
+                    <h2 class="center"><?= __d('shared_travels', 'Paga sólo {0} por asiento', '<code><big>$'.$route['price_x_seat'].'</big></code>')?></h2>
                     <hr/>
                     <p class="lead"><b><?php echo __d('home', 'Sólo 4 pasajeros en un taxi')?> • <?php echo __d('home', 'Recogida en tu estancia u hotel')?> • <?php echo __d('home', 'Autos muy confortables')?></b></p>
-                    <div class="scroll_icon_wrap" style="text-align: center">
+                    <div class="scroll_icon_wrap bloop" style="text-align: center">
                         <a href="#<?php echo __d('meta', 'reservar')?>" class="scroll_link">
                             <span class="scroll_icon"><i class="fa fa-angle-down fa-2x" style="color: #D33C44"></i></span>
                         </a>
@@ -86,9 +87,4 @@ $this->Html->css('datepicker', ['block'=>'css_top']);
 $this->Html->script('datepicker', ['block'=>'script_bottom']);
 $this->Html->script('datepicker-locale', ['block'=>'script_bottom']);
 ?>
-
-<?php
-$this->start('script_internal');
-echo $this->element('js/shared_travels/book/script1');
-$this->end();
-?>
+<?php $this->append('script_internal', $this->element('js/shared_travels/book/script1'));?>

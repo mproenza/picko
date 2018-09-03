@@ -1,7 +1,7 @@
 <?php use App\Model\Entity\SharedTravel;?>
 
 <nav id="nav-routes" class="navbar navbar-light bg-light" data-toggle="sticky-onscroll">
-    <a class="navbar-brand" href="#"><b><?php echo __d('home', 'Rutas saliendo desde:')?></b></a>
+    <a class="navbar-brand" href="#"><b><?php echo __d('home', 'Reservar un taxi saliendo desde:')?></b></a>
     <ul class="nav nav-pills">
         <?php foreach (SharedTravel::$localities as $locality_id => $locality):?>
             <?php if(!isset($locality['use_as_origin']) || $locality['use_as_origin']):?>
@@ -17,7 +17,7 @@
     <?php if(!isset($locality['use_as_origin']) || $locality['use_as_origin']):?>
     <div class="row" style="margin-top: 60px;">
         <div id="taxi-from-<?php echo str_replace(' ', '-', $locality['name'])?>" style="padding: 10px" class="col-md-12">
-            <big><?php echo __d('home', 'Rutas saliendo desde {0}', '<code><big><big>'.$locality['name'].'</big></big></code>')?></big>
+            <big><?php echo __d('home', 'Rutas de taxi desde {0}', '<code><big><big>'.$locality['name'].'</big></big></code>')?></big>
         </div>
         <br/>
 
