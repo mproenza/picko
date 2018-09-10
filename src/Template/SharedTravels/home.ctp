@@ -19,7 +19,7 @@
                     <h2 class="h4"><?php echo __d('home', 'En PickoCar reservas un taxi a tu destino, haces el recorrido junto a otros viajeros que reservaron tu misma ruta y <span style="display: inline-block"><b>pagas sólo por tus asientos</b></span>')?></h2>
                     <br/>
                     <hr/>
-                    <p class="lead"><b><?php echo __d('home', 'Sólo 4 pasajeros en un taxi')?> • <?php echo __d('home', 'Recogida en tu estancia u hotel')?> • <?php echo __d('home', 'Autos muy confortables')?></b></p>
+                    <h3 class="lead"><b><?php echo __d('home', 'Sólo 4 pasajeros en un taxi')?> • <?php echo __d('home', 'Recogida en tu estancia u hotel')?> • <?php echo __d('home', 'Autos muy confortables')?></b></h3>
                     <div class="scroll_icon_wrap" style="text-align: center">
                         <a href="#offer" class="scroll_link">
                             <span class="scroll_icon"><i class="fa fa-angle-down fa-2x" style="color: #D33C44"></i></span>
@@ -27,7 +27,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-4" id="price-samples">
                     <div class="card shake">
                         <div class="card-body">
                             <div class="card-title">
@@ -88,8 +88,8 @@
                 </ul>
                 
                 <div class="col-md-8 offset-md-2" style="margin-top: 60px">
-                    <a class="btn btn-block btn-info" href="#<?php echo __d('meta', 'rutas-y-precios')?>" style="white-space: normal;">
-                        <span class="fa-2x"><?php echo __d('home', 'Mira las rutas y precios disponibles')?></span>
+                    <a class="btn btn-block btn-info btn-cta" href="#<?php echo __d('meta', 'rutas-y-precios')?>" style="white-space: normal;">
+                        <?php echo __d('home', 'Mira las rutas y precios disponibles')?>
                     </a>
                 </div>
             </div> 
@@ -112,8 +112,8 @@
 
     </div>
     
-    <div id="<?= __d('meta', 'rutas-y-precios')?>" data-h-offset="0" class="row arrow_box arrow_box_bottom" style="margin-top: 60px"></div>
-    <div class="row" style="background-color: #ebebeb;padding-bottom: 80px">
+    <div id="<?= __d('meta', 'rutas-y-precios')?>" data-h-offset="0" class="arrow_box arrow_box_bottom" style="margin-top: 60px"></div>
+    <div style="background-color: #ebebeb;padding-bottom: 80px">
         <div class="container">
             <div class="row" style="padding-top: 80px;padding-bottom: 40px">
                 <div class="col-md-10 offset-md-1">
@@ -130,11 +130,11 @@
             
         </div>
     </div>
-    <div class="row arrow_box arrow_box_top" style=""></div>
-
+    <div class="arrow_box arrow_box_top" style=""></div>
+    
     <div id="<?= __d('meta', 'debes-saber')?>" style="height: 120px;clear: both"></div>
     
-    <div class="row" style="padding-top: 80px">
+    <div style="padding-top: 80px">
         <div class="container">
             <div class="col-md-8 offset-md-2">
                 <?= $this->element('you_must_know')?>

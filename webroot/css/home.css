@@ -29,6 +29,21 @@
     height:600px;
     text-align:center
 }
+@media (max-width: 767px){
+    #front-page-bg h1 {font-size: 18pt}
+    #front-page-bg h2 {font-size: 14pt}
+    #front-page-bg h3 {font-size: 12pt}
+}
+
+#price-samples {}
+@media (max-width: 767px){
+    #price-samples {visibility: hidden;max-height: 0px}
+}
+
+.btn-cta {font-size: 24pt}
+@media (max-width: 767px){
+    .btn-cta {font-size: 16pt}
+}
 
 .scroll_icon_wrap {text-align:center;}
 @media screen and (max-width: 480px){
