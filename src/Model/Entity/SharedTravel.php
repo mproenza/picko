@@ -56,6 +56,7 @@ class SharedTravel extends Entity {
             5=>['kms'=>'500', 'hrs'=>'6.30'],
             6=>['kms'=>'540', 'hrs'=>'7'],
             7=>['kms'=>'230', 'hrs'=>'3'],
+            8=>['kms'=>'130', 'hrs'=>'2'],
         ],
         
         4 => [
@@ -139,8 +140,9 @@ class SharedTravel extends Entity {
         ['origin_id'=>7, 'destination_id'=>8, 'price_x_seat'=>35, 'departure_times'=>[8]],
         ['origin_id'=>7, 'destination_id'=>9, 'price_x_seat'=>35, 'departure_times'=>[8]],
         ['origin_id'=>8, 'destination_id'=>0, 'price_x_seat'=>30, 'departure_times'=>[8, 10]],
-        ['origin_id'=>8, 'destination_id'=>2, 'price_x_seat'=>40, 'departure_times'=>[8, 10]],
         ['origin_id'=>8, 'destination_id'=>1, 'price_x_seat'=>30, 'departure_times'=>[11, 16]],
+        ['origin_id'=>8, 'destination_id'=>3, 'price_x_seat'=>35, 'departure_times'=>[11]],
+        ['origin_id'=>8, 'destination_id'=>2, 'price_x_seat'=>40, 'departure_times'=>[8, 10]],
         ['origin_id'=>8, 'destination_id'=>4, 'price_x_seat'=>30, 'departure_times'=>[11, 16]],
         ['origin_id'=>9, 'destination_id'=>0, 'price_x_seat'=>30, 'departure_times'=>[8, 10]],
         ['origin_id'=>9, 'destination_id'=>2, 'price_x_seat'=>45, 'departure_times'=>[8, 10]],
