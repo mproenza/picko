@@ -6,7 +6,7 @@
 <br/>
 
 <table class='table table-striped table-hover'>
-    <thead><th></th><th>Lang</th><th>To</th><th>Subject</th><th>Sent</th><th>Locked</th><th>Send Tries</th><th>Send at</th><th>Template</th><th>Template Vars</th></thead>
+    <thead><th></th><th>Lang</th><th>To</th><th>Subject</th><th>Sent</th><th>Locked</th><th>Send Tries</th><th>Send at</th><th>Template</th></thead>
     <tbody> 
     <?php foreach ($emails as $e): ?>
         <tr>
@@ -36,7 +36,6 @@
             <td><?php echo $e['EmailQueue']['send_tries']?></td>
             <td><?php echo $e['EmailQueue']['send_at']?></td>
             <td><?php echo $e['EmailQueue']['template']?></td>
-            <td><?php echo json_encode($e['EmailQueue']['template_vars'])?></td>
         </tr>
     <?php endforeach; ?>
     </tbody>
