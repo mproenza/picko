@@ -65,7 +65,10 @@ Router::addUrlFilter(function ($params, $request) {
     $currentLang = I18n::getLocale();
     if(isset($params['language'])) I18n::setLocale($params['language']);
     
-    if(isset($params['controller'])) {
+    // urls en que debemos evitar el dasherization porque da problemas al generar las url en el Router
+    $nodash = ['EmailQueues'];
+    
+    if(isset($params['controller']) && !in_array($params['controller'], $nodash)) {
         $params['controller'] = __d('urls', Inflector::dasherize($params['controller']));
     }
     if(isset($params['action'])) {
@@ -99,8 +102,10 @@ Router::scope('/:language', function (RouteBuilder $routes) {
             ->setPatterns(['language' => 'en|es']);
     
     // Email Queue
-    $routes->connect('/email-queue/:action/*', ['plugin'=>'EmailQueue', 'controller' => 'EmailQueues']);
-    $routes->connect('/email-queue/*', ['plugin'=>'EmailQueue', 'controller' => 'EmailQueues', 'action' => 'index']);
+    $routes->connect('/email-queue/:action/*', ['plugin'=>'EmailQueue', 'controller' => 'EmailQueues'], ['routeClass' => 'UrlI18nRoute'])
+            ->setPatterns(['language' => 'en|es']);
+    $routes->connect('/email-queue/*', ['plugin'=>'EmailQueue', 'controller' => 'EmailQueues', 'action' => 'index'], ['routeClass' => 'UrlI18nRoute'])
+            ->setPatterns(['language' => 'en|es']);
     
     // Calendar
     $routes->connect('/calendar/:action/*', ['plugin'=>'Calendar', 'controller' => 'Calendars'])
