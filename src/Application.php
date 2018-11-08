@@ -54,6 +54,9 @@ class Application extends BaseApplication
             // Add routing middleware.
             ->add(new RoutingMiddleware($this))
                 
+                // Add routing middleware.
+            ->add(new \Cake\Http\Middleware\CsrfProtectionMiddleware())
+                
             ;
 			
 

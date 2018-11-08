@@ -6,7 +6,7 @@
 <br/>
 
 <table class='table table-striped table-hover'>
-    <thead><th></th><th>Lang</th><th>To</th><th>Subject</th><th>Sent</th><th>Locked</th><th>Send Tries</th><th>Send at</th><th>Template</th></thead>
+    <thead><th></th><th>Lang</th><th>To</th><th>From</th><th>Subject</th><th>Sent</th><th>Locked</th><th>Send Tries</th><th>Send at</th><th>Template</th></thead>
     <tbody> 
     <?php foreach ($emails as $e): ?>
         <tr>
@@ -30,6 +30,7 @@
             </td>
             <td><?php echo $e['EmailQueue']['lang']?></td>
             <td><?php echo $e['EmailQueue']['to_inbox']?></td>
+            <td><?php echo $e['EmailQueue']['config']?></td>
             <td><?php echo $e['EmailQueue']['subject']?></td>
             <td><?php echo $e['EmailQueue']['sent']?></td>
             <td><?php echo $e['EmailQueue']['locked']?></td>

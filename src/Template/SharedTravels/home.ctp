@@ -38,7 +38,7 @@
                                 <li>Viñales > La Habana: &nbsp;<big>$25</big></li>
                                 <li>La Habana > Varadero: &nbsp;<big>$25</big></li>
                                 <li>Viñales > Trinidad: &nbsp;<big>$50</big></li>
-                                <li>Cayo Guillermo > La Habana: &nbsp;<big>$55</big></li>
+                                <li>Cayo Guillermo > La Habana: &nbsp;<big>$65</big></li>
                             </ul>
                             <br/>
                             <div>* <?php echo __d('home', 'También {0} y otros', 'Cienfuegos, Santa Clara, Playa Larga, Cayo Coco')?></div>
