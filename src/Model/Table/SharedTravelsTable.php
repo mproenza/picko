@@ -19,8 +19,33 @@ class SharedTravelsTable extends Table {
     }
     
     public function validationDefault(Validator $validator) {
-        /*$validator
-            ->notEmpty('address_origin');*/
+        $validator
+            ->requirePresence([
+                'modality_code',
+                'origin_id',
+                'destination_id',
+                'price_x_seat',
+                'date',
+                'departure_time',
+                'people_count',
+                'address_origin',
+                'address_destination',
+                'email',
+                'name_id'],
+            'create')
+                
+            ->notEmpty('modality_code', __d('errors', 'Inválido'))
+            ->notEmpty('origin_id', __d('errors', 'Inválido'))
+            ->notEmpty('destination_id', __d('errors', 'Inválido'))
+            ->notEmpty('price_x_seat', __d('errors', 'Inválido'))
+                
+            ->notEmpty('email', __d('errors', 'Email inválido'))
+            ->notEmpty('name', __d('errors', 'Nombre inválido'))
+            ->notEmpty('address_origin', __d('errors', 'Dirección de recogida inválida'))
+            ->notEmpty('address_destination', __d('errors', 'Dirección de destino inválida'))
+            ->notEmpty('date', __d('errors', 'Fecha inválida'))
+            ->notEmpty('people_count', __d('errors', 'Cantidad inválida'))
+        ;
         return $validator;
     }
 

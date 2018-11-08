@@ -1,0 +1,1 @@
+ALTER TABLE `shared_travels` ADD `from_ip` VARCHAR(250) NULL AFTER `created`;

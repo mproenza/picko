@@ -17,6 +17,8 @@ use App\Error\ExpiredLinkException;
 
 class SharedTravelsController extends AppController {
     
+    private $ip_blacklist = [''];
+    
     public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
         $this->Auth->allow(['home', 'book', 'thanks', 'activate', 'view', /*'index230216', 'admin', 'cancel', 'changeDate'*/]);
@@ -35,6 +37,10 @@ class SharedTravelsController extends AppController {
 
     public function book($routeSlug = null) {
         if ($this->request->is('post') || $this->request->is('put')) {
+            
+            // Chequear los ip
+            if(in_array($this->request->clientIp(), $this->ip_blacklist) || $this->request->clientIp() == null || empty($this->request->clientIp()) ) 
+                    throw new \Cake\Network\Exception\ForbiddenException();
 
             // Generar los token
             $idToken = StringsUtil::getWeirdString();
@@ -46,9 +52,16 @@ class SharedTravelsController extends AppController {
             $this->request->data('lang', ini_get('intl.default_locale'));
             $this->request->data('state', SharedTravel::$STATE_PENDING);
             $this->request->data('original_date', str_replace('-', '/', TimeUtil::dmY_to_Ymd($this->request->getData('date'))));
+            $this->request->data('from_ip', $this->request->clientIp());
 
             $STTable = TableRegistry::get('SharedTravels');
             $STEntity = $STTable->newEntity($this->request->getData());
+            
+            
+            $errors = $STEntity->errors();
+            if ($errors) {
+                // TODO: Do work to show error messages.
+            }
 
             // Salvar la solicitud
             $OK = $STTable->save($STEntity);

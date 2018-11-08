@@ -43,6 +43,7 @@ if(!isset($admin)) $admin = false;
             
         <?php if($showDetails):?>
             <hr/>
+            <p><span class="text-muted">IP:</span> <?php echo $request['SharedTravel']['from_ip']?></p>
             <p>
                 <?php echo TimeUtil::prettyDate($request['SharedTravel']['created'], false)?>
                 <?php 

@@ -11,7 +11,7 @@ if($this->request->session()->read('user_name_id')) $nameIdValue = $this->reques
 
 <div>
     <?php 
-    echo $this->Form->create('SharedTravel', array('url' => ['controller' => 'shared-rides', 'action' => 'book'], 'id'=>'SharedTravelForm'.$route['code'], 'novalidate'));?>
+    echo $this->Form->create('SharedTravel', array('url' => ['controller' => 'shared-rides', 'action' => 'book', $route['slug']], 'id'=>'SharedTravelForm'.$route['code'], 'novalidate'));?>
     <?php echo $this->Flash->render('form')?>
     <fieldset>
         <div class="row" style="margin: 0px;padding: 0px">
