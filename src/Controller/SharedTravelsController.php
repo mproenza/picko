@@ -38,10 +38,16 @@ class SharedTravelsController extends AppController {
     public function book($routeSlug = null) {
         if ($this->request->is('post') || $this->request->is('put')) {
             
-            // Chequear los ip
+            // Sanity checks
             if(in_array($this->request->clientIp(), $this->ip_blacklist) || $this->request->clientIp() == null || empty($this->request->clientIp()) ) 
                     throw new \Cake\Network\Exception\ForbiddenException();
-
+            
+            $emailName = strstr($this->request->getData('email'), '@', true);
+            if(strtolower($emailName) == strtolower($this->request->getData('name_id')))
+                throw new \Cake\Network\Exception\ForbiddenException();
+            // End of Sanity checks
+                    
+                    
             // Generar los token
             $idToken = StringsUtil::getWeirdString();
             $activationToken = StringsUtil::getWeirdString();
