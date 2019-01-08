@@ -90,7 +90,7 @@
                     datepicker.datepicker({
                         format: "dd/mm/yyyy",
                         language: '<?php echo I18n::getLocale()?>',
-                        startDate: '+2d',
+                        startDate: '<?php if(!$Auth->user()):?>+2d<?php else:?>today<?php endif;?>',
                         todayBtn: "linked",
                         autoclose: true,
                         todayHighlight: false
