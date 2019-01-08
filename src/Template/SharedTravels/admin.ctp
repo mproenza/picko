@@ -17,7 +17,13 @@ use App\Util\TimeUtil;
                     array('controller'=>'shared-rides', 'action'=>'cancel/'.$request['SharedTravel']['id_token']),
                     array('class'=>'btn btn-danger', 'confirm'=>'¿Está seguro que quiere cancelar esta solicitud?'))?></div>
             <br/>
-            <div><b>Código Activación:</b> <?php echo $request['SharedTravel']['activation_token']?></div>
+            <div>
+                <b>Código Activación:</b> <?php echo $request['SharedTravel']['activation_token']?>:
+                <?php echo $this->Html->link(
+                    'Activar', 
+                    ['controller'=>'shared-rides', 'action'=>'activate/'.$request['SharedTravel']['activation_token']],
+                    ['class'=>'btn btn-danger', 'confirm'=>'¿Está seguro que quiere activar esta solicitud?', 'target'=>'_blank'])?>
+            </div>
             <br/>
             <?php $fechaCambiada = $request['SharedTravel']['original_date'] != $request['SharedTravel']['date']?>
             <div class="alert alert-success" style="display: inline-block; margin-bottom: 0px">
