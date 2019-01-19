@@ -48,13 +48,14 @@ class Application extends BaseApplication
                 'detectLanguage' => true,
                 'defaultLanguage' => 'en',
                 'languages' => ['en', 'es'],
-                'useCookie' => true
+                'useCookie' => true,
+                'skipPrefix' => ['api'] // Skip all requests with the prefixes in this list
             ]))
                 
             // Add routing middleware.
             ->add(new RoutingMiddleware($this))
                 
-                // Add routing middleware.
+            // Add CSRF middleware.
             ->add(new \Cake\Http\Middleware\CsrfProtectionMiddleware())
                 
             ;

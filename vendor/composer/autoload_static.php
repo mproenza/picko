@@ -58,6 +58,10 @@ class ComposerStaticInit3e804d55d47dfa1c9376553401f8cfc4
         array (
             'JsonSchema\\' => 11,
         ),
+        'F' => 
+        array (
+            'Firebase\\JWT\\' => 13,
+        ),
         'E' => 
         array (
             'EmailQueue\\' => 11,
@@ -69,6 +73,8 @@ class ComposerStaticInit3e804d55d47dfa1c9376553401f8cfc4
         ),
         'C' => 
         array (
+            'Crud\\' => 5,
+            'Cors\\' => 5,
             'Composer\\Spdx\\' => 14,
             'Composer\\Semver\\' => 16,
             'Composer\\CaBundle\\' => 18,
@@ -90,6 +96,7 @@ class ComposerStaticInit3e804d55d47dfa1c9376553401f8cfc4
             'Aura\\Intl\\' => 10,
             'App\\Test\\' => 9,
             'App\\' => 4,
+            'ADmad\\JwtAuth\\' => 14,
         ),
     );
 
@@ -182,6 +189,10 @@ class ComposerStaticInit3e804d55d47dfa1c9376553401f8cfc4
         array (
             0 => __DIR__ . '/..' . '/justinrainbow/json-schema/src/JsonSchema',
         ),
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
+        ),
         'EmailQueue\\' => 
         array (
             0 => __DIR__ . '/../..' . '/plugins/EmailQueue/src',
@@ -193,6 +204,14 @@ class ComposerStaticInit3e804d55d47dfa1c9376553401f8cfc4
         'DebugKit\\' => 
         array (
             0 => __DIR__ . '/..' . '/cakephp/debug_kit/src',
+        ),
+        'Crud\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/friendsofcake/crud/src',
+        ),
+        'Cors\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ozee31/cakephp-cors/src',
         ),
         'Composer\\Spdx\\' => 
         array (
@@ -253,6 +272,10 @@ class ComposerStaticInit3e804d55d47dfa1c9376553401f8cfc4
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
+        ),
+        'ADmad\\JwtAuth\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/admad/cakephp-jwt-auth/src',
         ),
     );
 

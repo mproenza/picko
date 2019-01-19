@@ -22,7 +22,7 @@ use App\Util\TimeUtil;
                 <?php echo $this->Html->link(
                     'Activar', 
                     ['controller'=>'shared-rides', 'action'=>'activate/'.$request['SharedTravel']['activation_token']],
-                    ['class'=>'btn btn-danger', 'confirm'=>'¿Está seguro que quiere activar esta solicitud?', 'target'=>'_blank'])?>
+                    ['confirm'=>'¿Está seguro que quiere activar esta solicitud?', 'target'=>'_blank'])?>
             </div>
             <br/>
             <?php $fechaCambiada = $request['SharedTravel']['original_date'] != $request['SharedTravel']['date']?>

@@ -86,6 +86,15 @@ Router::addUrlFilter(function ($params, $request) {
 
     return $params;
 });
+
+Router::prefix('api', function ($routes) {
+    $routes->extensions(['json', 'xml']);
+    $routes->resources('Cocktails');
+    $routes->resources('Users');
+    $routes->resources('SharedTravels');
+    //Router::connect('/api/users/register', ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'add', 'prefix' => 'api']);
+    $routes->fallbacks('InflectedRoute');
+});
  
 Router::scope('/:language', function (RouteBuilder $routes) {
     

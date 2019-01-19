@@ -31,7 +31,7 @@ class User extends Entity
         '*' => true,
         'id' => false,
         'is_superuser' => false,
-        'role' => false,
+        'role' => true,
     ];
 
     /**
