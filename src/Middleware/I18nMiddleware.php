@@ -69,6 +69,12 @@ class I18nMiddleware
         $config = $this->config();
         $url = $request->getUri()->getPath();
         
+        // Si es un prefix que debemos evitar, retornamos
+        if(isset($config['skipPrefix']) && $this->_skip($url, $config['skipPrefix'])) {
+            return $next($request, $response);
+        }
+        
+        // Si no esta el idioma en la url, forzamos a que lo tenga
         if(!$this->_isLangInUrl($url, $config['languages'])) {
             $statusCode = 301;
             $lang = $this->_config['defaultLanguage'];
@@ -84,7 +90,9 @@ class I18nMiddleware
             );
 
             return $response;
-        } else {
+        } 
+        // Si esta el idioma, lo seteamos en las config y ponemos cookies
+        else {
             $lang = substr($url, 1, 2);
             
             if(I18n::getLocale() != $lang) {
@@ -153,12 +161,12 @@ class I18nMiddleware
         }
 
         return $lang;
-    }
+    }    
     
     private function _isLangInUrl($url, $allowedLangs) {
         $langInUrl = true;
         
-        // Does it have at least 3 characters? i.e. /<2 chars for lang>
+        // Does it have at least 3 characters? i.e. / + 2 chars for lang
         if(strlen($url) < 3) $langInUrl = false;
 
         // If url length is 3, it has the structure /<2 chars for lang>, but if it is not an allowed lang, then it is not a lang
@@ -168,5 +176,13 @@ class I18nMiddleware
         else if(strlen($url) > 3 && (!strpos($url, '/', 1) || strpos($url, '/', 1) > 3)) $langInUrl = false;
         
         return $langInUrl;
+    }
+    
+    private function _skip($url, $skipPrefixes) {
+        foreach ($skipPrefixes as $prefix) {
+            $part = substr($url, 1, strlen($prefix) + 1); // El caracter 0 es "/"
+            if( $part == $prefix.'/' ) return true;
+        }
+        return false;
     }
 }

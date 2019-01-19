@@ -11,7 +11,6 @@ use ArrayObject;
 use App\Util\TimeUtil;
 use Cake\Mailer\Email;
 use Cake\Validation\Validator;
-use Cake\Core\Configure;
 
 class SharedTravelsTable extends Table {
 
@@ -62,25 +61,18 @@ class SharedTravelsTable extends Table {
     }
     
     public function beforeFind(Event $event, Query $query, ArrayObject $options, $primary) {
-        
-        // Si no se esta haciendo una llamada a la API
-        if(!Configure::read('App.calling_api')) {
-            
-            // Hacer que se devuelvan resultados a la Cakephp 2 
-            $query->hydrate(false); //para que devuelva arrays, no objetos
-            $query->formatResults(function (\Cake\Collection\CollectionInterface $results) {
-                return $results->map(function ($row) {
-
-                    $rowFull = SharedTravel::_routeFull($row);
-
-                    $formatted = ['SharedTravel'=>$rowFull];
-
-                    return $formatted;
-                });
+        // Hacer que se devuelvan resultados a la Cakephp 2 
+        $query->hydrate(false); //arrays, no objetos
+        $query->formatResults(function (\Cake\Collection\CollectionInterface $results) {
+            return $results->map(function ($row) {
+                
+                $row = SharedTravel::_routeFull($row);
+                
+                $formatted = ['SharedTravel'=>$row];
+                
+                return $formatted;
             });
-            
-        }
-        
+        });
     }
 
     public function findByToken($token) {

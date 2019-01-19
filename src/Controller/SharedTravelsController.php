@@ -17,6 +17,10 @@ use App\Error\ExpiredLinkException;
 
 class SharedTravelsController extends AppController {
     
+    
+    private static $NOTIFICATION_TYPE_DATE_CHANGED = 0;
+    private static $NOTIFICATION_TYPE_CANCELLED = 1;
+    
     private $ip_blacklist = [''];
     
     public function beforeFilter(Event $event) {
@@ -29,7 +33,7 @@ class SharedTravelsController extends AppController {
     public function home() {$this->viewBuilder()->setLayout('homepage');}
     
     public function index() {
-        $this->paginate = ['order'=>['date'=>'ASC', 'id'=>'ASC'], 'limit'=>100];
+        $this->paginate = ['order'=>['date'=>'ASC', 'departure_time'=>'ASC', 'id'=>'ASC'], 'limit'=>100];
         $this->set('travels', $this->paginate($this->SharedTravels, ['conditions'=> ['email !=' => 'martin@yotellevocuba.com'] ]));
         
         $this->render('index');
@@ -42,6 +46,7 @@ class SharedTravelsController extends AppController {
             if(in_array($this->request->clientIp(), $this->ip_blacklist) || $this->request->clientIp() == null || empty($this->request->clientIp()) ) 
                     throw new \Cake\Network\Exception\ForbiddenException();
             
+            // Proteccion contra ataque en Noviembre 2018
             $emailName = strstr($this->request->getData('email'), '@', true);
             if(strtolower($emailName) == strtolower($this->request->getData('name_id')))
                 throw new \Cake\Network\Exception\ForbiddenException();
@@ -81,6 +86,7 @@ class SharedTravelsController extends AppController {
                     // Obtener la solicitud para que los datos vengan formateados (ej. la fecha)
                     $request = $STTable->findByToken($idToken);
 
+                    // Correo con link de activacion
                     $OK = EmailsUtil::email(
                         $request['SharedTravel']['email'],
                         __d('shared_travels', 'Confirma tu solicitud de viaje compartido'),
@@ -90,7 +96,7 @@ class SharedTravelsController extends AppController {
                         array('lang'=>Configure::read('Config.language'), 'enqueue'=>false)
                     );
                     
-                    // Email para mi
+                    // Email de 'Nueva solicitud' para mi
                     $Email = new Email('hola');
                     $Email->to('martin@yotellevocuba.com')
                             ->subject('Nueva solicitud: PickoCar #'.$request['SharedTravel']['id'])
@@ -104,12 +110,10 @@ class SharedTravelsController extends AppController {
             if($OK) return $this->redirect(['controller'=>'shared-rides', 'action' => 'thanks', '?'=>['t'=>$idToken]]);
             
             // else            
-            print_r($OK);
             $this->Flash->error(__('Ocurrió un error realizando la solicitud.'), ['key'=>'form']);
         }
         
-        // Booking!
-            
+        // DATOS PARA /shared-rides/book            
         $route = SharedTravel::_routeFromSlug($routeSlug);
         if($route == null) throw new NotFoundException ();
         
@@ -146,17 +150,17 @@ class SharedTravelsController extends AppController {
         $result = $this->doActivate($request); // Aqui es donde se hace todo el procesamiento!!!
         $OK = $result['success'];
         
-        // Email para mi
-        $Email = new Email('compartido');
-        $Email->to('martin@yotellevocuba.com')
+        if($OK) {
+            // Email de 'Solicitud activada' para mi
+            $Email = new Email('compartido');
+            $Email->to('martin@yotellevocuba.com')
             ->subject('ACTIVADA: PickoCar #'.$request['SharedTravel']['id'].' - [['.$request['SharedTravel']['id_token'].']]')
             ->send('http://pickocar.com/shared-rides/view/'.$request['SharedTravel']['id_token']);
-        
-        if($OK) {
+            
             $datasource->commit();
             $this->set('request', $request);
             
-            // Si se confirmo el viaje (ej. se emparejo con otro solicitud), mostrar otra vista
+            // Si se confirmo el viaje automaticamente (ej. se emparejo con otro solicitud, o es de 4 pax), mostrar otra vista
             if($result['confirmed']) {
                 $this->set('confirmed_reason', $result['confirmed_reason']);
                 $this->render('activate_confirmed');
@@ -170,11 +174,13 @@ class SharedTravelsController extends AppController {
     private function doActivate(&$request) {
         $STTable = TableRegistry::get('SharedTravels');
         
+        // Actualizar estado de la solicitud
         $OK = $STTable->updateAll(['activated'=>true, 'state'=>SharedTravel::$STATE_ACTIVATED], ['id' => $request['SharedTravel']['id']]);
         
         $confirmed = false;
         $confirmedReason = null;
-        $coupled = null; // default: no hay emparejamientos       
+        $coupled = null; // default: no hay emparejamientos
+        
         if($OK) {
             
             // Si la solicitud es de 4 personas, confirmarla directamente
@@ -242,7 +248,7 @@ class SharedTravelsController extends AppController {
                         $countOther++;
                     }
 
-                    if($countOther == 0) {// Si es la primera solicitud (no tiene otras solicitudes), enviarle el correo de presentacion del operador
+                    if($countOther == 0) {// Si es la primera solicitud (no tiene otras solicitudes), enviarle el correo de bienvenida del operador
                         $OK = EmailsUtil::email(
                                 $request['SharedTravel']['email'], 
                                 __d('shared_travels', 'Tenemos los datos de su solicitud'),
@@ -262,7 +268,7 @@ class SharedTravelsController extends AppController {
                             );
                     }
 
-                    // Correo a gestor para que confirme la solicitud
+                    // Correo a cordinador para que confirme la solicitud
                     if($OK) {
                         $facilitator = Configure::read('shared_rides_facilitator');
                         $OK = EmailsUtil::email(
@@ -329,17 +335,9 @@ class SharedTravelsController extends AppController {
             $OK = $STTable->updateAll(['date' => TimeUtil::dmY_to_Ymd($this->request->getData('date'))], ['id' => $request['SharedTravel']['id']]);
             if(!$OK) $this->setErrorMessage ('Error actualizando la fecha.');
             
-            // Aviso a facilitador
-            $facilitator = Configure::read('shared_rides_facilitator');
             $request['SharedTravel']['new_date'] = TimeUtil::dmY_to_Ymd($this->request->getData('date'));
-            $notice = 'CAMBIO FECHA > PickoCar #'.$request['SharedTravel']['id'].' | '.$request['SharedTravel']['origin'].' - '.$request['SharedTravel']['destination'];
-            $Email = new Email('aviso');
-            $Email->to($facilitator['email'])
-                ->subject($notice)
-                ->setTemplate('notifications_facilitator/request_change_date')
-                ->setViewVars(['request'=>$request])
-                ->setEmailFormat('html')
-                ->send();
+            
+            $this->_notify(SharedTravelsController::$NOTIFICATION_TYPE_DATE_CHANGED, $request);
             
             return $this->redirect($this->referer());
             
@@ -358,19 +356,36 @@ class SharedTravelsController extends AppController {
         
         // Avisar al facilitador solo si la fecha del viaje no ha pasado y si estaba activado
         if($OK && !$request['SharedTravel']['date']->isPast() && $request['SharedTravel']['activated']) {
-            // Aviso a facilitador
-            $facilitator = Configure::read('shared_rides_facilitator');
-            
-            $notice = 'CANCELADO > PickoCar #'.$request['SharedTravel']['id']. ' | '.TimeUtil::prettyDate($request['SharedTravel']['date'], false).' | '.$request['SharedTravel']['origin'].' - '.$request['SharedTravel']['destination'];
-            $Email = new Email('aviso');
-            $Email->to($facilitator['email'])
-                ->subject($notice)
-                ->send($notice);
+            $this->_notify(SharedTravelsController::$NOTIFICATION_TYPE_CANCELLED, $request);
         } else {
             $this->Flash->error(__('Error cancelando la solicitud.'));
         }
         
         return $this->redirect($this->referer());
+    }
+    
+    private function _notify($notificationType, $request) {
+        
+        $facilitator = Configure::read('shared_rides_facilitator');
+        
+        if($notificationType == SharedTravelsController::$NOTIFICATION_TYPE_DATE_CHANGED) {
+            $notice = 'CAMBIO FECHA > PickoCar #'.$request['SharedTravel']['id'].' | '.$request['SharedTravel']['origin'].' - '.$request['SharedTravel']['destination'];
+            $Email = new Email('aviso');
+            $Email->to($facilitator['email'])
+                ->subject($notice)
+                ->setTemplate('notifications_facilitator/request_change_date')
+                ->setViewVars(['request'=>$request])
+                ->setEmailFormat('html')
+                ->send();
+        } 
+        
+        else if($notificationType == SharedTravelsController::$NOTIFICATION_TYPE_CANCELLED) {
+            $notice = 'CANCELADO > PickoCar #'.$request['SharedTravel']['id']. ' | '.TimeUtil::prettyDate($request['SharedTravel']['date'], false).' | '.$request['SharedTravel']['origin'].' - '.$request['SharedTravel']['destination'];
+            $Email = new Email('aviso');
+            $Email->to($facilitator['email'])
+                ->subject($notice)
+                ->send($notice);
+        }
     }
 
 }
