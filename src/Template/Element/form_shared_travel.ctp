@@ -59,6 +59,11 @@ if($this->request->session()->read('user_name_id')) $nameIdValue = $this->reques
                 <?php echo $this->Form->input('email', array('label' => __d('shared_travels', 'Tu correo electrónico'), 'value'=>$emailValue, 'type' => 'email', 'required', 'invalid-feedback'=>__d('errors', 'Escriba una dirección de correo válida')));?>
                 <br/>
                 <?php echo $this->Form->input('name_id', array('label' => __d('shared_travels', 'Tu nombre completo para fácil identificación'),'value'=>$nameIdValue, 'type' => 'text', 'required', 'invalid-feedback'=>__d('errors', 'Su nombre es necesario para la identificación. Por favor escríbalo.')));?>
+                <br>
+                <div class="form-group">
+                    <label for="Contacts"><?php echo __d('shared_travels', 'Teléfono de hospedaje, hotel y/o personal')?></label>
+                    <textarea name="contacts" class="form-control" placeholder="<?php echo __d('shared_travels', 'Adicione números de contactos útiles')?>" rows="2" id="Contacts"></textarea>
+                </div>
             </div>
             
         </div>

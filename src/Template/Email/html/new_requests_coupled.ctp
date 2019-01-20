@@ -5,7 +5,7 @@
     <?php $request = $requests[$i]?>
     <div>
         <b><?php echo $i + 1?>.</b>
-        <?php echo $this->element('shared_travel_facilitator', compact('request'))?>
+        <?php echo $this->element('shared_travel_templates/shared_travel_facilitator', compact('request'))?>
     </div>
     <br/>
     <br/>

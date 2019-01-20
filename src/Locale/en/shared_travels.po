@@ -213,6 +213,14 @@ msgid "Tu nombre completo para fácil identificación"
 msgstr "Your full name for easy identification"
 
 #: View/Elements/form_shared_travel.ctp:8
+msgid "Teléfono de hospedaje, hotel y/o personal"
+msgstr "Phone number of guest house, hotel and/or personal"
+
+#: View/Elements/form_shared_travel.ctp:8
+msgid "Adicione números de contactos útiles"
+msgstr "Add useful contact phone numbers"
+
+#: View/Elements/form_shared_travel.ctp:8
 msgid "Compartir este viaje de {0} a {1} y pagar sólo {2} por persona"
 msgstr "Share this trip from {0} to {1} and pay only {2} per person"
 

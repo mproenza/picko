@@ -6,4 +6,4 @@
 
 <p>A continuación los detalles de la solicitud:</p>
 
-<div><?php echo $this->element('shared_travel_facilitator', compact('request'))?></div>
+<div><?php echo $this->element('shared_travel_templates/shared_travel_facilitator', compact('request'))?></div>
