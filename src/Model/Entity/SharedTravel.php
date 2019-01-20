@@ -5,17 +5,17 @@ use Cake\ORM\Entity;
 class SharedTravel extends Entity {
     
     public static $localities = array(
-        0=>['name'=>'La Habana', 'slug'=>'habana', 'code'=>'HAB'],
-        1=>['name'=>'Trinidad', 'slug'=>'trinidad', 'code'=>'TRI'], 
-        2=>['name'=>'Viñales', 'slug'=>'vinales', 'code'=>'VIN'], 
-        3=>['name'=>'Varadero', 'slug'=>'varadero', 'code'=>'VAR'],
-        4=>['name'=>'Cienfuegos', 'slug'=>'cienfuegos', 'code'=>'CFG'], 
-        7=>['name'=>'Santa Clara', 'slug'=>'santa-clara', 'code'=>'SCL'],
-        5=>['name'=>'Cayo Coco', 'slug'=>'cayo-coco', 'code'=>'CAC'],
-        6=>['name'=>'Cayo Guillermo', 'slug'=>'cayo-guillermo', 'code'=>'CAG'],
-        8=>['name'=>'Playa Larga', 'slug'=>'playa-larga', 'code'=>'PLL'],
-        9=>['name'=>'Playa Girón', 'slug'=>'playa-giron', 'code'=>'PLG', 'use_as_origin'=>false],
-        10=>['name'=>'Cayo Santa María', 'slug'=>'cayo-santa-maria', 'code'=>'CAM', 'use_as_origin'=>false],
+        0=>['name'=>'La Habana', 'slug'=>'habana', 'code'=>'HAB', 'short'=>'Hab'],
+        1=>['name'=>'Trinidad', 'slug'=>'trinidad', 'code'=>'TRI', 'short'=>'Tri'], 
+        2=>['name'=>'Viñales', 'slug'=>'vinales', 'code'=>'VIN', 'short'=>'Viñ'], 
+        3=>['name'=>'Varadero', 'slug'=>'varadero', 'code'=>'VAR', 'short'=>'Var'],
+        4=>['name'=>'Cienfuegos', 'slug'=>'cienfuegos', 'code'=>'CFG', 'short'=>'Cfg'], 
+        7=>['name'=>'Santa Clara', 'slug'=>'santa-clara', 'code'=>'SCL', 'short'=>'S. Clara'],
+        5=>['name'=>'Cayo Coco', 'slug'=>'cayo-coco', 'code'=>'CAC', 'short'=>'C. Coco'],
+        6=>['name'=>'Cayo Guillermo', 'slug'=>'cayo-guillermo', 'code'=>'CAG', 'short'=>'C. Guillermo'],
+        8=>['name'=>'Playa Larga', 'slug'=>'playa-larga', 'code'=>'PLL', 'short'=>'P. Larga'],
+        9=>['name'=>'Playa Girón', 'slug'=>'playa-giron', 'code'=>'PLG', 'short'=>'P. Giron',  'use_as_origin'=>false],
+        10=>['name'=>'Cayo Santa María', 'slug'=>'cayo-santa-maria', 'code'=>'CAM', 'short'=>'C. Sta Maria', 'use_as_origin'=>false],
     );
     
     public static $routes_info = [
@@ -155,7 +155,9 @@ class SharedTravel extends Entity {
         if(isset($route['isFull']) && $route['isFull']) return $route;
         
         $route['origin'] = self::$localities[$route['origin_id']]['name'];
+        $route['origin_short'] = self::$localities[$route['origin_id']]['short'];
         $route['destination'] = self::$localities[$route['destination_id']]['name'];
+        $route['destination_short'] = self::$localities[$route['destination_id']]['short'];
         $route['code'] = self::$localities[$route['origin_id']]['code'].self::$localities[$route['destination_id']]['code'];
         $route['slug'] = 'taxi-'.self::$localities[$route['origin_id']]['slug'].'--'.self::$localities[$route['destination_id']]['slug'];
         
