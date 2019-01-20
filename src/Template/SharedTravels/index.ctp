@@ -6,7 +6,7 @@
         <br/>
         
         <?php foreach ($travels as $request) {
-            echo $this->element('shared_travel', compact('request') + array('showDetails'=>true, 'admin'=>true));
+            echo $this->element('shared_travel_templates/shared_travel_admin_mini', compact('request') + array('showDetails'=>true, 'admin'=>true));
             echo '<br/><br/><hr/>';
         }?>
         
