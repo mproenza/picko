@@ -6,12 +6,15 @@
     "license": "MIT",
     "require": {
         "php": ">=5.6",
+        "admad/cakephp-jwt-auth": "^2.3",
         "cakedc/users": "^6.0",
         "cakephp/cakephp": "3.5.*",
         "cakephp/migrations": "^1.0",
         "cakephp/plugin-installer": "^1.0",
+        "friendsofcake/crud": "5.0",
         "josegonzalez/dotenv": "2.*",
-        "mobiledetect/mobiledetectlib": "2.*"
+        "mobiledetect/mobiledetectlib": "2.*",
+        "ozee31/cakephp-cors": "^1.1"
     },
     "require-dev": {
         "cakephp/bake": "^1.1",
