@@ -35,8 +35,6 @@ class SharedTravelsController extends AppController {
     public function index() {
         $this->paginate = ['order'=>['date'=>'ASC', 'departure_time'=>'ASC', 'id'=>'ASC'], 'limit'=>100];
         $this->set('travels', $this->paginate($this->SharedTravels, ['conditions'=> ['email !=' => 'martin@yotellevocuba.com'] ]));
-        
-        $this->render('index');
     }
 
     public function book($routeSlug = null) {
