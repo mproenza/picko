@@ -97,6 +97,8 @@ Router::prefix('api', function ($routes) {
 });
  
 Router::scope('/:language', function (RouteBuilder $routes) {
+    $routes->registerMiddleware('csrf', new \Cake\Http\Middleware\CsrfProtectionMiddleware());
+    $routes->applyMiddleware('csrf');
     
     $routes->connect('/', ['controller' => 'SharedTravels', 'action' => 'home'], ['_name'=>'homepage'])
             ->setPatterns(['language' => 'en|es']);
