@@ -2,8 +2,6 @@
 
 namespace App\Util;
 
-use \Cake\Core\Exception\Exception;
-
 class TimeUtil {
     
     public static $months_es = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
@@ -35,23 +33,6 @@ class TimeUtil {
         
         return $pretty_date;
     }
-    
-    /*public static function prettyDateFromString(String $date, $dayOfWeek = true) {
-        
-        $date_converted = strtotime($date);
-        $day = date('j', $date_converted);
-        $month = __(TimeUtil::$months_es[date('n', $date_converted) - 1]);
-        $year = date('Y', $date_converted);
-        
-        $pretty_date = $day.' '.$month.', '.$year;
-        
-        if($dayOfWeek) {
-            $day_of_week = __(TimeUtil::$days_es[date('w', $date_converted)]);
-            $pretty_date .= ' ('.$day_of_week.')';
-        }
-        
-        return $pretty_date;
-    }*/
     
     public static function wasBefore($timeInterval, $dateString, $timezone = null) {
         $tmp = str_replace(' ', '', $timeInterval);
@@ -93,4 +74,3 @@ class TimeUtil {
     }
     
 }
-?>

@@ -4,6 +4,12 @@ use Cake\ORM\Entity;
 
 class SharedTravel extends Entity {
     
+    public static $EVENT_TYPE_CREATED = 'P';
+    public static $EVENT_TYPE_ACTIVATED = 'A';
+    public static $EVENT_TYPE_CONFIRMED = 'C';
+    public static $EVENT_TYPE_CANCELLED = 'X';
+    public static $EVENT_TYPE_DATE_CHANGED = 'D';
+    
     public static $localities = array(
         0=>['name'=>'La Habana', 'slug'=>'habana', 'code'=>'HAB', 'short'=>'Hab'],
         1=>['name'=>'Trinidad', 'slug'=>'trinidad', 'code'=>'TRI', 'short'=>'Tri'], 
@@ -131,10 +137,10 @@ class SharedTravel extends Entity {
         ['origin_id'=>5, 'destination_id'=>1, 'price_x_seat'=>45, 'departure_times'=>[14]],
         ['origin_id'=>5, 'destination_id'=>3, 'price_x_seat'=>60, 'departure_times'=>[14]],
         ['origin_id'=>5, 'destination_id'=>7, 'price_x_seat'=>55, 'departure_times'=>[14]],
-        ['origin_id'=>6, 'destination_id'=>0, 'price_x_seat'=>65, 'departure_times'=>[14]],
-        ['origin_id'=>6, 'destination_id'=>1, 'price_x_seat'=>50, 'departure_times'=>[14]],
-        ['origin_id'=>6, 'destination_id'=>3, 'price_x_seat'=>65, 'departure_times'=>[14]],
-        ['origin_id'=>6, 'destination_id'=>7, 'price_x_seat'=>60, 'departure_times'=>[14]],
+        ['origin_id'=>6, 'destination_id'=>0, 'price_x_seat'=>65, 'departure_times'=>[13]],
+        ['origin_id'=>6, 'destination_id'=>1, 'price_x_seat'=>50, 'departure_times'=>[13]],
+        ['origin_id'=>6, 'destination_id'=>3, 'price_x_seat'=>65, 'departure_times'=>[13]],
+        ['origin_id'=>6, 'destination_id'=>7, 'price_x_seat'=>60, 'departure_times'=>[13]],
         ['origin_id'=>7, 'destination_id'=>0, 'price_x_seat'=>35, 'departure_times'=>[8]],
         ['origin_id'=>7, 'destination_id'=>2, 'price_x_seat'=>45, 'departure_times'=>[8]],
         ['origin_id'=>7, 'destination_id'=>3, 'price_x_seat'=>35, 'departure_times'=>[8]],

@@ -28,8 +28,7 @@ class UsersController extends AppController
                     'exp' =>  time() + 604800
                 ],
                 Security::salt())
-            ],
-            '_serialize' => ['success', 'data']
+            ]
         ]);
     }
 }

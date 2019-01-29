@@ -17,7 +17,6 @@ use App\Error\ExpiredLinkException;
 
 class SharedTravelsController extends AppController {
     
-    
     private static $NOTIFICATION_TYPE_DATE_CHANGED = 0;
     private static $NOTIFICATION_TYPE_CANCELLED = 1;
     
@@ -42,7 +41,7 @@ class SharedTravelsController extends AppController {
             
             // Sanity checks
             if(in_array($this->request->clientIp(), $this->ip_blacklist) || $this->request->clientIp() == null || empty($this->request->clientIp()) ) 
-                    throw new \Cake\Network\Exception\ForbiddenException();
+                throw new \Cake\Network\Exception\ForbiddenException();
             
             // Proteccion contra ataque en Noviembre 2018
             $emailName = strstr($this->request->getData('email'), '@', true);
@@ -71,9 +70,21 @@ class SharedTravelsController extends AppController {
             if ($errors) {
                 // TODO: Do work to show error messages.
             }
+            
+            /*// Atachar el listener
+            $opEventListener = new \App\Listener\SharedTravelEventListener(); 
+            $this->eventManager()->on($opEventListener);*/
 
+            
             // Salvar la solicitud
             $OK = $STTable->save($STEntity);
+            
+            /*// Despachar el evento
+            $event = new Event('Model.SharedTravel.afterCreate', 
+                    $STEntity, 
+                    [ $this->Auth->user(), ['c95777aa-77cf-44ad-a0c1-c237326a265c', '4ccd24b9-88b2-4dbc-a8d4-1ccdefbf69a3']]
+                );
+            $this->eventManager()->dispatch($event); */
 
             if ($OK) {
 
@@ -91,7 +102,7 @@ class SharedTravelsController extends AppController {
                         array('request' => $request),
                         'hola',
                         'activate_request',
-                        array('lang'=>Configure::read('Config.language'), 'enqueue'=>false)
+                        array('lang'=>ini_get('intl.default_locale'), 'enqueue'=>false)
                     );
                     
                     // Email de 'Nueva solicitud' para mi
@@ -346,11 +357,25 @@ class SharedTravelsController extends AppController {
         $STTable = TableRegistry::get('SharedTravels');
         $request = $STTable->findByToken($token);
         
+        /*$STEntity = $STTable->newEntity();
+        $STEntity = $STTable->patchEntity($STEntity, $request['SharedTravel'],['validate' => false]);*/
+        
         // Sanity checks
         if($request == null || empty ($request)) throw new NotFoundException();
         // Verificar si ya esta cancelada
         
+        /*// Atachar el listener
+        $opEventListener = new \App\Listener\SharedTravelEventListener();
+        $this->eventManager()->on($opEventListener);*/
+        
         $OK = $STTable->updateAll(['state' => SharedTravel::$STATE_CANCELLED], ['id' => $request['SharedTravel']['id']]);
+        
+        /*// Despachar el evento
+        $event = new Event('Model.SharedTravel.afterCancel', 
+                $STEntity, 
+                [ $this->Auth->user(), ['c95777aa-77cf-44ad-a0c1-c237326a265c', '4ccd24b9-88b2-4dbc-a8d4-1ccdefbf69a3'] ]
+            );
+        $this->eventManager()->dispatch($event);*/
         
         // Avisar al facilitador solo si la fecha del viaje no ha pasado y si estaba activado
         if($OK && !$request['SharedTravel']['date']->isPast() && $request['SharedTravel']['activated']) {

@@ -16,8 +16,7 @@ class SharedTravelsController extends AppController {
         
         $this->set([
             'success' => true,
-            'data' => $sharedTravels,
-            '_serialize' => ['success', 'data']
+            'data' => $sharedTravels
         ]);
     }
     

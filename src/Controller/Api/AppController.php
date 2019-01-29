@@ -50,4 +50,13 @@ class AppController extends Controller {
             'checkAuthIn' => 'Controller.initialize'
         ]);
     }
+    
+    public function set($name, $value = null) {
+        
+        if(is_array($name) && !isset($name['_serialize'])) {
+            $name['_serialize'] = array_keys($name);
+        }
+        
+        parent::set($name, $value);
+    }
 }

@@ -92,12 +92,15 @@ Router::prefix('api', function ($routes) {
     $routes->resources('Cocktails');
     $routes->resources('Users');
     $routes->resources('SharedTravels');
+    $routes->resources('Sync');
     //Router::connect('/api/users/register', ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'add', 'prefix' => 'api']);
     $routes->fallbacks('InflectedRoute');
 });
  
 Router::scope('/:language', function (RouteBuilder $routes) {
-    $routes->registerMiddleware('csrf', new \Cake\Http\Middleware\CsrfProtectionMiddleware());
+    $routes->registerMiddleware('csrf', new \Cake\Http\Middleware\CsrfProtectionMiddleware([
+        'httpOnly' => true
+    ]));
     $routes->applyMiddleware('csrf');
     
     $routes->connect('/', ['controller' => 'SharedTravels', 'action' => 'home'], ['_name'=>'homepage'])

@@ -78,7 +78,19 @@ class SharedTravelsTable extends Table {
                     return $formatted;
                 });
             });
-            
+        }
+        
+        // API
+        else {
+            $query->formatResults(function (\Cake\Collection\CollectionInterface $results) {
+                return $results->map(function ($entity) {
+                    // Esto es para el ORM de la app movil
+                    $entity->origin_id = ['id'=>$entity->origin_id];
+                    $entity->destination_id = ['id'=>$entity->destination_id];
+
+                    return $entity;
+                });
+            });
         }
         
     }
@@ -123,7 +135,7 @@ class SharedTravelsTable extends Table {
     
     public function findCouplings($request) {
         // Buscar posibles emparejamiento para esta solicitud
-        $candidates = $this->findCoupligCandidates($request);       
+        $candidates = $this->findCoupligCandidates($request);
         
         // Armar los emparejamientos
         $count = $request['SharedTravel']['people_count'];
@@ -163,7 +175,18 @@ class SharedTravelsTable extends Table {
     
 
     public function confirmRequest($request) {
+        /*// Atachar el listener
+        $opEventListener = new \App\Listener\SharedTravelEventListener(); 
+        $this->eventManager()->on($opEventListener);*/
+        
         $OK = $this->updateAll(['state'=>SharedTravel::$STATE_CONFIRMED], ['id' => $request['SharedTravel']['id']]);
+        
+        /*// Despachar el evento
+        $event = new Event('Model.SharedTravel.afterCreate', 
+                $STEntity, 
+                [ $this->Auth->user() ]
+            );
+        $this->eventManager()->dispatch($event);*/
 
         if ($OK) {
             $lang = $request['SharedTravel']['lang'];
