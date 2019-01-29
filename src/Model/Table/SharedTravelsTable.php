@@ -175,18 +175,18 @@ class SharedTravelsTable extends Table {
     
 
     public function confirmRequest($request) {
-        /*// Atachar el listener
+        // Atachar el listener
         $opEventListener = new \App\Listener\SharedTravelEventListener(); 
-        $this->eventManager()->on($opEventListener);*/
+        $this->eventManager()->on($opEventListener);
         
         $OK = $this->updateAll(['state'=>SharedTravel::$STATE_CONFIRMED], ['id' => $request['SharedTravel']['id']]);
         
-        /*// Despachar el evento
+        // Despachar el evento
         $event = new Event('Model.SharedTravel.afterCreate', 
                 $STEntity, 
                 [ $this->Auth->user() ]
             );
-        $this->eventManager()->dispatch($event);*/
+        $this->eventManager()->dispatch($event);
 
         if ($OK) {
             $lang = $request['SharedTravel']['lang'];

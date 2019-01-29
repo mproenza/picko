@@ -71,20 +71,20 @@ class SharedTravelsController extends AppController {
                 // TODO: Do work to show error messages.
             }
             
-            /*// Atachar el listener
+            // Atachar el listener
             $opEventListener = new \App\Listener\SharedTravelEventListener(); 
-            $this->eventManager()->on($opEventListener);*/
+            $this->eventManager()->on($opEventListener);
 
             
             // Salvar la solicitud
             $OK = $STTable->save($STEntity);
             
-            /*// Despachar el evento
+            // Despachar el evento
             $event = new Event('Model.SharedTravel.afterCreate', 
                     $STEntity, 
                     [ $this->Auth->user(), ['c95777aa-77cf-44ad-a0c1-c237326a265c', '4ccd24b9-88b2-4dbc-a8d4-1ccdefbf69a3']]
                 );
-            $this->eventManager()->dispatch($event); */
+            $this->eventManager()->dispatch($event);
 
             if ($OK) {
 
@@ -357,25 +357,25 @@ class SharedTravelsController extends AppController {
         $STTable = TableRegistry::get('SharedTravels');
         $request = $STTable->findByToken($token);
         
-        /*$STEntity = $STTable->newEntity();
-        $STEntity = $STTable->patchEntity($STEntity, $request['SharedTravel'],['validate' => false]);*/
+        $STEntity = $STTable->newEntity();
+        $STEntity = $STTable->patchEntity($STEntity, $request['SharedTravel'],['validate' => false]);
         
         // Sanity checks
         if($request == null || empty ($request)) throw new NotFoundException();
         // Verificar si ya esta cancelada
         
-        /*// Atachar el listener
+        // Atachar el listener
         $opEventListener = new \App\Listener\SharedTravelEventListener();
-        $this->eventManager()->on($opEventListener);*/
+        $this->eventManager()->on($opEventListener);
         
         $OK = $STTable->updateAll(['state' => SharedTravel::$STATE_CANCELLED], ['id' => $request['SharedTravel']['id']]);
         
-        /*// Despachar el evento
+        // Despachar el evento
         $event = new Event('Model.SharedTravel.afterCancel', 
                 $STEntity, 
                 [ $this->Auth->user(), ['c95777aa-77cf-44ad-a0c1-c237326a265c', '4ccd24b9-88b2-4dbc-a8d4-1ccdefbf69a3'] ]
             );
-        $this->eventManager()->dispatch($event);*/
+        $this->eventManager()->dispatch($event);
         
         // Avisar al facilitador solo si la fecha del viaje no ha pasado y si estaba activado
         if($OK && !$request['SharedTravel']['date']->isPast() && $request['SharedTravel']['activated']) {
