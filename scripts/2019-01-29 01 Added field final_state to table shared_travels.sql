@@ -1,0 +1,1 @@
+ALTER TABLE `shared_travels` ADD `final_state` VARCHAR(3) NULL AFTER `state`;

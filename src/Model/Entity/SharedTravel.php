@@ -214,15 +214,18 @@ class SharedTravel extends Entity {
         
         $slug = substr($slug, 5); // Eliminar 'taxi-'
         
+        // Buscar si tiene '--' que es lo que delimita los slug del origen y el destino
         $pos = strpos($slug, '--');
         
         if(!$pos) return null;
         
         // OK
         
+        // Obtener el slug del origen y el destino
         $originSlug = substr($slug, 0, $pos);
         $destSlug = substr($slug, $pos + 2);
         
+        // Convertir los slugs a ids
         $originId = null;
         foreach (self::$localities as $k=>$l) {
             if($l['slug'] == $originSlug) {
@@ -241,6 +244,7 @@ class SharedTravel extends Entity {
         }
         if($destId === null) return null;
         
+        // Buscar la ruta que coincida con los id del origen y el destino
         $route = null;
         foreach (self::$routes as $r) {
             if($r['origin_id'] == $originId && $r['destination_id'] == $destId) {
@@ -265,5 +269,7 @@ class SharedTravel extends Entity {
         
         return $desc;
     }
+    
+    
+    public static $finalStates = ['D' => 'Realizado', 'XT' => 'Taxi no llegó', 'XC'=>'Cliente no apareció'];
 }
-?>

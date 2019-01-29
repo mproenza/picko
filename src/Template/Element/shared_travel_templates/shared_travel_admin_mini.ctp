@@ -22,6 +22,9 @@ if(!isset($admin)) $admin = false;
 
 <?php $st = SharedTravel::getStateDesc($request['SharedTravel']['state'])?>
 <p><span class="text-muted"><b><?php echo __d('shared_travels', 'Estado')?>:</b></span> <big><abbr class="info" title="<?php echo $st['description']?>" style="text-decoration: none"><span class="<?php echo $st['class']?>"><?php echo $st['title'] ?></span></abbr></big></p>
+<?php if($request['SharedTravel']['final_state'] != null):?>
+<p><b><?php echo App\Model\Entity\SharedTravel::$finalStates[$request['SharedTravel']['final_state']]?></b></p>
+<?php endif?>
 <?php if($showDetails):?>
     <hr/>
     <div>
