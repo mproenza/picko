@@ -26,7 +26,16 @@ class SyncController extends AppController {
             $events = $OpEventsTable->find()
                     ->where([
                         'id IN'=>$eventsIds
-                    ])->toArray();
+                    ])
+                    ->formatResults(function (\Cake\Collection\CollectionInterface $results) {
+                        return $results->map(function ($entity) {
+                            // Esto es para el ORM de la app movil
+                            $entity->data = json_decode($entity->data);
+
+                            return $entity;
+                        });
+                    })
+                    ->toArray();
             
             // Actualizar como sincronizados en la cola
             $queueIds = array_column($queueEntries, 'id');
