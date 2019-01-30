@@ -71,48 +71,44 @@ class SharedTravelsController extends AppController {
                 // TODO: Do work to show error messages.
             }
             
-            // Atachar el listener
+            /*// Atachar el listener
             $opEventListener = new \App\Listener\SharedTravelEventListener(); 
-            $this->eventManager()->on($opEventListener);
+            $this->eventManager()->on($opEventListener);*/
 
             
             // Salvar la solicitud
             $OK = $STTable->save($STEntity);
             
-            // Despachar el evento
+            /*// Despachar el evento
             $event = new Event('Model.SharedTravel.afterCreate', 
                     $STEntity, 
                     [ $this->Auth->user(), ['c95777aa-77cf-44ad-a0c1-c237326a265c', '4ccd24b9-88b2-4dbc-a8d4-1ccdefbf69a3']]
                 );
-            $this->eventManager()->dispatch($event);
+            $this->eventManager()->dispatch($event);*/
 
             if ($OK) {
 
-                // Ver si se debe enviar el correo de verificacion
-                $mustVerify = true;// TODO: Por ahora vamos siempre a enviar un correo de activacion de la solicitud
+                // TODO: Ver si se debe enviar el correo de verificacion
+                
+                // Obtener la solicitud para que los datos vengan formateados (ej. la fecha)
+                $request = $STTable->findByToken($idToken);
 
-                if ($mustVerify) {
-                    // Obtener la solicitud para que los datos vengan formateados (ej. la fecha)
-                    $request = $STTable->findByToken($idToken);
+                // Correo con link de activacion
+                $OK = EmailsUtil::email(
+                    $request['SharedTravel']['email'],
+                    __d('shared_travels', 'Confirma tu solicitud de viaje compartido'),
+                    array('request' => $request),
+                    'hola',
+                    'activate_request',
+                    array('lang'=>ini_get('intl.default_locale'), 'enqueue'=>false)
+                );
 
-                    // Correo con link de activacion
-                    $OK = EmailsUtil::email(
-                        $request['SharedTravel']['email'],
-                        __d('shared_travels', 'Confirma tu solicitud de viaje compartido'),
-                        array('request' => $request),
-                        'hola',
-                        'activate_request',
-                        array('lang'=>ini_get('intl.default_locale'), 'enqueue'=>false)
-                    );
-                    
-                    // Email de 'Nueva solicitud' para mi
-                    $Email = new Email('hola');
-                    $Email->to('martin@yotellevocuba.com')
-                            ->subject('Nueva solicitud: PickoCar #'.$request['SharedTravel']['id'])
-                            ->send('http://pickocar.com/shared-rides/view/'.$request['SharedTravel']['id_token']);
-                } else {
-                    return $this->redirect(array('action' => 'activate/' . $activationToken));
-                }
+                // Email de 'Nueva solicitud' para mi
+                $Email = new Email('hola');
+                $Email->to('martin@yotellevocuba.com')
+                        ->subject('Nueva solicitud: PickoCar #'.$request['SharedTravel']['id'])
+                        ->send('http://pickocar.com/shared-rides/view/'.$request['SharedTravel']['id_token']);
+                
             }
 
 
@@ -374,25 +370,25 @@ class SharedTravelsController extends AppController {
         $STTable = TableRegistry::get('SharedTravels');
         $request = $STTable->findByToken($token);
         
-        $STEntity = $STTable->newEntity();
-        $STEntity = $STTable->patchEntity($STEntity, $request['SharedTravel'],['validate' => false]);
+        /*$STEntity = $STTable->newEntity();
+        $STEntity = $STTable->patchEntity($STEntity, $request['SharedTravel'],['validate' => false]);*/
         
         // Sanity checks
         if($request == null || empty ($request)) throw new NotFoundException();
         // Verificar si ya esta cancelada
         
-        // Atachar el listener
+        /*// Atachar el listener
         $opEventListener = new \App\Listener\SharedTravelEventListener();
-        $this->eventManager()->on($opEventListener);
+        $this->eventManager()->on($opEventListener);*/
         
         $OK = $STTable->updateAll(['state' => SharedTravel::$STATE_CANCELLED], ['id' => $request['SharedTravel']['id']]);
         
-        // Despachar el evento
+        /*// Despachar el evento
         $event = new Event('Model.SharedTravel.afterCancel', 
                 $STEntity, 
                 [ $this->Auth->user(), ['c95777aa-77cf-44ad-a0c1-c237326a265c', '4ccd24b9-88b2-4dbc-a8d4-1ccdefbf69a3'] ]
             );
-        $this->eventManager()->dispatch($event);
+        $this->eventManager()->dispatch($event);*/
         
         // Avisar al facilitador solo si la fecha del viaje no ha pasado y si estaba activado
         if($OK && !$request['SharedTravel']['date']->isPast() && $request['SharedTravel']['activated']) {
