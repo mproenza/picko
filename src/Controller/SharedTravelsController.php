@@ -353,6 +353,23 @@ class SharedTravelsController extends AppController {
         } else throw new MethodNotAllowedException();
     }
     
+    public function setFinalState($id) {
+        $STTable = TableRegistry::get('SharedTravels');
+        $request = $STTable->findById($id);
+        
+        // Sanity checks
+        if($request == null || empty ($request)) throw new NotFoundException();
+        
+        if ($this->request->is('post') || $this->request->is('put')) {
+            
+            $OK = $STTable->updateAll(['final_state' => $this->request->getData('final_state')], ['id' => $request['SharedTravel']['id']]);
+            if(!$OK) $this->setErrorMessage ('Error actualizando el estado final.');
+            
+            return $this->redirect($this->referer());
+            
+        } else throw new MethodNotAllowedException();
+    }
+    
     public function cancel($token) {
         $STTable = TableRegistry::get('SharedTravels');
         $request = $STTable->findByToken($token);
