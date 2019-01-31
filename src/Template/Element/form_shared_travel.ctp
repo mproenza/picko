@@ -2,7 +2,7 @@
 
 <?php
 $emailValue = null;
-$peopleCountValue = 1;
+$peopleCountValue = 2;
 $nameIdValue = null;
 if($this->request->session()->read('user_email')) $emailValue = $this->request->session()->read('user_email');
 if($this->request->session()->read('user_people_count')) $peopleCountValue = $this->request->session()->read('user_people_count');
@@ -40,7 +40,7 @@ if($this->request->session()->read('user_name_id')) $nameIdValue = $this->reques
                 </div>
                 <br/>
                 
-                <?php echo $this->Form->input('people_count', array('label' => __d('shared_travels', 'Cantidad de personas (4 pasajeros máx.)'), 'value'=>$peopleCountValue,'type'=>'number', 'default' => 1, 'min' => 1, 'max' => 4, 'required', 'invalid-feedback'=>__d('errors', 'La cantidad de personas debe ser un número entre 1 y 4')));?>
+                <?php echo $this->Form->input('people_count', array('label' => __d('shared_travels', 'Cantidad de personas (4 pasajeros máx.)'), 'value'=>$peopleCountValue,'type'=>'number', 'default' => 2, 'min' => 2, 'max' => 4, 'required', 'invalid-feedback'=>__d('errors', 'La cantidad de personas debe ser un número entre {0} y {1}', 2, 4)));?>
                 <br/>
                 <div class="form-group required">
                     <label for="AddressOrigin"><?php echo __d('shared_travels', 'Dirección de recogida en {0}', '<code><big>'.$route['origin'].'</big></code>')?></label>

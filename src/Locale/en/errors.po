@@ -43,8 +43,8 @@ msgid "Escriba una fecha válida: 2 días después de hoy como mínimo y en form
 msgstr "Type a valid date: 2 days after today as a minimum and in format dd/mm/yyyy"
 
 #: View/Elements/form_shared_travel.ctp:23
-msgid "La cantidad de personas debe ser un número entre 1 y 4"
-msgstr "The people count must be a number between 1 and 4"
+msgid "La cantidad de personas debe ser un número entre {0} y {1}"
+msgstr "The people count must be a number between {0} and {1}"
 
 #: View/Elements/form_shared_travel.ctp:23
 msgid "La dirección de recogida es obligatoria"

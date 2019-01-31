@@ -39,13 +39,16 @@ class SharedTravelsTable extends Table {
             ->notEmpty('origin_id', __d('errors', 'Inválido'))
             ->notEmpty('destination_id', __d('errors', 'Inválido'))
             ->notEmpty('price_x_seat', __d('errors', 'Inválido'))
+               
+            ->notEmpty('date', __d('errors', 'Fecha inválida'))
+                
+            ->notEmpty('people_count', __d('errors', 'Cantidad inválida'))
+            ->range('people_count', [2, 4], __d('errors', 'La cantidad de personas debe ser un número entre {0} y {1}', 2, 4))
                 
             ->notEmpty('email', __d('errors', 'Email inválido'))
             ->notEmpty('name', __d('errors', 'Nombre inválido'))
             ->notEmpty('address_origin', __d('errors', 'Dirección de recogida inválida'))
             ->notEmpty('address_destination', __d('errors', 'Dirección de destino inválida'))
-            ->notEmpty('date', __d('errors', 'Fecha inválida'))
-            ->notEmpty('people_count', __d('errors', 'Cantidad inválida'))
         ;
         return $validator;
     }

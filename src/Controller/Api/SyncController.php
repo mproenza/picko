@@ -45,8 +45,7 @@ class SyncController extends AppController {
         // Enviar sync        
         $this->set([
             'success' => true,
-            'data' => $events,
-            'user' => $userId
+            'data' => $events
         ]);
     }
     
