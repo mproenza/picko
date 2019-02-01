@@ -39,13 +39,16 @@ class SharedTravelsTable extends Table {
             ->notEmpty('origin_id', __d('errors', 'Inválido'))
             ->notEmpty('destination_id', __d('errors', 'Inválido'))
             ->notEmpty('price_x_seat', __d('errors', 'Inválido'))
+               
+            ->notEmpty('date', __d('errors', 'Fecha inválida'))
+                
+            ->notEmpty('people_count', __d('errors', 'Cantidad inválida'))
+            ->range('people_count', [2, 4], __d('errors', 'La cantidad de personas debe ser un número entre {0} y {1}', 2, 4))
                 
             ->notEmpty('email', __d('errors', 'Email inválido'))
             ->notEmpty('name', __d('errors', 'Nombre inválido'))
             ->notEmpty('address_origin', __d('errors', 'Dirección de recogida inválida'))
             ->notEmpty('address_destination', __d('errors', 'Dirección de destino inválida'))
-            ->notEmpty('date', __d('errors', 'Fecha inválida'))
-            ->notEmpty('people_count', __d('errors', 'Cantidad inválida'))
         ;
         return $validator;
     }
@@ -175,18 +178,18 @@ class SharedTravelsTable extends Table {
     
 
     public function confirmRequest($request) {
-        // Atachar el listener
+        /*// Atachar el listener
         $opEventListener = new \App\Listener\SharedTravelEventListener(); 
-        $this->eventManager()->on($opEventListener);
+        $this->eventManager()->on($opEventListener);*/
         
         $OK = $this->updateAll(['state'=>SharedTravel::$STATE_CONFIRMED], ['id' => $request['SharedTravel']['id']]);
         
-        // Despachar el evento
+        /*// Despachar el evento
         $event = new Event('Model.SharedTravel.afterCreate', 
                 $STEntity, 
                 [ $this->Auth->user() ]
             );
-        $this->eventManager()->dispatch($event);
+        $this->eventManager()->dispatch($event);*/
 
         if ($OK) {
             $lang = $request['SharedTravel']['lang'];
