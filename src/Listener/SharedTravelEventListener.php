@@ -15,7 +15,7 @@ class SharedTravelEventListener extends \ApiSync\Listener\BaseOpEventListener {
             ];
     }
     
-    public function createSharedTravel($event, $owner, $notifyTo = null) {        
+    public function createSharedTravel($event, $owner, array $notifyTo = null) {        
         return parent::saveEvent(
                 $event, 
                 \App\Model\Entity\SharedTravel::$EVENT_TYPE_CREATED,
@@ -23,7 +23,7 @@ class SharedTravelEventListener extends \ApiSync\Listener\BaseOpEventListener {
                 $notifyTo);
     }
     
-    public function confirmSharedTravel($event, $owner, $notifyTo = null) {        
+    public function confirmSharedTravel($event, $owner, array $notifyTo = null) {        
         return parent::saveEvent(
                 $event, 
                 \App\Model\Entity\SharedTravel::$EVENT_TYPE_CONFIRMED,
@@ -31,7 +31,7 @@ class SharedTravelEventListener extends \ApiSync\Listener\BaseOpEventListener {
                 $notifyTo);
     }
     
-    public function cancelSharedTravel($event, $owner, $notifyTo = null) {        
+    public function cancelSharedTravel($event, $owner, array $notifyTo = null) {        
         return parent::saveEvent(
                 $event, 
                 \App\Model\Entity\SharedTravel::$EVENT_TYPE_CANCELLED,

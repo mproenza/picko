@@ -26,8 +26,6 @@ abstract class BaseOpEventListener implements EventListenerInterface {
         }
         
         // Crear el evento
-        /*$e = []; 
-        $e[$this->config('object_id_field')] = $event->subject()->id;*/
         $e = [
             'object_id' => $event->subject()->id,
             'type' => $type,
