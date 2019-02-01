@@ -427,5 +427,20 @@ class SharedTravelsController extends AppController {
                 ->send($notice);
         }
     }
+    
+    private function _getUsersToSync($eventType = null) {
+        
+        $UsersTable = TableRegistry::get('CakeDC/Users.Users');
+        
+        $users = $UsersTable->find()
+                    ->where([
+                        'role IN'=>['admin', 'operator']
+                    ])
+                    ->toArray();
+        
+        return array_column($users, 'id');
+        
+        //return ['c95777aa-77cf-44ad-a0c1-c237326a265c', '4ccd24b9-88b2-4dbc-a8d4-1ccdefbf69a3'];
+    }
 
 }
