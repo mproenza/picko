@@ -68,19 +68,30 @@ class SharedTravelsTable extends Table {
         
         // Si no se esta haciendo una llamada a la API
         if(!Configure::read('App.calling_api')) {
-            
-            // Hacer que se devuelvan resultados a la Cakephp 2 
-            $query->hydrate(false); //para que devuelva arrays, no objetos
-            $query->formatResults(function (\Cake\Collection\CollectionInterface $results) {
-                return $results->map(function ($row) {
+            if(!isset($options['hydrate']) || !$options['hydrate']) {
+                // Hacer que se devuelvan resultados a la Cakephp 2
+                $query->hydrate(false); //para que devuelva arrays, no objetos
+                $query->formatResults(function (\Cake\Collection\CollectionInterface $results) {
+                    return $results->map(function ($row) {
 
-                    $rowFull = SharedTravel::_routeFull($row);
+                        $rowFull = SharedTravel::_routeFull($row);
 
-                    $formatted = ['SharedTravel'=>$rowFull];
+                        $formatted = ['SharedTravel'=>$rowFull];
 
-                    return $formatted;
+                        return $formatted;
+                    });
                 });
-            });
+            } else {
+                $query->formatResults(function (\Cake\Collection\CollectionInterface $results) {
+                    return $results->map(function ($row) {
+
+                        $rowFull = SharedTravel::addRouteInfo($row);
+
+                        return $rowFull;
+                    });
+                });
+            }
+            
         }
         
         // API
@@ -98,24 +109,24 @@ class SharedTravelsTable extends Table {
         
     }
 
-    public function findByToken($token) {
-        $request = $this->find()
+    public function findByToken($token, array $options = []) {
+        $request = $this->find('all', $options)
         ->where(['id_token' => $token])
         ->first();
 
         return $request;
     }
     
-    public function findByActivationToken($token) {
-        $request = $this->find()
+    public function findByActivationToken($token, array $options = []) {
+        $request = $this->find('all', $options)
         ->where(['activation_token' => $token])
         ->first();
 
         return $request;	
     }
     
-    public function findById($id) {
-        $request = $this->find()
+    public function findById($id, array $options = []) {
+        $request = $this->find('all', $options)
         ->where(['id' => $id])
         ->first();
 

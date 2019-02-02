@@ -22,13 +22,11 @@ class UsersController extends AppController
 
         $this->set([
             'success' => true,
-            'data' => [
-                'token' => JWT::encode([
+            'data' => JWT::encode([
                     'sub' => $user['id'],
                     'exp' =>  time() + 604800
                 ],
                 Security::salt())
-            ]
         ]);
     }
 }

@@ -199,6 +199,51 @@ class SharedTravel extends Entity {
         
         return $route;
     }
+    public static function addRouteInfo($sharedTravel) {
+        // Evitar ponerle los datos extra a las rutas si ya se hizo (esto es porque se pudiera llamar a _routeFull() varias veces en una ejecucion)
+        if(isset($sharedTravel->routeInfoAdded) && $sharedTravel->routeInfoAdded) return $sharedTravel;
+        
+        // Adicionar campos a la solicitud
+        $sharedTravel->origin = self::$localities[$sharedTravel->origin_id]['name'];
+        $sharedTravel->origin_short = self::$localities[$sharedTravel->origin_id]['short'];
+        $sharedTravel->destination = self::$localities[$sharedTravel->destination_id]['name'];
+        $sharedTravel->destination_short = self::$localities[$sharedTravel->destination_id]['short'];
+        $sharedTravel->code = self::$localities[$sharedTravel->origin_id]['code'].self::$localities[$sharedTravel->destination_id]['code'];
+        $sharedTravel->slug = 'taxi-'.self::$localities[$sharedTravel->origin_id]['slug'].'--'.self::$localities[$sharedTravel->destination_id]['slug'];
+        
+        // Poner am y pm a la hora de salida
+        if(isset($sharedTravel->departure_time)) {
+            $time = $sharedTravel->departure_time;
+            $d = 'am';
+            if($time > 12) {
+                $time -= 12;
+                $d = 'pm';
+            } else if( $time == 12) $d = 'pm';
+            $sharedTravel->departure_time_desc = $time.' '.$d;
+        }
+        
+        if(!isset($sharedTravel->departure_times)) {
+            foreach (self::$routes as $r) { // Poner los departure_times si le faltan
+                if($r['origin_id'] == $sharedTravel->origin_id && $r['destination_id'] == $sharedTravel->destination_id) {
+                    $sharedTravel->departure_times = $r['departure_times'];
+                }
+            }
+        }
+        
+        // Poner am y pm a los horarios de salida
+        foreach ($sharedTravel->departure_times as $time) {
+            $d = 'am';
+            if($time > 12) {
+                $time -= 12;
+                $d = 'pm';
+            } else if( $time == 12) $d = 'pm';
+            $sharedTravel->departure_times_desc[] = $time.' '.$d;
+        }
+        
+        $sharedTravel->routeInfoAdded = true;
+        
+        return $sharedTravel;
+    }
     
     /**
      * Retorna null si no hay matcheo

@@ -74,7 +74,6 @@ class SharedTravelsController extends AppController {
             /*// Atachar el listener
             $opEventListener = new \App\Listener\SharedTravelEventListener(); 
             $this->eventManager()->on($opEventListener);*/
-
             
             // Salvar la solicitud
             $OK = $STTable->save($STEntity);
@@ -82,7 +81,7 @@ class SharedTravelsController extends AppController {
             /*// Despachar el evento
             $event = new Event('Model.SharedTravel.afterCreate', 
                     $STEntity, 
-                    [ $this->Auth->user(), ['c95777aa-77cf-44ad-a0c1-c237326a265c', '4ccd24b9-88b2-4dbc-a8d4-1ccdefbf69a3']]
+                    [ $this->Auth->user(), $this->_getUsersToSync()]
                 );
             $this->eventManager()->dispatch($event);*/
 
@@ -136,7 +135,6 @@ class SharedTravelsController extends AppController {
 
         $this->set('request', $request);
     }
-    
     
     
     public function activate($activationToken) {
@@ -329,18 +327,22 @@ class SharedTravelsController extends AppController {
     }
     
     public function changeDate($id) {
-        $STTable = TableRegistry::get('SharedTravels');
-        $request = $STTable->findById($id);
-        
-        // Sanity checks
-        if($request == null || empty ($request)) throw new NotFoundException();
-        
         if ($this->request->is('post') || $this->request->is('put')) {
             
-            $OK = $STTable->updateAll(['date' => TimeUtil::dmY_to_Ymd($this->request->getData('date'))], ['id' => $request['SharedTravel']['id']]);
-            if(!$OK) $this->setErrorMessage ('Error actualizando la fecha.');
+            /*// Atachar el listener
+            $opEventListener = new \App\Listener\SharedTravelEventListener();
+            $this->eventManager()->on($opEventListener);*/
             
-            $request['SharedTravel']['new_date'] = TimeUtil::dmY_to_Ymd($this->request->getData('date'));
+            $request = $this->_updateField('date', TimeUtil::dmY_to_Ymd($this->request->getData('date')), $id);
+            
+            /*// Despachar el evento
+            $event = new Event('Model.SharedTravel.afterDateChange', 
+                    $STEntity, 
+                    [ $this->Auth->user(), $this->_getUsersToSync()]
+                );
+            $this->eventManager()->dispatch($event);*/
+            
+            if(!$request) $this->setErrorMessage ('Error actualizando la fecha.');
             
             $this->_notify(SharedTravelsController::$NOTIFICATION_TYPE_DATE_CHANGED, $request);
             
@@ -349,49 +351,23 @@ class SharedTravelsController extends AppController {
         } else throw new MethodNotAllowedException();
     }
     
-    public function setFinalState($id) {
-        $STTable = TableRegistry::get('SharedTravels');
-        $request = $STTable->findById($id);
-        
-        // Sanity checks
-        if($request == null || empty ($request)) throw new NotFoundException();
-        
-        if ($this->request->is('post') || $this->request->is('put')) {
-            
-            $OK = $STTable->updateAll(['final_state' => $this->request->getData('final_state')], ['id' => $request['SharedTravel']['id']]);
-            if(!$OK) $this->setErrorMessage ('Error actualizando el estado final.');
-            
-            return $this->redirect($this->referer());
-            
-        } else throw new MethodNotAllowedException();
-    }
-    
     public function cancel($token) {
-        $STTable = TableRegistry::get('SharedTravels');
-        $request = $STTable->findByToken($token);
-        
-        /*$STEntity = $STTable->newEntity();
-        $STEntity = $STTable->patchEntity($STEntity, $request['SharedTravel'],['validate' => false]);*/
-        
-        // Sanity checks
-        if($request == null || empty ($request)) throw new NotFoundException();
-        // Verificar si ya esta cancelada
         
         /*// Atachar el listener
         $opEventListener = new \App\Listener\SharedTravelEventListener();
         $this->eventManager()->on($opEventListener);*/
         
-        $OK = $STTable->updateAll(['state' => SharedTravel::$STATE_CANCELLED], ['id' => $request['SharedTravel']['id']]);
+        $request = $this->_updateField('state', SharedTravel::$STATE_CANCELLED, ['token'=>$token]);
         
         /*// Despachar el evento
         $event = new Event('Model.SharedTravel.afterCancel', 
                 $STEntity, 
-                [ $this->Auth->user(), ['c95777aa-77cf-44ad-a0c1-c237326a265c', '4ccd24b9-88b2-4dbc-a8d4-1ccdefbf69a3'] ]
+                [ $this->Auth->user(), $this->_getUsersToSync() ]
             );
         $this->eventManager()->dispatch($event);*/
         
         // Avisar al facilitador solo si la fecha del viaje no ha pasado y si estaba activado
-        if($OK && !$request['SharedTravel']['date']->isPast() && $request['SharedTravel']['activated']) {
+        if($request && !$request->date->isPast() && $request->activated) {
             $this->_notify(SharedTravelsController::$NOTIFICATION_TYPE_CANCELLED, $request);
         } else {
             $this->Flash->error(__('Error cancelando la solicitud.'));
@@ -400,12 +376,52 @@ class SharedTravelsController extends AppController {
         return $this->redirect($this->referer());
     }
     
+    public function setFinalState($id) {
+        if ($this->request->is('post') || $this->request->is('put')) {
+            
+            $request = $this->_updateField('final_state', $this->request->getData('final_state'), $id);
+            
+            if(!$request) $this->setErrorMessage ('Error actualizando el estado final.');
+            
+            return $this->redirect($this->referer());
+            
+        } else throw new MethodNotAllowedException();
+    }
+    
+    private function _updateField($fieldName, $newValue, $id) {
+        $searchByField = 'id';
+        $searchByValue = $id;
+        if(is_array($id)) {
+            $searchByField = array_keys($id)[0];
+            $searchByValue = array_values($id)[0];
+        }
+
+        $func = 'findBy'. \Cake\Utility\Inflector::camelize($searchByField);
+
+        $STTable = TableRegistry::get('SharedTravels');
+        $request = $STTable->$func($searchByValue, ['hydrate'=>true]);
+
+        // Sanity checks
+        if($request == null || empty ($request)) throw new NotFoundException();
+
+        // Salvar el valor anterior
+        $oldFieldName = 'old_'.$fieldName;
+        $request->$oldFieldName = $request->$fieldName;
+
+        $request->$fieldName = $newValue;
+        $OK = $STTable->save($request);
+
+        if(!$OK) return null;
+
+        return $request;
+    }
+    
     private function _notify($notificationType, $request) {
         
         $facilitator = Configure::read('shared_rides_facilitator');
         
         if($notificationType == SharedTravelsController::$NOTIFICATION_TYPE_DATE_CHANGED) {
-            $notice = 'CAMBIO FECHA > PickoCar #'.$request['SharedTravel']['id'].' | '.$request['SharedTravel']['origin'].' - '.$request['SharedTravel']['destination'];
+            $notice = 'CAMBIO FECHA > PickoCar #'.$request->id.' | '.$request->origin.' - '.$request->destination;
             $Email = new Email('aviso');
             $Email->to($facilitator['email'])
                 ->subject($notice)
@@ -416,12 +432,25 @@ class SharedTravelsController extends AppController {
         } 
         
         else if($notificationType == SharedTravelsController::$NOTIFICATION_TYPE_CANCELLED) {
-            $notice = 'CANCELADO > PickoCar #'.$request['SharedTravel']['id']. ' | '.TimeUtil::prettyDate($request['SharedTravel']['date'], false).' | '.$request['SharedTravel']['origin'].' - '.$request['SharedTravel']['destination'];
+            $notice = 'CANCELADO > PickoCar #'.$request->id. ' | '.TimeUtil::prettyDate($request->date, false).' | '.$request->origin.' - '.$request->destination;
             $Email = new Email('aviso');
             $Email->to($facilitator['email'])
                 ->subject($notice)
                 ->send($notice);
         }
+    }
+    
+    private function _getUsersToSync($eventType = null) {
+        
+        $UsersTable = TableRegistry::get('CakeDC/Users.Users');
+        
+        $users = $UsersTable->find()
+                    ->where([
+                        'role IN'=>['admin', 'operator']
+                    ])
+                    ->toArray();
+        
+        return array_column($users, 'id');
     }
 
 }
