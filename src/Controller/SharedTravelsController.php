@@ -71,19 +71,19 @@ class SharedTravelsController extends AppController {
                 // TODO: Do work to show error messages.
             }
             
-            // Atachar el listener
+            /*// Atachar el listener
             $opEventListener = new \App\Listener\SharedTravelEventListener(); 
-            $this->eventManager()->on($opEventListener);
+            $this->eventManager()->on($opEventListener);*/
             
             // Salvar la solicitud
             $OK = $STTable->save($STEntity);
             
-            // Despachar el evento
+            /*// Despachar el evento
             $event = new Event('Model.SharedTravel.afterCreate', 
                     $STEntity, 
                     [ $this->Auth->user(), $this->_getUsersToSync()]
                 );
-            $this->eventManager()->dispatch($event);
+            $this->eventManager()->dispatch($event);*/
 
             if ($OK) {
 
@@ -99,14 +99,14 @@ class SharedTravelsController extends AppController {
                     array('request' => $request),
                     'hola',
                     'activate_request',
-                    array('lang'=>ini_get('intl.default_locale'), 'enqueue'=>true)
+                    array('lang'=>ini_get('intl.default_locale'), 'enqueue'=>false)
                 );
 
-                /*// Email de 'Nueva solicitud' para mi
+                // Email de 'Nueva solicitud' para mi
                 $Email = new Email('hola');
                 $Email->to('martin@yotellevocuba.com')
                         ->subject('Nueva solicitud: PickoCar #'.$request['SharedTravel']['id'])
-                        ->send('http://pickocar.com/shared-rides/view/'.$request['SharedTravel']['id_token']);*/
+                        ->send('http://pickocar.com/shared-rides/view/'.$request['SharedTravel']['id_token']);
                 
             }
 
@@ -328,18 +328,18 @@ class SharedTravelsController extends AppController {
     public function changeDate($id) {
         if ($this->request->is('post') || $this->request->is('put')) {
             
-            // Atachar el listener
+            /*// Atachar el listener
             $opEventListener = new \App\Listener\SharedTravelEventListener();
-            $this->eventManager()->on($opEventListener);
+            $this->eventManager()->on($opEventListener);*/
             
             $request = $this->_updateField('date', new \Cake\I18n\FrozenTime(str_replace('-', '/', TimeUtil::dmY_to_Ymd($this->request->getData('date')))), $id);
             
-            // Despachar el evento
+            /*// Despachar el evento
             $event = new Event('Model.SharedTravel.afterDateChange', 
                     $request, 
                     [ $this->Auth->user(), $this->_getUsersToSync()]
                 );
-            $this->eventManager()->dispatch($event);
+            $this->eventManager()->dispatch($event);*/
             
             if(!$request) $this->setErrorMessage ('Error actualizando la fecha.');
             
@@ -352,18 +352,18 @@ class SharedTravelsController extends AppController {
     
     public function cancel($token) {
         
-        // Atachar el listener
+        /*// Atachar el listener
         $opEventListener = new \App\Listener\SharedTravelEventListener();
-        $this->eventManager()->on($opEventListener);
+        $this->eventManager()->on($opEventListener);*/
         
         $request = $this->_updateField('state', SharedTravel::$STATE_CANCELLED, ['token'=>$token]);
         
-        // Despachar el evento
+        /*// Despachar el evento
         $event = new Event('Model.SharedTravel.afterCancel', 
                 $request, 
                 [ $this->Auth->user(), $this->_getUsersToSync() ]
             );
-        $this->eventManager()->dispatch($event);
+        $this->eventManager()->dispatch($event);*/
         
         // Avisar al facilitador solo si la fecha del viaje no ha pasado y si estaba activado
         if($request && !$request->date->isPast() && $request->activated) {
@@ -429,14 +429,6 @@ class SharedTravelsController extends AppController {
                 'notifications_facilitator/request_change_date',
                 ['lang'=>'es']
             );
-            
-            /*$Email = new Email('aviso');
-            $Email->to($facilitator['email'])
-                ->subject($notice)
-                ->setTemplate('notifications_facilitator/request_change_date')
-                ->setViewVars(['request'=>$request])
-                ->setEmailFormat('html')
-                ->send();*/
         } 
         
         else if($notificationType == SharedTravelsController::$NOTIFICATION_TYPE_CANCELLED) {
