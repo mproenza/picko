@@ -11,7 +11,8 @@ class SharedTravelEventListener extends \ApiSync\Listener\BaseOpEventListener {
         return [ 
             'Model.SharedTravel.afterCreate' => 'createSharedTravel',
             'Model.SharedTravel.afterConfirm' => 'confirmSharedTravel',
-            'Model.SharedTravel.afterCancel' => 'cancelSharedTravel'
+            'Model.SharedTravel.afterCancel' => 'cancelSharedTravel',
+            'Model.SharedTravel.afterDateChange' => 'changeDateSharedTravel'
             ];
     }
     
@@ -37,6 +38,20 @@ class SharedTravelEventListener extends \ApiSync\Listener\BaseOpEventListener {
                 \App\Model\Entity\SharedTravel::$EVENT_TYPE_CANCELLED,
                 $owner,
                 $notifyTo);
+    }
+    
+    public function changeDateSharedTravel($event, $owner, $notifyTo = null) {        
+        return parent::saveEvent(
+                $event, 
+                \App\Model\Entity\SharedTravel::$EVENT_TYPE_INFO_EDITED,
+                $owner,
+                $notifyTo,
+                [
+                    'field_edited'=>'date',
+                    'old_value'=>$event->subject()->old_date,
+                    'new_value'=>$event->subject()->date,
+                ]
+            );
     }
 
 }

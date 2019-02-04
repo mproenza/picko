@@ -1,5 +1,12 @@
-<?php use App\Util\TimeUtil?>
+<?php 
+use App\Util\TimeUtil;
+use Cake\ORM\TableRegistry;
+?>
 
-<div><b>PickoCar #<?= $request['SharedTravel']['id']?></b></div>
-<div>Fecha actual: <?= TimeUtil::prettyDate($request['SharedTravel']['date'], false)?></div>
-<div>Fecha nueva: <b><?= TimeUtil::prettyDate($request['SharedTravel']['new_date'], false)?></b></div>
+<?php
+$STTable = TableRegistry::get('SharedTravels');
+$request= $STTable->newEntity($request, ['fixDate'=>false]);
+?>
+<div><b>PickoCar #<?= $request->id?></b></div>
+<div>Fecha vieja: <?= TimeUtil::prettyDate($request->old_date, false)?></div>
+<div>Fecha nueva: <b><?= TimeUtil::prettyDate($request->date, false)?></b></div>

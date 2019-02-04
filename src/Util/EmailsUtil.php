@@ -3,7 +3,6 @@
 namespace App\Util;
 
 use Cake\Mailer\Email;
-use EmailQueue\Model\Table\EmailQueuesTable;
 use Cake\ORM\TableRegistry;
 
 class EmailsUtil {

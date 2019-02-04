@@ -71,20 +71,19 @@ class SharedTravelsController extends AppController {
                 // TODO: Do work to show error messages.
             }
             
-            /*// Atachar el listener
+            // Atachar el listener
             $opEventListener = new \App\Listener\SharedTravelEventListener(); 
-            $this->eventManager()->on($opEventListener);*/
-
+            $this->eventManager()->on($opEventListener);
             
             // Salvar la solicitud
             $OK = $STTable->save($STEntity);
             
-            /*// Despachar el evento
+            // Despachar el evento
             $event = new Event('Model.SharedTravel.afterCreate', 
                     $STEntity, 
-                    [ $this->Auth->user(), ['c95777aa-77cf-44ad-a0c1-c237326a265c', '4ccd24b9-88b2-4dbc-a8d4-1ccdefbf69a3']]
+                    [ $this->Auth->user(), $this->_getUsersToSync()]
                 );
-            $this->eventManager()->dispatch($event);*/
+            $this->eventManager()->dispatch($event);
 
             if ($OK) {
 
@@ -100,14 +99,14 @@ class SharedTravelsController extends AppController {
                     array('request' => $request),
                     'hola',
                     'activate_request',
-                    array('lang'=>ini_get('intl.default_locale'), 'enqueue'=>false)
+                    array('lang'=>ini_get('intl.default_locale'), 'enqueue'=>true)
                 );
 
-                // Email de 'Nueva solicitud' para mi
+                /*// Email de 'Nueva solicitud' para mi
                 $Email = new Email('hola');
                 $Email->to('martin@yotellevocuba.com')
                         ->subject('Nueva solicitud: PickoCar #'.$request['SharedTravel']['id'])
-                        ->send('http://pickocar.com/shared-rides/view/'.$request['SharedTravel']['id_token']);
+                        ->send('http://pickocar.com/shared-rides/view/'.$request['SharedTravel']['id_token']);*/
                 
             }
 
@@ -136,7 +135,6 @@ class SharedTravelsController extends AppController {
 
         $this->set('request', $request);
     }
-    
     
     
     public function activate($activationToken) {
@@ -249,7 +247,6 @@ class SharedTravelsController extends AppController {
                     $countOther = 0;
                     foreach ($all_requests as $r) {
                         if($r['SharedTravel']['id'] == $request['SharedTravel']['id']) continue;
-
                         $countOther++;
                     }
 
@@ -329,18 +326,22 @@ class SharedTravelsController extends AppController {
     }
     
     public function changeDate($id) {
-        $STTable = TableRegistry::get('SharedTravels');
-        $request = $STTable->findById($id);
-        
-        // Sanity checks
-        if($request == null || empty ($request)) throw new NotFoundException();
-        
         if ($this->request->is('post') || $this->request->is('put')) {
             
-            $OK = $STTable->updateAll(['date' => TimeUtil::dmY_to_Ymd($this->request->getData('date'))], ['id' => $request['SharedTravel']['id']]);
-            if(!$OK) $this->setErrorMessage ('Error actualizando la fecha.');
+            // Atachar el listener
+            $opEventListener = new \App\Listener\SharedTravelEventListener();
+            $this->eventManager()->on($opEventListener);
             
-            $request['SharedTravel']['new_date'] = TimeUtil::dmY_to_Ymd($this->request->getData('date'));
+            $request = $this->_updateField('date', new \Cake\I18n\FrozenTime(str_replace('-', '/', TimeUtil::dmY_to_Ymd($this->request->getData('date')))), $id);
+            
+            // Despachar el evento
+            $event = new Event('Model.SharedTravel.afterDateChange', 
+                    $request, 
+                    [ $this->Auth->user(), $this->_getUsersToSync()]
+                );
+            $this->eventManager()->dispatch($event);
+            
+            if(!$request) $this->setErrorMessage ('Error actualizando la fecha.');
             
             $this->_notify(SharedTravelsController::$NOTIFICATION_TYPE_DATE_CHANGED, $request);
             
@@ -349,49 +350,23 @@ class SharedTravelsController extends AppController {
         } else throw new MethodNotAllowedException();
     }
     
-    public function setFinalState($id) {
-        $STTable = TableRegistry::get('SharedTravels');
-        $request = $STTable->findById($id);
-        
-        // Sanity checks
-        if($request == null || empty ($request)) throw new NotFoundException();
-        
-        if ($this->request->is('post') || $this->request->is('put')) {
-            
-            $OK = $STTable->updateAll(['final_state' => $this->request->getData('final_state')], ['id' => $request['SharedTravel']['id']]);
-            if(!$OK) $this->setErrorMessage ('Error actualizando el estado final.');
-            
-            return $this->redirect($this->referer());
-            
-        } else throw new MethodNotAllowedException();
-    }
-    
     public function cancel($token) {
-        $STTable = TableRegistry::get('SharedTravels');
-        $request = $STTable->findByToken($token);
         
-        /*$STEntity = $STTable->newEntity();
-        $STEntity = $STTable->patchEntity($STEntity, $request['SharedTravel'],['validate' => false]);*/
-        
-        // Sanity checks
-        if($request == null || empty ($request)) throw new NotFoundException();
-        // Verificar si ya esta cancelada
-        
-        /*// Atachar el listener
+        // Atachar el listener
         $opEventListener = new \App\Listener\SharedTravelEventListener();
-        $this->eventManager()->on($opEventListener);*/
+        $this->eventManager()->on($opEventListener);
         
-        $OK = $STTable->updateAll(['state' => SharedTravel::$STATE_CANCELLED], ['id' => $request['SharedTravel']['id']]);
+        $request = $this->_updateField('state', SharedTravel::$STATE_CANCELLED, ['token'=>$token]);
         
-        /*// Despachar el evento
+        // Despachar el evento
         $event = new Event('Model.SharedTravel.afterCancel', 
-                $STEntity, 
-                [ $this->Auth->user(), ['c95777aa-77cf-44ad-a0c1-c237326a265c', '4ccd24b9-88b2-4dbc-a8d4-1ccdefbf69a3'] ]
+                $request, 
+                [ $this->Auth->user(), $this->_getUsersToSync() ]
             );
-        $this->eventManager()->dispatch($event);*/
+        $this->eventManager()->dispatch($event);
         
         // Avisar al facilitador solo si la fecha del viaje no ha pasado y si estaba activado
-        if($OK && !$request['SharedTravel']['date']->isPast() && $request['SharedTravel']['activated']) {
+        if($request && !$request->date->isPast() && $request->activated) {
             $this->_notify(SharedTravelsController::$NOTIFICATION_TYPE_CANCELLED, $request);
         } else {
             $this->Flash->error(__('Error cancelando la solicitud.'));
@@ -400,23 +375,72 @@ class SharedTravelsController extends AppController {
         return $this->redirect($this->referer());
     }
     
-    private function _notify($notificationType, $request) {
+    public function setFinalState($id) {
+        if ($this->request->is('post') || $this->request->is('put')) {
+            
+            $request = $this->_updateField('final_state', $this->request->getData('final_state'), $id);
+            
+            if(!$request) $this->setErrorMessage ('Error actualizando el estado final.');
+            
+            return $this->redirect($this->referer());
+            
+        } else throw new MethodNotAllowedException();
+    }
+    
+    private function _updateField($fieldName, $newValue, $id) {
+        $searchByField = 'id';
+        $searchByValue = $id;
+        if(is_array($id)) {
+            $searchByField = array_keys($id)[0];
+            $searchByValue = array_values($id)[0];
+        }
+
+        $func = 'findBy'. \Cake\Utility\Inflector::camelize($searchByField);
+
+        $STTable = TableRegistry::get('SharedTravels');
+        $request = $STTable->$func($searchByValue, ['hydrate'=>true]);
+
+        // Sanity checks
+        if($request == null || empty ($request)) throw new NotFoundException();
+
+        // Salvar el valor anterior
+        $oldFieldName = 'old_'.$fieldName;
+        $request->$oldFieldName = $request->$fieldName;
+
+        $request->$fieldName = $newValue;
+        $OK = $STTable->save($request);
+
+        if(!$OK) return null;
+
+        return $request;
+    }
+    
+    private function _notify($notificationType, SharedTravel $request) {
         
         $facilitator = Configure::read('shared_rides_facilitator');
         
         if($notificationType == SharedTravelsController::$NOTIFICATION_TYPE_DATE_CHANGED) {
-            $notice = 'CAMBIO FECHA > PickoCar #'.$request['SharedTravel']['id'].' | '.$request['SharedTravel']['origin'].' - '.$request['SharedTravel']['destination'];
-            $Email = new Email('aviso');
+            $notice = 'CAMBIO FECHA > PickoCar #'.$request->id.' | '.$request->getOriginName().' - '.$request->getDestinationName();
+            EmailsUtil::email(
+                $facilitator['email'],
+                $notice,
+                array('request' => $request),
+                'aviso', 
+                'notifications_facilitator/request_change_date',
+                ['lang'=>'es']
+            );
+            
+            /*$Email = new Email('aviso');
             $Email->to($facilitator['email'])
                 ->subject($notice)
                 ->setTemplate('notifications_facilitator/request_change_date')
                 ->setViewVars(['request'=>$request])
                 ->setEmailFormat('html')
-                ->send();
+                ->send();*/
         } 
         
         else if($notificationType == SharedTravelsController::$NOTIFICATION_TYPE_CANCELLED) {
-            $notice = 'CANCELADO > PickoCar #'.$request['SharedTravel']['id']. ' | '.TimeUtil::prettyDate($request['SharedTravel']['date'], false).' | '.$request['SharedTravel']['origin'].' - '.$request['SharedTravel']['destination'];
+            $notice = 'CANCELADO > PickoCar #'.$request->id. ' | '.TimeUtil::prettyDate($request->date, false).' | '.$request->getOriginName().' - '.$request->getDestinationName();
             $Email = new Email('aviso');
             $Email->to($facilitator['email'])
                 ->subject($notice)
@@ -435,8 +459,6 @@ class SharedTravelsController extends AppController {
                     ->toArray();
         
         return array_column($users, 'id');
-        
-        //return ['c95777aa-77cf-44ad-a0c1-c237326a265c', '4ccd24b9-88b2-4dbc-a8d4-1ccdefbf69a3'];
     }
 
 }

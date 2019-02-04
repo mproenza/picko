@@ -16,7 +16,7 @@ abstract class BaseOpEventListener implements EventListenerInterface {
     /**
      * 
      */
-    protected function saveEvent($event, $type, $owner, $notifyTo) {
+    protected function saveEvent($event, $type, $owner, $notifyTo, $descriptor = null) {
         
         $created_by_role = 'user';
         $created_by_id = null;
@@ -25,13 +25,17 @@ abstract class BaseOpEventListener implements EventListenerInterface {
             $created_by_id = $owner['id'];
         }
         
+        if(is_callable($descriptor)) $descriptor = $descriptor($event->subject());
+        if(is_array($descriptor)) $descriptor = json_encode($descriptor);
+        
         // Crear el evento
         $e = [
             'object_id' => $event->subject()->id,
             'type' => $type,
             'created_by_role' => $created_by_role,
             'created_by_id' => $created_by_id,
-            'data' => json_encode($event->subject()->toArray())
+            'object_final_state' => json_encode($event->subject()->toArray()),
+            'descriptor' => $descriptor
         ];
         
         $EventsTable = TableRegistry::get('ApiSync.OpEvents');
