@@ -9,19 +9,26 @@ class SyncController extends AppController {
 
     public function sync($batchId = null) {
         $userId = $this->Auth->user('id');
-
-        // Obtener las entadas de la cola que no se han sincronizado
+        
         $SyncQueueTable = TableRegistry::get('ApiSync.SyncQueue');
-        $queueEntries = $SyncQueueTable->find()
-                ->where([
-                    'user_id' => $userId, 'sync_date IS NULL'
-                ])
+        $queueEntries = [];
+        
+        // Tratar de encontrar eventos con el batchId
+        if($batchId != null) {
+            $queueEntries = $SyncQueueTable->find()
+                ->where(['user_id' => $userId, 'sync_batch' =>$batchId])
                 ->toArray();
-
+        }
+        
+        // Si no hay eventos, intentar encontrar los eventos que no se han sincronizado con este usuario
+        if(empty($queueEntries)) {
+            $queueEntries = $SyncQueueTable->find()
+                ->where(['user_id' => $userId, 'sync_date IS NULL'])
+                ->toArray();
+        }
+        
         $events = [];
         if (!empty($queueEntries)) {
-
-            // Obtener los eventos que no se han sincronizado
             $eventsIds = array_column($queueEntries, 'event_id');
             $OpEventsTable = TableRegistry::get('ApiSync.OpEvents');
             $events = $OpEventsTable->find()
@@ -42,13 +49,14 @@ class SyncController extends AppController {
 
             // Actualizar como sincronizados en la cola
             $queueIds = array_column($queueEntries, 'id');
-            $SyncQueueTable->updateAll(['sync_date' => new \Cake\I18n\Time()], ['id IN' => $queueIds]);
+            $SyncQueueTable->updateAll(['sync_date' => new \Cake\I18n\Time(), 'sync_batch'=>$batchId], ['id IN' => $queueIds]);
         }
 
         // Enviar sync        
         $this->set([
             'success' => true,
-            'data' => $events
+            'data' => $events,
+            'batch' => $batchId
         ]);
     }
 
