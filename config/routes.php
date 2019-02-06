@@ -89,10 +89,9 @@ Router::addUrlFilter(function ($params, $request) {
 
 Router::prefix('api', function ($routes) {
     $routes->extensions(['json', 'xml']);
-    $routes->resources('Cocktails');
     $routes->resources('Users');
     $routes->resources('SharedTravels');
-    $routes->resources('Sync');
+    $routes->resources('OpEvents');
     //Router::connect('/api/users/register', ['plugin' => 'CakeDC/Users', 'controller' => 'Users', 'action' => 'add', 'prefix' => 'api']);
     $routes->fallbacks('InflectedRoute');
 });
