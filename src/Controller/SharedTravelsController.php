@@ -332,7 +332,8 @@ class SharedTravelsController extends AppController {
             $opEventListener = new \App\Listener\SharedTravelEventListener();
             $this->eventManager()->on($opEventListener);*/
             
-            $request = $this->_updateField('date', new \Cake\I18n\FrozenTime(str_replace('-', '/', TimeUtil::dmY_to_Ymd($this->request->getData('date')))), $id);
+            $STTable = TableRegistry::get('SharedTravels');
+            $request = $STTable->updateField('date', new \Cake\I18n\FrozenTime(str_replace('-', '/', TimeUtil::dmY_to_Ymd($this->request->getData('date')))), $id);
             
             /*// Despachar el evento
             $event = new Event('Model.SharedTravel.afterDateChange', 
@@ -356,7 +357,8 @@ class SharedTravelsController extends AppController {
         $opEventListener = new \App\Listener\SharedTravelEventListener();
         $this->eventManager()->on($opEventListener);*/
         
-        $request = $this->_updateField('state', SharedTravel::$STATE_CANCELLED, ['token'=>$token]);
+        $STTable = TableRegistry::get('SharedTravels');
+        $request = $STTable->updateField('state', SharedTravel::$STATE_CANCELLED, ['token'=>$token]);
         
         /*// Despachar el evento
         $event = new Event('Model.SharedTravel.afterCancel', 
@@ -378,41 +380,14 @@ class SharedTravelsController extends AppController {
     public function setFinalState($id) {
         if ($this->request->is('post') || $this->request->is('put')) {
             
-            $request = $this->_updateField('final_state', $this->request->getData('final_state'), $id);
+            $STTable = TableRegistry::get('SharedTravels');
+            $request = $STTable->updateField('final_state', $this->request->getData('final_state'), $id);
             
             if(!$request) $this->setErrorMessage ('Error actualizando el estado final.');
             
             return $this->redirect($this->referer());
             
         } else throw new MethodNotAllowedException();
-    }
-    
-    private function _updateField($fieldName, $newValue, $id) {
-        $searchByField = 'id';
-        $searchByValue = $id;
-        if(is_array($id)) {
-            $searchByField = array_keys($id)[0];
-            $searchByValue = array_values($id)[0];
-        }
-
-        $func = 'findBy'. \Cake\Utility\Inflector::camelize($searchByField);
-
-        $STTable = TableRegistry::get('SharedTravels');
-        $request = $STTable->$func($searchByValue, ['hydrate'=>true]);
-
-        // Sanity checks
-        if($request == null || empty ($request)) throw new NotFoundException();
-
-        // Salvar el valor anterior
-        $oldFieldName = 'old_'.$fieldName;
-        $request->$oldFieldName = $request->$fieldName;
-
-        $request->$fieldName = $newValue;
-        $OK = $STTable->save($request);
-
-        if(!$OK) return null;
-
-        return $request;
     }
     
     private function _notify($notificationType, SharedTravel $request) {

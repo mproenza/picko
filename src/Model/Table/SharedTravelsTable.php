@@ -232,5 +232,32 @@ class SharedTravelsTable extends Table {
 
         return $OK;
     }
+    
+    public function updateField($fieldName, $newValue, $id) {
+        $searchByField = 'id';
+        $searchByValue = $id;
+        if(is_array($id)) {
+            $searchByField = array_keys($id)[0];
+            $searchByValue = array_values($id)[0];
+        }
+
+        $func = 'findBy'. \Cake\Utility\Inflector::camelize($searchByField);
+
+        $request = $this->$func($searchByValue, ['hydrate'=>true]);
+
+        // Sanity checks
+        if($request == null || empty ($request)) throw new NotFoundException();
+
+        // Salvar el valor anterior
+        $oldFieldName = 'old_'.$fieldName;
+        $request->$oldFieldName = $request->$fieldName;
+
+        $request->$fieldName = $newValue;
+        $OK = $this->save($request);
+
+        if(!$OK) return null;
+
+        return $request;
+    }
 
 }
