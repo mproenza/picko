@@ -14,7 +14,8 @@ class OpEventsController extends AppController {
         $this->setModelType('ApiSync.OpEvents');
     }
 
-    public function sync($batchId = null) {
+    
+    public function sync($batchId) {
         $userId = $this->Auth->user('id');
         
         $SyncQueueTable = TableRegistry::get('ApiSync.SyncQueue');
@@ -59,11 +60,10 @@ class OpEventsController extends AppController {
             $SyncQueueTable->updateAll(['sync_date' => new \Cake\I18n\Time(), 'sync_batch'=>$batchId], ['id IN' => $queueIds]);
         }
 
-        // Enviar sync        
+        // Enviar sync
         $this->set([
             'success' => true,
-            'data' => $events,
-            'batch' => $batchId
+            'data' => $events
         ]);
     }
     

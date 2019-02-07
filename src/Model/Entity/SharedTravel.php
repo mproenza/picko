@@ -4,7 +4,7 @@ use Cake\ORM\Entity;
 
 class SharedTravel extends Entity {
     
-    public static $EVENT_TYPE_CREATED = 'P';
+    public static $EVENT_TYPE_CREATED = 'N';
     public static $EVENT_TYPE_ACTIVATED = 'A';
     public static $EVENT_TYPE_CONFIRMED = 'C';
     public static $EVENT_TYPE_CANCELLED = 'X';
@@ -245,27 +245,36 @@ class SharedTravel extends Entity {
         return $sharedTravel;
     }
     
+    public function getOriginId() {
+        if(is_array($this->origin_id)) return $this->origin_id['id'];
+        return $this->origin_id;
+    }
+    public function getDestinationId() {
+        if(is_array($this->destination_id)) return $this->destination_id['id'];
+        return $this->destination_id;
+    }
+    
     public function getOriginName() {
-        return self::$localities[$this->origin_id]['name'];
+        return self::$localities[$this->getOriginId()]['name'];
     }
     public function getOriginAbbr() {
-        return self::$localities[$this->origin_id]['short'];
+        return self::$localities[$this->getOriginId()]['short'];
     }
     public function getDestinationName() {
-        return self::$localities[$this->destination_id]['name'];
+        return self::$localities[$this->getDestinationId()]['name'];
     }
     public function getDestinationAbbr() {
-        return self::$localities[$this->destination_id]['short'];
+        return self::$localities[$this->getDestinationId()]['short'];
     }
     public function getRouteCode() {
-        return self::$localities[$this->origin_id]['code'].self::$localities[$this->destination_id]['code'];        
+        return self::$localities[$this->getOriginId()]['code'].self::$localities[$this->getDestinationId()]['code'];        
     }
     public function getRouteSlug() {
-        return 'taxi-'.self::$localities[$this->origin_id]['slug'].'--'.self::$localities[$this->destination_id]['slug'];
+        return 'taxi-'.self::$localities[$this->getOriginId()]['slug'].'--'.self::$localities[$this->getDestinationId()]['slug'];
     }
     public function getRouteDepartureTimes() {
         foreach (self::$routes as $r) { // Poner los departure_times si le faltan
-            if($r['origin_id'] == $this->origin_id && $r['destination_id'] == $this->destination_id) {
+            if($r['origin_id'] == $this->getOriginId() && $r['destination_id'] == $this->getDestinationId()) {
                 return $r['departure_times'];
             }
         }

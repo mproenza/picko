@@ -84,17 +84,19 @@ class SharedTravelsTable extends Table {
                         return $formatted;
                     });
                 });
-            } /*else {
+            }/* else {
                 $query->formatResults(function (\Cake\Collection\CollectionInterface $results) {
-                    return $results->map(function ($row) {
+                    return $results->map(function ($entity) {                       
+                        
+                        // Esto es para el ORM de la app movil
+                        $entity->origin_id = ['id'=>$entity->origin_id];
+                        $entity->destination_id = ['id'=>$entity->destination_id];
 
-                        $rowFull = SharedTravel::addRouteInfo($row);
-
-                        return $rowFull;
+                        return $entity;
+                        
                     });
                 });
-            }*/
-            
+            }*/            
         }
         
         // API
@@ -192,16 +194,16 @@ class SharedTravelsTable extends Table {
     
 
     public function confirmRequest($request) {
-        /*// Atachar el listener
-        $opEventListener = new \App\Listener\SharedTravelEventListener(); 
-        $this->eventManager()->on($opEventListener);*/
         
         $OK = $this->updateAll(['state'=>SharedTravel::$STATE_CONFIRMED], ['id' => $request['SharedTravel']['id']]);
         
-        /*// Despachar el evento
+        /*// Eventos
+        $entity = $this->findById($request['SharedTravel']['id'], ['hydrate'=>true]);
+        $opEventListener = new \App\Listener\SharedTravelEventListener(); 
+        $this->eventManager()->on($opEventListener);
         $event = new Event('Model.SharedTravel.afterCreate', 
-                $STEntity, 
-                [ $this->Auth->user() ]
+                $entity,
+                [$this->Auth->user(), $this->_getUsersToSync()]
             );
         $this->eventManager()->dispatch($event);*/
 
@@ -233,7 +235,11 @@ class SharedTravelsTable extends Table {
         return $OK;
     }
     
-    public function updateField($fieldName, $newValue, $id) {
+    public function updateField($fieldName, $newValue, $id, $options = []) {
+        $_defaults = ['keep_old_value'=>false];
+        
+        $options = $options + $_defaults;
+        
         $searchByField = 'id';
         $searchByValue = $id;
         if(is_array($id)) {
@@ -246,11 +252,14 @@ class SharedTravelsTable extends Table {
         $request = $this->$func($searchByValue, ['hydrate'=>true]);
 
         // Sanity checks
-        if($request == null || empty ($request)) throw new NotFoundException();
-
+        if($request == null || empty ($request)) throw new \Cake\Network\Exception\NotFoundException();
+        
+        
         // Salvar el valor anterior
-        $oldFieldName = 'old_'.$fieldName;
-        $request->$oldFieldName = $request->$fieldName;
+        if($options['keep_old_value']) {
+            $oldFieldName = 'old_'.$fieldName;
+            $request->$oldFieldName = $request->$fieldName;
+        }
 
         $request->$fieldName = $newValue;
         $OK = $this->save($request);

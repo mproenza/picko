@@ -65,25 +65,25 @@ class SharedTravelsController extends AppController {
             $STTable = TableRegistry::get('SharedTravels');
             $STEntity = $STTable->newEntity($this->request->getData());
             
-            
             $errors = $STEntity->errors();
             if ($errors) {
                 // TODO: Do work to show error messages.
             }
             
-            /*// Atachar el listener
-            $opEventListener = new \App\Listener\SharedTravelEventListener(); 
-            $this->eventManager()->on($opEventListener);*/
-            
             // Salvar la solicitud
             $OK = $STTable->save($STEntity);
             
-            /*// Despachar el evento
-            $event = new Event('Model.SharedTravel.afterCreate', 
-                    $STEntity, 
-                    [ $this->Auth->user(), $this->_getUsersToSync()]
-                );
-            $this->eventManager()->dispatch($event);*/
+            // Eventos!!!
+            if(Configure::read('op_events_active')) {
+                $entity = $STTable->findByToken($idToken, ['hydrate'=>true]);
+                $opEventListener = new \App\Listener\SharedTravelEventListener(); 
+                $this->eventManager()->on($opEventListener);
+                $event = new Event('Model.SharedTravel.afterCreate', 
+                        $entity,
+                        [ $this->Auth->user(), $this->_getUsersToSync()]
+                    );
+                $this->eventManager()->dispatch($event);
+            }
 
             if ($OK) {
 
@@ -179,6 +179,19 @@ class SharedTravelsController extends AppController {
         
         // Actualizar estado de la solicitud
         $OK = $STTable->updateAll(['activated'=>true, 'state'=>SharedTravel::$STATE_ACTIVATED], ['id' => $request['SharedTravel']['id']]);
+        
+        // Eventos!!!
+        if(Configure::read('op_events_active')) {
+            $entity = $STTable->findById($request['SharedTravel']['id'], ['hydrate'=>true]);
+            $opEventListener = new \App\Listener\SharedTravelEventListener();
+            $this->eventManager()->on($opEventListener);
+            $event = new Event('Model.SharedTravel.afterActivated', 
+                    $entity,
+                    [ $this->Auth->user(), $this->_getUsersToSync() ]
+                );
+            $this->eventManager()->dispatch($event);
+        }
+        
         
         $confirmed = false;
         $confirmedReason = null;
@@ -328,23 +341,33 @@ class SharedTravelsController extends AppController {
     public function changeDate($id) {
         if ($this->request->is('post') || $this->request->is('put')) {
             
-            /*// Atachar el listener
-            $opEventListener = new \App\Listener\SharedTravelEventListener();
-            $this->eventManager()->on($opEventListener);*/
-            
             $STTable = TableRegistry::get('SharedTravels');
-            $request = $STTable->updateField('date', new \Cake\I18n\FrozenTime(str_replace('-', '/', TimeUtil::dmY_to_Ymd($this->request->getData('date')))), $id);
+            $request = $STTable->updateField(
+                    'date', 
+                    new \Cake\I18n\FrozenTime(str_replace('-', '/', TimeUtil::dmY_to_Ymd($this->request->getData('date')))), 
+                    $id,
+                    ['keep_old_value'=>true]);
             
-            /*// Despachar el evento
-            $event = new Event('Model.SharedTravel.afterDateChange', 
-                    $request, 
-                    [ $this->Auth->user(), $this->_getUsersToSync()]
-                );
-            $this->eventManager()->dispatch($event);*/
+            if(!$request) {
+                throw new Exception('Error actualizando la fecha.');
+            }
             
-            if(!$request) $this->setErrorMessage ('Error actualizando la fecha.');
+            // Salvar el valor antiguo de la fecha pues al despachar los eventos se le quita
+            $oldDate = $request->old_date;
             
-            $this->_notify(SharedTravelsController::$NOTIFICATION_TYPE_DATE_CHANGED, $request);
+            // Eventos!!!
+            if(Configure::read('op_events_active')) {
+                $opEventListener = new \App\Listener\SharedTravelEventListener();
+                $this->eventManager()->on($opEventListener);
+                $event = new Event('Model.SharedTravel.afterDateChange', 
+                        $request, 
+                        [ $this->Auth->user(), $this->_getUsersToSync()]
+                    );
+                $this->eventManager()->dispatch($event);
+            }
+            
+            // Notificar al coordinador
+            $this->_notify(SharedTravelsController::$NOTIFICATION_TYPE_DATE_CHANGED, $request, ['old_date'=>$oldDate]);
             
             return $this->redirect($this->referer());
             
@@ -352,26 +375,27 @@ class SharedTravelsController extends AppController {
     }
     
     public function cancel($token) {
-        
-        /*// Atachar el listener
-        $opEventListener = new \App\Listener\SharedTravelEventListener();
-        $this->eventManager()->on($opEventListener);*/
-        
         $STTable = TableRegistry::get('SharedTravels');
         $request = $STTable->updateField('state', SharedTravel::$STATE_CANCELLED, ['token'=>$token]);
         
-        /*// Despachar el evento
-        $event = new Event('Model.SharedTravel.afterCancel', 
-                $request, 
-                [ $this->Auth->user(), $this->_getUsersToSync() ]
-            );
-        $this->eventManager()->dispatch($event);*/
+        if(!$request) {
+            throw new Exception('Error cancelando la solicitud.');
+        }
         
-        // Avisar al facilitador solo si la fecha del viaje no ha pasado y si estaba activado
-        if($request && !$request->date->isPast() && $request->activated) {
+        // Eventos!!!
+        if(Configure::read('op_events_active')) {
+            $opEventListener = new \App\Listener\SharedTravelEventListener();
+            $this->eventManager()->on($opEventListener);
+            $event = new Event('Model.SharedTravel.afterCancel', 
+                    $request, 
+                    [ $this->Auth->user(), $this->_getUsersToSync() ]
+                );
+            $this->eventManager()->dispatch($event);
+        }
+
+        // Avisar al coordinador solo si la solicitud no ha expirado y esta activada
+        if(!$request->date->isPast() && $request->activated) {
             $this->_notify(SharedTravelsController::$NOTIFICATION_TYPE_CANCELLED, $request);
-        } else {
-            $this->Flash->error(__('Error cancelando la solicitud.'));
         }
         
         return $this->redirect($this->referer());
@@ -390,7 +414,7 @@ class SharedTravelsController extends AppController {
         } else throw new MethodNotAllowedException();
     }
     
-    private function _notify($notificationType, SharedTravel $request) {
+    private function _notify($notificationType, SharedTravel $request, $params = []) {
         
         $facilitator = Configure::read('shared_rides_facilitator');
         
@@ -399,7 +423,7 @@ class SharedTravelsController extends AppController {
             EmailsUtil::email(
                 $facilitator['email'],
                 $notice,
-                array('request' => $request),
+                array('request' => $request, 'params'=>$params),
                 'aviso', 
                 'notifications_facilitator/request_change_date',
                 ['lang'=>'es']
@@ -407,11 +431,21 @@ class SharedTravelsController extends AppController {
         } 
         
         else if($notificationType == SharedTravelsController::$NOTIFICATION_TYPE_CANCELLED) {
-            $notice = 'CANCELADO > PickoCar #'.$request->id. ' | '.TimeUtil::prettyDate($request->date, false).' | '.$request->getOriginName().' - '.$request->getDestinationName();
+            /*$notice = 'CANCELADO > PickoCar #'.$request->id. ' | '.TimeUtil::prettyDate($request->date, false).' | '.$request->getOriginName().' - '.$request->getDestinationName();
             $Email = new Email('aviso');
             $Email->to($facilitator['email'])
                 ->subject($notice)
-                ->send($notice);
+                ->send($notice);*/
+            
+            $notice = 'CANCELADO > PickoCar #'.$request->id. ' | '.TimeUtil::prettyDate($request->date, false).' | '.$request->getOriginName().' - '.$request->getDestinationName();
+            EmailsUtil::email(
+                $facilitator['email'],
+                $notice,
+                array('request' => $request),
+                'aviso', 
+                'notifications_facilitator/request_cancelled',
+                ['lang'=>'es']
+            );
         }
     }
     
