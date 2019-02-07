@@ -230,7 +230,7 @@ Plugin::load('CakeDC/Users', ['routes' => false, 'bootstrap' => true]);
 // MARTIN
 Configure::write('customer_assistant', array('name'=>'Ana'));
 Configure::write('shared_rides_facilitator', array('name'=>'Andiel', 'email'=>/*'martin@pickocar.com'*/'andielsl@nauta.cu'));
-Configure::write('op_events_active', true);
+Configure::write('op_events_active', false);
 
 Configure::write('I18n.languages', ['en', 'es']);
 Configure::write('default_language', 'en');
