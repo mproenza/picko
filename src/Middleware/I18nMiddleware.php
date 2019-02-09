@@ -4,7 +4,6 @@ namespace App\Middleware;
 use Cake\Core\Configure;
 use Cake\Core\InstanceConfigTrait;
 use Cake\I18n\I18n;
-use Cake\Network\Request;
 use Cake\Utility\Hash;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;

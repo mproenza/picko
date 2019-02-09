@@ -59,8 +59,7 @@ abstract class BaseOpEventListener implements EventListenerInterface {
                     $SyncEntryEntity = $SyncTable->newEntity($entry);
                     
                     if(!$SyncTable->save($SyncEntryEntity)) return false;
-                }
-                
+                }                
             }
             
         }

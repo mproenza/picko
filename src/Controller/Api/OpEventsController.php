@@ -7,8 +7,7 @@ use Cake\ORM\TableRegistry;
 
 class OpEventsController extends AppController {
     
-    public function initialize()
-    {
+    public function initialize() {
         parent::initialize();
         
         $this->setModelType('ApiSync.OpEvents');
@@ -48,6 +47,7 @@ class OpEventsController extends AppController {
                         return $results->map(function ($entity) {
                             // Esto es para el ORM de la app movil
                             $entity->object_final_state = json_decode($entity->object_final_state);
+                            if($entity->descriptor == null) $entity->descriptor = '{}';
                             $entity->descriptor = json_decode($entity->descriptor);
 
                             return $entity;
@@ -70,9 +70,9 @@ class OpEventsController extends AppController {
     /**
      * Esta funcion envia los eventos que han sucedido a partir de una cantidad de dias hacia atras a partir de hoy,
      * 
-     * @param $fromDaysAgo: un número que indica la cantidad de días hacia atrás contando desde hoy que es 
+     * @param fromDaysAgo: un número que indica la cantidad de días hacia atrás contando desde hoy que es 
      * la fecha limite superior para los eventos que enviará la funcion
-     * @param $countDays: la cantidad de dias hacia atras a partir de {hoy - $fromDaysAgo} que indica 
+     * @param countDays: la cantidad de dias hacia atras a partir de {hoy - $fromDaysAgo} que indica 
      * la fecha limite inferior para los eventos que enviará la funcion
      * 
      * O sea, esta funcion envia los eventos que estan en el siguiente rango de fechas:
