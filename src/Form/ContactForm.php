@@ -27,17 +27,13 @@ class ContactForm extends Form {
 
     protected function _execute(array $data) {
         if(ini_get('intl.default_locale') == 'es') {
-            // Email para Maylen
-            $Email = new Email('hola');
-            $OK = $Email->to('maylen@pickocar.com')->subject('Nuevo contacto')->send($data['name'].' | '.$data['email'].' | '.$data['body']);
+            $to = 'maylen@pickocar.com';
         } else {
-            
+            $to = 'martin@pickocar.com';
         }
-            
         
-        // Email para mi
         $Email = new Email('hola');
-        $OK = $Email->to('martin@pickocar.com')->subject('Nuevo contacto')->send($data['name'].' | '.$data['email'].' | '.$data['body']);
+        $OK = $Email->to($to)->subject('Nuevo contacto')->send($data['name'].' | '.$data['email'].' | '.$data['body']);
         
         return $OK;
     }
