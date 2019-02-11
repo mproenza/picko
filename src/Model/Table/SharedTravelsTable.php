@@ -17,6 +17,7 @@ class SharedTravelsTable extends Table {
 
     public function initialize(array $config) {
         $this->addBehavior('Timestamp');
+        $this->addBehavior('TrackHistory');
     }
     
     public function validationDefault(Validator $validator) {
@@ -186,7 +187,7 @@ class SharedTravelsTable extends Table {
             'coupling_id IS NULL', // Que no haya sido emparejado antes
             'state !='=>SharedTravel::$STATE_CONFIRMED // Que no este confirmado (por si el facilitador lo confirmo dirctamente).
         ])
-        ->order('people_count DESC') // Obtener las de mas personas primero, para tener que hacer menos recorridos al recoger. TODO: sera mejor priorizar a las mas antiguas???
+        ->order('people_count DESC') // Obtener las de mayor cantidad de personas primero, para tener que hacer menos recorridos al recoger. TODO: sera mejor priorizar a las mas antiguas???
         ;
         
         return $candidates;
@@ -195,7 +196,15 @@ class SharedTravelsTable extends Table {
 
     public function confirmRequest($request) {
         
-        $OK = $this->updateAll(['state'=>SharedTravel::$STATE_CONFIRMED], ['id' => $request['SharedTravel']['id']]);
+        $entity = $this->updateField(['state' => SharedTravel::$STATE_CONFIRMED], $request['SharedTravel']['id']);
+        $OK = $this->save($entity, 
+                ['track_history' =>
+                    [
+                        'event_type' => SharedTravel::$EVENT_TYPE_CONFIRMED,
+                        'notify_to' =>  self::getUsersToSync()
+                    ]
+                ]);
+        //$OK = $this->updateAll(['state'=>SharedTravel::$STATE_CONFIRMED], ['id' => $request['SharedTravel']['id']]);
         
         /*// Eventos
         $entity = $this->findById($request['SharedTravel']['id'], ['hydrate'=>true]);
@@ -235,7 +244,7 @@ class SharedTravelsTable extends Table {
         return $OK;
     }
     
-    public function updateField($fieldName, $newValue, $id, $options = []) {
+    public function updateField($fields, $id, $options = []) {
         $_defaults = ['keep_old_value'=>false];
         
         $options = $options + $_defaults;
@@ -255,18 +264,31 @@ class SharedTravelsTable extends Table {
         if($request == null || empty ($request)) throw new \Cake\Network\Exception\NotFoundException();
         
         
-        // Salvar el valor anterior
-        if($options['keep_old_value']) {
-            $oldFieldName = 'old_'.$fieldName;
-            $request->$oldFieldName = $request->$fieldName;
+        // Actualizar todos los campos
+        foreach ($fields as $key => $value) {
+            // Salvar el valor anterior
+            if($options['keep_old_value']) {
+                $oldFieldName = 'old_'.$key;
+                $request->$oldFieldName = $request->$key;
+            }
+
+            $request->$key = $value;
         }
-
-        $request->$fieldName = $newValue;
-        $OK = $this->save($request);
-
-        if(!$OK) return null;
-
+        
         return $request;
+    }
+    
+    public static function getUsersToSync($eventType = null) {
+        
+        $UsersTable = \Cake\ORM\TableRegistry::get('CakeDC/Users.Users');
+        
+        $users = $UsersTable->find()
+                    ->where([
+                        'role IN'=>['admin', 'operator']
+                    ])
+                    ->toArray();
+        
+        return array_column($users, 'id');
     }
 
 }

@@ -28,14 +28,16 @@ use App\Model\Entity\SharedTravel;
  */
 class AppController extends Controller
 {
-	public $helpers = array(
-        'Html' => array(
-            'className' => 'EnhancedHtml'
-        ),
-        'Form' => array(
-            'className' => 'BootstrapForm'
-		)
-	);
+    use \Muffin\Footprint\Auth\FootprintAwareTrait;
+    
+    public $helpers = array(
+    'Html' => array(
+        'className' => 'EnhancedHtml'
+    ),
+    'Form' => array(
+        'className' => 'BootstrapForm'
+            )
+    );
 
     /**
      * Initialization hook method.

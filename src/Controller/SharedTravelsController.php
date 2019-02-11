@@ -19,6 +19,7 @@ class SharedTravelsController extends AppController {
     
     private static $NOTIFICATION_TYPE_DATE_CHANGED = 0;
     private static $NOTIFICATION_TYPE_CANCELLED = 1;
+    private static $NOTIFICATION_TYPE_PICKUP_ADDRESS_CHANGED = 2;
     
     private $ip_blacklist = [''];
     
@@ -71,9 +72,16 @@ class SharedTravelsController extends AppController {
             }
             
             // Salvar la solicitud
-            $OK = $STTable->save($STEntity);
+            $OK = $STTable->save($STEntity,
+                    ['track_history' =>
+                        [
+                            'owner' => $this->Auth->user(),
+                            'event_type' => SharedTravel::$EVENT_TYPE_CREATED,
+                            'notify_to' =>  $this->_getUsersToSync()
+                        ]
+                    ]);
             
-            // Eventos!!!
+            /*// Eventos!!!
             if(Configure::read('op_events_active')) {
                 $entity = $STTable->findByToken($idToken, ['hydrate'=>true]);
                 $opEventListener = new \App\Listener\SharedTravelEventListener(); 
@@ -83,7 +91,7 @@ class SharedTravelsController extends AppController {
                         [ $this->Auth->user(), $this->_getUsersToSync()]
                     );
                 $this->eventManager()->dispatch($event);
-            }
+            }*/
 
             if ($OK) {
 
@@ -178,9 +186,18 @@ class SharedTravelsController extends AppController {
         $STTable = TableRegistry::get('SharedTravels');
         
         // Actualizar estado de la solicitud
-        $OK = $STTable->updateAll(['activated'=>true, 'state'=>SharedTravel::$STATE_ACTIVATED], ['id' => $request['SharedTravel']['id']]);
+        //$OK = $STTable->updateAll(['activated'=>true, 'state'=>SharedTravel::$STATE_ACTIVATED], ['id' => $request['SharedTravel']['id']]);
+        $entity = $STTable->updateField(['activated'=>true, 'state'=>SharedTravel::$STATE_ACTIVATED], $request['SharedTravel']['id']);
+        $OK = $STTable->save($entity, 
+                ['track_history' =>
+                    [
+                        'owner' => $this->Auth->user(),
+                        'event_type' => SharedTravel::$EVENT_TYPE_ACTIVATED,
+                        'notify_to' =>  $this->_getUsersToSync()
+                    ]
+                ]);
         
-        // Eventos!!!
+        /*// Eventos!!!
         if(Configure::read('op_events_active')) {
             $entity = $STTable->findById($request['SharedTravel']['id'], ['hydrate'=>true]);
             $opEventListener = new \App\Listener\SharedTravelEventListener();
@@ -190,7 +207,7 @@ class SharedTravelsController extends AppController {
                     [ $this->Auth->user(), $this->_getUsersToSync() ]
                 );
             $this->eventManager()->dispatch($event);
-        }
+        }*/
         
         
         $confirmed = false;
@@ -343,10 +360,21 @@ class SharedTravelsController extends AppController {
             
             $STTable = TableRegistry::get('SharedTravels');
             $request = $STTable->updateField(
-                    'date', 
-                    new \Cake\I18n\FrozenTime(str_replace('-', '/', TimeUtil::dmY_to_Ymd($this->request->getData('date')))), 
+                    ['date' => new \Cake\I18n\FrozenTime(str_replace('-', '/', TimeUtil::dmY_to_Ymd($this->request->getData('date'))))],
                     $id,
                     ['keep_old_value'=>true]);
+            $OK = $STTable->save($request, 
+                ['track_history' =>
+                    [
+                        'event_type' => SharedTravel::$EVENT_TYPE_INFO_EDITED,
+                        'notify_to' =>  $this->_getUsersToSync(),
+                        'descriptor' => [
+                            'field_edited'=>'date',
+                            'old_value'=>$request->old_date,
+                            'new_value'=>$request->date,
+                        ]
+                    ]
+                ]);
             
             if(!$request) {
                 throw new Exception('Error actualizando la fecha.');
@@ -355,7 +383,7 @@ class SharedTravelsController extends AppController {
             // Salvar el valor antiguo de la fecha pues al despachar los eventos se le quita
             $oldDate = $request->old_date;
             
-            // Eventos!!!
+            /*// Eventos!!!
             if(Configure::read('op_events_active')) {
                 $opEventListener = new \App\Listener\SharedTravelEventListener();
                 $this->eventManager()->on($opEventListener);
@@ -364,7 +392,7 @@ class SharedTravelsController extends AppController {
                         [ $this->Auth->user(), $this->_getUsersToSync()]
                     );
                 $this->eventManager()->dispatch($event);
-            }
+            }*/
             
             // Notificar al coordinador
             $this->_notify(SharedTravelsController::$NOTIFICATION_TYPE_DATE_CHANGED, $request, ['old_date'=>$oldDate]);
@@ -374,15 +402,55 @@ class SharedTravelsController extends AppController {
         } else throw new MethodNotAllowedException();
     }
     
+    public function changePickupAddress($id) {
+        if ($this->request->is('post') || $this->request->is('put')) {
+            
+            $STTable = TableRegistry::get('SharedTravels');
+            $request = $STTable->updateField(
+                    ['address_origin' => $this->request->getData('address_origin')],
+                    $id,
+                    ['keep_old_value'=>true]);
+            $OK = $STTable->save($request, 
+                ['track_history' =>
+                    [
+                        'event_type' => SharedTravel::$EVENT_TYPE_INFO_EDITED,
+                        'notify_to' =>  $this->_getUsersToSync(),
+                        'descriptor' => [
+                            'field_edited'=>'address_origin',
+                            'old_value'=>$request->old_address_origin,
+                            'new_value'=>$request->address_origin,
+                        ]
+                    ]
+                ]);
+            
+            if(!$request) {
+                throw new Exception('Error actualizando la direccion de recogida.');
+            }
+            
+            // Notificar al coordinador
+            $this->_notify(SharedTravelsController::$NOTIFICATION_TYPE_PICKUP_ADDRESS_CHANGED, $request);
+            
+            return $this->redirect($this->referer());
+            
+        } else throw new MethodNotAllowedException();
+    }
+    
     public function cancel($token) {
         $STTable = TableRegistry::get('SharedTravels');
-        $request = $STTable->updateField('state', SharedTravel::$STATE_CANCELLED, ['token'=>$token]);
+        $request = $STTable->updateField(['state'=>SharedTravel::$STATE_CANCELLED], ['token'=>$token]);
+        $OK = $STTable->save($request, 
+                ['track_history' =>
+                    [
+                        'event_type' => SharedTravel::$EVENT_TYPE_CANCELLED,
+                        'notify_to' =>  $this->_getUsersToSync()
+                    ]
+                ]);
         
         if(!$request) {
             throw new Exception('Error cancelando la solicitud.');
         }
         
-        // Eventos!!!
+        /*// Eventos!!!
         if(Configure::read('op_events_active')) {
             $opEventListener = new \App\Listener\SharedTravelEventListener();
             $this->eventManager()->on($opEventListener);
@@ -391,7 +459,7 @@ class SharedTravelsController extends AppController {
                     [ $this->Auth->user(), $this->_getUsersToSync() ]
                 );
             $this->eventManager()->dispatch($event);
-        }
+        }*/
 
         // Avisar al coordinador solo si la solicitud no ha expirado y esta activada
         if(!$request->date->isPast() && $request->activated) {
@@ -405,7 +473,9 @@ class SharedTravelsController extends AppController {
         if ($this->request->is('post') || $this->request->is('put')) {
             
             $STTable = TableRegistry::get('SharedTravels');
-            $request = $STTable->updateField('final_state', $this->request->getData('final_state'), $id);
+            $request = $STTable->updateField(['final_state'=>$this->request->getData('final_state')], $id);
+            
+            $OK = $STTable->save($request);
             
             if(!$request) $this->setErrorMessage ('Error actualizando el estado final.');
             
@@ -431,12 +501,6 @@ class SharedTravelsController extends AppController {
         } 
         
         else if($notificationType == SharedTravelsController::$NOTIFICATION_TYPE_CANCELLED) {
-            /*$notice = 'CANCELADO > PickoCar #'.$request->id. ' | '.TimeUtil::prettyDate($request->date, false).' | '.$request->getOriginName().' - '.$request->getDestinationName();
-            $Email = new Email('aviso');
-            $Email->to($facilitator['email'])
-                ->subject($notice)
-                ->send($notice);*/
-            
             $notice = 'CANCELADO > PickoCar #'.$request->id. ' | '.TimeUtil::prettyDate($request->date, false).' | '.$request->getOriginName().' - '.$request->getDestinationName();
             EmailsUtil::email(
                 $facilitator['email'],

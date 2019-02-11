@@ -12,7 +12,6 @@ class OpEventsController extends AppController {
         
         $this->setModelType('ApiSync.OpEvents');
     }
-
     
     public function sync($batchId) {
         $userId = $this->Auth->user('id');
@@ -45,10 +44,15 @@ class OpEventsController extends AppController {
                     ->order(['id ASC'])
                     ->formatResults(function (\Cake\Collection\CollectionInterface $results) {
                         return $results->map(function ($entity) {
-                            // Esto es para el ORM de la app movil
+                            
+                            // ---- Preprocesar para la app movil ----
                             $entity->object_final_state = json_decode($entity->object_final_state);
+                            unset($entity->object_final_state->old_date);
+                            unset($entity->object_final_state->old_state);
+                            
                             if($entity->descriptor == null) $entity->descriptor = '{}';
                             $entity->descriptor = json_decode($entity->descriptor);
+                            // ----------------------------------------
 
                             return $entity;
                         });
@@ -101,9 +105,15 @@ class OpEventsController extends AppController {
                 ->order(['id DESC'])
                 ->formatResults(function (\Cake\Collection\CollectionInterface $results) {
                     return $results->map(function ($entity) {
-                        // Esto es para el ORM de la app movil
+                        
+                        // ---- Preprocesar para la app movil ----
                         $entity->object_final_state = json_decode($entity->object_final_state);
+                        unset($entity->object_final_state->old_date);
+                        unset($entity->object_final_state->old_state);
+
+                        if($entity->descriptor == null) $entity->descriptor = '{}';
                         $entity->descriptor = json_decode($entity->descriptor);
+                        // ----------------------------------------
 
                         return $entity;
                     });
@@ -115,40 +125,5 @@ class OpEventsController extends AppController {
             'data' => $events
         ]);
     }
-    
-    /*public function getEventsItems($limit = 5) {
-        $this->paginate = ['order'=>['id'=>'ASC'], 'limit'=>$limit];
-        
-        $events = $this->_paginate();
-                    
-        $this->set([
-            'success' => true,
-            'data' => $events
-        ]);
-                
-    }
-    
-    public function getEventsSinceDate($date) {
-                
-    }
-    
-    
-    private function _paginate() {
-        $OpEventsTable = TableRegistry::get('ApiSync.OpEvents');
-        return $this->paginate(
-            $OpEventsTable->find()
-                ->order(['id ASC'])
-                ->formatResults(function (\Cake\Collection\CollectionInterface $results) {
-                    return $results->map(function ($entity) {
-                        // Esto es para el ORM de la app movil
-                        $entity->object_final_state = json_decode($entity->object_final_state);
-                        $entity->descriptor = json_decode($entity->descriptor);
-
-                        return $entity;
-                    });
-                }))
-
-                ->toArray();
-    }*/
 
 }

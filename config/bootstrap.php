@@ -208,14 +208,16 @@ Type::build('timestamp')
  */
 Plugin::load('EmailQueue', ['autoload' => true]);
 Plugin::load('ApiSync', ['autoload' => true]);
-//Plugin::load('Calendar', ['autoload' => true]);
-//Plugin::load('ADmad/I18n');
 
 Configure::write('Users.Registration.active', false);
 Configure::write('Users.Email.validate', false);
 Configure::write('Users.reCaptcha.registration', false);
 Configure::write('Users.Email.mailerClass', \App\Mailer\AppUsersMailer::class);
 Plugin::load('CakeDC/Users', ['routes' => false, 'bootstrap' => true]);
+
+Plugin::load('Crud');
+Plugin::load('ADmad/JwtAuth');
+Plugin::load('Muffin/Footprint');
 
 
 /*
@@ -234,6 +236,3 @@ Configure::write('op_events_active', false);
 
 Configure::write('I18n.languages', ['en', 'es']);
 Configure::write('default_language', 'en');
-Plugin::load('Crud');
-
-Plugin::load('ADmad/JwtAuth');
