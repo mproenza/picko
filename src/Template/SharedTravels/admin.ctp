@@ -53,6 +53,23 @@ use App\Util\TimeUtil;
                 <?php echo $this->Form->end(); ?>
             </div>
             
+            <!-- EDIT PICKUP ADDRESS -->
+            <br/>
+            <br/>
+            <div>
+                <?php echo $this->Form->create('SharedTravel', array('url' => array('controller' => 'shared-rides', 'action' => 'changePickupAddress/'.$request['SharedTravel']['id'])));?>
+                <fieldset>
+                    <div class="form-group required">
+                    <label for="AddressOrigin">Nueva dirección de recogida</label>
+                    <textarea name="address_origin" class="form-control" placeholder="Dirección de la casa o nombre del hotel" rows="2" id="AddressOrigin" required="required"></textarea>
+                        <div class="invalid-feedback"><?php echo __d('errors', 'La dirección de recogida es obligatoria')?></div>
+                    </div>
+                    <br/>
+                    <?php echo $this->Form->submit('Actualizar Dirección Recogida')?>
+                </fieldset>
+                <?php echo $this->Form->end(); ?>
+            </div>
+            
         </div>
     </div>
 </div>
