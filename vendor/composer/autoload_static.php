@@ -51,6 +51,7 @@ class ComposerStaticInit3e804d55d47dfa1c9376553401f8cfc4
         ),
         'M' => 
         array (
+            'Muffin\\Footprint\\' => 17,
             'Migrations\\' => 11,
             'M1\\Env\\' => 7,
         ),
@@ -176,6 +177,10 @@ class ComposerStaticInit3e804d55d47dfa1c9376553401f8cfc4
         'Phinx\\' => 
         array (
             0 => __DIR__ . '/..' . '/robmorgan/phinx/src/Phinx',
+        ),
+        'Muffin\\Footprint\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/muffin/footprint/src',
         ),
         'Migrations\\' => 
         array (
