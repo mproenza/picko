@@ -1435,6 +1435,64 @@
         ]
     },
     {
+        "name": "muffin/footprint",
+        "version": "1.2.2",
+        "version_normalized": "1.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/UseMuffin/Footprint.git",
+            "reference": "8bbb49ac3baac4e6896e2410af07ef77f5d8d459"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/UseMuffin/Footprint/zipball/8bbb49ac3baac4e6896e2410af07ef77f5d8d459",
+            "reference": "8bbb49ac3baac4e6896e2410af07ef77f5d8d459",
+            "shasum": ""
+        },
+        "require": {
+            "cakephp/cakephp": "^3.5"
+        },
+        "require-dev": {
+            "cakephp/cakephp-codesniffer": "^3.0",
+            "phpunit/phpunit": "^5.7.14|^6.0"
+        },
+        "time": "2018-11-23T13:52:42+00:00",
+        "type": "cakephp-plugin",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Muffin\\Footprint\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jad Bitar",
+                "homepage": "http://jadb.io",
+                "role": "Author"
+            },
+            {
+                "name": "ADmad",
+                "homepage": "https://github.com/ADmad",
+                "role": "Author"
+            },
+            {
+                "name": "Others",
+                "homepage": "https://github.com/usemuffin/footprint/graphs/contributors"
+            }
+        ],
+        "description": "CakePHP 3.0+ plugin to allow passing currently logged in user to model layer",
+        "homepage": "https://github.com/usemuffin/footprint",
+        "keywords": [
+            "cakephp",
+            "footprint",
+            "muffin"
+        ]
+    },
+    {
         "name": "nikic/php-parser",
         "version": "v3.1.1",
         "version_normalized": "3.1.1.0",
