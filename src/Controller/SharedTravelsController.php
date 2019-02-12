@@ -60,6 +60,9 @@ class SharedTravelsController extends AppController {
             $this->request->data('activation_token', $activationToken);
             $this->request->data('lang', ini_get('intl.default_locale'));
             $this->request->data('state', SharedTravel::$STATE_PENDING);
+            $this->request->data('activated', false);
+            $this->request->data('final_state', null);
+            $this->request->data('coupling_id', null);
             $this->request->data('original_date', str_replace('-', '/', TimeUtil::dmY_to_Ymd($this->request->getData('date'))));
             $this->request->data('from_ip', $this->request->clientIp());
 

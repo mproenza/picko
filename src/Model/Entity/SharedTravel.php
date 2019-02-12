@@ -383,5 +383,5 @@ class SharedTravel extends Entity {
     }
     
     
-    public static $finalStates = ['D' => 'Realizado', 'XT' => 'Taxi no llegó', 'XC'=>'Cliente no apareció'];
+    public static $finalStates = ['D' => 'Realizado', 'XT' => 'Taxi no llegó', 'XC'=>'Cliente no apareció', '-'=>'Sin definir'];
 }

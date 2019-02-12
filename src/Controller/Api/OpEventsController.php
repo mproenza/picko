@@ -44,17 +44,7 @@ class OpEventsController extends AppController {
                     ->order(['id ASC'])
                     ->formatResults(function (\Cake\Collection\CollectionInterface $results) {
                         return $results->map(function ($entity) {
-                            
-                            // ---- Preprocesar para la app movil ----
-                            $entity->object_final_state = json_decode($entity->object_final_state);
-                            unset($entity->object_final_state->old_date);
-                            unset($entity->object_final_state->old_state);
-                            
-                            if($entity->descriptor == null) $entity->descriptor = '{}';
-                            $entity->descriptor = json_decode($entity->descriptor);
-                            // ----------------------------------------
-
-                            return $entity;
+                            return $this->preprocessEntityEvent($entity);
                         });
                     })
                     ->toArray();
@@ -105,17 +95,7 @@ class OpEventsController extends AppController {
                 ->order(['id DESC'])
                 ->formatResults(function (\Cake\Collection\CollectionInterface $results) {
                     return $results->map(function ($entity) {
-                        
-                        // ---- Preprocesar para la app movil ----
-                        $entity->object_final_state = json_decode($entity->object_final_state);
-                        unset($entity->object_final_state->old_date);
-                        unset($entity->object_final_state->old_state);
-
-                        if($entity->descriptor == null) $entity->descriptor = '{}';
-                        $entity->descriptor = json_decode($entity->descriptor);
-                        // ----------------------------------------
-
-                        return $entity;
+                        return $this->preprocessEntityEvent($entity);
                     });
                 })
                 ->toArray();
@@ -124,6 +104,31 @@ class OpEventsController extends AppController {
             'success' => true,
             'data' => $events
         ]);
+    }
+    
+    private function preprocessEntityEvent(\Cake\ORM\Entity $entity) {
+        // Preprocesar para la app movil
+        $entity->created_by_name = null;
+        if($entity->created_by_id != null) {
+            $UsersTable = TableRegistry::get('CakeDC/Users.Users');
+            $user = $UsersTable->findById($this->Auth->user('id'))
+                    ->first()
+                    ->toArray();
+            $entity->created_by_name = $user['first_name'];
+        }
+
+        if($entity->descriptor == null) $entity->descriptor = '{}';
+        $entity->descriptor = json_decode($entity->descriptor);
+
+        $entity->object_final_state = json_decode($entity->object_final_state);
+        unset($entity->object_final_state->old_date);
+        unset($entity->object_final_state->old_state);
+        unset($entity->object_final_state->modified);
+
+        $entity->object_final_state->origin_id = ['id'=>$entity->object_final_state->origin_id];
+        $entity->object_final_state->destination_id = ['id'=>$entity->object_final_state->destination_id];
+        
+        return $entity;
     }
 
 }

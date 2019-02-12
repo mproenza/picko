@@ -7,6 +7,14 @@ use Cake\ORM\TableRegistry;
 class SharedTravelsController extends AppController {
     
     public function iniFetch() {
+        
+        // Eliminar de la queue de eventos a sincronizar todo lo de este usuario
+        $userId = $this->Auth->user('id');
+        if($userId) {
+            $SyncQueueTable = TableRegistry::get('ApiSync.SyncQueue');
+            $SyncQueueTable->deleteAll(['user_id'=>$userId]);
+        }
+        
         $STTable = TableRegistry::get('SharedTravels');
         $sharedTravels = 
             $STTable->find()

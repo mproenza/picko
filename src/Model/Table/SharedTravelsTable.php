@@ -17,7 +17,7 @@ class SharedTravelsTable extends Table {
 
     public function initialize(array $config) {
         $this->addBehavior('Timestamp');
-        //$this->addBehavior('TrackHistory');
+        $this->addBehavior('TrackHistory');
     }
     
     public function validationDefault(Validator $validator) {
