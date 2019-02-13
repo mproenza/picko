@@ -230,7 +230,8 @@ Plugin::load('Muffin/Footprint');
 
 
 // MARTIN
-Configure::write('customer_assistant', array('name'=>'Ana'));
+Configure::write('customer_assistant_en', array('name'=>'Ana'));
+Configure::write('customer_assistant_es', array('name'=>'Maylen'));
 Configure::write('shared_rides_facilitator', array('name'=>'Andiel', 'email'=>/*'martin@pickocar.com'*/'andielsl@nauta.cu'));
 
 Configure::write('I18n.languages', ['en', 'es']);

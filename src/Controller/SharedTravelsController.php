@@ -282,13 +282,17 @@ class SharedTravelsController extends AppController {
                         if($r['SharedTravel']['id'] == $request['SharedTravel']['id']) continue;
                         $countOther++;
                     }
-
+                    
+                    // Escoger el asistente que va a atender esta solicitud
+                    $customer_assistant = 'customer_assistant_'.$request['SharedTravel']['lang'];
+                    
+                    // Enviar email del asistente segun sea el caso
                     if($countOther == 0) {// Si es la primera solicitud (no tiene otras solicitudes), enviarle el correo de bienvenida del operador
                         $OK = EmailsUtil::email(
                                 $request['SharedTravel']['email'], 
                                 __d('shared_travels', 'Tenemos los datos de su solicitud'),
                                 array('request' => $request), 
-                                'customer_assistant', 
+                                $customer_assistant, 
                                 'assistant_intro',
                                 array('lang'=>$request['SharedTravel']['lang'])
                             );
@@ -297,7 +301,7 @@ class SharedTravelsController extends AppController {
                                 $request['SharedTravel']['email'], 
                                 __d('shared_travels', 'Tenemos los datos de su nueva solicitud'),
                                 array('request' => $request, 'all_requests'=>$all_requests),
-                                'customer_assistant',
+                                $customer_assistant,
                                 'requests_summary',
                                 array('lang'=>$request['SharedTravel']['lang'])
                             );

@@ -225,13 +225,14 @@ class SharedTravelsTable extends Table {
 
             // Buscar todas las solicitudes activadas para mostrarle al cliente el resumen
             $all_requests = $this->findActiveRequests($request['SharedTravel']['email']);
-
+            
             // Email de parte del customer assistant
+            $customer_assistant = 'customer_assistant_'.$request['SharedTravel']['lang'];
             $OK = EmailsUtil::email(
                 $request['SharedTravel']['email'],
                 $subject,
                 array('request' => $request, 'all_requests'=>$all_requests),
-                'customer_assistant',
+                $customer_assistant,
                 'request_confirmed',
                 array('lang'=>$lang)
             );

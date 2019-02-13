@@ -4,7 +4,7 @@ use App\Util\TimeUtil;
 use Cake\Core\Configure;
 ?>
 
-<?php $assistant = Configure::read('customer_assistant');?>
+<?php $assistant = Configure::read('customer_assistant_'.$request['SharedTravel']['lang']);?>
 
 <p>Hola <?php echo $request['SharedTravel']['name_id']?>,</p>
 
