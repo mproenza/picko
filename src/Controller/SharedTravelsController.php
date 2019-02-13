@@ -63,7 +63,7 @@ class SharedTravelsController extends AppController {
             $this->request->data('activated', false);
             $this->request->data('final_state', null);
             $this->request->data('coupling_id', null);
-            $this->request->data('original_date', str_replace('-', '/', TimeUtil::dmY_to_Ymd($this->request->getData('date'))));
+            $this->request->data('original_date', $this->request->getData('date'));
             $this->request->data('from_ip', $this->request->clientIp());
 
             $STTable = TableRegistry::get('SharedTravels');
@@ -84,18 +84,6 @@ class SharedTravelsController extends AppController {
                         ]
                     ]);
             
-            /*// Eventos!!!
-            if(Configure::read('op_events_active')) {
-                $entity = $STTable->findByToken($idToken, ['hydrate'=>true]);
-                $opEventListener = new \App\Listener\SharedTravelEventListener(); 
-                $this->eventManager()->on($opEventListener);
-                $event = new Event('Model.SharedTravel.afterCreate', 
-                        $entity,
-                        [ $this->Auth->user(), $this->_getUsersToSync()]
-                    );
-                $this->eventManager()->dispatch($event);
-            }*/
-
             if ($OK) {
 
                 // TODO: Ver si se debe enviar el correo de verificacion
@@ -121,8 +109,16 @@ class SharedTravelsController extends AppController {
                 
             }
 
-
-            if($OK) return $this->redirect(['controller'=>'shared-rides', 'action' => 'thanks', '?'=>['t'=>$idToken]]);
+            if($OK) {
+                // Guardar algunos datos en la session para si el cliente quiere crear mas solicitudes que no tenga que repetirlas
+                // TODO: Guardarlos en una Cookie???
+                $session = $this->request->session();
+                $session->write('user_email', $request['SharedTravel']['email']);
+                $session->write('user_people_count', $request['SharedTravel']['people_count']);
+                $session->write('user_name_id', $request['SharedTravel']['name_id']);
+                
+                return $this->redirect(['controller'=>'shared-rides', 'action' => 'thanks', '?'=>['t'=>$idToken]]);
+            }
             
             // else            
             $this->Flash->error(__('Ocurrió un error realizando la solicitud.'), ['key'=>'form']);
@@ -198,20 +194,7 @@ class SharedTravelsController extends AppController {
                         'event_type' => SharedTravel::$EVENT_TYPE_ACTIVATED,
                         'notify_to' =>  $this->_getUsersToSync()
                     ]
-                ]);
-        
-        /*// Eventos!!!
-        if(Configure::read('op_events_active')) {
-            $entity = $STTable->findById($request['SharedTravel']['id'], ['hydrate'=>true]);
-            $opEventListener = new \App\Listener\SharedTravelEventListener();
-            $this->eventManager()->on($opEventListener);
-            $event = new Event('Model.SharedTravel.afterActivated', 
-                    $entity,
-                    [ $this->Auth->user(), $this->_getUsersToSync() ]
-                );
-            $this->eventManager()->dispatch($event);
-        }*/
-        
+                ]);        
         
         $confirmed = false;
         $confirmedReason = null;
@@ -329,13 +312,6 @@ class SharedTravelsController extends AppController {
             else $request['SharedTravel']['state'] = SharedTravel::$STATE_ACTIVATED;
         }
         
-        // Guardar algunos datos en la session para si el cliente quiere crear mas solicitudes que no tenga que repetirlas
-        // TODO: Guardarlos en una Cookie???
-        $session = $this->request->session();
-        $session->write('user_email', $request['SharedTravel']['email']);
-        $session->write('user_people_count', $request['SharedTravel']['people_count']);
-        $session->write('user_name_id', $request['SharedTravel']['name_id']);
-        
         return array('success'=>$OK, 'confirmed'=>$confirmed, 'confirmed_reason'=>$confirmedReason, 'coupled'=>$coupled);
     }
     
@@ -366,10 +342,12 @@ class SharedTravelsController extends AppController {
         if ($this->request->is('post') || $this->request->is('put')) {
             
             $STTable = TableRegistry::get('SharedTravels');
+            
             $request = $STTable->updateField(
                     ['date' => new \Cake\I18n\FrozenTime(str_replace('-', '/', TimeUtil::dmY_to_Ymd($this->request->getData('date'))))],
                     $id,
                     ['keep_old_value'=>true]);
+            
             $OK = $STTable->save($request, 
                 ['track_history' =>
                     [
@@ -387,22 +365,8 @@ class SharedTravelsController extends AppController {
                 throw new Exception('Error actualizando la fecha.');
             }
             
-            // Salvar el valor antiguo de la fecha pues al despachar los eventos se le quita
-            $oldDate = $request->old_date;
-            
-            /*// Eventos!!!
-            if(Configure::read('op_events_active')) {
-                $opEventListener = new \App\Listener\SharedTravelEventListener();
-                $this->eventManager()->on($opEventListener);
-                $event = new Event('Model.SharedTravel.afterDateChange', 
-                        $request, 
-                        [ $this->Auth->user(), $this->_getUsersToSync()]
-                    );
-                $this->eventManager()->dispatch($event);
-            }*/
-            
             // Notificar al coordinador
-            $this->_notify(SharedTravelsController::$NOTIFICATION_TYPE_DATE_CHANGED, $request, ['old_date'=>$oldDate]);
+            $this->_notify(SharedTravelsController::$NOTIFICATION_TYPE_DATE_CHANGED, $request);
             
             return $this->redirect($this->referer());
             
@@ -413,10 +377,12 @@ class SharedTravelsController extends AppController {
         if ($this->request->is('post') || $this->request->is('put')) {
             
             $STTable = TableRegistry::get('SharedTravels');
+            
             $request = $STTable->updateField(
                     ['address_origin' => $this->request->getData('address_origin')],
                     $id,
                     ['keep_old_value'=>true]);
+            
             $OK = $STTable->save($request, 
                 ['track_history' =>
                     [
@@ -456,17 +422,6 @@ class SharedTravelsController extends AppController {
         if(!$request) {
             throw new Exception('Error cancelando la solicitud.');
         }
-        
-        /*// Eventos!!!
-        if(Configure::read('op_events_active')) {
-            $opEventListener = new \App\Listener\SharedTravelEventListener();
-            $this->eventManager()->on($opEventListener);
-            $event = new Event('Model.SharedTravel.afterCancel', 
-                    $request, 
-                    [ $this->Auth->user(), $this->_getUsersToSync() ]
-                );
-            $this->eventManager()->dispatch($event);
-        }*/
 
         // Avisar al coordinador solo si la solicitud no ha expirado y esta activada
         if(!$request->date->isPast() && $request->activated) {
@@ -491,7 +446,7 @@ class SharedTravelsController extends AppController {
         } else throw new MethodNotAllowedException();
     }
     
-    private function _notify($notificationType, SharedTravel $request, $params = []) {
+    private function _notify($notificationType, SharedTravel $request) {
         
         $facilitator = Configure::read('shared_rides_facilitator');
         
@@ -500,7 +455,7 @@ class SharedTravelsController extends AppController {
             EmailsUtil::email(
                 $facilitator['email'],
                 $notice,
-                array('request' => $request, 'params'=>$params),
+                array('request' => $request),
                 'aviso', 
                 'notifications_facilitator/request_change_date',
                 ['lang'=>'es']

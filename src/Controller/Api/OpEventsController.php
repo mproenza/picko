@@ -123,6 +123,7 @@ class OpEventsController extends AppController {
         $entity->object_final_state = json_decode($entity->object_final_state);
         unset($entity->object_final_state->old_date);
         unset($entity->object_final_state->old_state);
+        unset($entity->object_final_state->old_address_origin);
         unset($entity->object_final_state->modified);
 
         $entity->object_final_state->origin_id = ['id'=>$entity->object_final_state->origin_id];

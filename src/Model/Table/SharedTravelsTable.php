@@ -17,7 +17,7 @@ class SharedTravelsTable extends Table {
 
     public function initialize(array $config) {
         $this->addBehavior('Timestamp');
-        //$this->addBehavior('TrackHistory');
+        $this->addBehavior('TrackHistory');
     }
     
     public function validationDefault(Validator $validator) {
@@ -57,11 +57,11 @@ class SharedTravelsTable extends Table {
     public function beforeMarshal(Event $event, ArrayObject $data, ArrayObject $options) {
         if(!isset($options['fixDate']) || $options['fixDate']) {
             if (isset($data['date']) && is_string($data['date'])) {
-                // Guardar como YYYY/mm/dd, se asume que la fecha viene como dd-mm-YYYY
+                // Poner como YYYY/mm/dd, se asume que la fecha viene como dd-mm-YYYY
                 $data['date'] = new \Cake\I18n\Date(str_replace('-', '/', TimeUtil::dmY_to_Ymd($data['date'])));
+                $data['original_date'] = new \Cake\I18n\Date(str_replace('-', '/', TimeUtil::dmY_to_Ymd($data['original_date'])));
             }
         }
-        
 
         if (isset($data['email'])) {
             $data['email'] = strtolower($data['email']);
@@ -204,17 +204,6 @@ class SharedTravelsTable extends Table {
                         'notify_to' =>  self::getUsersToSync()
                     ]
                 ]);
-        //$OK = $this->updateAll(['state'=>SharedTravel::$STATE_CONFIRMED], ['id' => $request['SharedTravel']['id']]);
-        
-        /*// Eventos
-        $entity = $this->findById($request['SharedTravel']['id'], ['hydrate'=>true]);
-        $opEventListener = new \App\Listener\SharedTravelEventListener(); 
-        $this->eventManager()->on($opEventListener);
-        $event = new Event('Model.SharedTravel.afterCreate', 
-                $entity,
-                [$this->Auth->user(), $this->_getUsersToSync()]
-            );
-        $this->eventManager()->dispatch($event);*/
 
         if ($OK) {
             $lang = $request['SharedTravel']['lang'];
