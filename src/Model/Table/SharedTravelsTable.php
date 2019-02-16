@@ -17,7 +17,7 @@ class SharedTravelsTable extends Table {
 
     public function initialize(array $config) {
         $this->addBehavior('Timestamp');
-        $this->addBehavior('TrackHistory');
+        //$this->addBehavior('TrackHistory');
     }
     
     public function validationDefault(Validator $validator) {
@@ -85,8 +85,8 @@ class SharedTravelsTable extends Table {
                         return $formatted;
                     });
                 });
-            }/* else {
-                $query->formatResults(function (\Cake\Collection\CollectionInterface $results) {
+            } else {
+                /*$query->formatResults(function (\Cake\Collection\CollectionInterface $results) {
                     return $results->map(function ($entity) {                       
                         
                         // Esto es para el ORM de la app movil
@@ -96,12 +96,12 @@ class SharedTravelsTable extends Table {
                         return $entity;
                         
                     });
-                });
-            }*/            
+                });*/
+            }           
         }
         
         // API
-        else {
+        /*else {
             $query->formatResults(function (\Cake\Collection\CollectionInterface $results) {
                 return $results->map(function ($entity) {
                     // Esto es para el ORM de la app movil
@@ -111,7 +111,7 @@ class SharedTravelsTable extends Table {
                     return $entity;
                 });
             });
-        }
+        }*/
         
     }
 
@@ -140,10 +140,10 @@ class SharedTravelsTable extends Table {
     }
 
     //Encuentra las solicitudes activas de un usuario
-    public function findActiveRequests($userEmail) {
+    public function findActiveRequests($userEmail, array $options = []) {
         $today = date('Y-m-d', strtotime('today'));
 
-        return $this->find()
+        return $this->find('all', $options)
         ->where([
             'email'=>$userEmail, // Que sean de este usuario
             'activated'=>true, // Que esten activadas
@@ -194,9 +194,10 @@ class SharedTravelsTable extends Table {
     }
     
 
-    public function confirmRequest($request) {
+    public function confirmRequest($entity) {
         
-        $entity = $this->updateField(['state' => SharedTravel::$STATE_CONFIRMED], $request['SharedTravel']['id']);
+        $entity->updateField(['state' => SharedTravel::$STATE_CONFIRMED]);
+        
         $OK = $this->save($entity, 
                 ['track_history' =>
                     [
@@ -206,21 +207,21 @@ class SharedTravelsTable extends Table {
                 ]);
 
         if ($OK) {
-            $lang = $request['SharedTravel']['lang'];
+            $lang = $entity->lang;
 
             $subject = 'Viaje compartido confirmado!';
             if ($lang == 'en')
                 $subject = 'Shared ride confirmed!';
 
             // Buscar todas las solicitudes activadas para mostrarle al cliente el resumen
-            $all_requests = $this->findActiveRequests($request['SharedTravel']['email']);
+            $all_requests = $this->findActiveRequests($entity->email, ['hydrate'=>true]);
             
             // Email de parte del customer assistant
-            $customer_assistant = 'customer_assistant_'.$request['SharedTravel']['lang'];
+            $customer_assistant = 'customer_assistant_'.$entity->lang;
             $OK = EmailsUtil::email(
-                $request['SharedTravel']['email'],
+                $entity->email,
                 $subject,
-                array('request' => $request, 'all_requests'=>$all_requests),
+                array('request' => $entity, 'all_requests'=>$all_requests),
                 $customer_assistant,
                 'request_confirmed',
                 array('lang'=>$lang)
@@ -228,32 +229,35 @@ class SharedTravelsTable extends Table {
 
               // Email para mi
             $Email = new Email('hola');
-            $Email->to('martin@yotellevocuba.com')->subject('CONFIRMADA: PickoCar #'.$request['SharedTravel']['id'])->send('http://pickocar.com/shared-rides/view/'.$request['SharedTravel']['id_token']);
+            $Email->to('martin@yotellevocuba.com')->subject('CONFIRMADA: PickoCar #'.$entity->id)->send('http://pickocar.com/shared-rides/view/'.$entity->id_token);
         }
 
         return $OK;
     }
     
     public function updateField($fields, $id, $options = []) {
-        $_defaults = ['keep_old_value'=>false];
         
-        $options = $options + $_defaults;
-        
-        $searchByField = 'id';
-        $searchByValue = $id;
-        if(is_array($id)) {
-            $searchByField = array_keys($id)[0];
-            $searchByValue = array_values($id)[0];
+        // Si el id es un objeto, entonces no hay necesidad de buscarlo
+        $request = $id;
+        if(!is_object($id)) {
+            $searchByField = 'id';
+            $searchByValue = $id;
+            if(is_array($id)) {
+                $searchByField = array_keys($id)[0];
+                $searchByValue = array_values($id)[0];
+            }
+
+            $func = 'findBy'. \Cake\Utility\Inflector::camelize($searchByField);
+
+            $request = $this->$func($searchByValue, ['hydrate'=>true]);
+
+            // Sanity checks
+            if($request == null || empty ($request)) throw new \Cake\Network\Exception\NotFoundException();
         }
-
-        $func = 'findBy'. \Cake\Utility\Inflector::camelize($searchByField);
-
-        $request = $this->$func($searchByValue, ['hydrate'=>true]);
-
-        // Sanity checks
-        if($request == null || empty ($request)) throw new \Cake\Network\Exception\NotFoundException();
         
-        
+        /*$_defaults = ['keep_old_value'=>false];
+        $options = $options + $_defaults;
+    
         // Actualizar todos los campos
         foreach ($fields as $key => $value) {
             // Salvar el valor anterior
@@ -263,7 +267,8 @@ class SharedTravelsTable extends Table {
             }
 
             $request->$key = $value;
-        }
+        }*/
+        $request->updateField($fields, $options);
         
         return $request;
     }

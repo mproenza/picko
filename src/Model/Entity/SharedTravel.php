@@ -4,6 +4,9 @@ use Cake\ORM\Entity;
 
 class SharedTravel extends Entity {
     
+    //protected $_hidden = ['modified', 'from_ip', 'old_state', 'old_date', 'old_address_origin', 'old_address_destination'];
+    
+    
     public static $EVENT_TYPE_CREATED = 'N';
     public static $EVENT_TYPE_ACTIVATED = 'A';
     public static $EVENT_TYPE_CONFIRMED = 'C';
@@ -290,12 +293,12 @@ class SharedTravel extends Entity {
                 $time -= 12;
                 $d = 'pm';
             } else if( $time == 12) $d = 'pm';
-            $dt->departure_time_desc = $time.' '.$d;
+            $dt = $time.' '.$d;
         }
         
         return $dt;
     }
-    public function getRouteDepartureTimesDesc() {        
+    public function getRouteDepartureTimesDesc() {
         $departureTimes = $this->getRouteDepartureTimes();
         
         $dts = null;
@@ -315,7 +318,7 @@ class SharedTravel extends Entity {
     /**
      * Retorna null si no hay matcheo
      * * Debe decir 'taxi-' delante, debe tener el separador '--', deben existir los slug, etc...
-     * @param type $slug
+     * @param slug
      * @return type
      * @throws NotFoundException
      */
@@ -384,4 +387,36 @@ class SharedTravel extends Entity {
     
     
     public static $finalStates = ['D' => 'Realizado', 'XT' => 'Taxi no llegó', 'XC'=>'Cliente no apareció', '-'=>'Sin definir'];
+    
+    
+    public function updateField($fields, $options = []) {
+        
+        $_defaults = ['keep_old_value'=>false];
+        $options = $options + $_defaults;
+        
+        // Actualizar todos los campos
+        foreach ($fields as $key => $value) {
+            // Salvar el valor anterior
+            if($options['keep_old_value']) {
+                $oldFieldName = 'old_'.$key;
+                $this->$oldFieldName = $this->$key;
+            }
+
+            $this->$key = $value;
+        }
+    }
+    
+    public static function preprocessForApi($entity) {
+        unset($entity->old_date);
+        unset($entity->old_state);
+        unset($entity->old_address_origin);
+        unset($entity->modified);
+
+        $entity->origin_id = ['id'=>$entity->origin_id];
+        $entity->destination_id = ['id'=>$entity->destination_id];
+        
+        return $entity;
+    }
+    
+    
 }

@@ -61,6 +61,39 @@ class OpEventsController extends AppController {
         ]);
     }
     
+    public function getEventsByPages($page, $countDays = 3) {
+        
+        $startDay = $page * $countDays - 1;
+        $lastDay = ($page - 1) * $countDays;
+        
+        $startDate = new \DateTime("$startDay days ago");
+        $startDate->setTime(0, 0);
+        $endDate = new \DateTime("$lastDay days ago");
+        $endDate->setTime(23, 59, 59);
+        
+        $conditions = ["created BETWEEN '". $startDate->format('Y-m-d H:i:s'). "' AND '". $endDate->format('Y-m-d H:i:s')."'"];
+        
+        // TODO: Poner una condicion para restringir solo a los eventos DE ESTE USUARIO que YA HAN SIDO SINCRONIZADOS
+        
+        $OpEventsTable = TableRegistry::get('ApiSync.OpEvents');
+        $events = $OpEventsTable->find()
+                ->where($conditions)
+                ->order(['id DESC'])
+                ->formatResults(function (\Cake\Collection\CollectionInterface $results) {
+                    return $results->map(function ($entity) {
+                        return $this->preprocessEntityEvent($entity);
+                    });
+                })
+                ->toArray();
+                    
+        $this->set([
+            'start'=>$startDate->format('Y-m-d H:i:s'),
+            'end'=>$endDate->format('Y-m-d H:i:s'),
+            'success' => true,
+            'data' => $events
+        ]);
+    }
+    
     /**
      * Esta funcion envia los eventos que han sucedido a partir de una cantidad de dias hacia atras a partir de hoy,
      * 
@@ -78,14 +111,16 @@ class OpEventsController extends AppController {
      * getEventsByFullDays(0, 3) retorna los eventos de hace 3 dias atras hasta hoy
      * getEventsByFullDays(3, 5) retorna los eventos desde 8 dias atras a 3 dias atras     
      */
-    public function getEventsByFullDays($fromDaysAgo, $countDays) {
+    /*public function getEventsByFullDays($fromDaysAgo, $countDays) {
         
-        $lastDay = $fromDaysAgo + $countDays;
+        $lastDay = $fromDaysAgo + $countDays - 1;
         
-        $startDate = new \Cake\I18n\FrozenTime("$lastDay days ago");
-        $endDate = new \Cake\I18n\FrozenTime("$fromDaysAgo days ago");
+        $startDate = new \DateTime("$lastDay days ago");
+        $startDate->setTime(0, 0);
+        $endDate = new \DateTime("$fromDaysAgo days ago");
+        $endDate->setTime(23, 59, 59);
         
-        $conditions = ["created BETWEEN '". $startDate->format('Y-m-d'). "' AND '". $endDate->format('Y-m-d')."'"];
+        $conditions = ["created BETWEEN '". $startDate->format('Y-m-d H:i:s'). "' AND '". $endDate->format('Y-m-d H:i:s')."'"];
         
         // TODO: Poner una condicion para restringir solo a los eventos DE ESTE USUARIO que YA HAN SIDO SINCRONIZADOS
         
@@ -104,7 +139,7 @@ class OpEventsController extends AppController {
             'success' => true,
             'data' => $events
         ]);
-    }
+    }*/
     
     private function preprocessEntityEvent(\Cake\ORM\Entity $entity) {
         // Preprocesar para la app movil
@@ -117,17 +152,10 @@ class OpEventsController extends AppController {
             $entity->created_by_name = $user['first_name'];
         }
 
-        if($entity->descriptor == null) $entity->descriptor = '{}';
-        $entity->descriptor = json_decode($entity->descriptor);
+        if($entity->descriptor == null) $entity->descriptor = new \stdClass();
+        else $entity->descriptor = json_decode($entity->descriptor);
 
-        $entity->object_final_state = json_decode($entity->object_final_state);
-        unset($entity->object_final_state->old_date);
-        unset($entity->object_final_state->old_state);
-        unset($entity->object_final_state->old_address_origin);
-        unset($entity->object_final_state->modified);
-
-        $entity->object_final_state->origin_id = ['id'=>$entity->object_final_state->origin_id];
-        $entity->object_final_state->destination_id = ['id'=>$entity->object_final_state->destination_id];
+        $entity->object_final_state = \App\Model\Entity\SharedTravel::preprocessForApi(json_decode($entity->object_final_state));
         
         return $entity;
     }

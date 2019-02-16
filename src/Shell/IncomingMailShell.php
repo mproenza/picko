@@ -3,12 +3,15 @@ namespace App\Shell;
 
 use Cake\Console\Shell;
 use App\Util\Mail\MailReader;
-use Cake\ORM\TableRegistry;
-use App\Model\Entity\SharedTravel;
-use Cake\Datasource\ConnectionManager;
 
 class IncomingMailShell extends Shell
 {
+    public function initialize() {
+        parent::initialize();
+        $this->loadComponent('SharedTravelActions');
+    }
+    
+    
     public function process() {
         $raw = '';
         $fd = fopen('php://stdin','r');
@@ -40,37 +43,7 @@ class IncomingMailShell extends Shell
                 
                 $this->out($requestId);
                 
-                $STTable = TableRegistry::get('SharedTravels');
-                
-                $request = $STTable->findByToken($requestId);
-                
-                // Sanity checks
-                if($request == null || empty($request)) {
-                    echo 'No existe esta solicitud';
-                    return;
-                }
-                
-                // TODO: Verificar que la solicitud no este expirada
-                
-                if($request['SharedTravel']['state'] == SharedTravel::$STATE_CONFIRMED) { // Solo se puede confirmar cuando esta en estado ACTIVATED
-                    echo 'La solicitud ya está confirmada'; 
-                    return;
-                } else if($request['SharedTravel']['state'] != SharedTravel::$STATE_ACTIVATED) { // Solo se puede confirmar cuando esta en estado ACTIVATED
-                    echo 'La solicitud no está activada todavía'; 
-                    return;
-                } 
-                
-                $datasource = ConnectionManager::get('default');
-                $datasource->begin();
-                
-                $OK = $STTable->confirmRequest($request);
-                
-                if($OK) $datasource->commit();
-                else {
-                    // TODO: Enviar notificacion de fallo
-                    
-                    $datasource->rollback();
-                }
+                $this->SharedTravelActions->confirm($requestId);
             }
         }
         

@@ -23,6 +23,12 @@ class SharedTravelsController extends AppController {
     
     private $ip_blacklist = [''];
     
+    public function initialize() {
+        parent::initialize();
+        
+        $this->loadComponent('SharedTravelActions');
+    }
+    
     public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
         $this->Auth->allow(['home', 'book', 'thanks', 'activate', 'view', /*'index230216', 'admin', 'cancel', 'changeDate'*/]);
@@ -74,6 +80,9 @@ class SharedTravelsController extends AppController {
                 // TODO: Do work to show error messages.
             }
             
+            $datasource = ConnectionManager::get('default');
+            $datasource->begin();
+            
             // Salvar la solicitud
             $OK = $STTable->save($STEntity,
                     ['track_history' =>
@@ -110,6 +119,9 @@ class SharedTravelsController extends AppController {
             }
 
             if($OK) {
+                
+                $datasource->commit();
+                
                 // Guardar algunos datos en la session para si el cliente quiere crear mas solicitudes que no tenga que repetirlas
                 // TODO: Guardarlos en una Cookie???
                 $session = $this->request->session();
@@ -118,10 +130,11 @@ class SharedTravelsController extends AppController {
                 $session->write('user_name_id', $request['SharedTravel']['name_id']);
                 
                 return $this->redirect(['controller'=>'shared-rides', 'action' => 'thanks', '?'=>['t'=>$idToken]]);
+            } else {
+                $datasource->rollback();
+                $this->Flash->error(__('Ocurrió un error realizando la solicitud.'), ['key'=>'form']);
             }
             
-            // else            
-            $this->Flash->error(__('Ocurrió un error realizando la solicitud.'), ['key'=>'form']);
         }
         
         // DATOS PARA /shared-rides/book            
@@ -257,12 +270,12 @@ class SharedTravelsController extends AppController {
                 } else { // No se encontraron couplings*/
                     
                     // Buscar si este cliente tiene otras solicitudes activadas
-                    $all_requests = $STTable->findActiveRequests($request['SharedTravel']['email']);
+                    $all_requests = $STTable->findActiveRequests($request['SharedTravel']['email'], ['hydrate'=>true]);
 
                     // Buscar si tiene otras solicitudes activadas que no sean esta
                     $countOther = 0;
                     foreach ($all_requests as $r) {
-                        if($r['SharedTravel']['id'] == $request['SharedTravel']['id']) continue;
+                        if($r->id == $request['SharedTravel']['id']) continue;
                         $countOther++;
                     }
                     
@@ -338,8 +351,30 @@ class SharedTravelsController extends AppController {
         $this->set('request', $request);
     }
     
+    public function confirm($idToken) {
+        
+        $datasource = \Cake\Datasource\ConnectionManager::get('default');
+        $datasource->begin();
+        
+        $OK = $this->SharedTravelActions->confirm($idToken);
+
+        if(!$OK) {
+            // TODO: Enviar notificacion de fallo?
+            $datasource->rollback();
+            throw new \Cake\Network\Exception\InternalErrorException('Ocurrió un error confirmando la solicitud');
+        } 
+        
+        $datasource->commit();
+        $this->set([
+            'success' => true
+        ]); 
+    }
+    
     public function changeDate($id) {
         if ($this->request->is('post') || $this->request->is('put')) {
+            
+            $datasource = ConnectionManager::get('default');
+            $datasource->begin();
             
             $STTable = TableRegistry::get('SharedTravels');
             
@@ -362,11 +397,14 @@ class SharedTravelsController extends AppController {
                 ]);
             
             if(!$request) {
+                $datasource->rollback();
                 throw new Exception('Error actualizando la fecha.');
             }
             
             // Notificar al coordinador
             $this->_notify(SharedTravelsController::$NOTIFICATION_TYPE_DATE_CHANGED, $request);
+            
+            $datasource->commit();
             
             return $this->redirect($this->referer());
             
@@ -375,6 +413,9 @@ class SharedTravelsController extends AppController {
     
     public function changePickupAddress($id) {
         if ($this->request->is('post') || $this->request->is('put')) {
+            
+            $datasource = ConnectionManager::get('default');
+            $datasource->begin();
             
             $STTable = TableRegistry::get('SharedTravels');
             
@@ -397,11 +438,14 @@ class SharedTravelsController extends AppController {
                 ]);
             
             if(!$request) {
+                $datasource->rollback();
                 throw new Exception('Error actualizando la direccion de recogida.');
             }
             
             // Notificar al coordinador
             $this->_notify(SharedTravelsController::$NOTIFICATION_TYPE_PICKUP_ADDRESS_CHANGED, $request);
+            
+            $datasource->commit();
             
             return $this->redirect($this->referer());
             
@@ -409,6 +453,10 @@ class SharedTravelsController extends AppController {
     }
     
     public function cancel($token) {
+        
+        $datasource = ConnectionManager::get('default');
+        $datasource->begin();
+        
         $STTable = TableRegistry::get('SharedTravels');
         $request = $STTable->updateField(['state'=>SharedTravel::$STATE_CANCELLED], ['token'=>$token]);
         $OK = $STTable->save($request, 
@@ -420,6 +468,7 @@ class SharedTravelsController extends AppController {
                 ]);
         
         if(!$request) {
+            $datasource->rollback();
             throw new Exception('Error cancelando la solicitud.');
         }
 
@@ -428,18 +477,27 @@ class SharedTravelsController extends AppController {
             $this->_notify(SharedTravelsController::$NOTIFICATION_TYPE_CANCELLED, $request);
         }
         
+        $datasource->commit();
+        
         return $this->redirect($this->referer());
     }
     
     public function setFinalState($id) {
         if ($this->request->is('post') || $this->request->is('put')) {
             
+            $datasource = ConnectionManager::get('default');
+            $datasource->begin();
+            
             $STTable = TableRegistry::get('SharedTravels');
             $request = $STTable->updateField(['final_state'=>$this->request->getData('final_state')], $id);
-            
             $OK = $STTable->save($request);
             
-            if(!$request) $this->setErrorMessage ('Error actualizando el estado final.');
+            if(!$request) {
+                $datasource->rollback();
+                $this->setErrorMessage ('Error actualizando el estado final.');
+            }
+            
+            $datasource->commit();
             
             return $this->redirect($this->referer());
             
@@ -455,7 +513,7 @@ class SharedTravelsController extends AppController {
             EmailsUtil::email(
                 $facilitator['email'],
                 $notice,
-                array('request' => $request),
+                ['request' => $request],
                 'aviso', 
                 'notifications_facilitator/request_change_date',
                 ['lang'=>'es']
