@@ -146,8 +146,8 @@ class SharedTravelsTable extends Table {
         return $this->find('all', $options)
         ->where([
             'email'=>$userEmail, // Que sean de este usuario
-            'activated'=>true, // Que esten activadas
-            'state !='=>SharedTravel::$STATE_CANCELLED, // Que NO esten canceladas
+            //'activated'=>true, // Que esten activadas
+            'state IN'=>[SharedTravel::$STATE_ACTIVATED, SharedTravel::$STATE_CONFIRMED], // Activadas o canceladas
             'date >'=>$today // Que no esten expiradas
                 ])
         ->order('date ASC, id ASC');

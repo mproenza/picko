@@ -217,7 +217,7 @@ class SharedTravelsController extends AppController {
             
             // Si la solicitud es de 4 personas, confirmarla directamente
             if($request['SharedTravel']['people_count'] == 4) {
-                $OK = $STTable->confirmRequest($request);
+                $OK = $STTable->confirmRequest($entity);
                 
                 // Correo a facilitador con el viaje completo
                 $facilitator = Configure::read('shared_rides_facilitator');
@@ -226,7 +226,7 @@ class SharedTravelsController extends AppController {
                     'Viaje de 4 pax completo',
                     ['request' => $request], 
                     'compartido', 
-                    'new_full_ride',
+                    'notifications_facilitator/new_full_ride',
                     ['lang'=>'es']
                 );
                 
@@ -311,7 +311,7 @@ class SharedTravelsController extends AppController {
                             '#'.$request['SharedTravel']['id'].' '.$request['SharedTravel']['origin'].'-'.$request['SharedTravel']['destination'].' [['.$request['SharedTravel']['id_token'].']]',
                             array('request' => $request), 
                             'compartido', 
-                            'new_request',
+                            'notifications_facilitator/new_request',
                             ['lang'=>'es']
                             );
                     }
