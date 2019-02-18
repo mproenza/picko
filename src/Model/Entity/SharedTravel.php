@@ -23,7 +23,7 @@ class SharedTravel extends Entity {
         5=>['name'=>'Cayo Coco', 'slug'=>'cayo-coco', 'code'=>'CAC', 'short'=>'C. Coco'],
         6=>['name'=>'Cayo Guillermo', 'slug'=>'cayo-guillermo', 'code'=>'CAG', 'short'=>'C. Guillermo'],
         8=>['name'=>'Playa Larga', 'slug'=>'playa-larga', 'code'=>'PLL', 'short'=>'P. Larga'],
-        9=>['name'=>'Playa Girón', 'slug'=>'playa-giron', 'code'=>'PLG', 'short'=>'P. Giron',  'use_as_origin'=>false],
+        9=>['name'=>'Playa Girón', 'slug'=>'playa-giron', 'code'=>'PLG', 'short'=>'P. Giron'],
         10=>['name'=>'Cayo Santa María', 'slug'=>'cayo-santa-maria', 'code'=>'CAM', 'short'=>'C. Sta Maria', 'use_as_origin'=>false],
     );
     
@@ -154,10 +154,10 @@ class SharedTravel extends Entity {
         ['origin_id'=>8, 'destination_id'=>3, 'price_x_seat'=>35, 'departure_times'=>[11]],
         ['origin_id'=>8, 'destination_id'=>2, 'price_x_seat'=>40, 'departure_times'=>[8, 10]],
         ['origin_id'=>8, 'destination_id'=>4, 'price_x_seat'=>30, 'departure_times'=>[11, 16]],
-        ['origin_id'=>9, 'destination_id'=>0, 'price_x_seat'=>30, 'departure_times'=>[8, 10]],
+        ['origin_id'=>9, 'destination_id'=>0, 'price_x_seat'=>35, 'departure_times'=>[8, 10]],
         ['origin_id'=>9, 'destination_id'=>2, 'price_x_seat'=>45, 'departure_times'=>[8, 10]],
-        ['origin_id'=>9, 'destination_id'=>1, 'price_x_seat'=>30, 'departure_times'=>[11, 16]],
-        ['origin_id'=>9, 'destination_id'=>4, 'price_x_seat'=>30, 'departure_times'=>[11, 16]]
+        ['origin_id'=>9, 'destination_id'=>1, 'price_x_seat'=>35, 'departure_times'=>[11, 16]],
+        ['origin_id'=>9, 'destination_id'=>4, 'price_x_seat'=>35, 'departure_times'=>[11, 16]]
     ];
     public static function _routeFull($route) {
         // Evitar ponerle los datos extra a las rutas si ya se hizo (esto es porque se pudiera llamar a _routeFull() varias veces en una ejecucion)
