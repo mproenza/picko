@@ -376,25 +376,7 @@ class SharedTravelsController extends AppController {
             $datasource = ConnectionManager::get('default');
             $datasource->begin();
             
-            $STTable = TableRegistry::get('SharedTravels');
-            
-            $request = $STTable->updateField(
-                    ['date' => new \Cake\I18n\FrozenTime(str_replace('-', '/', TimeUtil::dmY_to_Ymd($this->request->getData('date'))))],
-                    $id,
-                    ['keep_old_value'=>true]);
-            
-            $OK = $STTable->save($request, 
-                ['track_history' =>
-                    [
-                        'event_type' => SharedTravel::$EVENT_TYPE_INFO_EDITED,
-                        'notify_to' =>  $this->_getUsersToSync(),
-                        'descriptor' => [
-                            'field_edited'=>'date',
-                            'old_value'=>$request->old_date,
-                            'new_value'=>$request->date,
-                        ]
-                    ]
-                ]);
+            $request = $this->_editField($id, ['date' => new \Cake\I18n\FrozenTime(str_replace('-', '/', TimeUtil::dmY_to_Ymd($this->request->getData('date'))))]);
             
             if(!$request) {
                 $datasource->rollback();
@@ -417,25 +399,7 @@ class SharedTravelsController extends AppController {
             $datasource = ConnectionManager::get('default');
             $datasource->begin();
             
-            $STTable = TableRegistry::get('SharedTravels');
-            
-            $request = $STTable->updateField(
-                    ['address_origin' => $this->request->getData('address_origin')],
-                    $id,
-                    ['keep_old_value'=>true]);
-            
-            $OK = $STTable->save($request, 
-                ['track_history' =>
-                    [
-                        'event_type' => SharedTravel::$EVENT_TYPE_INFO_EDITED,
-                        'notify_to' =>  $this->_getUsersToSync(),
-                        'descriptor' => [
-                            'field_edited'=>'address_origin',
-                            'old_value'=>$request->old_address_origin,
-                            'new_value'=>$request->address_origin,
-                        ]
-                    ]
-                ]);
+            $request = $this->_editField($id, ['address_origin' => $this->request->getData('address_origin')]);
             
             if(!$request) {
                 $datasource->rollback();
@@ -488,9 +452,7 @@ class SharedTravelsController extends AppController {
             $datasource = ConnectionManager::get('default');
             $datasource->begin();
             
-            $STTable = TableRegistry::get('SharedTravels');
-            $request = $STTable->updateField(['final_state'=>$this->request->getData('final_state')], $id);
-            $OK = $STTable->save($request);
+            $request = $this->_editField($id, ['final_state'=>$this->request->getData('final_state')]);
             
             if(!$request) {
                 $datasource->rollback();
@@ -502,6 +464,30 @@ class SharedTravelsController extends AppController {
             return $this->redirect($this->referer());
             
         } else throw new MethodNotAllowedException();
+    }
+    
+    private function _editField($id, array $field) {
+        
+        $fieldName = array_keys($field)[0];
+        $oldFieldName = 'old_'.$fieldName;
+        $fieldValue = $field[$fieldName];
+
+        $STTable = TableRegistry::get('SharedTravels');
+        $request = $STTable->updateField($field, $id);
+        $STTable->save($request,
+                ['track_history' =>
+                    [
+                        'event_type' => SharedTravel::$EVENT_TYPE_INFO_EDITED,
+                        'notify_to' =>  $this->_getUsersToSync(),
+                        'descriptor' => [
+                            'field_edited'=>$fieldName,
+                            'old_value'=>$request->$oldFieldName,
+                            'new_value'=>$fieldValue,
+                        ]
+                    ]
+                ]);
+        
+        return $request;
     }
     
     private function _notify($notificationType, SharedTravel $request) {

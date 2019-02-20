@@ -391,7 +391,7 @@ class SharedTravel extends Entity {
     
     public function updateField($fields, $options = []) {
         
-        $_defaults = ['keep_old_value'=>false];
+        $_defaults = ['keep_old_value'=>true];
         $options = $options + $_defaults;
         
         // Actualizar todos los campos
@@ -410,6 +410,7 @@ class SharedTravel extends Entity {
         unset($entity->old_date);
         unset($entity->old_state);
         unset($entity->old_address_origin);
+        unset($entity->old_final_state);
         unset($entity->modified);
 
         $entity->origin_id = ['id'=>$entity->origin_id];
