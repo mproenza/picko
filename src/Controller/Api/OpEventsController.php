@@ -61,6 +61,32 @@ class OpEventsController extends AppController {
         ]);
     }
     
+    public function hasPendingSync($objectId) {
+        
+        $userId = $this->Auth->user('id');
+        
+        $SyncQueueTable = TableRegistry::get('ApiSync.SyncQueue');
+        
+        // Elementos en la cola que no se han sincronizado con ese usuario y que pertenecen al objeto con id = objectId
+        $queueEntries = $SyncQueueTable->find()
+            ->innerJoinWith('OpEvents')
+            ->where(['user_id' => $userId, 'sync_date IS NULL', 'object_id' =>$objectId])
+            ->toArray();
+        
+        $hasPendingSync = !empty($queueEntries);
+        
+        $events = [];
+        if ($hasPendingSync) {
+            $eventsIds = array_column($queueEntries, 'event_id');
+            $events = $this->getEvents($eventsIds);
+        }
+        
+        $this->set([
+            'hasPendingSync' => $hasPendingSync,
+            'data' => $events
+        ]);
+    }
+    
     public function getEventsByPages($page, $countDays = 3) {
         
         $startDay = $page * $countDays - 1;
@@ -140,6 +166,23 @@ class OpEventsController extends AppController {
             'data' => $events
         ]);
     }*/
+    
+    private function getEvents(array $ids) {
+        $OpEventsTable = TableRegistry::get('ApiSync.OpEvents');
+            $events = $OpEventsTable->find()
+                    ->where([
+                        'id IN' => $ids
+                    ])
+                    ->order(['id ASC'])
+                    ->formatResults(function (\Cake\Collection\CollectionInterface $results) {
+                        return $results->map(function ($entity) {
+                            return $this->preprocessEntityEvent($entity);
+                        });
+                    })
+                    ->toArray();
+        
+        return $events;
+    }
     
     private function preprocessEntityEvent(\Cake\ORM\Entity $entity) {
         // Preprocesar para la app movil

@@ -2,6 +2,10 @@
 namespace App\Controller\Api;
 
 use App\Controller\Api\AppController;
+use App\Model\Entity\SharedTravel;
+use Cake\Collection\CollectionInterface;
+use Cake\Datasource\ConnectionManager;
+use Cake\Network\Exception\InternalErrorException;
 use Cake\ORM\TableRegistry;
 
 class SharedTravelsController extends AppController {
@@ -25,10 +29,10 @@ class SharedTravelsController extends AppController {
         $sharedTravels = 
             $STTable->find()
                 ->where([
-                    'date >'=>date('Y-m-d', strtotime('January 1, 2019')) // Que no esten expiradas
-                ])->formatResults(function (\Cake\Collection\CollectionInterface $results) {
+                    'date >'=>date('Y-m-d', strtotime('January 1, 2019')) // A partir de 1 Ene 2019
+                ])->formatResults(function (CollectionInterface $results) {
                     return $results->map(function ($entity) {
-                        return \App\Model\Entity\SharedTravel::preprocessForApi($entity);
+                        return SharedTravel::preprocessForApi($entity);
                     });
                 })->toArray();
         
@@ -40,7 +44,7 @@ class SharedTravelsController extends AppController {
     
     public function confirmRequest($idToken) {
         
-        $datasource = \Cake\Datasource\ConnectionManager::get('default');
+        $datasource = ConnectionManager::get('default');
         $datasource->begin();
         
         $OK = $this->SharedTravelActions->confirm($idToken);
@@ -48,7 +52,7 @@ class SharedTravelsController extends AppController {
         if(!$OK) {
             // TODO: Enviar notificacion de fallo?
             $datasource->rollback();
-            throw new \Cake\Network\Exception\InternalErrorException('Ocurrió un error confirmando la solicitud');
+            throw new InternalErrorException('Ocurrió un error confirmando la solicitud');
         } 
         
         $datasource->commit();

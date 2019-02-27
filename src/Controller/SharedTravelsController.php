@@ -39,8 +39,20 @@ class SharedTravelsController extends AppController {
     public function home() {$this->viewBuilder()->setLayout('homepage');}
     
     public function index() {
-        $this->paginate = ['order'=>['date'=>'ASC', 'departure_time'=>'ASC', 'id'=>'ASC'], 'limit'=>100];
-        $this->set('travels', $this->paginate($this->SharedTravels, ['conditions'=> ['email !=' => 'martin@yotellevocuba.com'] ]));
+        
+        /*
+        $this->paginate = ['limit'=>100, 'order'=>['SharedTravels.date', 'SharedTravels.departure_time', ' 1000 * SharedTravels.origin_id + SharedTravels.destination_id']]; 
+        $results = $this->paginate($this->SharedTravels, ['conditions'=> ['email !=' => 'martin@yotellevocuba.com'] ]);
+        */
+        
+        // Hago la paginacion aqui con una query porque es la unica forma en que se obtienen bien los resultados ordenados, no se por que...
+        $this->paginate = ['limit'=>100];        
+        $query = $this->SharedTravels->find()
+                ->where(['email !=' => 'martin@yotellevocuba.com'])
+                ->order(['SharedTravels.date', 'SharedTravels.departure_time', ' 1000 * SharedTravels.origin_id + SharedTravels.destination_id']);        
+        $results = $this->paginate($query);
+        
+        $this->set('travels', $results);
     }
 
     public function book($routeSlug = null) {

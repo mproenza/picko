@@ -72,6 +72,7 @@ class SharedTravelsTable extends Table {
         
         // Si no se esta haciendo una llamada a la API
         if(!Configure::read('App.calling_api')) {
+            
             if(!isset($options['hydrate']) || !$options['hydrate']) {
                 // Hacer que se devuelvan resultados a la Cakephp 2
                 $query->hydrate(false); //para que devuelva arrays, no objetos
@@ -79,40 +80,13 @@ class SharedTravelsTable extends Table {
                     return $results->map(function ($row) {
 
                         $rowFull = SharedTravel::_routeFull($row);
-
                         $formatted = ['SharedTravel'=>$rowFull];
 
                         return $formatted;
                     });
                 });
-            } else {
-                /*$query->formatResults(function (\Cake\Collection\CollectionInterface $results) {
-                    return $results->map(function ($entity) {                       
-                        
-                        // Esto es para el ORM de la app movil
-                        $entity->origin_id = ['id'=>$entity->origin_id];
-                        $entity->destination_id = ['id'=>$entity->destination_id];
-
-                        return $entity;
-                        
-                    });
-                });*/
-            }           
+            }
         }
-        
-        // API
-        /*else {
-            $query->formatResults(function (\Cake\Collection\CollectionInterface $results) {
-                return $results->map(function ($entity) {
-                    // Esto es para el ORM de la app movil
-                    $entity->origin_id = ['id'=>$entity->origin_id];
-                    $entity->destination_id = ['id'=>$entity->destination_id];
-
-                    return $entity;
-                });
-            });
-        }*/
-        
     }
 
     public function findByToken($token, array $options = []) {
@@ -255,19 +229,6 @@ class SharedTravelsTable extends Table {
             if($request == null || empty ($request)) throw new \Cake\Network\Exception\NotFoundException();
         }
         
-        /*$_defaults = ['keep_old_value'=>false];
-        $options = $options + $_defaults;
-    
-        // Actualizar todos los campos
-        foreach ($fields as $key => $value) {
-            // Salvar el valor anterior
-            if($options['keep_old_value']) {
-                $oldFieldName = 'old_'.$key;
-                $request->$oldFieldName = $request->$key;
-            }
-
-            $request->$key = $value;
-        }*/
         $request->updateField($fields, $options);
         
         return $request;
@@ -279,7 +240,7 @@ class SharedTravelsTable extends Table {
         
         $users = $UsersTable->find()
                     ->where([
-                        'role IN'=>['admin', 'operator']
+                        'role IN'=>['admin', 'operator', 'coordinator']
                     ])
                     ->toArray();
         

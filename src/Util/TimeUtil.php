@@ -9,7 +9,7 @@ class TimeUtil {
     
     public static function prettyDate($date, $dayOfWeek = true) {
         
-        if($date instanceof \Cake\I18n\FrozenTime) {
+        if($date instanceof \Cake\I18n\FrozenTime || $date instanceof \Cake\I18n\FrozenDate) {
             $day = $date->format('j');
             $month = __(TimeUtil::$months_es[$date->format('n') - 1]);
             $year = $date->format('Y');
