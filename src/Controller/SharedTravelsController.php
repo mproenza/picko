@@ -45,11 +45,16 @@ class SharedTravelsController extends AppController {
         $results = $this->paginate($this->SharedTravels, ['conditions'=> ['email !=' => 'martin@yotellevocuba.com'] ]);
         */
         
-        // Hago la paginacion aqui con una query porque es la unica forma en que se obtienen bien los resultados ordenados, no se por que...
+        // Hago la paginacion aqui con una query porque es la unica forma en que se obtienen bien los resultados ordenados como quiero, no se por que...
         $this->paginate = ['limit'=>100];        
         $query = $this->SharedTravels->find()
                 ->where(['email !=' => 'martin@yotellevocuba.com'])
-                ->order(['SharedTravels.date', 'SharedTravels.departure_time', ' 1000 * SharedTravels.origin_id + SharedTravels.destination_id']);        
+                ->order([
+                    'SharedTravels.date', 
+                    "FIELD(state, 'C', 'A', 'X', 'P')", // Ordenar por estado para que salgan agrupados
+                    'SharedTravels.departure_time', 
+                    '1000 * SharedTravels.origin_id + SharedTravels.destination_id' // Esto es para ordenar por pares origen-destino
+                    ]);
         $results = $this->paginate($query);
         
         $this->set('travels', $results);

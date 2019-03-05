@@ -13,6 +13,7 @@ return [
         'DebugKit' => $baseDir . '/vendor/cakephp/debug_kit/',
         'EmailQueue' => $baseDir . '/plugins/EmailQueue/',
         'Migrations' => $baseDir . '/vendor/cakephp/migrations/',
-        'Muffin/Footprint' => $baseDir . '/vendor/muffin/footprint/'
+        'Muffin/Footprint' => $baseDir . '/vendor/muffin/footprint/',
+        'Muffin/Trash' => $baseDir . '/vendor/muffin/trash/'
     ]
 ];

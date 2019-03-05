@@ -15,6 +15,7 @@
         "josegonzalez/dotenv": "2.*",
         "mobiledetect/mobiledetectlib": "2.*",
         "muffin/footprint": "^1.2",
+        "muffin/trash": "^2.1",
         "ozee31/cakephp-cors": "^1.1"
     },
     "require-dev": {

@@ -1493,6 +1493,66 @@
         ]
     },
     {
+        "name": "muffin/trash",
+        "version": "2.1.0",
+        "version_normalized": "2.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/UseMuffin/Trash.git",
+            "reference": "a995ce3eafcadc4adc94eacf4af9313f2b3a2f4d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/UseMuffin/Trash/zipball/a995ce3eafcadc4adc94eacf4af9313f2b3a2f4d",
+            "reference": "a995ce3eafcadc4adc94eacf4af9313f2b3a2f4d",
+            "shasum": ""
+        },
+        "require": {
+            "cakephp/orm": "^3.5"
+        },
+        "require-dev": {
+            "cakephp/cakephp": "^3.5",
+            "cakephp/chronos": "^1.1",
+            "phpunit/phpunit": "^5.7.14|^6.0"
+        },
+        "time": "2018-04-17T21:27:44+00:00",
+        "type": "cakephp-plugin",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Muffin\\Trash\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jad Bitar",
+                "homepage": "http://jadb.io",
+                "role": "Author"
+            },
+            {
+                "name": "ADmad",
+                "homepage": "https://github.com/ADmad",
+                "role": "Author"
+            },
+            {
+                "name": "Others",
+                "homepage": "https://github.com/usemuffin/trash/graphs/contributors"
+            }
+        ],
+        "description": "Adds soft delete support to CakePHP 3 ORM tables.",
+        "homepage": "https://github.com/usemuffin/trash",
+        "keywords": [
+            "cakephp",
+            "muffin",
+            "orm",
+            "trash"
+        ]
+    },
+    {
         "name": "nikic/php-parser",
         "version": "v3.1.1",
         "version_normalized": "3.1.1.0",

@@ -218,6 +218,7 @@ Plugin::load('CakeDC/Users', ['routes' => false, 'bootstrap' => true]);
 Plugin::load('Crud');
 Plugin::load('ADmad/JwtAuth');
 Plugin::load('Muffin/Footprint');
+//Plugin::load('Muffin/Trash');
 
 
 /*
