@@ -18,18 +18,18 @@ class SharedTravelsController extends AppController {
     
     public function iniFetch() {
         
-        // Eliminar de la queue de eventos a sincronizar todo lo de este usuario
+        /*// Eliminar de la queue de eventos a sincronizar todo lo de este usuario
         $userId = $this->Auth->user('id');
         if($userId) {
             $SyncQueueTable = TableRegistry::get('ApiSync.SyncQueue');
             $SyncQueueTable->deleteAll(['user_id'=>$userId]);
-        }
+        }*/
         
         $STTable = TableRegistry::get('SharedTravels');
         $sharedTravels = 
             $STTable->find()
                 ->where([
-                    'date >'=>date('Y-m-d', strtotime('January 1, 2019')) // A partir de 1 Ene 2019
+                    'date >'=>date('Y-m-d', strtotime('January 1, 2019')) // A partir de 1ro Ene 2019
                 ])->formatResults(function (CollectionInterface $results) {
                     return $results->map(function ($entity) {
                         return SharedTravel::preprocessForApi($entity);
