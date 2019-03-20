@@ -45,7 +45,7 @@
                             <hr/>
                             <div>
                                 <a class="btn btn-block btn-info" href="#<?php echo __d('meta', 'rutas-y-precios')?>" style="white-space: normal;">
-                                    <big><big><?php echo __d('home', 'Mira todas las rutas y precios')?></big></big>
+                                    <big><?php echo __d('home', 'Mira todas las rutas y precios')?></big>
                                 </a>
                             </div>
                         </div>
