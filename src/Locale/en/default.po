@@ -58,3 +58,6 @@ msgstr "Saturday"
 
 msgid "Enviando solicitud"
 msgstr "Sending request"
+
+msgid "NUEVO"
+msgstr "NEW"

@@ -8,6 +8,10 @@ $route = SharedTravel::_routeFull($route);
 ?>
 <div class="card">
     <div class="card-body">
+        <?php if(isset($route['new']) && $route['new']):?>
+            <span class="badge badge-success"><?php echo __('NUEVO')?></span>
+        <?php endif?>
+        
         <h6 class="card-title">
             <?php echo __d('shared_travels', '{0} > {1}', '<span style="display:inline-block"><code>'.$route['origin'].'</code></span>', '<span style="display:inline-block"><code><big><big><big><b>'.$route['destination'].'</b></big></big></big></code></span>')?>
         </h6>

@@ -542,7 +542,7 @@ class SharedTravelsController extends AppController {
         
         $users = $UsersTable->find()
                     ->where([
-                        'role IN'=>['admin', 'operator']
+                        'role IN'=>['admin', 'operator', 'coordinator']
                     ])
                     ->toArray();
         

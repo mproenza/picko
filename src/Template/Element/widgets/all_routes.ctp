@@ -6,8 +6,13 @@
         <?php foreach (SharedTravel::$localities as $locality_id => $locality):?>
             <?php if(!isset($locality['use_as_origin']) || $locality['use_as_origin']):?>
             <li class="nav-item">
-                <a class="dropdown-item show-routes" href="#taxi-from-<?php echo str_replace(' ', '-', $locality['name'])?>"><?php echo $locality['name']?></a>
-            </li>
+                <a class="dropdown-item show-routes" href="#taxi-from-<?php echo str_replace(' ', '-', $locality['name'])?>">
+                    <?php echo $locality['name']?>
+                    <?php if(isset($locality['new']) && $locality['new']):?>
+                        <span class="badge badge-success"><?php echo __('NUEVO')?></span>
+                    <?php endif?>
+                </a>
+                </li>
             <?php endif;?>
         <?php endforeach?>
     </ul>
