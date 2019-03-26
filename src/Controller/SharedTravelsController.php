@@ -20,6 +20,7 @@ class SharedTravelsController extends AppController {
     private static $NOTIFICATION_TYPE_DATE_CHANGED = 0;
     private static $NOTIFICATION_TYPE_CANCELLED = 1;
     private static $NOTIFICATION_TYPE_PICKUP_ADDRESS_CHANGED = 2;
+    private static $NOTIFICATION_TYPE_DROPOFF_ADDRESS_CHANGED = 2;
     
     private $ip_blacklist = [''];
     
@@ -425,6 +426,28 @@ class SharedTravelsController extends AppController {
             
             // Notificar al coordinador
             $this->_notify(SharedTravelsController::$NOTIFICATION_TYPE_PICKUP_ADDRESS_CHANGED, $request);
+            
+            $datasource->commit();
+            
+            return $this->redirect($this->referer());
+            
+        } else throw new MethodNotAllowedException();
+    }
+    public function changeDropoffAddress($id) {
+        if ($this->request->is('post') || $this->request->is('put')) {
+            
+            $datasource = ConnectionManager::get('default');
+            $datasource->begin();
+            
+            $request = $this->_editField($id, ['address_destination' => $this->request->getData('address_destination')]);
+            
+            if(!$request) {
+                $datasource->rollback();
+                throw new Exception('Error actualizando la direccion de destino.');
+            }
+            
+            // Notificar al coordinador
+            $this->_notify(SharedTravelsController::$NOTIFICATION_TYPE_DROPOFF_ADDRESS_CHANGED, $request);
             
             $datasource->commit();
             

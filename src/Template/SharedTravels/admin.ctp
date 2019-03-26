@@ -4,14 +4,13 @@ use App\Util\TimeUtil;
 ?>
 <div class="container">
     <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <?php echo __d('shared_travels', 'Transfer desde {0} hasta {1} el {2}', '<code><big>'.$request['SharedTravel']['origin'].'</big></code>', '<code><big>'.$request['SharedTravel']['destination'].'</big></code>', '<code><big>'.TimeUtil::prettyDate($request['SharedTravel']['date'], false).'</big></code>')?>
-            <hr/>
+        <div class="col-md-6">
+            <?php 
+            echo $this->element('shared_travel_templates/shared_travel_admin_mini', compact('request') + ['showDetails'=>true]);
+            //echo $this->element('shared_travel', compact('request') + array('showDetails'=>true))
+            ?>
         </div>
-        <div class="col-md-8 offset-md-2">
-            <?php echo $this->element('shared_travel', compact('request') + array('showDetails'=>true))?>
-            
-            <hr/>
+        <div class="col-md-6">
             <div><?php echo $this->Html->link(
                     'Cancelar', 
                     array('controller'=>'shared-rides', 'action'=>'cancel/'.$request['SharedTravel']['id_token']),
@@ -32,7 +31,41 @@ use App\Util\TimeUtil;
                 <?php echo $this->element('form_shared_travel_date_controls', ['request'=>$request])?>
             </div>
             
+            <!-- EDIT PICKUP ADDRESS -->
+            <br/>
+            <br/>
+            <div>
+                <?php echo $this->Form->create('SharedTravel', array('url' => array('controller' => 'shared-rides', 'action' => 'changePickupAddress/'.$request['SharedTravel']['id'])));?>
+                <fieldset>
+                    <div class="form-group required">
+                    <label for="AddressOrigin">Nueva dirección de recogida</label>
+                    <textarea name="address_origin" class="form-control" value="<?= $request['SharedTravel']['address_origin']?>" placeholder="Dirección de la casa o nombre del hotel" rows="2" id="AddressOrigin" required="required"></textarea>
+                        <div class="invalid-feedback"><?php echo __d('errors', 'La dirección de recogida es obligatoria')?></div>
+                    </div>
+                    <?php echo $this->Form->submit('Actualizar Dirección Recogida')?>
+                </fieldset>
+                <?php echo $this->Form->end(); ?>
+            </div>
+            
+            <!-- EDIT DROPOFF ADDRESS -->
+            <br/>
+            <br/>
+            <div>
+                <?php echo $this->Form->create('SharedTravel', array('url' => array('controller' => 'shared-rides', 'action' => 'changeDropoffAddress/'.$request['SharedTravel']['id'])));?>
+                <fieldset>
+                    <div class="form-group required">
+                    <label for="AddressDestination">Nueva dirección de destino</label>
+                    <textarea name="address_destination" class="form-control" value="<?= $request['SharedTravel']['address_destination']?>" placeholder="Dirección de la casa o nombre del hotel" rows="2" id="AddressDestination" required="required"></textarea>
+                        <div class="invalid-feedback"><?php echo __d('errors', 'La dirección de destino es obligatoria')?></div>
+                    </div>
+                    <?php echo $this->Form->submit('Actualizar Dirección Destino')?>
+                </fieldset>
+                <?php echo $this->Form->end(); ?>
+            </div>
+            
             <!-- FINAL STATE -->
+            <br/>
+            <br/>
             <div>
                 <?php $states = App\Model\Entity\SharedTravel::$finalStates;?>
                 <?php
@@ -47,29 +80,10 @@ use App\Util\TimeUtil;
                     
                     echo $this->Form->control('final_state', ['options' => $states, 'label'=>false]);
                     ?>
-                    <br/>
                     <?php echo $this->Form->submit('Actualizar Estado Final')?>
                 </fieldset>
                 <?php echo $this->Form->end(); ?>
             </div>
-            
-            <!-- EDIT PICKUP ADDRESS -->
-            <br/>
-            <br/>
-            <div>
-                <?php echo $this->Form->create('SharedTravel', array('url' => array('controller' => 'shared-rides', 'action' => 'changePickupAddress/'.$request['SharedTravel']['id'])));?>
-                <fieldset>
-                    <div class="form-group required">
-                    <label for="AddressOrigin">Nueva dirección de recogida</label>
-                    <textarea name="address_origin" class="form-control" placeholder="Dirección de la casa o nombre del hotel" rows="2" id="AddressOrigin" required="required"></textarea>
-                        <div class="invalid-feedback"><?php echo __d('errors', 'La dirección de recogida es obligatoria')?></div>
-                    </div>
-                    <br/>
-                    <?php echo $this->Form->submit('Actualizar Dirección Recogida')?>
-                </fieldset>
-                <?php echo $this->Form->end(); ?>
-            </div>
-            
         </div>
     </div>
 </div>

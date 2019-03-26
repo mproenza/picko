@@ -88,6 +88,7 @@ class OpEventsController extends AppController {
                         return $this->preprocessEntityEvent($entity);
                     });
                 });
+                
         $events = $this->paginate($query);
         
         $this->set([
