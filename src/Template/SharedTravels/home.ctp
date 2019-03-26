@@ -37,7 +37,7 @@
                                 <li>La Habana > Trinidad: &nbsp;<big>$35</big></li>
                                 <li>Viñales > La Habana: &nbsp;<big>$25</big></li>
                                 <li>La Habana > Varadero: &nbsp;<big>$25</big></li>
-                                <li>Viñales > Trinidad: &nbsp;<big>$50</big></li>
+                                <li>La Habana > Cayo Sta. María: &nbsp;<big>$50</big></li>
                                 <li>Cayo Guillermo > La Habana: &nbsp;<big>$65</big></li>
                             </ul>
                             <br/>

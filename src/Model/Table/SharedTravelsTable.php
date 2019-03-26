@@ -63,9 +63,11 @@ class SharedTravelsTable extends Table {
             }
         }
 
-        if (isset($data['email'])) {
-            $data['email'] = strtolower($data['email']);
-        }
+        if (isset($data['email'])) $data['email'] = strtolower($data['email']);
+        
+        if (isset($data['address_origin'])) $data['address_origin'] = trim($data['address_origin']);
+        if (isset($data['address_destination'])) $data['address_destination'] = trim($data['address_destination']);
+        if (isset($data['contacts'])) $data['contacts'] = trim($data['contacts']);
     }
     
     public function beforeFind(Event $event, Query $query, ArrayObject $options, $primary) {

@@ -60,6 +60,41 @@ class OpEventsController extends AppController {
             'data' => $events
         ]);
     }
+        
+    public function index() {
+        $userId = $this->Auth->user('id');
+        
+        $this->paginate = ['limit'=>5];
+        $OpEventsTable = TableRegistry::get('ApiSync.OpEvents');
+        
+        $query = $OpEventsTable->find()
+                
+                // Buscar sl ls evets que ya se sicrizar
+                ->select($OpEventsTable)->select(['SyncQueue.sync_batch'/*, 'SyncQueue.sync_date'*/])
+                ->join([
+                    'SyncQueue' => [
+                        'table' => 'sync_events_queue',
+                        'type' => 'INNER',
+                        'conditions' => ['SyncQueue.event_id = OpEvents.id', 'SyncQueue.user_id'=>$userId, 'SyncQueue.sync_batch IS NOT NULL']
+                    ]
+                ])
+                /*->contain(['SyncQueue' => function ($q) use ($userId) {
+                    return $q->select(['event_id', 'sync_batch', 'sync_date'])->where(['user_id'=>$userId, 'sync_batch IS NOT NULL']);
+                }])*/
+                
+                ->order([ 'OpEvents.id DESC' ])
+                ->formatResults(function (\Cake\Collection\CollectionInterface $results) {
+                    return $results->map(function ($entity) {
+                        return $this->preprocessEntityEvent($entity);
+                    });
+                });
+        $events = $this->paginate($query);
+        
+        $this->set([
+            'success' => true,
+            'data' => $events->toArray()
+        ]);
+    }
     
     public function hasPendingSync($objectId) {
         
@@ -197,6 +232,12 @@ class OpEventsController extends AppController {
 
         if($entity->descriptor == null) $entity->descriptor = new \stdClass();
         else $entity->descriptor = json_decode($entity->descriptor);
+        
+        // Cambiar 'SyncQueue' por 'sync'
+        if(isset($entity->SyncQueue)) {
+            $entity->sync = $entity->SyncQueue;
+            unset($entity->SyncQueue);
+        } else $entity->sync = new \stdClass();
 
         $entity->object_final_state = \App\Model\Entity\SharedTravel::preprocessForApi(json_decode($entity->object_final_state));
         
