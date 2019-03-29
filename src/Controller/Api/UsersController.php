@@ -17,11 +17,12 @@ class UsersController extends AppController
     public function token() {
         $user = $this->Auth->identify();
         if (!$user) {
-            throw new UnauthorizedException('Invalid username or password');
+            throw new UnauthorizedException('Usuario o contraseña incorrectos');
         }
 
         $this->set([
             'success' => true,
+            'user' => ['name'=>$user['first_name'], 'role' => $user['role']],
             'data' => JWT::encode([
                     'sub' => $user['id'],
                     'exp' =>  time() + 604800

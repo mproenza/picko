@@ -426,5 +426,38 @@ class SharedTravel extends Entity {
         return $entity;
     }
     
+    public static function getRoutesForApi() {
+        $routes = self::$routes;
+        
+        //
+        foreach ($routes as &$r) {
+            $info = self::_routeInfo($r['origin_id'], $r['destination_id']);
+            
+            $r['origin_id'] = ['origin_id' => $r['origin_id']];
+            $r['destination_id'] = ['destination_id' => $r['destination_id']];
+            
+            $r['info'] = $info;
+        }
+        
+        return $routes;
+    }
+    
+    public static function getLocalitiesForApi() {
+        $localities = [];
+        
+        //
+        foreach (self::$localities as $id=>$l) {
+            $l['id'] = $id;
+            
+            unset($l['code']);
+            unset($l['slug']);
+            unset($l['new']);
+            
+            $localities[] = $l;
+        }
+        
+        return $localities;
+    }
+    
     
 }
