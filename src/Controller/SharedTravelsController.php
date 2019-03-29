@@ -20,7 +20,8 @@ class SharedTravelsController extends AppController {
     private static $NOTIFICATION_TYPE_DATE_CHANGED = 0;
     private static $NOTIFICATION_TYPE_CANCELLED = 1;
     private static $NOTIFICATION_TYPE_PICKUP_ADDRESS_CHANGED = 2;
-    private static $NOTIFICATION_TYPE_DROPOFF_ADDRESS_CHANGED = 2;
+    private static $NOTIFICATION_TYPE_DROPOFF_ADDRESS_CHANGED = 3;
+    private static $NOTIFICATION_TYPE_CONTACTS_CHANGED = 4;
     
     private $ip_blacklist = [''];
     
@@ -412,42 +413,29 @@ class SharedTravelsController extends AppController {
     }
     
     public function changePickupAddress($id) {
-        if ($this->request->is('post') || $this->request->is('put')) {
-            
-            $datasource = ConnectionManager::get('default');
-            $datasource->begin();
-            
-            $request = $this->_editField($id, ['address_origin' => $this->request->getData('address_origin')]);
-            
-            if(!$request) {
-                $datasource->rollback();
-                throw new Exception('Error actualizando la direccion de recogida.');
-            }
-            
-            // Notificar al coordinador
-            $this->_notify(SharedTravelsController::$NOTIFICATION_TYPE_PICKUP_ADDRESS_CHANGED, $request);
-            
-            $datasource->commit();
-            
-            return $this->redirect($this->referer());
-            
-        } else throw new MethodNotAllowedException();
+        return $this->changeFieldValue($id, 'address_origin', SharedTravelsController::$NOTIFICATION_TYPE_PICKUP_ADDRESS_CHANGED);
     }
     public function changeDropoffAddress($id) {
+        return $this->changeFieldValue($id, 'address_destination', SharedTravelsController::$NOTIFICATION_TYPE_DROPOFF_ADDRESS_CHANGED);
+    }
+    public function changeContactInfo($id) {
+        return $this->changeFieldValue($id, 'contacts', SharedTravelsController::$NOTIFICATION_TYPE_CONTACTS_CHANGED);
+    }
+    private function changeFieldValue($id, $fieldName, $notificationType) {
         if ($this->request->is('post') || $this->request->is('put')) {
             
             $datasource = ConnectionManager::get('default');
             $datasource->begin();
             
-            $request = $this->_editField($id, ['address_destination' => $this->request->getData('address_destination')]);
+            $request = $this->_editField($id, [$fieldName => $this->request->getData($fieldName)]);
             
             if(!$request) {
                 $datasource->rollback();
-                throw new Exception('Error actualizando la direccion de destino.');
+                throw new Exception('Error actualizando la solicitud.');
             }
             
             // Notificar al coordinador
-            $this->_notify(SharedTravelsController::$NOTIFICATION_TYPE_DROPOFF_ADDRESS_CHANGED, $request);
+            $this->_notify($notificationType, $request);
             
             $datasource->commit();
             

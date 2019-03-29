@@ -63,6 +63,22 @@ use App\Util\TimeUtil;
                 <?php echo $this->Form->end(); ?>
             </div>
             
+            <!-- EDIT CONTACTS -->
+            <br/>
+            <br/>
+            <div>
+                <?php echo $this->Form->create('SharedTravel', array('url' => array('controller' => 'shared-rides', 'action' => 'changeContactInfo/'.$request['SharedTravel']['id'])));?>
+                <fieldset>
+                    <div class="form-group required">
+                    <label for="Contacts">Contactos</label>
+                    <textarea name="contacts" class="form-control" value="<?= $request['SharedTravel']['contacts']?>" placeholder="Contactos personales y/o de estancia" rows="2" id="Contacts" required="required"></textarea>
+                        <div class="invalid-feedback"><?php echo __d('errors', 'El contacto es obligatorio')?></div>
+                    </div>
+                    <?php echo $this->Form->submit('Actualizar Contactos')?>
+                </fieldset>
+                <?php echo $this->Form->end(); ?>
+            </div>
+            
             <!-- FINAL STATE -->
             <br/>
             <br/>
