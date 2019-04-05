@@ -108,8 +108,8 @@ msgid "Estas son las rutas, precios y horarios de nuestros taxis en Cuba"
 msgstr "These are the routes, prices and departure times of our taxis in Cuba"
 
 #: View/SharedTravels/home.ctp:8
-msgid "Reserva tus asientos en un taxi a tu destino:"
-msgstr "Book your seats in a taxi to your destination:"
+msgid "Reserva tus asientos hacia tu destino:"
+msgstr "Book your seats to your destination:"
 
 #: View/SharedTravels/home.ctp:8
 msgid "Cada taxi acomoda a <strong>{0} pasajeros</strong>"

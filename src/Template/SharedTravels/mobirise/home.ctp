@@ -249,7 +249,7 @@ use App\Model\Entity\SharedTravel;?>
                     <h2 class="mbr-section-title pb-5 mbr-fonts-style display-2">
                   <?= __d('/mobirise/home', 'Estas son las rutas, precios y horarios de nuestros taxis en Cuba')?>
                     </h2>
-                    <h3><?= __d('/mobirise/home', 'Reserva tus asientos en un taxi a tu destino:')?></h3>
+                    <h3><?= __d('/mobirise/home', 'Reserva tus asientos hacia tu destino:')?></h3>
                     <br/>
                     <div><?= __d('/mobirise/home', 'Cada taxi acomoda a <strong>{0} pasajeros</strong>', 4)?></div>
                     <div><?= __d('/mobirise/home', 'El taxi te recoge en tu estacia u hotel')?></div>
