@@ -1,0 +1,204 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2014-11-13 11:21-0500\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+
+#: View/SharedTravels/home.ctp:8
+msgid "Comparte tu taxi en {0}. Gasta menos para llegar a cada destino"
+msgstr "Share your taxi in {0}. Spend less getting to each destination"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Llega desde / hasta {0} y otros. Haz cada traslado junto a otros viajeros que reservaron tu misma ruta. <strong>Paga sólo por tus asientos.</strong>"
+msgstr "Get from / to {0} and others. Do each trip with other travelers who booked the same route as you. <strong>Pay only for your seats.</strong>"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Autos muy confortables"
+msgstr "Very confortable cars"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Sólo 4 pasajeros en un taxi"
+msgstr "Only 4 passengers in one taxi"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Recogida en tu estancia u hotel"
+msgstr "Pick up at your accommodation or hotel"
+
+#: View/SharedTravels/home.ctp:8
+msgid "VER RUTAS DE TAXI Y PRECIOS"
+msgstr "SEE TAXI ROUTES AND PRICES"
+
+#: View/SharedTravels/home.ctp:8
+msgid "En PickoCar organizamos viajes compartidos en taxi hacia diferentes destinos en {0} todos los días"
+msgstr "At PickoCar we organize shared rides in taxi to different destinations in {0} every day"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Con sólo reservar, arreglamos todo de manera que compartas el taxi con otros viajeros que van al mismo destino que tú y que también han reservado con nosotros para la misma fecha y horario."
+msgstr "After you book, we arrange everything in a way that you share your trip with other travelers going to the same destination as you, who also booked with us for the same date and time."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Algunos de nuestros precios <span style="display: inline-block">(por asiento)</span>"
+msgstr "Some of our prices <span style="display: inline-block">(per seat)</span>"
+
+#: View/SharedTravels/home.ctp:8
+msgid "También {0} y otros"
+msgstr "Also {0} and others"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Mira todas las rutas y precios"
+msgstr "See all routes and prices"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Muchos destinos"
+msgstr "Many destinations"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Usa nuestra amplia red de taxis que conectan lugares favoritos como {0} y otros."
+msgstr "Use our wide network of taxis connecting favourite places like {0} and others."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Viaja rápido"
+msgstr "Travel quickly"
+
+#: View/SharedTravels/home.ctp:8
+msgid "En un <strong>auto moderno con aire acondicionado</strong> y con <strong>sólo 4 pasajeros</strong> dentro, todos yendo al mismo destino y con reservación de antemano."
+msgstr "In an <strong>air-conditioned modern car</strong> with <strong>only 4 passengers</strong> inside, all going to the same destination and with their bookings before hand."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Puerta a puerta"
+msgstr "Go door to door"
+
+#: View/SharedTravels/home.ctp:8
+msgid "El taxi <strong>te recoge en tu casa de estancia u hotel</strong> y <strong>te lleva hasta tu próxima estancia</strong>. No es necesario salir a buscar un taxi o atrapar tu bus yendo a la estación."
+msgstr "The taxi <strong>picks you up at your guest house or hotel</strong> and <strong>drops you off at your next accommodation</strong>. No need to go outside to find a taxi or catch your bus at a distant station."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Ahorra dinero"
+msgstr "Save money"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Si viajas solo, en pareja o son tres personas y <strong>no quieren pagar el viaje completo en un taxi privado</strong> como si fueran cuatro personas."
+msgstr "If you travel alone, in a couple or a three-people pack and <strong>you don't want to pay the whole trip in a private taxi</strong> as if you were four people."
+
+#: View/SharedTravels/home.ctp:8
+msgid "La magia de compartir taxi y ahorrar dinero en tu viaje a Cuba"
+msgstr "The magic of sharing taxi and saving money in your trip to Cuba"
+
+#: View/SharedTravels/home.php:8
+msgid "En un traslado de <b>La Habana a Trinidad</b> en que se pagarían <b>{0} - {1} a un taxi privado</b> -sin importar cuántas personas sean-<b> a 2 personas les costaría en PickoCar {2} en total ({3} por asiento)</b>, ahorrándose entre {4} y {5}."
+msgstr "In a trip from <b>La Habana to Trinidad</b> in which you'd pay <b>{0} - {1} to a private taxi</b> -no matter how many people you are- <b>2 people would pay only {2} total at PickoCar ({3} per seat)</b>, saving between {4} and {5}."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Comenzar a reservar mis traslados"
+msgstr "Start to book my trips"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Estas son las rutas, precios y horarios de nuestros taxis en Cuba"
+msgstr "These are the routes, prices and departure times of our taxis in Cuba"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Reserva tus asientos en un taxi a tu destino:"
+msgstr "Book your seats in a taxi to your destination:"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Cada taxi acomoda a <strong>{0} pasajeros</strong>"
+msgstr "Each taxi accommodates <strong>{0} passengers</strong>"
+
+#: View/SharedTravels/home.ctp:8
+msgid "El taxi te recoge en tu estacia u hotel"
+msgstr "The taxi picks you up at your guest-house or hotel"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Uno de nuestros taxis siempre te recogerá en el lugar y fecha que indiques"
+msgstr "One of our taxis will always pick you up at the place and date you indicate"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Reservar un taxi saliendo desde:"
+msgstr "Book a taxi departing from:"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Taxi <b>desde {0}</b> hasta ..."
+msgstr "Taxi <b>from {0}</b> to ..."
+
+#: View/SharedTravels/home.ctp:8
+msgid "{0} cosas que debes tener en cuenta si vas a usar nuestros servicios"
+msgstr "{0} things you must take into account if you want to use our service"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Los horarios de salida de nuestros taxis son fijos y no pueden cambiarse"
+msgstr "The departure times of our taxis are fixed and can not be changed"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Si necesitas salir hacia tu destino en un horario diferente a los que ofrecemos, entonces no podemos atender tu necesidad."
+msgstr "If you need to depart to your destination at a different time than the ones we offer, we cannot meet your need."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Ej. Si quieres ir de Varadero a La Habana a las 10 am, no podemos hacerlo porque ese horario no lo ofrecemos."
+msgstr "Ex. If you want to go from Varadero to La Habana at 10 am, we cannot do it because we don't offer that departure time."
+
+#: View/SharedTravels/home.ctp:8
+msgid "No hacemos recogidas en los aeropuertos"
+msgstr "We do not do airport pick ups"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Ej. Si necesitas ir del aeropuerto de La Habana directamente a Viñales, no podemos hacerlo."
+msgstr "Ex. If you need to go from Havana airport to Viñales, we cannot do it."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Debido a los horarios fijos de nuestros taxis, es muy difícil hacer que las personas lleguen y salgan del aeropuerto en el momento apropiado."
+msgstr "Due to our fixed departure times, it is very difficult to make people arrive at and leave the airport at the proper time."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Sin embargo, sí aceptamos aeropuertos como lugar de destino <em>-ej. si vas de Trinidad al aeropuerto de La Habana</em>."
+msgstr "However, we do accept airport as the drop off place <em>-ex. if you go from Trinidad to Havana airport</em>."
+
+#: View/SharedTravels/home.ctp:8
+msgid "La recogida (en casa u hotel) puede demorar hasta 30 minutos después del horario establecido"
+msgstr "Pick up (at casa or hotel) can take up to 30 minutes after the established time"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Ej. Si reservas para ir de La Habana a Varadero a las 8 am, el taxi te pudiera recoger a las 8:30 am."
+msgstr "Ex. If you book to go from La Habana to Varadero at 8 am, the taxi could pick you up at 8:30 am."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Esto se debe a que tenemos que recoger pasajeros en diferentes lugares (normalmente en dos lugares diferentes). El taxi recogerá a unos pasajeros antes que otros, y luego partirá hacia el destino."
+msgstr "This is because we need to pick passengers up at different places (normally at two different places). The taxi goes pick some passengers before and others after, and then departs to the destination."
+
+#: View/SharedTravels/home.ctp:8
+msgid "No realizamos paradas de tipo excursionista durante los viajes"
+msgstr "We do not make excursion-like stops during the journey"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Ej. En un viaje de La Habana a Trinidad, no hacemos parada para visitar Cienfuegos."
+msgstr "Ex. In a trip from La Habana to Trinidad, we do not stop to visit Cienfuegos."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Esto se debe a que el auto debe llegar a su destino a una hora adecuada para prestar otro servicio."
+msgstr "This is because the car must get to its destination at a proper time to start another service."
+
+#: View/SharedTravels/home.ctp:8
+msgid "En los tramos largos (<em>ej. La Habana - Trinidad</em>) realizamos una parada en cafetería para merendar e ir al baño, y además se pueden solicitar otras paradas para cualquier otra necesidad."
+msgstr "We do stop during long journeys (<em>ex. La Habana - Trinidad</em>) to go for a coffee, have a snack or use the bathroom. Also, you can ask for a stop for any other need you have."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Ver las rutas y horarios disponibles"
+msgstr "See all the routes and departure times available"
+
+#: View/SharedTravels/home.ctp:8
+msgid "PickoCar es un <b>servicio de taxi en Cuba</b>, con excelentes precios y rutas que conectan muchos de los destinos mas importantes en la isla."
+msgstr "PickoCar is a <b>taxi service in Cuba</b>, with amazing prices and routes that connect many of the most important destinations in the island."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Enlaces"
+msgstr "Links"

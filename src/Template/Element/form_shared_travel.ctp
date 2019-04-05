@@ -32,7 +32,6 @@ if($this->request->session()->read('user_name_id')) $nameIdValue = $this->reques
                 foreach ($route['departure_times'] as $i=>$time)
                     $radios[$i] = ['value'=>$time, 'text'=>'<big>'.$route['departure_times_desc'][$i].'</big>', 'style'=>'margin-right:10px'];
                     if($i > 0) $radios[$i]['style'] = 'margin-left:20px;margin-right:10px';
-                    
                 ?>
                 <div>
                     <b><?php echo __d('shared_travels', 'Hora de recogida')?></b>
@@ -72,7 +71,7 @@ if($this->request->session()->read('user_name_id')) $nameIdValue = $this->reques
         <div class="row">
             <div class="submit col-md-12" style="text-align: center">
                 <?php 
-                $submitOptions = ['class'=>'btn btn-block btn-primary', 'style' => 'font-size:14pt;white-space: normal;', 'id'=>'SharedTravelSubmit', 'escape'=>false, 'rel'=>'nofollow'];
+                $submitOptions = ['class'=>'btn btn-block btn-success', 'style' => 'font-size:14pt;white-space: normal;', 'id'=>'SharedTravelSubmit', 'escape'=>false, 'rel'=>'nofollow'];
                 echo $this->Form->submit(__d('shared_travels', 'Compartir este viaje de {0} a {1} y pagar sólo {2} por persona', $route['origin'], $route['destination'], $route['price_x_seat']. ' cuc'), $submitOptions);
                 ?>
             </div> 

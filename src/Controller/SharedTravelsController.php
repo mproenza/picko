@@ -38,7 +38,11 @@ class SharedTravelsController extends AppController {
         $this->viewBuilder()->setLayout('shared_rides');
     }
 
-    public function home() {$this->viewBuilder()->setLayout('homepage');}
+    public function home() {
+        $this->viewBuilder()->setLayout('mobirise/empty');
+        $this->render('mobirise/home');
+        
+    }
     
     public function index() {
         

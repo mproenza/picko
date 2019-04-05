@@ -119,15 +119,23 @@ class EnhancedHtmlHelper extends HtmlHelper {
         return $output;
     }
     
-    public function lang($currentLang, $request) {
+    public function lang($currentLang, $request, $options = []) {
+        $defaultOptions = [
+                'escape' => false,
+                'style' => 'text-decoration:none',
+                'class' => 'nav-link'
+            ];
+
+        $options = array_merge($defaultOptions, $options);
+        
         $other = array('en' => 'es', 'es' => 'en');
 
         $lang_changed_url = \App\Util\LangUtil::getUrlParamsForLanguage($other[$currentLang], $request);
 
         if($currentLang != null && $currentLang == 'en')
-            return $this->link($this->image('Spain.png').' <small><small>Ver en</small> Español</small>', $lang_changed_url, array('class'=>'nav-link', 'escape'=>false, 'style'=>'text-decoration:none'));
+            return $this->link($this->image('Spain.png', ['style'=>'max-width:21px;max-height:16px']).'&nbsp; Español', $lang_changed_url, $options);
         else
-            return $this->link($this->image('UK.png').' <small><small>See in</small> English</small>', $lang_changed_url, array('class'=>'nav-link', 'escape'=>false, 'style'=>'text-decoration:none'));
+            return $this->link($this->image('UK.png', ['style'=>'max-width:21px;max-height:16px']).'&nbsp; English', $lang_changed_url, $options);
 
     }
 
