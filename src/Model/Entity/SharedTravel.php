@@ -129,6 +129,7 @@ class SharedTravel extends Entity {
         ['origin_id'=>2, 'destination_id'=>8, 'price_x_seat'=>45, 'departure_times'=>[8]],
         ['origin_id'=>2, 'destination_id'=>9, 'price_x_seat'=>45, 'departure_times'=>[8]],
         ['origin_id'=>3, 'destination_id'=>0, 'price_x_seat'=>30, 'departure_times'=>[8, 14]],
+        ['origin_id'=>3, 'destination_id'=>10, 'price_x_seat'=>50, 'departure_times'=>[8, 14], 'new'=> true],
         ['origin_id'=>3, 'destination_id'=>1, 'price_x_seat'=>35, 'departure_times'=>[14]],
         ['origin_id'=>3, 'destination_id'=>2, 'price_x_seat'=>50, 'departure_times'=>[8]],
         ['origin_id'=>3, 'destination_id'=>4, 'price_x_seat'=>35, 'departure_times'=>[14]],
@@ -449,7 +450,7 @@ class SharedTravel extends Entity {
         foreach (self::$localities as $id=>$l) {
             $l['id'] = $id;
             
-            unset($l['code']);
+            //unset($l['code']);
             unset($l['slug']);
             unset($l['new']);
             
