@@ -19,20 +19,20 @@ if (!isBuilder) {
             if (!$iscollapsing.hasClass('collapsing')) {
                 if ($id.indexOf('toggle') != -1){
                     if ($(this).hasClass('collapsed')) {
-                        $(this).find('span.sign').removeClass('fa-caret-down').addClass('fa-caret-up'); 
+                        $(this).find('span.sign').removeClass('fa fa-caret-down').addClass('fa fa-caret-up'); 
                     }
                     else{
-                        $(this).find('span.sign').removeClass('fa-caret-up').addClass('fa-caret-down'); 
+                        $(this).find('span.sign').removeClass('fa fa-caret-up').addClass('fa fa-caret-down'); 
                     }
                 }
                 else if ($id.indexOf('accordion')!=-1) {
                     var $accordion =  $(this).closest('.accordionStyles ');
                 
                     $accordion.children('.card').each(function() {
-                        $(this).find('span.sign').removeClass('fa-caret-up').addClass('fa-caret-down'); 
+                        $(this).find('span.sign').removeClass('fa fa-caret-up').addClass('fa fa-caret-down'); 
                     });
                     if ($(this).hasClass('collapsed')) {
-                        $(this).find('span.sign').removeClass('fa-caret-down').addClass('fa-caret-up'); 
+                        $(this).find('span.sign').removeClass('fa fa-caret-down').addClass('fa fa-caret-up'); 
                     }
                 }
             }

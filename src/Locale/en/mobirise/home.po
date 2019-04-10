@@ -132,8 +132,8 @@ msgid "Taxi <b>desde {0}</b> hasta ..."
 msgstr "Taxi <b>from {0}</b> to ..."
 
 #: View/SharedTravels/home.ctp:8
-msgid "{0} cosas que debes tener en cuenta si vas a usar nuestros servicios"
-msgstr "{0} things you must take into account if you want to use our service"
+msgid "Cosas que debes tener en cuenta si vas a usar nuestros servicios"
+msgstr "Things you must take into account if you want to use our service"
 
 #: View/SharedTravels/home.ctp:8
 msgid "Los horarios de salida de nuestros taxis son fijos y no pueden cambiarse"

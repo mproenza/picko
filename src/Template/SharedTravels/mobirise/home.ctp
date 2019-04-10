@@ -44,10 +44,13 @@ use App\Model\Entity\SharedTravel;?>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
                 <li class="nav-item">
-                  <?php echo $this->Html->link(__d('shared_travels', 'Sobre Nosotros'), ['plugin'=>null, 'controller'=>'pages', 'action'=>'display', 'about'], ['class' => 'nav-link link text-white display-4']); ?>
+                    <?= $this->Html->link( __d('shared_travels', 'Debes saber'), ['_name'=>'homepage', '#'=>__d('meta', 'debes-saber')], ['class' => 'nav-link link text-white display-4']) ?>
                 </li>
                 <li class="nav-item">
-                  <?php echo $this->Html->link(__d('shared_travels', 'Contactar'), ['plugin'=>null, 'controller'=>'contact'], ['class' => 'nav-link link text-white display-4']); ?>
+                  <?= $this->Html->link(__d('shared_travels', 'Sobre Nosotros'), ['plugin'=>null, 'controller'=>'pages', 'action'=>'display', 'about'], ['class' => 'nav-link link text-white display-4']); ?>
+                </li>
+                <li class="nav-item">
+                  <?= $this->Html->link(__d('shared_travels', 'Contactar'), ['plugin'=>null, 'controller'=>'contact'], ['class' => 'nav-link link text-white display-4']); ?>
                 </li>
             </ul>
             <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-success display-4" href="#<?php echo __d('meta', 'rutas-y-precios')?>">
@@ -74,7 +77,6 @@ use App\Model\Entity\SharedTravel;?>
                 <div class="mbr-section-btn align-center py-2">
                     <a class="btn btn-md btn-success display-7" href="#<?php echo __d('meta', 'rutas-y-precios')?>">
                         <b><?= __d('/mobirise/home', 'VER RUTAS DE TAXI Y PRECIOS')?></b>
-                        <br>
                     </a>
                 </div>
 
@@ -267,6 +269,16 @@ use App\Model\Entity\SharedTravel;?>
 </section>
 
 
+<section class="counters5 counters cid-rnfgdix17n" id="<?= __d('meta', 'debes-saber')?>">
+    <div class="container pt-4 mt-2">
+        <?= $this->element('/mobirise/you_must_know')?>
+        <div class="mbr-section-btn align-center py-2">
+            <a class="btn btn-md btn-success display-7" href="#<?php echo __d('meta', 'rutas-y-precios')?>">
+                <b><?= __d('/mobirise/home', 'VER RUTAS DE TAXI Y PRECIOS')?></b>
+            </a>
+        </div>
+    </div>
+</section>
 
 <section class="cid-rmpfxwRsqp" id="footer1-h">
 
