@@ -19,7 +19,7 @@ class SharedTravel extends Entity {
         2=>['name'=>'Viñales', 'slug'=>'vinales', 'code'=>'VIN', 'short'=>'Viñ'], 
         3=>['name'=>'Varadero', 'slug'=>'varadero', 'code'=>'VAR', 'short'=>'Var'],
         4=>['name'=>'Cienfuegos', 'slug'=>'cienfuegos', 'code'=>'CFG', 'short'=>'Cfg'],
-        10=>['name'=>'Cayo Santa María', 'slug'=>'cayo-santa-maria', 'code'=>'CAM', 'short'=>'C. Sta Maria', 'new'=> true],
+        10=>['name'=>'Cayo Santa María', 'slug'=>'cayo-santa-maria', 'code'=>'CSM', 'short'=>'C. Sta Maria', 'new'=> true],
         7=>['name'=>'Santa Clara', 'slug'=>'santa-clara', 'code'=>'SCL', 'short'=>'S. Clara'],
         5=>['name'=>'Cayo Coco', 'slug'=>'cayo-coco', 'code'=>'CAC', 'short'=>'C. Coco'],
         6=>['name'=>'Cayo Guillermo', 'slug'=>'cayo-guillermo', 'code'=>'CAG', 'short'=>'C. Guillermo'],
