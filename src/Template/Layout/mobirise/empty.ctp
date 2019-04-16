@@ -1,25 +1,30 @@
 <?php use Cake\Core\Configure; use \Cake\I18n\I18n;?>
 
+<?php
+Configure::write('App.cssBaseUrl', 'assets/');
+Configure::write('App.jsBaseUrl', 'assets/');
+Configure::write('App.imageBaseUrl', 'assets/images/');
+?>
+
 <!DOCTYPE html>
 <html  >
 <head>
     <?php if (ROOT != 'C:\xampp\htdocs\pickocar' && !$Auth->user()): ?>
-            <!-- Global site tag (gtag.js) - Google Analytics -->
-            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116001622-1"></script>
-            <script>
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116001622-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
 
-              gtag('config', 'UA-116001622-1');
-            </script>
+          gtag('config', 'UA-116001622-1');
+        </script>
     <?php endif; ?> 
 
-    <?php echo $this->Html->charset(); ?>
+    <?= $this->Html->charset(); ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
-    
+    <?= $this->Html->meta('icon', 'favicon.png');?>
 
     <?php if(is_callable($meta['title'])) $meta['title'] = $meta['title']($this->viewVars, $this->request);?>
     <title><?php echo $meta['title'].' | '.'PickoCar'?></title>
@@ -27,20 +32,24 @@
     <?php if(is_callable($meta['description'])) $meta['description'] = $meta['description']($this->viewVars, $this->request);?>
     <meta name="description" content="<?php echo $meta['description'];?>"/>
   
-  
-  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
-  <link rel="stylesheet" href="assets/tether/tether.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/socicon/css/styles.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-  <?= $this->Html->css('font-awesome/css/font-awesome.min.css');?>
+    <?php if(isset($meta['hreflang']) && $meta['hreflang']) echo $this->Html->hreflang($this->request)?>
+    
+    <?php
+    // CSS
+    echo $this->Html->css('web/assets/mobirise-icons/mobirise-icons');
+    echo $this->Html->css('tether/tether.min');
+    echo $this->Html->css('bootstrap/css/bootstrap.min');
+    echo $this->Html->css('bootstrap/css/bootstrap-grid.min');
+    echo $this->Html->css('bootstrap/css/bootstrap-reboot.min');
+    echo $this->Html->css('dropdown/css/style');
+    echo $this->Html->css('socicon/css/styles');
+    echo $this->Html->css('theme/css/style');
+    echo $this->Html->css('mobirise/css/mbr-additional');
+    
+    echo $this->Html->css('font-awesome/css/font-awesome.min.css');
+    ?>
     
 <?php 
-$this->fetch('meta');
 $this->fetch('css');
 echo $this->fetch('css_top');
 ?>
@@ -74,21 +83,22 @@ echo $this->fetch('css_top');
 <body>
 
     <?php echo $this->fetch('content'); ?>
-
-  <script src="assets/web/assets/jquery/jquery.min.js"></script>
-  <script src="assets/popper/popper.min.js"></script>
-  <script src="assets/tether/tether.min.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/smoothscroll/smooth-scroll.js"></script>
-  <script src="assets/dropdown/js/script.min.js"></script>
-  <!--<script src="assets/vimeoplayer/jquery.mb.vimeo_player.js"></script>-->
-  <script src="assets/parallax/jarallax.min.js"></script>
-  <script src="assets/viewportchecker/jquery.viewportchecker.js"></script>
-  <script src="assets/mbr-switch-arrow/mbr-switch-arrow-martin.js"></script>
-  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
-  <script src="assets/theme/js/script.js"></script>
     
-    <?= $this->Html->script('bootbox');?>
+    <?php
+    echo $this->Html->script('web/assets/jquery/jquery.min');
+    echo $this->Html->script('popper/popper.min');
+    echo $this->Html->script('tether/tether.min');
+    echo $this->Html->script('bootstrap/js/bootstrap.min');
+    echo $this->Html->script('smoothscroll/smooth-scroll');
+    echo $this->Html->script('dropdown/js/script.min');
+    echo $this->Html->script('parallax/jarallax.min');
+    echo $this->Html->script('viewportchecker/jquery.viewportchecker');
+    echo $this->Html->script('mbr-switch-arrow/mbr-switch-arrow-martin');
+    echo $this->Html->script('touchswipe/jquery.touch-swipe.min.js');
+    echo $this->Html->script('theme/js/script');
+    ?>
+    
+    <?= $this->Html->script('bootbox/bootbox');?>
   
     <?= $this->fetch('script');?>
     <?= $this->fetch('script_bottom');?>

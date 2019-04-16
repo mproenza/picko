@@ -129,6 +129,11 @@ class AppController extends Controller
                     'description'=>__d('meta', 'Conoce lo que hacemos en PickoCar, nuestro servicio de taxi compartido en Cuba que conecta varios destinos'),
                     'hreflang'=>true
                 ),
+                'faq'=>array(
+                    'title'=>__d('meta', 'Preguntas Frecuentes'), 
+                    'description'=>__d('meta', 'Preguntas frecuentes y respuestas sobre nuestro servicio de taxi en Cuba'),
+                    'hreflang'=>true
+                ),
                 'press-release'=>array('title'=>__d('meta', 'Lanzamiento de PickoCar | Reseña para la Prensa'), 'description'=>__d('meta', 'Reseña para la prensa del lanzamiento de PickoCar en Cuba')),
                 'taxi-vs-viazul'=>array('title'=>__d('meta', 'Taxi compartido en Cuba con precios similares al bus Viazul'), 'description'=>__d('meta', 'PickoCar es un servicio de taxi compartido en Cuba con excelentes precios y rutas que conectan destinos como {0} y otros', 'La Habana, Viñales, Trinidad, Varadero, Cayo Guillermo')),
                 /*'faq'=>array('title'=>__d('meta', 'Preguntas Frecuentes'), 'description'=>__d('meta', 'Preguntas y respuestas sobre cómo conseguir un taxi para moverte por Cuba usando YoTeLlevo')),

@@ -200,5 +200,9 @@ msgid "PickoCar es un <b>servicio de taxi en Cuba</b>, con excelentes precios y 
 msgstr "PickoCar is a <b>taxi service in Cuba</b>, with amazing prices and routes that connect many of the most important destinations in the island."
 
 #: View/SharedTravels/home.ctp:8
+msgid "También somos los creadores de {0}"
+msgstr "We are also the creators of {0}"
+
+#: View/SharedTravels/home.ctp:8
 msgid "Enlaces"
 msgstr "Links"

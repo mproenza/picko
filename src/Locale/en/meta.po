@@ -87,3 +87,11 @@ msgstr "you-must-know"
 #: App/Controller/AppController.php:8
 msgid "reservar"
 msgstr "book"
+
+#: App/Controller/AppController.php:8
+msgid "Preguntas Frecuentes"
+msgstr "FAQ"
+
+#: App/Controller/AppController.php:8
+msgid "Preguntas frecuentes y respuestas sobre nuestro servicio de taxi en Cuba"
+msgstr "Frequent questions and their answers about our taxi service in Cuba"

@@ -1,7 +1,4 @@
-<?php
-
-use App\Model\Entity\SharedTravel;?>
-<?php use Cake\I18n\I18n;?>
+<?php use App\Model\Entity\SharedTravel;?>
 
 <?php $doBootbox = true?>
 
@@ -14,51 +11,7 @@ use App\Model\Entity\SharedTravel;?>
     <?php endif?>
 <?php endforeach?>
 
-<section class="menu cid-qTkzRZLJNu" once="menu" id="menu1-0">
-    <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm bg-color transparent">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </button>
-        <div class="menu-logo">
-            <div class="navbar-brand">
-                <span class="navbar-logo">
-                    <?php echo $this->Html->link('<img src="assets/images/logo43.png" alt="PickoCar" style="height: 2.8rem;">', ['_name'=>'homepage'], ['escape' => false]); ?>
-                </span>
-                <span class="navbar-caption-wrap">
-                  <?php echo $this->Html->link('PickoCar', ['_name'=>'homepage'], ['class' => 'navbar-caption text-white display-4']); ?>
-                </span>
-
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                      <?php echo $this->Html->lang(I18n::getLocale(), $this->request, ['class'=>'nav-link link text-white display-4']) ?>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
-                <li class="nav-item">
-                    <?= $this->Html->link( __d('shared_travels', 'Debes saber'), ['_name'=>'homepage', '#'=>__d('meta', 'debes-saber')], ['class' => 'nav-link link text-white display-4']) ?>
-                </li>
-                <li class="nav-item">
-                  <?= $this->Html->link(__d('shared_travels', 'Sobre Nosotros'), ['plugin'=>null, 'controller'=>'pages', 'action'=>'display', 'about'], ['class' => 'nav-link link text-white display-4']); ?>
-                </li>
-                <li class="nav-item">
-                  <?= $this->Html->link(__d('shared_travels', 'Contactar'), ['plugin'=>null, 'controller'=>'contact'], ['class' => 'nav-link link text-white display-4']); ?>
-                </li>
-            </ul>
-            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-success display-4" href="#<?php echo __d('meta', 'rutas-y-precios')?>">
-                    <b><?= __d('/mobirise/home', 'VER RUTAS DE TAXI Y PRECIOS')?></b>
-                </a></div>
-        </div>
-    </nav>
-</section>
+<?= $this->element('mobirise/menu', ['isHome'=>true])?>
 
 <section class="header12 cid-rmoXljlUVD mbr-fullscreen mbr-parallax-background" id="header12-3">
 
@@ -280,91 +233,4 @@ use App\Model\Entity\SharedTravel;?>
     </div>
 </section>
 
-<section class="cid-rmpfxwRsqp" id="footer1-h">
-
-    <div class="container">
-        <div class="media-container-row content text-white">
-            <div class="col-12 col-md-3">
-                <div class="media-wrap">
-                    <?= $this->Html->link('<img src="assets/images/logo43.png" alt="PickoCar">', ['_name'=>'homepage'], ['escape' => false]); ?>
-                </div>
-            </div>
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
-                <h5 class="pb-3">
-                    <?= __d('shared_travels', 'Sobre Nosotros')?>
-                </h5>
-                <p class="mbr-text">
-                    <?= __d('/mobirise/home', 'PickoCar es un <b>servicio de taxi en Cuba</b>, con excelentes precios y rutas que conectan muchos de los destinos mas importantes en la isla.')?>
-                </p>
-            </div>
-            <!--<div class="col-12 col-md-3 mbr-fonts-style display-7">
-                <h5 class="pb-3">
-                    Contacts
-                </h5>
-                <p class="mbr-text">
-                    Email: support@mobirise.com
-                    <br>Phone: +1 (0) 000 0000 001
-                    <br>Fax: +1 (0) 000 0000 002
-                </p>
-            </div>-->
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
-                <h5 class="pb-3">
-                    <?= __d('/mobirise/home', 'Enlaces')?>
-                </h5>
-                <p class="mbr-text">
-                    <?php echo $this->Html->link(__d('shared_travels', 'Sobre Nosotros'), ['plugin'=>null, 'controller'=>'pages', 'action'=>'display', 'about'], ['class' => 'text-primary']); ?>
-                    <br>
-                    <?php echo $this->Html->link(__d('shared_travels', 'Contactar'), ['plugin'=>null, 'controller'=>'contact'], ['class' => 'text-primary']); ?>
-                </p>
-            </div>
-        </div>
-        <div class="footer-lower">
-            <div class="media-container-row">
-                <div class="col-sm-12">
-                    <hr>
-                </div>
-            </div>
-            <div class="media-container-row mbr-white">
-                <div class="col-sm-6 copyright">
-                    <p class="mbr-text mbr-fonts-style display-7">
-                        © Copyright 2019 PickoCar
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    <div class="social-list align-right">
-                        <!--<div class="soc-item">
-                            <a href="https://twitter.com/mobirise" target="_blank">
-                                <span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
-                            </a>
-                        </div>-->
-                        <div class="soc-item">
-                            <a href="https://www.facebook.com/pickocar" target="_blank">
-                                <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
-                            </a>
-                        </div>
-                        <!--<div class="soc-item">
-                            <a href="https://www.youtube.com/c/mobirise" target="_blank">
-                                <span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
-                            </a>
-                        </div>
-                        <div class="soc-item">
-                            <a href="https://instagram.com/mobirise" target="_blank">
-                                <span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
-                            </a>
-                        </div>
-                        <div class="soc-item">
-                            <a href="https://plus.google.com/u/0/+Mobirise" target="_blank">
-                                <span class="socicon-googleplus socicon mbr-iconfont mbr-iconfont-social"></span>
-                            </a>
-                        </div>
-                        <div class="soc-item">
-                            <a href="https://www.behance.net/Mobirise" target="_blank">
-                                <span class="socicon-behance socicon mbr-iconfont mbr-iconfont-social"></span>
-                            </a>
-                        </div>-->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<?= $this->element('/mobirise/footer')?>

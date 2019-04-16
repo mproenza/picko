@@ -67,6 +67,7 @@ class PagesController extends AppController
 
         try {
             if($page == 'taxi-vs-viazul') $this->viewBuilder()->setLayout('homepage'); 
+            if($page == 'faq') $this->viewBuilder()->setLayout('mobirise/empty'); 
             
             $this->render(implode('/', $path));
         } catch (MissingTemplateException $exception) {

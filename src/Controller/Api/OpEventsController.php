@@ -64,7 +64,7 @@ class OpEventsController extends AppController {
     public function index() {
         $userId = $this->Auth->user('id');
         
-        $this->paginate = ['limit'=>5];
+        $this->paginate = ['limit'=>10];
         $OpEventsTable = TableRegistry::get('ApiSync.OpEvents');
         
         $query = $OpEventsTable->find()

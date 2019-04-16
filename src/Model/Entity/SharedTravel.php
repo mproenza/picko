@@ -434,8 +434,8 @@ class SharedTravel extends Entity {
         foreach ($routes as &$r) {
             $info = self::_routeInfo($r['origin_id'], $r['destination_id']);
             
-            $r['origin_id'] = ['origin_id' => $r['origin_id']];
-            $r['destination_id'] = ['destination_id' => $r['destination_id']];
+            $r['origin_id'] = ['id' => $r['origin_id']];
+            $r['destination_id'] = ['id' => $r['destination_id']];
             
             $r['info'] = $info;
         }
@@ -450,7 +450,7 @@ class SharedTravel extends Entity {
         foreach (self::$localities as $id=>$l) {
             $l['id'] = $id;
             
-            //unset($l['code']);
+            unset($l['code']);
             unset($l['slug']);
             unset($l['new']);
             
