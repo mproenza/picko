@@ -450,9 +450,9 @@ class SharedTravel extends Entity {
         foreach (self::$localities as $id=>$l) {
             $l['id'] = $id;
             
-            unset($l['code']);
-            unset($l['slug']);
-            unset($l['new']);
+            //unset($l['code']);
+            //unset($l['slug']);
+            //unset($l['new']);
             
             $localities[] = $l;
         }
