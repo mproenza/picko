@@ -9,6 +9,7 @@
             <strong><?= __d('/mobirise/faq', 'Preguntas Frecuentes')?></strong>
         </h2>
         
+        <br><br>
         <div class="row justify-content-center">
             <div class="cards-block">
                 <div class="cards-container">
