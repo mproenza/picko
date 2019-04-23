@@ -416,12 +416,17 @@ class SharedTravel extends Entity {
         }
     }
     
+    
+    // ************ API *****************
+    
     public static function preprocessForApi($entity) {
         unset($entity->old_date);
         unset($entity->old_state);
         unset($entity->old_address_origin);
         unset($entity->old_final_state);
         unset($entity->modified);
+        unset($entity->fee_total);
+        unset($entity->discount_total);
 
         $entity->origin_id = ['id'=>$entity->origin_id];
         $entity->destination_id = ['id'=>$entity->destination_id];

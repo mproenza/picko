@@ -313,6 +313,14 @@ msgid "Precio <b>{0} personas</b> x <b>{1}</b>"
 msgstr "Price <b>{0} people</b> x <b>{1}</b>"
 
 #: View/Elements/shared_travel.ctp:8
+msgid "Recargo"
+msgstr "Extra Fee"
+
+#: View/Elements/shared_travel.ctp:8
+msgid "Descuento"
+msgstr "Discount"
+
+#: View/Elements/shared_travel.ctp:8
 msgid "Lugar de recogida en {0}"
 msgstr "Pick up place in {0}"
 

@@ -388,9 +388,12 @@ class SharedTravelsController extends AppController {
         } 
         
         $datasource->commit();
-        $this->set([
+        
+        /*$this->set([
             'success' => true
-        ]); 
+        ]);*/
+        
+        return $this->redirect($this->referer());
     }
     
     public function changeDate($id) {
@@ -425,7 +428,13 @@ class SharedTravelsController extends AppController {
     public function changeContactInfo($id) {
         return $this->changeFieldValue($id, 'contacts', SharedTravelsController::$NOTIFICATION_TYPE_CONTACTS_CHANGED);
     }
-    private function changeFieldValue($id, $fieldName, $notificationType) {
+    public function discount($id) {
+        return $this->changeFieldValue($id, 'discount_total');
+    }
+    public function fee($id) {
+        return $this->changeFieldValue($id, 'fee_total');
+    }
+    private function changeFieldValue($id, $fieldName, $notificationType = -1) {
         if ($this->request->is('post') || $this->request->is('put')) {
             
             $datasource = ConnectionManager::get('default');

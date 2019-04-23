@@ -39,7 +39,33 @@ if(!isset($admin)) $admin = false;
         
         <hr/>
         <p><b><?php echo __d('shared_travels', 'DATOS DEL PAGO')?></b></p><hr/>
-        <p><span class="text-muted"><?php echo __d('shared_travels', 'Precio <b>{0} personas</b> x <b>{1}</b>', $request['SharedTravel']['people_count'], $request['SharedTravel']['price_x_seat'].' cuc')?>:</span> <code><big><b><?php echo $request['SharedTravel']['people_count']*$request['SharedTravel']['price_x_seat']?> cuc</b></big></code></p>
+        
+        <?php if($request['SharedTravel']['fee_total'] > 0):?>
+            <p><span class="text-muted"><?php echo __d('shared_travels', 'Recargo')?>:</span> <code><big><b><?= $request['SharedTravel']['fee_total']?> cuc</b></big></code></p>
+        <?php endif?>
+            
+        <?php if($request['SharedTravel']['discount_total'] > 0):?>
+            <p><span class="text-muted"><?php echo __d('shared_travels', 'Descuento')?>:</span> <code><big><b><?= $request['SharedTravel']['discount_total']?> cuc</b></big></code></p>
+        <?php endif?>
+            
+        <div>
+            <span class="text-muted">
+            <?php $total = $request['SharedTravel']['people_count'] * $request['SharedTravel']['price_x_seat']?>
+                
+            <?= __d('shared_travels', 'Precio <b>{0} personas</b> x <b>{1}</b>', $request['SharedTravel']['people_count'], $request['SharedTravel']['price_x_seat'])?>
+            
+            <?php if($request['SharedTravel']['fee_total'] > 0) {
+                $total += $request['SharedTravel']['fee_total'];
+                echo '+ <b>'.$request['SharedTravel']['fee_total'].'</b>';
+            }
+            ?>
+            <?php if($request['SharedTravel']['discount_total'] > 0) {
+                $total -= $request['SharedTravel']['discount_total'];
+                echo '- <b>'.$request['SharedTravel']['discount_total'].'</b>';
+            }
+            ?>
+            </span> = <code><big><big><b><?= $total?> cuc</b></big></big></code>
+        </div>
             
         <?php if($showDetails):?>
             <hr/>

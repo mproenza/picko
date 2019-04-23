@@ -18,7 +18,27 @@ if(!isset($admin)) $admin = false;
 <?php endif?>
 <div>Recoger en: <?php echo preg_replace("/(\r\n|\n|\r)/", "<br/>", $request['SharedTravel']['address_origin'])?></div>
 <div>Llevar a: <?php echo preg_replace("/(\r\n|\n|\r)/", "<br/>", $request['SharedTravel']['address_destination'])?></div>
-<div>Total a pagar: <?php echo $request['SharedTravel']['people_count']?> x <?php echo $request['SharedTravel']['price_x_seat']?> = <b><?php echo $request['SharedTravel']['people_count']*$request['SharedTravel']['price_x_seat']?> cuc</b></div>
+
+<?php if($request['SharedTravel']['fee_total'] > 0):?>
+    <div>Recargo: <b><?php echo $request['SharedTravel']['fee_total']?> cuc</b></div>
+<?php endif?>
+    <?php if($request['SharedTravel']['discount_total'] > 0):?>
+    <div>Descuento: <b><?php echo $request['SharedTravel']['discount_total']?> cuc</b></div>
+<?php endif?>
+<?php $total = $request['SharedTravel']['people_count'] * $request['SharedTravel']['price_x_seat']?>        
+<div>Total a pagar: 
+    <?php echo $request['SharedTravel']['people_count']?> x <?php echo $request['SharedTravel']['price_x_seat']?>
+    <?php if($request['SharedTravel']['fee_total'] > 0) {
+        $total += $request['SharedTravel']['fee_total'];
+        echo '+ '.$request['SharedTravel']['fee_total'];
+    }
+    ?>
+    <?php if($request['SharedTravel']['discount_total'] > 0) {
+        $total -= $request['SharedTravel']['discount_total'];
+        echo '- '.$request['SharedTravel']['discount_total'];
+    }
+    ?>
+    = <b><?= $total?> cuc</b></div>
 
 <?php $st = SharedTravel::getStateDesc($request['SharedTravel']['state'])?>
 <p><span class="text-muted"><b><?php echo __d('shared_travels', 'Estado')?>:</b></span> <big><abbr class="info" title="<?php echo $st['description']?>" style="text-decoration: none"><span class="<?php echo $st['class']?>"><?php echo $st['title'] ?></span></abbr></big></p>
