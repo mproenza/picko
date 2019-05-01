@@ -18,11 +18,14 @@ class SharedTravelsController extends AppController {
     
     public function iniFetch() {
         
-        // Eliminar de la queue de eventos a sincronizar todo lo de este usuario
         $userId = $this->Auth->user('id');
+        
+        // Eliminar de la queue de eventos a sincronizar todo lo de este usuario -> Ponerle -1 al batchId
         if($userId) {
             $SyncQueueTable = TableRegistry::get('ApiSync.SyncQueue');
-            $SyncQueueTable->deleteAll(['user_id'=>$userId]);
+            
+            //$SyncQueueTable->deleteAll(['user_id'=>$userId]);
+            $SyncQueueTable->updateAll(['sync_date' => new \Cake\I18n\Time(), 'sync_batch'=> -1], ['user_id'=>$userId]);
         }
         
         $STTable = TableRegistry::get('SharedTravels');

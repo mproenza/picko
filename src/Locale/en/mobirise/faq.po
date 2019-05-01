@@ -1,0 +1,90 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2014-11-13 11:21-0500\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+
+#: View/SharedTravels/home.ctp:8
+msgid "Servicio de taxi compartido en Cuba con PickoCar"
+msgstr "Shared taxi service in Cuba with PickoCar"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Preguntas Frecuentes"
+msgstr "Frequently Asked Questions"
+
+#: View/SharedTravels/home.ctp:8
+msgid "¿En qué consiste el servicio de taxi compartido?"
+msgstr "What is the shared taxi service about?"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Es un servicio en el cual reservas solamente tus asientos en un taxi y viajas con otros pasajeros en el mismo taxi hacia tu destino. De esta manera el viaje lo pagan entre todos y les cuesta menos a cada uno."
+msgstr ""
+
+#: View/SharedTravels/home.ctp:8
+msgid "Cada taxi traslada a 4 pasajeros."
+msgstr ""
+
+#: View/SharedTravels/home.ctp:8
+msgid "Es diferente a un taxi privado en dos cosas:"
+msgstr ""
+
+#: View/SharedTravels/home.ctp:8
+msgid "Un taxi privado cobra por el viaje completo sin importar cuantas personas sean. En un taxi compartido solo pagas por tus asientos."
+msgstr ""
+
+#: View/SharedTravels/home.ctp:8
+msgid "Como <strong>usamos taxis de 4 capacidades,</strong> cada asiento cuesta aproximadamente 1/4 del precio standard de un taxi privado, de manera que <strong>si ustedes son 2 personas, el traslado les cuesta la mitad con respecto a un taxi privado</strong>. Se ahorra bastante!"
+msgstr ""
+
+#: View/SharedTravels/home.ctp:8
+msgid "No viajas solo en el taxi, sino que lo compartes con otros pasajeros que van a tu mismo destino."
+msgstr ""
+
+#: View/SharedTravels/home.ctp:8
+msgid "En un taxi privado viaja solo tu grupo en el taxi, aunque viajes solo o sean 2, 3 o 4 personas. En este sentido un taxi privado pudiera ser mas cómodo."
+msgstr ""
+
+#: View/SharedTravels/home.ctp:8
+msgid "Si reservamos para 2 o 3 personas, ¿tenemos que buscar al resto de los pasajeros para llenar el taxi por nosotros mismos?"
+msgstr ""
+
+#: View/SharedTravels/home.ctp:8
+msgid "<strong>NO. Usted solo reserva y listo!</strong><br><br><strong>Nosotros nos encargamos de encontrar al resto de los pasajeros</strong> a traves de nuestras multiples fuentes de adquisicion de clientes. Nosotros coordinamos todo y emparejamos las reservas que coincidan en un mismo taxi (hasta 4 pasajeros en un mismo auto)."
+msgstr ""
+
+#: View/SharedTravels/home.ctp:8
+msgid "Si el taxi es compartido y solo pagamos nuestros asientos, ¿que pasa si no se llena el taxi? ¿Y si se llena pero luego algunos pasajeros cancelan?"
+msgstr ""
+
+#: View/SharedTravels/home.ctp:8
+msgid "La respuesta corta es: Felicidades! Vas a hacer un viaje privado (solo ustedes en el taxi) por el precio de un compartido."
+msgstr ""
+
+#: View/SharedTravels/home.ctp:8
+msgid "<strong>En todos los casos usted paga solo por sus asientos por el precio con que fueron reservados</strong>, y aunque el taxi no se llene, les recogeremos y les llevaremos a su destino."
+msgstr ""
+
+#: View/SharedTravels/home.ctp:8
+msgid ""
+msgstr ""
+
+#: View/SharedTravels/home.ctp:8
+msgid ""
+msgstr ""
+#: View/SharedTravels/home.ctp:8
+msgid ""
+msgstr ""
+#: View/SharedTravels/home.ctp:8
+msgid ""
+msgstr ""
