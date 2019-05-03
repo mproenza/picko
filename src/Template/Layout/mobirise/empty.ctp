@@ -98,7 +98,7 @@ echo $this->fetch('css_top');
     echo $this->Html->script('theme/js/script');
     ?>
     
-    <?= $this->Html->script('bootbox/bootbox');?>
+    <?= $this->Html->script('bootbox/5.1.1/bootbox.min');?>
   
     <?= $this->fetch('script');?>
     <?= $this->fetch('script_bottom');?>
@@ -115,7 +115,8 @@ echo $this->fetch('css_top');
                 title:$(this).data('title'), 
                 message:$( '#' + $(this).data('open-form') ).html(), 
                 size:'large',
-                onEscape:true
+                onEscape:true,
+                size: 'lg'
             });
 
             form = $('.bootbox form');

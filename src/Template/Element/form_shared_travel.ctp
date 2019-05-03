@@ -24,7 +24,7 @@ if($this->request->session()->read('user_name_id')) $nameIdValue = $this->reques
                 echo $this->Form->input('price_x_seat', array('type' => 'hidden', 'value'=>$route['price_x_seat']));
                 ?>
 
-                <?php echo $this->Form->custom_date('date', array('label' => __d('shared_travels', 'Fecha en que necesitas el servicio'), 'dateFormat' => 'dd/mm/yyyy', 'required', 'invalid-feedback'=>__d('errors', 'Escriba una fecha válida: 2 días después de hoy como mínimo y en formato dd/mm/aaaa')));?>
+                <?php echo $this->Form->custom_date('date', array('label' => __d('shared_travels', 'Fecha en que necesitas el servicio'), 'autocomplete'=>'off', 'dateFormat' => 'dd/mm/yyyy', 'required', 'invalid-feedback'=>__d('errors', 'Escriba una fecha válida: 2 días después de hoy como mínimo y en formato dd/mm/aaaa')));?>
                 <br/>
                 
                 <?php $radios = []?>
