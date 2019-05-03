@@ -38,7 +38,8 @@ Configure::write('App.imageBaseUrl', 'assets/images/');
     // CSS
     echo $this->Html->css('web/assets/mobirise-icons/mobirise-icons');
     echo $this->Html->css('tether/tether.min');
-    echo $this->Html->css('bootstrap/css/bootstrap.min');
+    //echo $this->Html->css('bootstrap/css/bootstrap.min');
+    echo $this->Html->css('bootstrap/4.3.1/css/bootstrap.min');
     echo $this->Html->css('bootstrap/css/bootstrap-grid.min');
     echo $this->Html->css('bootstrap/css/bootstrap-reboot.min');
     echo $this->Html->css('dropdown/css/style');
@@ -88,7 +89,8 @@ echo $this->fetch('css_top');
     echo $this->Html->script('web/assets/jquery/jquery.min');
     echo $this->Html->script('popper/popper.min');
     echo $this->Html->script('tether/tether.min');
-    echo $this->Html->script('bootstrap/js/bootstrap.min');
+    //echo $this->Html->script('bootstrap/js/bootstrap.min');
+    echo $this->Html->script('bootstrap/4.3.1/js/bootstrap.min');
     echo $this->Html->script('smoothscroll/smooth-scroll');
     echo $this->Html->script('dropdown/js/script.min');
     echo $this->Html->script('parallax/jarallax.min');
@@ -116,8 +118,11 @@ echo $this->fetch('css_top');
                 message:$( '#' + $(this).data('open-form') ).html(), 
                 size:'large',
                 onEscape:true,
-                size: 'lg'
-            });
+                size: 'lg',
+                show: false
+            })
+            .off("shown.bs.modal")
+            .modal("show");
 
             form = $('.bootbox form');
 
@@ -126,7 +131,7 @@ echo $this->fetch('css_top');
                 format: "dd/mm/yyyy",
                 language: '<?php echo I18n::getLocale()?>',
                 startDate: '<?php if(!$Auth->user()):?>+2d<?php else:?>today<?php endif;?>',
-                todayBtn: "linked",
+                //todayBtn: "linked",
                 autoclose: true,
                 todayHighlight: false
             });
