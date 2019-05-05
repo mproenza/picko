@@ -16,7 +16,6 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
-use App\Model\Entity\SharedTravel;
 
 /**
  * Application Controller
@@ -132,6 +131,11 @@ class AppController extends Controller
                 'faq'=>array(
                     'title'=>__d('meta', 'Preguntas Frecuentes'), 
                     'description'=>__d('meta', 'Preguntas frecuentes y respuestas sobre nuestro servicio de taxi en Cuba'),
+                    'hreflang'=>true
+                ),
+                'taxi-fleet'=>array(
+                    'title'=>__d('meta', 'Flota de taxi en Cuba'), 
+                    'description'=>__d('meta', 'Fotos de los autos que usamos en PickoCar para trasladar a nuestros clientes en Cuba'),
                     'hreflang'=>true
                 ),
                 'press-release'=>array('title'=>__d('meta', 'Lanzamiento de PickoCar | Reseña para la Prensa'), 'description'=>__d('meta', 'Reseña para la prensa del lanzamiento de PickoCar en Cuba')),

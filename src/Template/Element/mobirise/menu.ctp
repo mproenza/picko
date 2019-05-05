@@ -47,6 +47,9 @@ if(!isset($isHome)) $isHome = false;
                 <li class="nav-item">
                   <?= $this->Html->link(__d('shared_travels', 'Contactar'), ['plugin'=>null, 'controller'=>'contact'], ['class' => 'nav-link link text-white display-4']); ?>
                 </li>
+                <li class="nav-item">
+                  <?= $this->Html->link(__d('shared_travels', 'Flota'), ['plugin'=>null, 'controller'=>'pages', 'action'=>'display', 'taxi-fleet'], ['class' => 'nav-link link text-white display-4']); ?>
+                </li>
             </ul>
             <div class="navbar-buttons mbr-section-btn">
                 <?php echo $this->Html->link('<b>'.__d('/mobirise/home', 'VER RUTAS DE TAXI Y PRECIOS').'</b>', ['_name'=>'homepage', '#'=>__d('meta', 'rutas-y-precios')], array('class' => 'btn btn-sm btn-success display-4', 'escape'=>false)) ?>

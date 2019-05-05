@@ -14,30 +14,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: View/SharedTravels/home.ctp:8
 msgid "shared-rides"
 msgstr "compartidos"
 
-#: View/SharedTravels/home.ctp:8
 msgid "book"
 msgstr "reservar"
 
-#: View/SharedTravels/home.ctp:8
 msgid "thanks"
 msgstr "gracias"
 
-#: View/SharedTravels/home.ctp:8
 msgid "activate"
 msgstr "activar"
 
-#: View/SharedTravels/home.ctp:8
 msgid "view"
 msgstr "ver"
 
-#: View/SharedTravels/home.ctp:8
 msgid "about"
 msgstr "sobre-nosotros"
 
-#: View/SharedTravels/home.ctp:8
 msgid "contact"
 msgstr "contactar"
+
+msgid "taxi-fleet"
+msgstr "flota-taxi"

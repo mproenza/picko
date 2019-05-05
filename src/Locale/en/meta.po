@@ -85,6 +85,18 @@ msgid "debes-saber"
 msgstr "you-must-know"
 
 #: App/Controller/AppController.php:8
+msgid "flota-taxi"
+msgstr "taxi-fleet"
+
+#: App/Controller/AppController.php:8
+msgid "Flota de taxi en Cuba"
+msgstr "Taxi fleet in Cuba"
+
+#: App/Controller/AppController.php:8
+msgid "Fotos de los autos que usamos en PickoCar para trasladar a nuestros clientes en Cuba"
+msgstr "Pictures of the cars we use at PickoCar to give rides to our customers in Cuba"
+
+#: App/Controller/AppController.php:8
 msgid "reservar"
 msgstr "book"
 

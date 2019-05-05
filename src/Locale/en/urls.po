@@ -34,3 +34,6 @@ msgstr "about"
 
 msgid "contactar"
 msgstr "contact"
+
+msgid "flota-taxi"
+msgstr "taxi-fleet"

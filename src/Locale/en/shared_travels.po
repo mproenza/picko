@@ -348,6 +348,9 @@ msgstr "Status"
 msgid "DATOS DEL PAGO"
 msgstr "PAYMENT INFO"
 
+#: View/Elements/shared_travel.ctp:8
+msgid "Flota"
+msgstr "Fleet"
 
 
 #: View/SharedTravel/activate.ctp:8

@@ -68,7 +68,7 @@ if($this->request->session()->read('user_name_id')) $nameIdValue = $this->reques
         </div>
         
         <br/>
-        <div class="row">
+        <div class="row">            
             <div class="submit col-md-12" style="text-align: center">
                 <?php 
                 $submitOptions = ['class'=>'btn btn-block btn-success', 'style' => 'font-size:14pt;white-space: normal;', 'id'=>'SharedTravelSubmit', 'escape'=>false, 'rel'=>'nofollow'];

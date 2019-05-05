@@ -25,7 +25,7 @@ msgstr "Get from / to {0} and others. Do each trip with other travelers who book
 
 #: View/SharedTravels/home.ctp:8
 msgid "Autos muy confortables"
-msgstr "Very confortable cars"
+msgstr "Very comfortable cars"
 
 #: View/SharedTravels/home.ctp:8
 msgid "Sólo 4 pasajeros en un taxi"

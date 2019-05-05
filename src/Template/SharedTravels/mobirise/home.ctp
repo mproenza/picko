@@ -5,7 +5,7 @@
 <?php foreach (SharedTravel::$routes as $route):?>
     <?php $route = SharedTravel::_routeFull($route);?>
     <?php if(!isset($route['active']) || $route['active'] ):?>
-        <div style="display: none" id="form-<?= $route['slug']?>">
+        <div style="display: none" id="form-<?= $route['slug']?>" class="container">
             <?= $this->element('shared_travel_book_prompt', compact('route'))?>
         </div>
     <?php endif?>

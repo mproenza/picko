@@ -1,0 +1,136 @@
+<?php use Cake\Core\Configure; use \Cake\I18n\I18n;?>
+
+<?php
+Configure::write('App.cssBaseUrl', 'assets/');
+Configure::write('App.jsBaseUrl', 'assets/');
+Configure::write('App.imageBaseUrl', 'assets/images/');
+?>
+
+<!DOCTYPE html>
+<html  >
+<head>
+    <?php if (ROOT != 'C:\xampp\htdocs\pickocar' && !$Auth->user()): ?>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116001622-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-116001622-1');
+        </script>
+    <?php endif; ?> 
+
+    <?= $this->Html->charset(); ?>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <?= $this->Html->meta('icon', 'favicon.png');?>
+
+    <?php if(is_callable($meta['title'])) $meta['title'] = $meta['title']($this->viewVars, $this->request);?>
+    <title><?php echo $meta['title'].' | '.'PickoCar'?></title>
+
+    <?php if(is_callable($meta['description'])) $meta['description'] = $meta['description']($this->viewVars, $this->request);?>
+    <meta name="description" content="<?php echo $meta['description'];?>"/>
+  
+    <?php if(isset($meta['hreflang']) && $meta['hreflang']) echo $this->Html->hreflang($this->request)?>
+    
+    <?php
+    // CSS
+    echo $this->Html->css('web/assets/mobirise-icons/mobirise-icons');
+    echo $this->Html->css('tether/tether.min');
+    //echo $this->Html->css('bootstrap/css/bootstrap.min');
+    echo $this->Html->css('bootstrap/4.3.1/css/bootstrap.min');
+    echo $this->Html->css('bootstrap/css/bootstrap-grid.min');
+    echo $this->Html->css('bootstrap/css/bootstrap-reboot.min');
+    echo $this->Html->css('dropdown/css/style');
+    echo $this->Html->css('socicon/css/styles');
+    echo $this->Html->css('theme/css/style');
+    echo $this->Html->css('gallery/style');
+    echo $this->Html->css('mobirise/css/mbr-additional');
+    
+    echo $this->Html->css('font-awesome/css/font-awesome.min.css');
+    ?>
+    
+<?php 
+$this->fetch('css');
+echo $this->fetch('css_top');
+?>
+  
+</head>
+<body>
+
+    <?php echo $this->fetch('content'); ?>
+    
+    <?php
+    echo $this->Html->script('web/assets/jquery/jquery.min');
+    echo $this->Html->script('popper/popper.min');
+    echo $this->Html->script('tether/tether.min');
+    //echo $this->Html->script('bootstrap/js/bootstrap.min');
+    echo $this->Html->script('bootstrap/4.3.1/js/bootstrap.min');
+    echo $this->Html->script('smoothscroll/smooth-scroll');
+    echo $this->Html->script('dropdown/js/script.min');
+    echo $this->Html->script('touchswipe/jquery.touch-swipe.min');
+    echo $this->Html->script('bootstrapcarouselswipe/bootstrap-carousel-swipe');
+    echo $this->Html->script('masonry/masonry.pkgd.min');
+    echo $this->Html->script('imagesloaded/imagesloaded.pkgd.min');
+    echo $this->Html->script('theme/js/script');
+    echo $this->Html->script('gallery/player.min');
+    echo $this->Html->script('gallery/script');
+    echo $this->Html->script('slidervideo/script');
+    ?>
+    
+  
+    <?= $this->fetch('script');?>
+    <?= $this->fetch('script_bottom');?>
+    <?= $this->fetch('script_internal');?>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        // Hacer que el formulario de solicitud se abra
+        $( ".open-request-form" ).click(function( event ) {
+            event.preventDefault();
+
+            bootbox.dialog({
+                title:$(this).data('title'), 
+                message:$( '#' + $(this).data('open-form') ).html(), 
+                size:'large',
+                onEscape:true,
+                size: 'lg',
+                show: false
+            })
+            .off("shown.bs.modal")
+            .modal("show");
+
+            form = $('.bootbox form');
+
+            datepicker = form.find('.datepicker');
+            datepicker.datepicker({
+                format: "dd/mm/yyyy",
+                language: '<?php echo I18n::getLocale()?>',
+                startDate: '<?php if(!$Auth->user()):?>+2d<?php else:?>today<?php endif;?>',
+                //todayBtn: "linked",
+                autoclose: true,
+                todayHighlight: false
+            });
+
+            form.submit(function(event) {
+                if (this.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                } else {
+                    var submit = $(this).find('input[type=submit]');
+                    submit.attr('disabled', true);
+                    submit.val('<?= __('Enviando solicitud')?> ...');
+                }
+
+                this.classList.add('was-validated');
+            });
+
+        });
+    });
+
+</script>
+  
+</body>
+</html>
