@@ -36,6 +36,8 @@
                     <?php echo $this->Html->link(__d('shared_travels', 'Sobre Nosotros'), ['plugin'=>null, 'controller'=>'pages', 'action'=>'display', 'about'], ['class' => 'text-primary']); ?>
                     <br>
                     <?php echo $this->Html->link(__d('shared_travels', 'Contactar'), ['plugin'=>null, 'controller'=>'contact'], ['class' => 'text-primary']); ?>
+                    <br>
+                    <?php echo $this->Html->link(__d('shared_travels', 'Flota'), ['plugin'=>null, 'controller'=>'pages', 'action'=>'display', 'taxi-fleet'], ['class' => 'text-primary']); ?>
                 </p>
             </div>
         </div>
