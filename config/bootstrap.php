@@ -235,5 +235,7 @@ Configure::write('customer_assistant_en', array('name'=>'Ana'));
 Configure::write('customer_assistant_es', array('name'=>'Maylen'));
 Configure::write('shared_rides_facilitator', array('name'=>'Andiel', 'email'=>/*'martin@pickocar.com'*/'andielsl@nauta.cu'));
 
+Configure::write('whatsapp_contact_number', '+5354530482');
+
 Configure::write('I18n.languages', ['en', 'es']);
 Configure::write('default_language', 'en');

@@ -1,3 +1,5 @@
+<?php use Cake\Core\Configure;?>
+
 <section class="cid-rmpfxwRsqp" id="footer1-h">
 
     <div class="container">
@@ -40,6 +42,18 @@
                     <?php echo $this->Html->link(__d('shared_travels', 'Flota'), ['plugin'=>null, 'controller'=>'pages', 'action'=>'display', 'taxi-fleet'], ['class' => 'text-primary']); ?>
                 </p>
             </div>
+
+            <div class="col-12 col-md-3 mbr-fonts-style display-7">
+                <h5 class="pb-3">
+                    <?= __d('/mobirise/home', 'Contacto')?>
+                </h5>
+                <p class="mbr-text">
+                    <i class="fa fa-whatsapp"></i> WhatsApp:
+                    </br>
+                    <big><?= Configure::read('whatsapp_contact_number')?></big>
+                </p>
+            </div>
+
         </div>
         <div class="footer-lower">
             <div class="media-container-row">

@@ -91,7 +91,7 @@ echo $this->fetch('css_top');
     echo $this->Html->script('tether/tether.min');
     //echo $this->Html->script('bootstrap/js/bootstrap.min');
     echo $this->Html->script('bootstrap/4.3.1/js/bootstrap.min');
-    echo $this->Html->script('smoothscroll/smooth-scroll');
+    //echo $this->Html->script('smoothscroll/smooth-scroll');
     echo $this->Html->script('dropdown/js/script.min');
     echo $this->Html->script('parallax/jarallax.min');
     echo $this->Html->script('viewportchecker/jquery.viewportchecker');

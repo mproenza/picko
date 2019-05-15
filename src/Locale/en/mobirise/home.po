@@ -206,3 +206,7 @@ msgstr "We are also the creators of {0}"
 #: View/SharedTravels/home.ctp:8
 msgid "Enlaces"
 msgstr "Links"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Contacto"
+msgstr "Contact"

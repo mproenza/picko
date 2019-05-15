@@ -12,7 +12,7 @@ class ContactController extends AppController {
         parent::beforeFilter($event);
         $this->Auth->allow(['index']);
         
-        $this->viewBuilder()->setLayout('shared_rides');
+        $this->viewBuilder()->setLayout('mobirise/default');
     }
 
     public function index() {

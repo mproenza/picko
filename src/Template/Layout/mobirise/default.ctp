@@ -45,7 +45,6 @@ Configure::write('App.imageBaseUrl', 'assets/images/');
     echo $this->Html->css('dropdown/css/style');
     echo $this->Html->css('socicon/css/styles');
     echo $this->Html->css('theme/css/style');
-    echo $this->Html->css('gallery/style');
     echo $this->Html->css('mobirise/css/mbr-additional');
     
     echo $this->Html->css('font-awesome/css/font-awesome.min.css');
@@ -70,13 +69,8 @@ echo $this->fetch('css_top');
     //echo $this->Html->script('smoothscroll/smooth-scroll');
     echo $this->Html->script('dropdown/js/script.min');
     echo $this->Html->script('touchswipe/jquery.touch-swipe.min');
-    echo $this->Html->script('bootstrapcarouselswipe/bootstrap-carousel-swipe');
     echo $this->Html->script('masonry/masonry.pkgd.min');
-    echo $this->Html->script('imagesloaded/imagesloaded.pkgd.min');
     echo $this->Html->script('theme/js/script');
-    echo $this->Html->script('gallery/player.min');
-    echo $this->Html->script('gallery/script');
-    echo $this->Html->script('slidervideo/script');
     ?>
   
     <?= $this->fetch('script');?>
