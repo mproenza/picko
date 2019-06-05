@@ -14,7 +14,7 @@
                 </h3>
                 <h3 class="mbr-section-subtitle align-center pb-3 mbr-fonts-style display-6">
                     <?= __d('/mobirise/contact', 'También puedes contactarnos por WhatsApp: {0}', 
-                            '</br><span style="display: inline-block"><i class="fa fa-whatsapp"></i> <b>'.Configure::read('whatsapp_contact_number').'</b></span>')?>
+                            '</br><span style="display: inline-block"><i class="fa fa-whatsapp"></i> <b>'.Configure::read('whatsapp_contact_number')[ini_get('intl.default_locale')].'</b></span>')?>
                 </h3>
             </div>
         </div>

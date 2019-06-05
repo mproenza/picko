@@ -50,7 +50,7 @@
                 <p class="mbr-text">
                     <i class="fa fa-whatsapp"></i> WhatsApp:
                     </br>
-                    <big><?= Configure::read('whatsapp_contact_number')?></big>
+                    <big><?= Configure::read('whatsapp_contact_number')[ini_get('intl.default_locale')]?></big>
                 </p>
             </div>
 
