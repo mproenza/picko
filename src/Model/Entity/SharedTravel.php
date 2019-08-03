@@ -78,6 +78,7 @@ class SharedTravel extends Entity {
             6=>['kms'=>'360', 'hrs'=>'4.30'],
             8=>['kms'=>'150', 'hrs'=>'2'],
             9=>['kms'=>'110', 'hrs'=>'1.30'],
+            10=>['kms'=>'150', 'hrs'=>'2'],
         ],
         
         5 => [
@@ -91,6 +92,7 @@ class SharedTravel extends Entity {
         7 => [
             8=>['kms'=>'160', 'hrs'=>'2'],
             9=>['kms'=>'200', 'hrs'=>'2.30'],
+            10=>['kms'=>'100', 'hrs'=>'1.30'],
         ]
         
     ];
@@ -165,9 +167,12 @@ class SharedTravel extends Entity {
         ['origin_id'=>9, 'destination_id'=>2, 'price_x_seat'=>45, 'departure_times'=>[8, 10]],
         ['origin_id'=>9, 'destination_id'=>1, 'price_x_seat'=>35, 'departure_times'=>[11, 16]],
         ['origin_id'=>9, 'destination_id'=>4, 'price_x_seat'=>35, 'departure_times'=>[11, 16]],
-        ['origin_id'=>10, 'destination_id'=>0, 'price_x_seat'=>50, 'departure_times'=>[14], 'new'=> true],
-        ['origin_id'=>10, 'destination_id'=>3, 'price_x_seat'=>50, 'departure_times'=>[14], 'new'=> true],
-        ['origin_id'=>10, 'destination_id'=>2, 'price_x_seat'=>75, 'departure_times'=>[14], 'new'=> true]
+        ['origin_id'=>10, 'destination_id'=>0, 'price_x_seat'=>50, 'departure_times'=>[14]],
+        ['origin_id'=>10, 'destination_id'=>3, 'price_x_seat'=>50, 'departure_times'=>[14]],
+        ['origin_id'=>10, 'destination_id'=>2, 'price_x_seat'=>75, 'departure_times'=>[14]],
+        ['origin_id'=>10, 'destination_id'=>1, 'price_x_seat'=>35, 'departure_times'=>[14], 'new'=> true],
+        ['origin_id'=>10, 'destination_id'=>4, 'price_x_seat'=>35, 'departure_times'=>[14], 'new'=> true],
+        ['origin_id'=>10, 'destination_id'=>7, 'price_x_seat'=>35, 'departure_times'=>[14], 'new'=> true],
     ];
     public static function _routeFull($route) {
         // Evitar ponerle los datos extra a las rutas si ya se hizo (esto es porque se pudiera llamar a _routeFull() varias veces en una ejecucion)

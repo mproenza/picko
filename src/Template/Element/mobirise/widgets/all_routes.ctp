@@ -9,7 +9,7 @@
                         <span class="sign mbr-iconfont fa fa-caret-down inactive"></span>
                         <?= __d('/mobirise/home', 'Taxi <b>desde {0}</b> hasta ...', $locality['name'])?>
                         <?php if(isset($locality['new']) && $locality['new']):?>
-                            <small><span class="badge badge-success align-top pull-right"><?php echo __d('/mobirise/default', 'NUEVA RUTA')?></span></small>
+                            <small><span class="badge badge-success align-top pull-right"><?php echo __d('/mobirise/default', 'NUEVA')?></span></small>
                         <?php endif?>
                     </h4>
                 </a>
