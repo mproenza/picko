@@ -107,6 +107,9 @@ Router::scope('/:language', function (RouteBuilder $routes) {
     
     $routes->connect('/taxi-vs-viazul', ['controller' => 'Pages', 'action' => 'display', 'taxi-vs-viazul'], ['routeClass' => 'UrlI18nRoute'])
             ->setPatterns(['language' => 'en|es']);
+    $routes->connect('/share-taxi-cuba', ['controller' => 'Pages', 'action' => 'display', 'share-taxi-cuba'], ['routeClass' => 'UrlI18nRoute'])
+            ->setPatterns(['language' => 'en|es']);
+    
     
     // Shared Rides
     $routes->connect('/shared-rides/:action/*', ['controller' => 'SharedTravels'], ['routeClass' => 'UrlI18nRoute'])

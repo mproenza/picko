@@ -17,7 +17,7 @@
                     <?= __d('/mobirise/home', 'PickoCar es un <b>servicio de taxi en Cuba</b>, con excelentes precios y rutas que conectan muchos de los destinos mas importantes en la isla.')?>
                 </p>
                 <p class="mbr-text">
-                    <?= __d('/mobirise/home', 'También somos los creadores de {0}', '<a href="https://yotellevocuba.com">YoTeLlevoCuba.com</a>')?>
+                    <?= __d('/mobirise/home', 'También somos los creadores de {0}', '<a href="https://yotellevocuba.com" class="text-white">YoTeLlevoCuba.com</a>')?>
                 </p>
             </div>
             <!--<div class="col-12 col-md-3 mbr-fonts-style display-7">
@@ -35,11 +35,11 @@
                     <?= __d('/mobirise/home', 'Enlaces')?>
                 </h5>
                 <p class="mbr-text">
-                    <?php echo $this->Html->link(__d('shared_travels', 'Sobre Nosotros'), ['plugin'=>null, 'controller'=>'pages', 'action'=>'display', 'about'], ['class' => 'text-primary']); ?>
+                    <?php echo $this->Html->link(__d('shared_travels', 'Sobre Nosotros'), ['plugin'=>null, 'controller'=>'pages', 'action'=>'display', 'about'], ['class' => 'text-white']); ?>
                     <br>
-                    <?php echo $this->Html->link(__d('shared_travels', 'Contactar'), ['plugin'=>null, 'controller'=>'contact'], ['class' => 'text-primary']); ?>
+                    <?php echo $this->Html->link(__d('shared_travels', 'Contactar'), ['plugin'=>null, 'controller'=>'contact'], ['class' => 'text-white']); ?>
                     <br>
-                    <?php echo $this->Html->link(__d('shared_travels', 'Flota'), ['plugin'=>null, 'controller'=>'pages', 'action'=>'display', 'taxi-fleet'], ['class' => 'text-primary']); ?>
+                    <?php echo $this->Html->link(__d('shared_travels', 'Flota'), ['plugin'=>null, 'controller'=>'pages', 'action'=>'display', 'taxi-fleet'], ['class' => 'text-white']); ?>
                 </p>
             </div>
 

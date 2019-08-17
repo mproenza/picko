@@ -66,7 +66,7 @@ class PagesController extends AppController
         $this->set(compact('page', 'subpage'));
 
         try {
-            if($page == 'taxi-vs-viazul') $this->viewBuilder()->setLayout('homepage'); 
+            if($page == 'taxi-vs-viazul' || $page == 'share-taxi-cuba') $this->viewBuilder()->setLayout('mobirise/empty'); 
             if($page == 'faq') $this->viewBuilder()->setLayout('mobirise/empty'); 
             if($page == 'taxi-fleet') $this->viewBuilder()->setLayout('mobirise/taxi_fleet'); 
             

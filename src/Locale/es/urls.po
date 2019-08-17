@@ -37,3 +37,6 @@ msgstr "contactar"
 
 msgid "taxi-fleet"
 msgstr "flota-taxi"
+
+msgid "share-taxi-cuba"
+msgstr "comparte-taxi-cuba"
