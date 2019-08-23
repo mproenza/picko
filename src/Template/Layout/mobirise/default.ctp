@@ -7,7 +7,7 @@ Configure::write('App.imageBaseUrl', 'assets/images/');
 ?>
 
 <!DOCTYPE html>
-<html  >
+<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
     <?php if (ROOT != 'C:\xampp\htdocs\pickocar' && !$Auth->user()): ?>
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -31,6 +31,19 @@ Configure::write('App.imageBaseUrl', 'assets/images/');
 
     <?php if(is_callable($meta['description'])) $meta['description'] = $meta['description']($this->viewVars, $this->request);?>
     <meta name="description" content="<?php echo $meta['description'];?>"/>
+    
+    <!-- TWITTER SHARE -->   
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="<?php echo substr($meta['title'], 0, 70)?>">
+    <meta name="twitter:description" content="<?php echo $meta['description']?>">
+    <!--<meta name="twitter:site" content="@yotellevocuba">
+    <meta name="twitter:creator" content="@yotellevocuba">-->
+    <meta name="twitter:image:src" content="/assets/images/main-header-1-1630x955.jpg">
+
+    <!-- FACEBOOK SHARE -->        
+    <meta property="og:title" content="<?php echo substr($meta['title'], 0, 90)?>">
+    <meta property="og:image" content="/assets/images/main-header-1-1630x955.jpg">
+    <meta property="og:description" content="<?php echo $meta['description']?>">
   
     <?php if(isset($meta['hreflang']) && $meta['hreflang']) echo $this->Html->hreflang($this->request)?>
     
