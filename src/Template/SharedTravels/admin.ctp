@@ -84,6 +84,16 @@ use App\Util\TimeUtil;
                 <?php echo $this->Form->end(); ?>
             </div>
             
+            <!-- Name -->
+            <br/>
+            <br/>
+            <?php echo $this->Form->create('SharedTravel', array('url' => array('controller' => 'shared-rides', 'action' => 'changeName/'.$request['SharedTravel']['id'])));?>
+                <fieldset>
+                    <?php echo $this->Form->input('name_id', array('label' => 'Nuevo nombre', 'value'=>$request['SharedTravel']['name_id'],'type'=>'text', 'required', 'invalid-feedback'=>'El nombre es obligatorio'));?>
+                    <?php echo $this->Form->submit('Actualizar Nombre')?>
+                </fieldset>
+            <?php echo $this->Form->end(); ?>
+            
             <!-- Discount -->
             <br/>
             <br/>
