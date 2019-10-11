@@ -24,6 +24,7 @@ class SharedTravelsController extends AppController {
     private static $NOTIFICATION_TYPE_CONTACTS_CHANGED = 4;
     private static $NOTIFICATION_TYPE_NAME_CHANGED = 5;
     private static $NOTIFICATION_TYPE_DEPARTURE_TIME_CHANGED = 6;
+    private static $NOTIFICATION_TYPE_PAX_CHANGED = 7;
     
     private $ip_blacklist = [''];
     
@@ -423,6 +424,12 @@ class SharedTravelsController extends AppController {
     
     public function changeName($id) {
         return $this->changeFieldValue($id, 'name_id', SharedTravelsController::$NOTIFICATION_TYPE_NAME_CHANGED);
+    }
+    public function changePax($id) {
+        return $this->changeFieldValue($id, 'people_count', SharedTravelsController::$NOTIFICATION_TYPE_PAX_CHANGED);
+    }
+    public function changeDepartureTime($id) {
+        return $this->changeFieldValue($id, 'departure_time', SharedTravelsController::$NOTIFICATION_TYPE_DEPARTURE_TIME_CHANGED);
     }
     public function changePickupAddress($id) {
         return $this->changeFieldValue($id, 'address_origin', SharedTravelsController::$NOTIFICATION_TYPE_PICKUP_ADDRESS_CHANGED);

@@ -36,6 +36,23 @@ use App\Util\TimeUtil;
                 <?php echo $this->element('form_shared_travel_date_controls', ['request'=>$request])?>
             </div>
             
+            <!-- EDIT DEPARTURE TIME -->
+            <!--<br/>
+            <br/>
+            <?php $radios = []?>
+            <?php 
+            foreach ($route['departure_times'] as $i=>$time)
+                $radios[$i] = ['value'=>$time, 'text'=>'<big>'.$route['departure_times_desc'][$i].'</big>', 'style'=>'margin-right:10px'];
+                if($i > 0) $radios[$i]['style'] = 'margin-left:20px;margin-right:10px';
+            ?>
+            <?php echo $this->Form->create('SharedTravel', array('url' => array('controller' => 'shared-rides', 'action' => 'fee/'.$request['SharedTravel']['id'])));?>
+                <fieldset>
+                    <?php echo $this->Form->radio('departure_time', $radios, ['default'=>$route['departure_times'][0], 'escape'=>false])?>
+                    <?php echo $this->Form->submit('Actualizar Horario Salida')?>
+                </fieldset>
+            <?php echo $this->Form->end(); ?>
+            -->
+            
             <!-- EDIT PICKUP ADDRESS -->
             <br/>
             <br/>
@@ -91,6 +108,16 @@ use App\Util\TimeUtil;
                 <fieldset>
                     <?php echo $this->Form->input('name_id', array('label' => 'Nuevo nombre', 'value'=>$request['SharedTravel']['name_id'],'type'=>'text', 'required', 'invalid-feedback'=>'El nombre es obligatorio'));?>
                     <?php echo $this->Form->submit('Actualizar Nombre')?>
+                </fieldset>
+            <?php echo $this->Form->end(); ?>
+            
+            <!-- EDIT PAX -->
+            <br/>
+            <br/>
+            <?php echo $this->Form->create('SharedTravel', array('url' => array('controller' => 'shared-rides', 'action' => 'changePax/'.$request['SharedTravel']['id'])));?>
+                <fieldset>
+                    <?php echo $this->Form->input('people_count', array('label' =>'Nueva cant. personas', 'value'=>$request['SharedTravel']['people_count'], 'type'=>'number', 'min' => 1, 'max' => 4, 'required', 'invalid-feedback'=>__d('errors', 'La cantidad de personas debe ser un número entre {0} y {1}', 1, 4)));?>
+                    <?php echo $this->Form->submit('Actualizar PAX')?>
                 </fieldset>
             <?php echo $this->Form->end(); ?>
             
