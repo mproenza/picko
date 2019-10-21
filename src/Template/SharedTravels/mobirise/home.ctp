@@ -36,21 +36,21 @@
                 <div class="icons-media-container mbr-white">
                     <div class="card col-12 col-md-6 col-lg-4">
                         <div class="icon-block">
-                            <span class="mbr-iconfont mbri-users"></span>
+                            <span class="mbr-iconfont mbri-users" style="font-size: 50px;"></span>
                         </div>
                         <h5 class="mbr-fonts-style display-5"><?= __d('/mobirise/home', 'Sólo 4 pasajeros en un taxi')?></h5>
                     </div>
 
                     <div class="card col-12 col-md-6 col-lg-4">
                         <div class="icon-block">
-                            <span class="mbr-iconfont mbri-map-pin"></span>
+                            <span class="mbr-iconfont mbri-map-pin" style="font-size: 50px;"></span>
                         </div>
                         <h5 class="mbr-fonts-style display-5"><?= __d('/mobirise/home', 'Recogida en tu estancia u hotel')?></h5>
                     </div>
 
                     <div class="card col-12 col-md-6 col-lg-4">
                         <div class="icon-block">
-                            <span class="mbr-iconfont mbri-like"></span>
+                            <span class="mbr-iconfont mbri-like" style="font-size: 50px;"></span>
                         </div>
                         <h5 class="mbr-fonts-style display-5"><?= __d('/mobirise/home', 'Autos muy confortables')?></h5>
                     </div>
@@ -106,7 +106,7 @@
                 <div class="card p-3 align-center col-12 col-md-6 col-lg-3">
                     <div class="panel-item p-3">
                         <div class="card-img pb-3">
-                            <span class="mbr-iconfont mbri-cash"></span>
+                            <span class="mbr-iconfont mbri-cash" style="font-size: 50px;"></span>
                         </div>
 
                         <div class="card-text">
@@ -124,7 +124,7 @@
                 <div class="card p-3 align-center col-12 col-md-6 col-lg-3">
                     <div class="panel-item p-3">
                         <div class="card-img pb-3">
-                            <span class="mbr-iconfont mbri-pin"></span>
+                            <span class="mbr-iconfont mbri-pin" style="font-size: 50px;"></span>
                         </div>
                         <div class="card-text">
                             <h3 class="pt-3 pb-3 mbr-fonts-style display-5"><?= __d('/mobirise/home', 'Puerta a puerta')?></h3>
@@ -141,7 +141,7 @@
                 <div class="card p-3 align-center col-12 col-md-6 col-lg-3">
                     <div class="panel-item p-3">
                         <div class="card-img pb-3">
-                            <span class="mbr-iconfont mbri-sun"></span>
+                            <span class="mbr-iconfont mbri-sun" style="font-size: 50px;"></span>
                         </div>
                         <div class="card-text">
                             <h3 class="pt-3 pb-3 mbr-fonts-style display-5"><?= __d('/mobirise/home', 'Viaja rápido')?></h3>
@@ -158,7 +158,7 @@
                 <div class="card p-3 align-center col-12 col-md-6 col-lg-3">
                     <div class="panel-item p-3">
                         <div class="card-img pb-3">
-                            <span class="mbr-iconfont mbri-image-slider"></span>
+                            <span class="mbr-iconfont mbri-image-slider" style="font-size: 50px;"></span>
                         </div>
 
                         <div class="card-texts">

@@ -128,8 +128,8 @@ msgid "Reservar un taxi saliendo desde:"
 msgstr "Book a taxi departing from:"
 
 #: View/SharedTravels/home.ctp:8
-msgid "Taxi <b>desde {0}</b> hasta ..."
-msgstr "Taxi <b>from {0}</b> to ..."
+msgid "Taxi desde {0} hasta ..."
+msgstr "Taxi from {0} to ..."
 
 #: View/SharedTravels/home.ctp:8
 msgid "Cosas que debes tener en cuenta si vas a usar nuestros servicios"

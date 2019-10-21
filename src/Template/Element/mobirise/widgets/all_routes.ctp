@@ -7,7 +7,7 @@
                 <a role="button" class="panel-title collapsed text-black" data-toggle="collapse" data-core="" href="#taxi-from-<?= $locality['slug']?>" aria-expanded="false" aria-controls="collapse1">
                     <h4 class="mbr-fonts-style display-5">
                         <span class="sign mbr-iconfont fa fa-caret-down inactive"></span>
-                        <?= __d('/mobirise/home', 'Taxi <b>desde {0}</b> hasta ...', $locality['name'])?>
+                        <?= __d('/mobirise/home', 'Taxi desde {0} hasta ...', '<b>'.$locality['name'].'</b>')?>
                         <?php if(isset($locality['new']) && $locality['new']):?>
                             <small><span class="badge badge-success align-top pull-right"><?php echo __d('/mobirise/default', 'NUEVA')?></span></small>
                         <?php endif?>
