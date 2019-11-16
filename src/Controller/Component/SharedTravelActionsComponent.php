@@ -22,7 +22,7 @@ class SharedTravelActionsComponent extends Component {
         // TODO: Verificar que la solicitud no este expirada?
         if($entity->state == SharedTravel::$STATE_CONFIRMED) { // No permitir confirmar de nuevo
             throw new \Cake\Network\Exception\GoneException('La solicitud ya está confirmada: estado -> '.$entity->state);
-        } else if($entity->state != SharedTravel::$STATE_ACTIVATED) { // Solo se puede confirmar cuando esta en estado ACTIVATED
+        } else if($entity->state != SharedTravel::$STATE_ACTIVATED && $entity->state != SharedTravel::$STATE_CANCELLED) { // Solo se puede confirmar cuando esta en estado ACTIVATED o CANCELLED
             throw new \Cake\Network\Exception\NotAcceptableException('La solicitud no se ha activado todavía: estado -> '.$entity->state);
         }
 
