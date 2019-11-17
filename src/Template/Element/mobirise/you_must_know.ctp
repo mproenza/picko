@@ -1,3 +1,4 @@
+<?php use \Cake\I18n\I18n;?>
 <h3 class="mbr-section-title pb-3 align-center mbr-fonts-style display-2">
     <?php echo __d('/mobirise/home', 'Cosas que debes tener en cuenta si vas a usar nuestros servicios')?>
 </h3>
@@ -12,17 +13,29 @@
                         </span>
                     </div>-->
                     <div class="card-text">
-                        <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-6"><?php echo __d('home', 'No hacemos recogidas en los aeropuertos')?></h4>
+                        <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-6"><?= __d('home', 'No hacemos recogidas en los aeropuertos')?></h4>
                         <br/>
                         <p class="mbr-content-text mbr-fonts-style display-7">
-                            <?php echo __d('home', 'Debido a los horarios fijos de nuestros taxis, es muy difícil hacer que las personas lleguen y salgan del aeropuerto en el momento apropiado.')?>
+                            <?= __d('home', 'Debido a los horarios fijos de nuestros taxis, es muy difícil hacer que las personas lleguen y salgan del aeropuerto en el momento apropiado.')?>
                         </p>
                         <p class="mbr-content-text mbr-fonts-style display-7">
-                            <?php echo __d('home', 'Sin embargo, sí aceptamos aeropuertos como lugar de destino <em>-ej. si vas de Trinidad al aeropuerto de La Habana</em>.')?>
+                            <?= __d('home', 'Sin embargo, sí aceptamos aeropuertos como lugar de destino <em>-ej. si vas de Trinidad al aeropuerto de La Habana</em>.')?>
                         </p>
                         <br/>
                         <p class="mbr-content-text mbr-fonts-style display-7">
-                            <em><?php echo __d('home', 'Ej. Si necesitas ir del aeropuerto de La Habana directamente a Viñales, no podemos hacerlo.')?></em>
+                            <em><?= __d('home', 'Ej. Si necesitas ir del aeropuerto de La Habana directamente a Viñales, no podemos hacerlo.')?></em>
+                        </p>
+                        <br/>
+                        <p class="mbr-content-text mbr-fonts-style display-7">
+                            <?php
+                            $lang = I18n::getLocale();
+                            if($lang == 'es') $articleUrl = 'https://pickocar.com/es/blog/desde-el-aeropuerto-de-la-habana-hasta-trinidad-varadero-vinales-y-otros-destinos-en-cuba/';
+                            else $articleUrl = 'https://pickocar.com/en/blog/from-havana-airport-to-trinidad-varadero-vinales-and-other-destinations-in-cuba/';
+                            ?>
+                            <b><?= __('Lee')?>:</b> 
+                            <a href="<?= $articleUrl?>">
+                                <?php echo __d('home', '¿Cómo ir directo desde el aeropuerto de La Habana a Trinidad, Viñales, Varadero y otros destinos en Cuba?')?>
+                            </a>
                         </p>
                     </div>
                 </div>

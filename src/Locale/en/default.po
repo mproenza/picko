@@ -61,3 +61,6 @@ msgstr "Sending request"
 
 msgid "NUEVO"
 msgstr "NEW"
+
+msgid "Lee"
+msgstr "Read"

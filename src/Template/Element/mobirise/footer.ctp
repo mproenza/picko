@@ -1,4 +1,4 @@
-<?php use Cake\Core\Configure;?>
+<?php use Cake\Core\Configure;use \Cake\I18n\I18n;?>
 
 <section class="cid-rmpfxwRsqp" id="footer1-h">
 
@@ -35,6 +35,8 @@
                     <?= __d('/mobirise/home', 'Enlaces')?>
                 </h5>
                 <p class="mbr-text">
+                    <a href="https://pickocar.com/<?= I18n::getLocale()?>/blog/" title="Blog PickoCar" class="text-white">Blog</a>
+                    <br>
                     <?php echo $this->Html->link(__d('shared_travels', 'Sobre Nosotros'), ['plugin'=>null, 'controller'=>'pages', 'action'=>'display', 'about'], ['class' => 'text-white']); ?>
                     <br>
                     <?php echo $this->Html->link(__d('shared_travels', 'Contactar'), ['plugin'=>null, 'controller'=>'contact'], ['class' => 'text-white']); ?>

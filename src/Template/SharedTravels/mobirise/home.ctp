@@ -200,7 +200,7 @@
         <div class="media-container-row">
             <div class="col-12">
 
-                <div class="section-head text-center space30">
+                <!--<div class="section-head text-center space30">
                     <h2 class="mbr-section-title pb-5 mbr-fonts-style display-2">
                   <?= __d('/mobirise/home', 'Estas son las rutas, precios y horarios de nuestros taxis en Cuba')?>
                     </h2>
@@ -209,8 +209,18 @@
                     <div><?= __d('/mobirise/home', 'Cada taxi acomoda a <strong>{0} pasajeros</strong>', 4)?></div>
                     <div><?= __d('/mobirise/home', 'El taxi te recoge en tu estacia u hotel')?></div>
                     <br/>
+                </div>-->
+                <div class="section-head text-center space30">
+                    <h2 class="mbr-section-title pb-5 mbr-fonts-style display-2">
+                    <?= __d('/mobirise/home', 'Rutas, precios y horarios de nuestros taxis en Cuba')?>
+                    </h2>
+                    <h3><?= __d('/mobirise/home', 'Reserva tus asientos > Nosotros coordinamos los traslados')?></h3>
+                    <br/>
+                    <div><?= __d('/mobirise/home', 'Quedas en contacto con un Asistente a Clientes para cualquier trámite')?></div>
+                    <div style="color: salmon"><big><?= __d('/mobirise/home', 'Cancela en cualquier momento si tus planes cambian')?></big></div>
+                    <br/>
                 </div>
-
+                
                 <div class="clearfix"></div>
 
                 <div id="bootstrap-toggle" class="toggle-panel accordionStyles tab-content">

@@ -120,6 +120,26 @@ msgid "El taxi te recoge en tu estacia u hotel"
 msgstr "The taxi picks you up at your guest-house or hotel"
 
 #: View/SharedTravels/home.ctp:8
+msgid "Rutas, precios y horarios de nuestros taxis en Cuba"
+msgstr "Routes, prices and departure times of our taxis in Cuba"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Reserva tus asientos > Nosotros coordinamos los traslados"
+msgstr "Book your seats > We coordinate all the rides"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Cancela en cualquier momento si tus planes cambian"
+msgstr "Cancel at any time if your plans change"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Quedas en contacto con un Asistente a Clientes para cualquier trámite"
+msgstr "You will remain in contact with a Customer Assistant for any matter"
+
+#: View/SharedTravels/home.ctp:8
+msgid "El pago se realiza en efectivo directamente al chofer el día de cada servicio"
+msgstr "The payment is made in cash and directly to the driver the day of each service"
+
+#: View/SharedTravels/home.ctp:8
 msgid "Uno de nuestros taxis siempre te recogerá en el lugar y fecha que indiques"
 msgstr "One of our taxis will always pick you up at the place and date you indicate"
 

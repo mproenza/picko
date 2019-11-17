@@ -210,3 +210,7 @@ msgstr "We do stop during long journeys (<em>ex. La Habana - Trinidad</em>) to g
 #: View/SharedTravels/home.ctp:8
 msgid "Ver las rutas y horarios disponibles"
 msgstr "See all the routes and departure times available"
+
+#: View/SharedTravels/home.ctp:8
+msgid "¿Cómo ir directo desde el aeropuerto de La Habana a Trinidad, Viñales, Varadero y otros destinos en Cuba?"
+msgstr "How to go directly from Havana airport to Trinidad, Viñales, Varadero and other destinations in Cuba?"
