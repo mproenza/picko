@@ -119,6 +119,13 @@ class EnhancedHtmlHelper extends HtmlHelper {
         return $output;
     }
     
+    public function metaCanonical($request) {
+        $urlParams = \App\Util\LangUtil::getUrlParamsForLanguage(I18n::getLocale(), $request);
+        $urlParams['_full'] = true;
+        
+        return '<link rel="canonical" href="'.\Cake\Routing\Router::url($urlParams).'">';
+    }
+    
     public function lang($currentLang, $request, $options = []) {
         $defaultOptions = [
                 'escape' => false,

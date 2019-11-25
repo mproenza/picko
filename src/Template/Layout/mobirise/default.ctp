@@ -25,6 +25,8 @@ Configure::write('App.imageBaseUrl', 'assets/images/');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
     <?= $this->Html->meta('icon', 'favicon.png');?>
+        
+    <?= $this->Html->metaCanonical($this->request);?>
 
     <?php if(is_callable($meta['title'])) $meta['title'] = $meta['title']($this->viewVars, $this->request);?>
     <title><?php echo $meta['title'].' | '.'PickoCar'?></title>
