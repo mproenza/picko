@@ -73,4 +73,14 @@ class TimeUtil {
         return $now->diff(new DateTime($str_date), true)->format('%a');
     }
     
+    public static function getTimeAmPM($time) {
+        $d = 'am';
+        if($time > 12) {
+            $time -= 12;
+            $d = 'pm';
+        } else if( $time == 12) $d = 'pm';
+        
+        return $time.' '.$d;
+    }
+    
 }

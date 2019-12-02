@@ -1,6 +1,7 @@
 <?php
 namespace App\Model\Entity;
 use Cake\ORM\Entity;
+use App\Util\TimeUtil;
 
 class SharedTravel extends Entity {
     
@@ -192,12 +193,14 @@ class SharedTravel extends Entity {
         
         // Poner am y pm a la hora de salida
         if(isset($route['departure_time'])) {
+            $route['departure_time_desc'] = TimeUtil::getTimeAmPM($route['departure_time']);
+            /*$timePretty = $route['departure_time'];
             $d = 'am';
-            if($route['departure_time'] > 12) {
-                $route['departure_time'] -= 12;
+            if($timePretty > 12) {
+                $timePretty -= 12;
                 $d = 'pm';
-            } else if( $route['departure_time'] == 12) $d = 'pm';
-            $route['departure_time_desc'] = $route['departure_time'].' '.$d;
+            } else if( $timePretty == 12) $d = 'pm';
+            $route['departure_time_desc'] = $timePretty.' '.$d;*/
         }
         
         if(!isset($route['departure_times'])) {
@@ -210,12 +213,13 @@ class SharedTravel extends Entity {
         
         // Poner am y pm a los horarios de salida
         foreach ($route['departure_times'] as $time) {
-            $d = 'am';
+            $route['departure_times_desc'][] = TimeUtil::getTimeAmPM($time);
+            /*$d = 'am';
             if($time > 12) {
                 $time -= 12;
                 $d = 'pm';
             } else if( $time == 12) $d = 'pm';
-            $route['departure_times_desc'][] = $time.' '.$d;
+            $route['departure_times_desc'][] = $time.' '.$d;*/
         }
         
         $route['isFull'] = true;
@@ -236,13 +240,14 @@ class SharedTravel extends Entity {
         
         // Poner am y pm a la hora de salida
         if(isset($sharedTravel->departure_time)) {
-            $time = $sharedTravel->departure_time;
+            $sharedTravel->departure_time_desc = TimeUtil::getTimeAmPM($sharedTravel->departure_time);
+            /*$time = $sharedTravel->departure_time;
             $d = 'am';
             if($time > 12) {
                 $time -= 12;
                 $d = 'pm';
             } else if( $time == 12) $d = 'pm';
-            $sharedTravel->departure_time_desc = $time.' '.$d;
+            $sharedTravel->departure_time_desc = $time.' '.$d;*/
         }
         
         if(!isset($sharedTravel->departure_times)) {
@@ -255,12 +260,13 @@ class SharedTravel extends Entity {
         
         // Poner am y pm a los horarios de salida
         foreach ($sharedTravel->departure_times as $time) {
-            $d = 'am';
+            $sharedTravel->departure_times_desc[] = TimeUtil::getTimeAmPM($time);
+            /*$d = 'am';
             if($time > 12) {
                 $time -= 12;
                 $d = 'pm';
             } else if( $time == 12) $d = 'pm';
-            $sharedTravel->departure_times_desc[] = $time.' '.$d;
+            $sharedTravel->departure_times_desc[] = $time.' '.$d;*/
         }
         
         $sharedTravel->routeInfoAdded = true;
@@ -307,13 +313,14 @@ class SharedTravel extends Entity {
         $dt = null;
         
         if(isset($this->departure_time)) {
-            $time = $this->departure_time;
+            $dt = TimeUtil::getTimeAmPM($this->departure_time);
+            /*$time = $this->departure_time;
             $d = 'am';
             if($time > 12) {
                 $time -= 12;
                 $d = 'pm';
             } else if( $time == 12) $d = 'pm';
-            $dt = $time.' '.$d;
+            $dt = $time.' '.$d;*/
         }
         
         return $dt;
@@ -324,12 +331,13 @@ class SharedTravel extends Entity {
         $dts = null;
         // Poner am y pm a los horarios de salida
         foreach ($departureTimes as $time) {
-            $d = 'am';
+            $dts[] = TimeUtil::getTimeAmPM($time);
+            /*$d = 'am';
             if($time > 12) {
                 $time -= 12;
                 $d = 'pm';
             } else if( $time == 12) $d = 'pm';
-            $dts[] = $time.' '.$d;
+            $dts[] = $time.' '.$d;*/
         }
         
         return $dts;
