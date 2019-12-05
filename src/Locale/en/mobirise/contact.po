@@ -24,5 +24,5 @@ msgid "Estamos disponibles para cualquier pregunta o solicitud. Escríbenos un m
 msgstr "We are available for any questions or requests. Send us a message in the following form:"
 
 #: View/SharedTravels/home.ctp:8
-msgid "También puedes contactarnos por WhatsApp: {0}"
-msgstr "You can also contact us via WhatsApp: {0}"
+msgid "También puedes contactarnos por WhatsApp"
+msgstr "You can also contact us via WhatsApp"

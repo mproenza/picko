@@ -50,9 +50,13 @@
                     <?= __d('/mobirise/home', 'Contacto')?>
                 </h5>
                 <p class="mbr-text">
-                    <i class="fa fa-whatsapp"></i> WhatsApp:
-                    </br>
-                    <big><?= Configure::read('whatsapp_contact_number')[ini_get('intl.default_locale')]?></big>
+                    WhatsApp:
+                    <br/>
+                    <big>
+                        <a href="https://wa.me/<?= Configure::read('whatsapp_contact_number_short')[ini_get('intl.default_locale')]?>?text=<?= __('Hola')?> PickoCar!" target="_blank" style="color: #25d366">
+                            <span style="display: inline-block"><i class="fa fa-whatsapp"></i> <b><?= Configure::read('whatsapp_contact_number')[ini_get('intl.default_locale')]?></b></span>
+                        </a>
+                    </big>
                 </p>
             </div>
 

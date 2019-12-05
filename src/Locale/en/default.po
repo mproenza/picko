@@ -64,3 +64,6 @@ msgstr "NEW"
 
 msgid "Lee"
 msgstr "Read"
+
+msgid "Hola"
+msgstr "Hi"

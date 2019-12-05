@@ -13,8 +13,11 @@
                     <?= __d('/mobirise/contact', 'Estamos disponibles para cualquier pregunta o solicitud. Escríbenos un mensaje en el siguiente formulario:')?>
                 </h3>
                 <h3 class="mbr-section-subtitle align-center pb-3 mbr-fonts-style display-6">
-                    <?= __d('/mobirise/contact', 'También puedes contactarnos por WhatsApp: {0}', 
-                            '</br><span style="display: inline-block"><i class="fa fa-whatsapp"></i> <b>'.Configure::read('whatsapp_contact_number')[ini_get('intl.default_locale')].'</b></span>')?>
+                    <?= __d('/mobirise/contact', 'También puedes contactarnos por WhatsApp')?>:
+                    <br/>
+                    <a href="https://wa.me/<?= Configure::read('whatsapp_contact_number_short')[ini_get('intl.default_locale')]?>?text=<?= __('Hola')?> PickoCar!" target="_blank" style="color: #25d366">
+                        <span style="display: inline-block"><i class="fa fa-whatsapp"></i> <b><?= Configure::read('whatsapp_contact_number')[ini_get('intl.default_locale')]?></b></span>
+                    </a>
                 </h3>
             </div>
         </div>
