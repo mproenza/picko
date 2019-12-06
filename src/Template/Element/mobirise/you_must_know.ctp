@@ -106,6 +106,18 @@
                         <p class="mbr-content-text mbr-fonts-style display-7">
                             <em><?php echo __d('home', 'Ej. En un viaje de La Habana a Trinidad, no hacemos parada para visitar Cienfuegos.')?></em>
                         </p>
+                        <br/>
+                        <p class="mbr-content-text mbr-fonts-style display-7">
+                            <?php
+                            $lang = I18n::getLocale();
+                            if($lang == 'es') $articleUrl = 'https://pickocar.com/es/blog/la-habana-a-trinidad-pasando-por-cienfuegos-en-transporte-economico/';
+                            else $articleUrl = 'https://pickocar.com/en/blog/from-havana-to-trinidad-visiting-cienfuegos-affordable-transportation/';
+                            ?>
+                            <b><?= __('Lee')?>:</b> 
+                            <a href="<?= $articleUrl?>">
+                                <?php echo __d('home', '¿Cómo ir de La Habana a Trinidad pasando por Cienfuegos el mismo día?')?>
+                            </a>
+                        </p>
                     </div>
                 </div>
             </div>

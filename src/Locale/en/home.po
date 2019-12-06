@@ -214,3 +214,7 @@ msgstr "See all the routes and departure times available"
 #: View/SharedTravels/home.ctp:8
 msgid "¿Cómo ir directo desde el aeropuerto de La Habana a Trinidad, Viñales, Varadero y otros destinos en Cuba?"
 msgstr "How to go directly from Havana airport to Trinidad, Viñales, Varadero and other destinations in Cuba?"
+
+#: View/SharedTravels/home.ctp:8
+msgid "¿Cómo ir de La Habana a Trinidad pasando por Cienfuegos el mismo día?"
+msgstr "How to go from Havana to Trinidad via Cienfuegos on the same day?"

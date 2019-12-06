@@ -148,7 +148,8 @@ echo $this->fetch('css_top');
                 startDate: '<?php if(!$Auth->user()):?>+2d<?php else:?>today<?php endif;?>',
                 //todayBtn: "linked",
                 autoclose: true,
-                todayHighlight: false
+                todayHighlight: false,
+                datesDisabled:['31/12/2019', '01/01/2020', '31/12/2020', '01/01/2021']
             });
 
             form.submit(function(event) {
