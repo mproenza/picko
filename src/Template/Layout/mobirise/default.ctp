@@ -38,9 +38,9 @@ Configure::write('App.imageBaseUrl', 'assets/images/');
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="<?php echo substr($meta['title'], 0, 70)?>">
     <meta name="twitter:description" content="<?php echo $meta['description']?>">
-    <!--<meta name="twitter:site" content="@yotellevocuba">
-    <meta name="twitter:creator" content="@yotellevocuba">-->
-    <meta name="twitter:image:src" content="/assets/images/main-header-1-1630x955.jpg">
+    <meta name="twitter:site" content="@pickocar">
+    <!--<meta name="twitter:creator" content="@yotellevocuba">-->
+    <meta name="twitter:image:src" content="/assets/images/main-header-twitter-card.jpg">
 
     <!-- FACEBOOK SHARE -->        
     <meta property="og:title" content="<?php echo substr($meta['title'], 0, 90)?>">
