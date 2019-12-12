@@ -40,3 +40,6 @@ msgstr "flota-taxi"
 
 msgid "share-taxi-cuba"
 msgstr "comparte-taxi-cuba"
+
+msgid "havana-cienfuegos-trinidad"
+msgstr "habana-cienfuegos-trinidad"

@@ -36,7 +36,7 @@ class SharedTravelsController extends AppController {
     
     public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
-        $this->Auth->allow(['home', 'book', 'thanks', 'activate', 'view', /*'index230216', 'admin', 'cancel', 'changeDate'*/]);
+        $this->Auth->allow(['home', 'book', 'thanks', 'activate', 'view', 'bookHavCfgTri' /*'index230216', 'admin', 'cancel', 'changeDate'*/]);
         
         $this->viewBuilder()->setLayout('shared_rides');
     }
@@ -48,12 +48,6 @@ class SharedTravelsController extends AppController {
     }
     
     public function index() {
-        
-        /*
-        $this->paginate = ['limit'=>100, 'order'=>['SharedTravels.date', 'SharedTravels.departure_time', ' 1000 * SharedTravels.origin_id + SharedTravels.destination_id']]; 
-        $results = $this->paginate($this->SharedTravels, ['conditions'=> ['email !=' => 'martin@yotellevocuba.com'] ]);
-        */
-        
         // Hago la paginacion aqui con una query porque es la unica forma en que se obtienen bien los resultados ordenados como quiero, no se por que...
         $this->paginate = ['limit'=>100];        
         $query = $this->SharedTravels->find()
@@ -72,77 +66,14 @@ class SharedTravelsController extends AppController {
     public function book($routeSlug = null) {
         if ($this->request->is('post') || $this->request->is('put')) {
             
-            // Sanity checks
-            if(in_array($this->request->clientIp(), $this->ip_blacklist) || $this->request->clientIp() == null || empty($this->request->clientIp()) ) 
-                throw new \Cake\Network\Exception\ForbiddenException();
-            
-            // Proteccion contra ataque en Noviembre 2018
-            $emailName = strstr($this->request->getData('email'), '@', true);
-            if(strtolower($emailName) == strtolower($this->request->getData('name_id')))
-                throw new \Cake\Network\Exception\ForbiddenException();
-            // End of Sanity checks
-                    
-                    
-            // Generar los token
-            $idToken = StringsUtil::getWeirdString();
-            $activationToken = StringsUtil::getWeirdString();
-            
-            // Poner datos iniciales a la solicitud
-            $this->request->data('id_token', $idToken);
-            $this->request->data('activation_token', $activationToken);
-            $this->request->data('lang', ini_get('intl.default_locale'));
-            $this->request->data('state', SharedTravel::$STATE_PENDING);
-            $this->request->data('activated', false);
-            $this->request->data('final_state', null);
-            $this->request->data('coupling_id', null);
-            $this->request->data('original_date', $this->request->getData('date'));
-            $this->request->data('from_ip', $this->request->clientIp());
-
-            $STTable = TableRegistry::get('SharedTravels');
-            $STEntity = $STTable->newEntity($this->request->getData());
-            
-            $errors = $STEntity->errors();
-            if ($errors) {
-                // TODO: Do work to show error messages.
-            }
+            if(!$this->_checkSecurity()) throw new \Cake\Network\Exception\ForbiddenException();
             
             $datasource = ConnectionManager::get('default');
             $datasource->begin();
             
-            // Salvar la solicitud
-            $OK = $STTable->save($STEntity,
-                    ['track_history' =>
-                        [
-                            'owner' => $this->Auth->user(),
-                            'event_type' => SharedTravel::$EVENT_TYPE_CREATED,
-                            'notify_to' =>  $this->_getUsersToSync()
-                        ]
-                    ]);
-            
-            if ($OK) {
-
-                // TODO: Ver si se debe enviar el correo de verificacion
-                
-                // Obtener la solicitud para que los datos vengan formateados (ej. la fecha)
-                $request = $STTable->findByToken($idToken);
-
-                // Correo con link de activacion
-                $OK = EmailsUtil::email(
-                    $request['SharedTravel']['email'],
-                    __d('shared_travels', 'Confirma tu solicitud de viaje compartido'),
-                    array('request' => $request),
-                    'hola',
-                    'activate_request',
-                    array('lang'=>ini_get('intl.default_locale'), 'enqueue'=>false)
-                );
-
-                // Email de 'Nueva solicitud' para mi
-                $Email = new Email('hola');
-                $Email->to('martin@yotellevocuba.com')
-                        ->subject('Nueva solicitud: PickoCar #'.$request['SharedTravel']['id'])
-                        ->send('http://pickocar.com/shared-rides/view/'.$request['SharedTravel']['id_token']);
-                
-            }
+            $result = $this->_doBook($this->request->getData());
+            $OK = $result['success'];
+            $request = $result['request'];
 
             if($OK) {
                 
@@ -155,12 +86,11 @@ class SharedTravelsController extends AppController {
                 $session->write('user_people_count', $request['SharedTravel']['people_count']);
                 $session->write('user_name_id', $request['SharedTravel']['name_id']);
                 
-                return $this->redirect(['controller'=>'shared-rides', 'action' => 'thanks', '?'=>['t'=>$idToken]]);
+                return $this->redirect(['controller'=>'shared-rides', 'action' => 'thanks', '?'=>['t'=>$request['SharedTravel']['id_token']]]);
             } else {
                 $datasource->rollback();
                 $this->Flash->error(__('Ocurrió un error realizando la solicitud.'), ['key'=>'form']);
             }
-            
         }
         
         // DATOS PARA /shared-rides/book            
@@ -170,16 +100,180 @@ class SharedTravelsController extends AppController {
         $this->set('route', SharedTravel::_routeFull($route));
         $this->viewBuilder()->setLayout('homepage');
     }
+    
+    public function bookHavCfgTri() {
+        if ($this->request->is('post') || $this->request->is('put')) {
+            
+            if(!$this->_checkSecurity()) throw new \Cake\Network\Exception\ForbiddenException();
+            
+            $datasource = ConnectionManager::get('default');
+            $datasource->begin();
+            
+            $havOrigin = $this->request->getData('address_origin_havana');
+            $cfgDestination = $this->request->getData('address_destination_cienfuegos');
+            $cfgOrigin = $this->request->getData('address_origin_cienfuegos');
+            $triDestination = $this->request->getData('address_destination_trinidad');
+            
+            // HAV - CFG
+            $requestHavCfg = $this->request->getData();
+            $requestHavCfg['address_origin'] = $havOrigin;
+            $requestHavCfg['address_destination'] = $cfgDestination;
+            $requestHavCfg['people_count'] = 2;
+            $requestHavCfg['departure_time'] = 8;
+            $requestHavCfg['discount_total'] = 1;
+            $requestHavCfg['modality_code'] = 'HABCFG';
+            $requestHavCfg = array_merge($requestHavCfg, SharedTravel::_routeFromSlug('taxi-habana--cienfuegos'));
+            
+            // CFG - TRI
+            $requestCfgTri = $this->request->getData();
+            $requestCfgTri['address_origin'] = $cfgOrigin;
+            $requestCfgTri['address_destination'] = $triDestination;
+            $requestCfgTri['people_count'] = 2;
+            $requestCfgTri['departure_time'] = 17;
+            $requestCfgTri['discount_total'] = 10;
+            $requestCfgTri['modality_code'] = 'CFGTRI';
+            $requestCfgTri = array_merge($requestCfgTri, SharedTravel::_routeFromSlug('taxi-cienfuegos--trinidad'));
+            
+            
+            $result = $this->_doBook($requestHavCfg);
+            $OK = $result['success'];
+            $request1 = $result['request'];
+            if(!$OK) {
+                $datasource->rollback();
+                $this->Flash->error(__('Ocurrió un error realizando la solicitud.'), ['key'=>'form']);
+            }
+            
+            $result = $this->_doBook($requestCfgTri);
+            $OK = $result['success'];
+            $request2 = $result['request'];
+            if(!$OK) {
+                $datasource->rollback();
+                $this->Flash->error(__('Ocurrió un error realizando la solicitud.'), ['key'=>'form']);
+            }            
+                
+            if($OK) {
+                $datasource->commit();
+                /*// Guardar algunos datos en la session para si el cliente quiere crear mas solicitudes que no tenga que repetirlas
+                // TODO: Guardarlos en una Cookie???
+                $session = $this->request->session();
+                $session->write('user_email', $request['SharedTravel']['email']);
+                $session->write('user_people_count', $request['SharedTravel']['people_count']);
+                $session->write('user_name_id', $request['SharedTravel']['name_id']);*/
 
-    public function thanks() {// Esta es una action que no hace ningun procesamiento, solamente es una thank you page
-        if (!isset($this->request->query['t'])) throw new NotFoundException ();
+                return $this->redirect(['controller'=>'shared-rides', 'action' => 'thanks', 
+                    '?'=>[
+                        't1'=>$request1['SharedTravel']['id_token'], 
+                        't2'=>$request2['SharedTravel']['id_token']]]);
+            }
+            
+            return $this->redirect($this->referer());
+            
+        }
+    }
+    
+    private function _checkSecurity() {
+        $OK = true;
+        
+        if(in_array($this->request->clientIp(), $this->ip_blacklist) || $this->request->clientIp() == null || empty($this->request->clientIp()) ) 
+            $OK = false;
+
+        // Proteccion contra ataque en Noviembre 2018
+        $emailName = strstr($this->request->getData('email'), '@', true);
+        if(strtolower($emailName) == strtolower($this->request->getData('name_id')))
+            $OK = false;
+        
+        return $OK;
+    }
+    
+    private function _doBook(array $request) {
+        // Generar los token
+        $idToken = StringsUtil::getWeirdString();
+        $activationToken = StringsUtil::getWeirdString();
+
+        // Poner datos iniciales a la solicitud
+        $request['id_token'] = $idToken;
+        $request['activation_token'] =  $activationToken;
+        $request['lang'] =  ini_get('intl.default_locale');
+        $request['state'] =  SharedTravel::$STATE_PENDING;
+        $request['activated'] =  false;
+        $request['final_state'] =  null;
+        $request['coupling_id'] =  null;
+        $request['original_date'] =  $this->request->getData('date');
+        $request['from_ip'] =  $this->request->clientIp();
 
         $STTable = TableRegistry::get('SharedTravels');
-        $request = $STTable->findByToken($this->request->query['t']);
+        $STEntity = $STTable->newEntity($request);
 
-        if ($request == null || empty($request)) throw new NotFoundException();
+        $errors = $STEntity->errors();
+        if ($errors) {
+            // TODO: Do work to show error messages.
+        }
 
-        $this->set('request', $request);
+        // Salvar la solicitud
+        $OK = $STTable->save($STEntity,
+                ['track_history' =>
+                    [
+                        'owner' => $this->Auth->user(),
+                        'event_type' => SharedTravel::$EVENT_TYPE_CREATED,
+                        'notify_to' =>  $this->_getUsersToSync()
+                    ]
+                ]);
+
+        if ($OK) {
+
+            // TODO: Ver si se debe enviar el correo de verificacion
+
+            // Obtener la solicitud para que los datos vengan formateados (ej. la fecha)
+            $request = $STTable->findByToken($idToken);
+
+            // Correo con link de activacion
+            $OK = EmailsUtil::email(
+                $request['SharedTravel']['email'],
+                __d('shared_travels', 'Confirma tu solicitud de viaje compartido'),
+                array('request' => $request),
+                'hola',
+                'activate_request',
+                array('lang'=>ini_get('intl.default_locale'), 'enqueue'=>false)
+            );
+
+            // Email de 'Nueva solicitud' para mi
+            $Email = new Email('hola');
+            $Email->to('martin@yotellevocuba.com')
+                    ->subject('Nueva solicitud: PickoCar #'.$request['SharedTravel']['id'])
+                    ->send('http://pickocar.com/shared-rides/view/'.$request['SharedTravel']['id_token']);
+
+        }
+        
+        return ['success'=>$OK, 'request'=>$request];
+    }
+
+    public function thanks() {// Esta es una action que no hace ningun procesamiento, solamente es una thank you page
+        if (!isset($this->request->query['t'])) {
+            // Si no tiene t, entonces debe tener t1 y t2 (combo)
+            if(!isset($this->request->query['t1']) || !isset($this->request->query['t2']))
+                throw new NotFoundException ();
+        }
+        
+        $STTable = TableRegistry::get('SharedTravels');
+        if(isset($this->request->query['t'])) {
+            $request = $STTable->findByToken($this->request->query['t']);
+
+            if ($request == null || empty($request)) throw new NotFoundException();
+
+            $this->set('request', $request);
+            
+        } else { // Deben estar t1 y t2
+            $request1 = $STTable->findByToken($this->request->query['t1']);
+            $request2 = $STTable->findByToken($this->request->query['t2']);
+            
+            if ($request1 == null || empty($request1) ||
+                $request2 == null || empty($request2)) throw new NotFoundException();
+            
+            $this->set('request1', $request1);
+            $this->set('request2', $request2);
+            
+            $this->render('thanks-combo');
+        }
     }
     
     
@@ -391,10 +485,6 @@ class SharedTravelsController extends AppController {
         } 
         
         $datasource->commit();
-        
-        /*$this->set([
-            'success' => true
-        ]);*/
         
         return $this->redirect($this->referer());
     }

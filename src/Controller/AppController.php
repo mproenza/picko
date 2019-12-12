@@ -138,6 +138,11 @@ class AppController extends Controller
                     'description'=>__d('meta', 'Fotos de los autos que usamos en PickoCar para trasladar a nuestros clientes en Cuba'),
                     'hreflang'=>true
                 ),
+                'havana-cienfuegos-trinidad'=>array(
+                    'title'=>__d('meta', 'Taxi La Habana > Cienfuegos > Trinidad el mismo día'), 
+                    'description'=>__d('meta', 'Reserva traslado económico La Habana > Trinidad con visita a Cienfuegos por sólo $99 total para 2 personas'),
+                    'hreflang'=>true
+                ),
                 'press-release'=>array('title'=>__d('meta', 'Lanzamiento de PickoCar | Reseña para la Prensa'), 'description'=>__d('meta', 'Reseña para la prensa del lanzamiento de PickoCar en Cuba')),
                 'taxi-vs-viazul'=>array('title'=>__d('meta', 'Taxi compartido en Cuba con precios similares al bus Viazul'), 'description'=>__d('meta', 'PickoCar es un servicio de taxi compartido en Cuba con excelentes precios y rutas que conectan destinos como {0} y otros', 'La Habana, Viñales, Trinidad, Varadero, Cayo Guillermo')),
                 /*'faq'=>array('title'=>__d('meta', 'Preguntas Frecuentes'), 'description'=>__d('meta', 'Preguntas y respuestas sobre cómo conseguir un taxi para moverte por Cuba usando YoTeLlevo')),

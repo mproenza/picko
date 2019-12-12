@@ -65,6 +65,16 @@ Configure::write('App.imageBaseUrl', 'assets/images/');
     echo $this->Html->css('font-awesome/css/font-awesome.min.css');
     ?>
     
+    <!-- Este css es para sobreescribir una propiedad que le pone Mobirise a los modal-dialog que hacen que salgan mal -->
+    <style>
+        .modal-dialog,
+        .modal-content {height: auto}
+        
+        textarea {
+            min-height: 0px !important
+        }
+    </style>
+    
 <?php 
 $this->fetch('css');
 echo $this->fetch('css_top');
@@ -115,7 +125,7 @@ echo $this->fetch('css_top');
     echo $this->Html->script('theme/js/script');
     ?>
     
-    <?= $this->Html->script('bootbox/5.1.1/bootbox.min');?>
+    <?= $this->Html->script('bootbox/5.3.4/bootbox.min');?>
   
     <?= $this->fetch('script');?>
     <?= $this->fetch('script_bottom');?>

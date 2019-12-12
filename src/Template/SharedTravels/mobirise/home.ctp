@@ -177,7 +177,24 @@
     </div>
 </section>
 
-<section class="mbr-section info2 cid-rmp8Fbk1ML" id="info2-8">
+<section class="mbr-section info3 cid-rKguflotHp mbr-parallax-background" id="info3-3d">
+
+    <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(35, 35, 35);">
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="media-container-column title col-12 col-md-10">
+                <h2 class="align-left mbr-bold mbr-white pb-3 mbr-fonts-style display-2"><?= __d('/mobirise/home', 'La magia de compartir taxi y ahorrar dinero en tu viaje a Cuba')?></h2>
+                <h3 class="mbr-section-subtitle align-left mbr-light mbr-white pb-3 mbr-fonts-style display-5"><?php echo __d('/mobirise/home', 'En un traslado de <b>La Habana a Trinidad</b> en que se pagarían <b>{0} - {1} a un taxi privado</b> -sin importar cuántas personas sean-<b> a 2 personas les costaría en PickoCar {2} en total ({3} por asiento)</b>, ahorrándose entre {4} y {5}.', '<big>$130</big>', '<big>$160</big>', '$70', '$35', '$60', '$90')?></h3>
+                
+                <div class="mbr-section-btn align-left py-4"><a class="btn btn-success display-4" href="#<?php echo __d('meta', 'rutas-y-precios')?>"><?= __d('/mobirise/home', 'Comenzar a reservar mis traslados')?></a></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--<section class="mbr-section info2 cid-rmp8Fbk1ML" id="info2-8">
     <div class="container">
         <div class="row main justify-content-center">
             <div class="media-container-column col-12 col-lg-3 col-md-4">
@@ -193,7 +210,7 @@
             </div>
         </div>
     </div>
-</section>
+</section>-->
 
 <section class="toggle1 cid-rmACGoAqAT" id="<?= __d('meta', 'rutas-y-precios')?>">
     <div class="container">

@@ -109,6 +109,8 @@ Router::scope('/:language', function (RouteBuilder $routes) {
             ->setPatterns(['language' => 'en|es']);
     $routes->connect('/share-taxi-cuba', ['controller' => 'Pages', 'action' => 'display', 'share-taxi-cuba'], ['routeClass' => 'UrlI18nRoute'])
             ->setPatterns(['language' => 'en|es']);
+    $routes->connect('/havana-cienfuegos-trinidad', ['controller' => 'Pages', 'action' => 'display', 'havana-cienfuegos-trinidad'], ['routeClass' => 'UrlI18nRoute'])
+            ->setPatterns(['language' => 'en|es']);
     
     
     // Shared Rides

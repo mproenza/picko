@@ -67,3 +67,9 @@ msgstr "Read"
 
 msgid "Hola"
 msgstr "Hi"
+
+msgid "La Habana"
+msgstr "Havana"
+
+msgid "reservar"
+msgstr "book"

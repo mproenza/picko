@@ -1,0 +1,182 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2014-11-13 11:21-0500\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+
+#: View/SharedTravels/home.ctp:8
+msgid "TRASLADO ECONÓMICO DESDE LA HABANA A TRINIDAD CON VISITA A CIENFUEGOS DE 5 HORAS"
+msgstr "AFFORDABLE RIDE FROM HAVANA TO TRINIDAD WITH A 5-HOURS VISIT IN CIENFUEGOS"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Precio: {0} total para {1} pasajeros"
+msgstr "Price: {0} total for {1} passengers"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Salida 8 am de La Habana"
+msgstr "Departure at 8 am from Havana"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Llegada sobre las 12 del mediodía a Cienfuegos"
+msgstr "Arrival at about 12 noon in Cienfuegos"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Salida a las 5 pm de Cienfuegos hacia Trinidad"
+msgstr "Departure at 5 pm from Cienfuegos to Trinidad"
+
+#: View/SharedTravels/home.ctp:8
+msgid "RESERVAR TRASLADO ECONÓMICO"
+msgstr "BOOK LOW-BUDGET RIDE"
+
+#: View/SharedTravels/home.ctp:8
+msgid "En PickoCar organizamos traslados en <strong>taxis colectivos</strong> todos los días hacia diferente destinos de Cuba"
+msgstr "At PickoCar we organize <strong>shared/collective taxis</strong> to different destinations in Cuba every day"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Para este servicio La Habana > Cienfuegos > Trinidad <strong>combinaremos 2 de los traslados que tenemos disponibles</strong>"
+msgstr "For this service Havana > Cienfuegos > Trinidad <strong>we will combine 2 of the rides we have available for booking</strong>"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Hacerlo en taxi colectivo es la clave para economizar en estos traslados"
+msgstr "Doing it in shared taxis is the key to make this ride affordable"
+
+#: View/SharedTravels/home.ctp:8
+msgid "{0} > {1} con salida {2}"
+msgstr "{0} > {1} departing at {2}"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Recogida en <strong>taxi colectivo</strong> en tu estancia u hotel en La Habana."
+msgstr "Pick up in <strong>shared taxi</strong> at your accommodation in Havana."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Compartirás el taxi con otros {0} pasajeros."
+msgstr "You will share the taxi with other {0} passengers."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Llegada a {0}: {1}"
+msgstr "Arrival in {0}: {1}"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Precio: {0} por asiento"
+msgstr "Price: {0} per seat"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Recogida en <strong>taxi colectivo</strong> en un punto de la ciuda de Cienfuegos."
+msgstr "Pick up in <strong>shared taxi</strong> at a point in the city of Cienfuegos."
+
+#: View/SharedTravels/home.ctp:8
+msgid "¿Cómo funciona?"
+msgstr "How does it work?"
+
+#: View/SharedTravels/home.ctp:8
+msgid "El primer taxi te recogerá de 8 a 8.30 am en tu alojamiento en La Habana y te llevará hasta el punto de la ciudad de Cienfuegos que indiques en el formulario. El taxi te dejará en Cienfuegos sobre las 12 del mediodía."
+msgstr "The first taxi will pick you up at 8-8.30 am at your accommodation in Havana and will take you to the place in Cienfuegos that you indicate in the form. The taxi will drop you off in Cienfuegos at about 12 noon."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Precio de este primer taxi: <strong>{0}</strong> (2 personas)"
+msgstr "Price of this first taxi: <strong>{0}</strong> (2 seats)"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Precio de este segundo taxi: <strong>{0}</strong> (2 personas)"
+msgstr "Price of this second taxi: <strong>{0}</strong> (2 seats)"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Luego otro taxi te recogerá a las 5 pm en el punto que especifiques en Cienfuegos (puede ser el mismo de llegada u otro) y te llevará hasta tu próxima estancia en Trinidad."
+msgstr "Then another taxi will pick you up at 5 pm at the place in Cienfuegos you indicat in the form, and it will take you to your next accommodation in Trinidad."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Este taxi termina su servicio al llegar a {0}"
+msgstr "This taxi ends its service when it arrives in {0}"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Estas reservaciones sólo están disponibles para 2 personas"
+msgstr "This bookings are only available for 2 passengers"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Conoce {0} en tu ruta de<br>{1} a {2}"
+msgstr "See {0} in your route<br>{1} to {2}"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Al solicitar este servicio generaremos 2 reservaciones de taxi compartido en nuestra agenda para la fecha que selecciones"
+msgstr "When you request this service, we will generate 2 separate shared taxi bookings in our agenda for the date you pick"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Sugerencias para tu visita a Cienfuegos"
+msgstr "Suggestions for your visit in Cienfuegos"
+
+#: View/SharedTravels/home.ctp:8
+msgid "¿Dónde comer al llegar?"
+msgstr "Where to eat when you arrive?"
+
+#: View/SharedTravels/home.ctp:8
+msgid "A Cienfuegos llegarás sobre las 12 del mediodía, por lo que seguro deberás comer algo. Nuestra sugerencia es:"
+msgstr "You will arrive in Cienfuegos by 12 noon, so you must eat something for sure. Our suggestion is:"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Evita emplear 1 hora o más haciendo un almuerzo en un restaurante."
+msgstr "Avoid spending 1 hour or more having lunch at a restaurant."
+
+#: View/SharedTravels/home.ctp:8
+msgid "En el mismo centro histórico (Boulevard de Cienfuegos) hay múltiples ofertas locales; hay locales de pizzas, pastas, sandwiches y bebidas . Muchas ofertas son en CUP (Pesos Cubanos, NO CUC), que salen más baratas."
+msgstr "At the very historical center (Cienfuegos Boulevard) there are multiple local offers; there are pizzas, pastas, sandwiches and drinks. Many offers are in CUP (Cuban Pesos, NOT CUC), which are cheaper."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Usar estas opciones locales de cafetería te dará más tiempo para disfrutar Cienfuegos y te será mucho más económico."
+msgstr "Using these local cafeteria options will give you more time to enjoy Cienfuegos and it will be much cheaper."
+
+
+
+##### THANK YOU PAGE
+#: View/SharedTravels/home.ctp:8
+msgid "Ya tenemos tus solicitudes de taxi compartido."
+msgstr "We already have your requests for shared taxi."
+
+#: View/SharedTravels/home.ctp:8
+msgid "{0} personas para hacer la ruta {1} > {2}  > {3} el {4}."
+msgstr "{0} people to do the route {1} > {2}  > {3} on {4}."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Precio total: {0}"
+msgstr "Total price: {0}"
+
+#: View/SharedTravels/home.ctp:8
+msgid "<b>Te enviamos 2 correos por separado a {0}</b> con un enlace para confirmar cada solicitud."
+msgstr "<b>We sent 2 separate emails at {0}</b> with a link to activate each request."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Por favor asegúrate de activar ambas solicitudes para nosotros comenzar a coordinar todo."
+msgstr "Please make sure you activate both of them so we can start to arrange everything."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Estos son los datos de las solicitudes"
+msgstr "This is the info we have of your requests"
+
+
+
+###### FORM
+#: View/SharedTravels/home.ctp:8
+msgid "DATOS {0} > {1}"
+msgstr "INFO {0} > {1}"
+
+#: View/SharedTravels/home.ctp:8
+msgid "{0} asientos"
+msgstr "{0} seats"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Recogida {0}"
+msgstr "Pick up at {0}"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Reservar ruta {0} por {1}"
+msgstr "Book route {0} for {1}"

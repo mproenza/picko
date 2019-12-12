@@ -107,3 +107,11 @@ msgstr "FAQ"
 #: App/Controller/AppController.php:8
 msgid "Preguntas frecuentes y respuestas sobre nuestro servicio de taxi en Cuba"
 msgstr "Frequent questions and their answers about our taxi service in Cuba"
+
+#: App/Controller/AppController.php:8
+msgid "Taxi La Habana > Cienfuegos > Trinidad el mismo día"
+msgstr "Taxi Havana > Cienfuegos > Trinidad on the same day"
+
+#: App/Controller/AppController.php:8
+msgid "Reserva traslado económico La Habana > Trinidad con visita a Cienfuegos por sólo $99 total para 2 personas"
+msgstr "Book low-budget ride Havana > Trinidad with a 5-hours visit in Cienfuegos for only $99 total for 2 people"
