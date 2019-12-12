@@ -40,12 +40,12 @@ Configure::write('App.imageBaseUrl', 'assets/images/');
     <meta name="twitter:description" content="<?php echo $meta['description']?>">
     <meta name="twitter:site" content="@pickocar">
     <!--<meta name="twitter:creator" content="@yotellevocuba">-->
-    <meta name="twitter:image" content="<?= Configure::read('App.fullBaseUrl')?>/assets/images/main-header-twitter-card.jpg">
+    <meta name="twitter:image" content="<?= Configure::read('App.fullBaseUrl')?>/assets/images/habana-cienfuegos-trinidad-2000x879.jpg">
 
     <!-- FACEBOOK SHARE -->        
     <meta property="og:title" content="<?php echo substr($meta['title'], 0, 90)?>">
     <meta property="og:description" content="<?php echo $meta['description']?>">
-    <meta property="og:image" content="<?= Configure::read('App.fullBaseUrl')?>/assets/images/main-header-1-1630x955.jpg">
+    <meta property="og:image" content="<?= Configure::read('App.fullBaseUrl')?>/assets/images/habana-cienfuegos-trinidad-2000x879.jpg">
   
     <?php if(isset($meta['hreflang']) && $meta['hreflang']) echo $this->Html->hreflang($this->request)?>
     
