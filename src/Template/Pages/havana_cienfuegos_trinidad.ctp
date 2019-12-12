@@ -204,7 +204,7 @@
                 </div>
             </div>
             <div class="mbr-figure" style="width: 105%;">
-                <img src="/pickocar/assets/images/palacio-del-valle-cienfuegos-640x442.jpg" alt="Mobirise" title="">
+                <img src="/assets/images/palacio-del-valle-cienfuegos-640x442.jpg" alt="Mobirise" title="">
             </div>
         </div>
     </div>
