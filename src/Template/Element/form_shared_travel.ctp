@@ -42,12 +42,12 @@ if($this->request->session()->read('user_name_id')) $nameIdValue = $this->reques
                 <?php echo $this->Form->input('people_count', array('label' => __d('shared_travels', 'Cantidad de personas (4 pasajeros máx.)'), 'value'=>$peopleCountValue,'type'=>'number', 'default' => 2, 'min' => 2, 'max' => 4, 'required', 'invalid-feedback'=>__d('errors', 'La cantidad de personas debe ser un número entre {0} y {1}', 2, 4)));?>
                 <br/>
                 <div class="form-group required">
-                    <label for="AddressOrigin"><?php echo __d('shared_travels', 'Dirección de recogida en {0}', '<code><big>'.$route['origin'].'</big></code>')?></label>
+                    <label for="AddressOrigin"><?php echo __d('shared_travels', 'Dirección de recogida en {0}', '<strong>'.$route['origin'].'</strong>')?></label>
                     <textarea name="address_origin" class="form-control" placeholder="<?php echo __d('shared_travels', 'Dirección de la casa o nombre del hotel')?>" rows="2" id="AddressOrigin" required="required"></textarea>
                     <div class="invalid-feedback"><?php echo __d('errors', 'La dirección de recogida es obligatoria')?></div>
                 </div>
                 <div class="form-group required">
-                    <label for="AddressDestination"><?php echo __d('shared_travels', 'Dirección de destino en {0}', '<code><big>'.$route['destination'].'</big></code>')?></label>
+                    <label for="AddressDestination"><?php echo __d('shared_travels', 'Dirección de destino en {0}', '<strong>'.$route['destination'].'</strong>')?></label>
                     <textarea name="address_destination" class="form-control" placeholder="<?php echo __d('shared_travels', 'Dirección de la casa o nombre del hotel')?>" rows="2" id="AddressDestination" required="required"></textarea>
                     <div class="invalid-feedback"><?php echo __d('errors', 'La dirección de destino es obligatoria')?></div>
                 </div>

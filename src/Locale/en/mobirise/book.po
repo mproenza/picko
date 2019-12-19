@@ -1,0 +1,39 @@
+#: View/SharedTravels/home.ctp:8
+msgid "Taxi económico de {0} a {1}"
+msgstr "Affordable taxi from {0} to {1}"
+
+#: View/SharedTravels/home.ctp:8
+msgid "{0} por asiento"
+msgstr "{0} per seat"
+
+#: View/SharedTravels/home.ctp:8
+msgid "RESERVAR TAXI COMPARTIDO"
+msgstr "BOOK SHARED TAXI"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Compartirás este taxi con otros pasajeros. El taxi acomoda a 4 pasajeros."
+msgstr "You will share this taxi with other passengers. Each car accommodates 4 passengers."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Ej. Si reservas 2 asientos, compartes el taxi con otros 2 pasajeros y ahorras 50% = {0}"
+msgstr "Ex. If you book 2 seats, you will share the taxi with other 2 passengers and you save 50% = {0}"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Horarios disponibles"
+msgstr "Available departures"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Tiempo"
+msgstr "Time"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Ruta"
+msgstr "Route"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Reservar taxi"
+msgstr "Book a taxi"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Reserva tus asientos para la fecha que desees {0} Nosotros coordinamos el traslado"
+msgstr "Book your seats for the date you want {0} We coordinate the ride"

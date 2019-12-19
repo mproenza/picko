@@ -93,12 +93,12 @@ class SharedTravelsController extends AppController {
             }
         }
         
-        // DATOS PARA /shared-rides/book            
+        // DATOS PARA /shared-rides/book
         $route = SharedTravel::_routeFromSlug($routeSlug);
         if($route == null) throw new NotFoundException ();
         
         $this->set('route', SharedTravel::_routeFull($route));
-        $this->viewBuilder()->setLayout('homepage');
+        $this->viewBuilder()->setLayout('mobirise/empty');
     }
     
     public function bookHavCfgTri() {

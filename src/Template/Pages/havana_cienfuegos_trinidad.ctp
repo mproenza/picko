@@ -94,9 +94,6 @@
 </section>
 
 <section class="mbr-section content4 cid-rKce5k5sXZ" id="content4-3a">
-
-    
-
     <div class="container">
         <div class="media-container-row">
             <div class="title col-12 col-md-10">
@@ -204,7 +201,7 @@
                 </div>
             </div>
             <div class="mbr-figure" style="width: 105%;">
-                <img src="/assets/images/palacio-del-valle-cienfuegos-640x442.jpg" alt="Mobirise" title="">
+                <img src="/assets/images/palacio-del-valle-cienfuegos-640x442.jpg" alt="Palacio de Valle, Cienfuegos" title="Palacio de Valle, Cienfuegos">
             </div>
         </div>
     </div>

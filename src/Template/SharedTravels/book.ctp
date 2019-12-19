@@ -1,86 +1,110 @@
-<?php 
-use App\Model\Entity\SharedTravel;
-?>
+<?= $this->element('mobirise/menu', ['isHome'=>true])?>
 
-<div id="container">
-    <div id="front-page-bg">
-        <?php echo $this->element('menu', ['isHome'=>true])?>
-            
-        <div style="height: 100px;clear: both"></div>
+<section class="mbr-section content5 cid-rL8vfauSOA mbr-parallax-background" id="content5-3i">
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 offset-md-2 value-proposition">
-                    <br/>
-                    <h1 style="text-align: center">
-                        <?php echo __d('shared_travels', 'Comparte un taxi <div>de {0} a {1}</div>', '<code><big>'.$route['origin'].'</big></code>', '<code><big>'.$route['destination'].'</big></code>')?>
-                    </h1>
-                    <h2 class="center"><?= __d('shared_travels', 'Paga sólo {0} por asiento', '<code><big>$'.$route['price_x_seat'].'</big></code>')?></h2>
-                    <hr/>
-                    <p class="lead"><b><?php echo __d('home', 'Sólo 4 pasajeros en un taxi')?> • <?php echo __d('home', 'Recogida en tu estancia u hotel')?> • <?php echo __d('home', 'Autos muy confortables')?></b></p>
-                    <div class="scroll_icon_wrap bloop" style="text-align: center">
-                        <a href="#<?php echo __d('meta', 'reservar')?>" class="scroll_link">
-                            <span class="scroll_icon"><i class="fa fa-angle-down fa-2x" style="color: #D33C44"></i></span>
-                        </a>
-                    </div>
-                </div> 
+    <div class="mbr-overlay" style="opacity: 0.6; background-color: rgb(35, 35, 35);">
+    </div>
+
+    <div class="container">
+        <div class="media-container-row">
+            <div class="title col-12 col-md-8">
+                <h2 class="align-center mbr-bold mbr-white pb-3 mbr-fonts-style display-2">
+                    <br>
+                    <?= __d('/mobirise/book', 'Taxi económico de {0} a {1}', '<br>'.$route['origin'], $route['destination'])?>
+                    <br>
+                    <?= __d('/mobirise/book', '{0} por asiento', '$'.$route['price_x_seat'])?>
+                </h2>
+                <h3 class="mbr-section-subtitle align-center mbr-light mbr-white pb-3 mbr-fonts-style display-5">
+                    <?php echo __d('home', 'Sólo 4 pasajeros en un taxi')?> • <?php echo __d('home', 'Recogida en tu estancia u hotel')?> • <?php echo __d('home', 'Autos muy confortables')?>
+                </h3>
+                
+                <div class="mbr-section-btn align-center"><a class="btn btn-success display-4" href="#<?= __('reservar')?>"><?= __d('/mobirise/book', 'RESERVAR TAXI COMPARTIDO')?></a></div>
             </div>
         </div>
     </div>
-    
-    <div id="<?php echo __d('meta', 'reservar')?>" style="height: 40px;clear: both"></div>
+</section>
+
+<section class="mbr-section contacts2 cid-rL8xSEDcUF" id="contacts2-3j">    
+    <div class="container">
+        <div class="row">
+            <!--Titles-->
+            <div class="title col-12">
+                <h2 class="align-left mbr-fonts-style display-5">
+                    <strong><?php echo __d('shared_travels', 'INFO DE ESTE SERVICIO')?>:</strong>
+                    <br><br>
+                    <?php echo __d('shared_travels', 'Taxi compartido de {0} a {1}', $route['origin'], $route['destination'])?>
+                    <br><br>
+                </h2>
+                <h3 class="mbr-section-subtitle mbr-light mbr-fonts-style display-5">
+                    <small>
+                    <?= __d('/mobirise/book', 'Compartirás este taxi con otros pasajeros. El taxi acomoda a 4 pasajeros.')?> 
+                    <br>
+                    <?= __d('/mobirise/book', 'Ej. Si reservas 2 asientos, compartes el taxi con otros 2 pasajeros y ahorras 50% = {0}', 2*$route['price_x_seat'].' cuc')?> 
+                    </small>
+                </h3>
+            </div>
+            <div class="col-12">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-4">
+                        <div class="b b-adress">
+                            <h5 class="align-left mbr-fonts-style m-0 display-5">
+                                <?= __d('shared_travels', 'Precio por asiento')?>:</h5>
+                            <p class="mbr-text align-left mbr-fonts-style display-5"><strong><?= $route['price_x_seat']?> cuc</strong></p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="b b-phone">
+                            <h5 class="align-left mbr-fonts-style m-0 display-5">
+                                <?=  __d('/mobirise/book', 'Horarios disponibles')?>:</h5>
+                            <p class="mbr-text align-left mbr-fonts-style display-5">
+                                <?php $sep = ''?>
+                                <?php foreach ($route['departure_times_desc'] as $time):?>
+                                    <?= $sep.'<strong>'.$time.'</strong>'?>
+                                    <?php $sep = ' | '?>
+                                <?php endforeach;?>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="b b-mail">
+                            <h5 class="align-left mbr-fonts-style m-0 display-5">
+                                <?=  __d('/mobirise/book', 'Ruta')?>:
+                            </h5>
+                            <p class="mbr-text align-left mbr-fonts-style display-5">
+                                <?php $info = App\Model\Entity\SharedTravel::_routeInfo($route['origin_id'], $route['destination_id'])?>
+                                <strong><?= __d('shared_travels', 'Distancia')?>:</strong> <?php echo $info['kms']?> km
+                                <br><strong><?=  __d('/mobirise/book', 'Tiempo')?>:</strong> <?php echo $info['hrs']?> hrs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mbr-section form1 cid-rL8z9XDEUV" id="<?= __('reservar')?>">
     
     <div class="container">
-        
-        <div class="row">
-            
-            <div class="col-md-12 pb-3">
-                <nav aria-label="breadcrumb" role="navigation">
-                    <ol class="breadcrumb" style="background-color: inherit !important;">
-                        <li class="breadcrumb-item"><?php echo $this->Html->link(__d('shared_travels', 'Todas las rutas'), ['_name'=>'homepage', '#'=>__d('meta', 'rutas-y-precios')]); ?></li>
-                        <li class="breadcrumb-item active" aria-current="page"><?= __d('shared_travels', 'Ruta {0} > {1}', $route['origin'], $route['destination'])?></li>
-                    </ol>
-                </nav>
-            </div>
-            
-            <div class="col-md-3" style="padding: 30px;border-left: #efefef solid 1px;">
-                <b><?php echo __d('shared_travels', 'INFO DE ESTE SERVICIO')?></b>
-                <div><?php echo __d('shared_travels', 'Taxi compartido de {0} a {1}', $route['origin'], $route['destination'])?></div>
-                <hr/>
-                <div><div><b><?php echo __d('shared_travels', 'Precio por asiento')?>:</b></div> <div class="fa-2x"><?php echo $route['price_x_seat']?> cuc</div></div>
-                <br/>
-                <div><div><b><?php echo __d('shared_travels', 'Hora de recogida en estancia')?>:
-                    </b></div> <div class="lead"><b>
-                        <?php $sep = ''?>
-                        <?php foreach ($route['departure_times_desc'] as $time):?>
-                            <?php echo $sep.$time?>
-                            <?php $sep = ' | '?>
-                        <?php endforeach;?>
-                    </b></div>
-                </div>
-                <br/>
-                <?php $info = App\Model\Entity\SharedTravel::_routeInfo($route['origin_id'], $route['destination_id'])?>
-                <div><div class="float-left"><b><?php echo __d('shared_travels', 'Distancia')?>:</b></div> <div class="float-right"><?php echo $info['kms']?> km</div></div>
-                <div><div class="float-left"><b><?php echo __d('shared_travels', 'Tiempo de recorrido')?>:</b></div> <div class="float-right"><?php echo $info['hrs']?> hrs</div></div>
-                
-            </div>
-            <div class="col-md-8 offset-md-1 card bg-light" style="padding: 30px">
-                <?php echo $this->element('shared_travel_book_prompt', compact('route'))?>
+        <div class="row justify-content-center">
+            <div class="title col-12 col-lg-10">
+                <h2 class="mbr-section-title align-center pb-3 mbr-fonts-style display-2">
+                    <?= __d('/mobirise/book', 'Reservar taxi')?></h2>
+                <h3 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-5">
+                    <?= __d('/mobirise/book', 'Reserva tus asientos para la fecha que desees {0} Nosotros coordinamos el traslado', '<strong>></strong>')?>
+                </h3>
             </div>
         </div>
-        
     </div>
-    
-
-    <div style="height: 90px;clear: both"></div>
-    <hr/>
-    <footer class="footer white" style="background-color: #003f54 !important">    
-        <div class="col-md-12">
-            <?php echo $this->element('footer') ?>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="media-container-column col-lg-10" data-form-type="formoid">
+                <?= $this->element('form_shared_travel', compact('route'))?>
+            </div>
         </div>
-    </footer>
- 
-</div>
+    </div>
+</section>
+
+<?= $this->element('/mobirise/footer')?>
 
 <?php
 $this->Html->css('datepicker', ['block'=>'css_top']);
