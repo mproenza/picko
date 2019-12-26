@@ -240,7 +240,7 @@
                             <div class="card-text">
                                 <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-5">
                                     <?= $this->Html->link(
-                                            __d('/mobirise/combos', '<b>{0} a {1}</b> via {2}',
+                                            __d('/mobirise/combos', '<b>{0} a {1}</b> <small>via {2}</small>',
                                                 __(SharedTravel::$localities[$c['route1']['origin_id']]['name']),
                                                 __(SharedTravel::$localities[$c['route2']['destination_id']]['name']),
                                                 __(SharedTravel::$localities[$c['route1']['destination_id']]['name'])),

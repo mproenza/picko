@@ -103,8 +103,8 @@ msgid "Precio de este segundo taxi: <strong>{0}</strong> (2 personas)"
 msgstr "Price of this second taxi: <strong>{0}</strong> (2 seats)"
 
 #: View/SharedTravels/home.ctp:8
-msgid "<b>{0} a {1}</b> via {2}"
-msgstr "<b>{0} to {1}</b> via {2}"
+msgid "<b>{0} a {1}</b> <small>via {2}</small>"
+msgstr "<b>{0} to {1}</b> <small>via {2}</small>"
 
 #: View/SharedTravels/home.ctp:8
 msgid "¿No encuentras la ruta que necesitas?"
