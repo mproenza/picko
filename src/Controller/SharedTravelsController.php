@@ -36,7 +36,7 @@ class SharedTravelsController extends AppController {
     
     public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
-        $this->Auth->allow(['home', 'book', 'thanks', 'activate', 'view', 'bookHavCfgTri' /*'index230216', 'admin', 'cancel', 'changeDate'*/]);
+        $this->Auth->allow(['home', 'book', 'thanks', 'activate', 'view', 'bookHavCfgTri', 'bookTaxiCombo' /*'index230216', 'admin', 'cancel', 'changeDate'*/]);
         
         $this->viewBuilder()->setLayout('shared_rides');
     }
@@ -169,6 +169,92 @@ class SharedTravelsController extends AppController {
             return $this->redirect($this->referer());
             
         }
+    }
+    
+    /**
+     * @params $localityId1, $localityId2, $localityId3: Los ids de las localidaes en la combinacion
+     * $localityId1: id localidad origen
+     * $localityId2: id localidad intermedia
+     * $localityId3: id localidad destino
+     */
+    public function bookTaxiCombo($comboStringKey = null) {
+        
+        if ($this->request->is('post') || $this->request->is('put')) {
+            
+            $localityId1 = $this->request->getData('origin_id_1');
+            $localityId2 = $this->request->getData('destination_id_1');
+            $localityId3 = $this->request->getData('destination_id_2');
+            
+            if(!$this->_checkSecurity()) throw new \Cake\Network\Exception\ForbiddenException();
+            
+            $datasource = ConnectionManager::get('default');
+            $datasource->begin();
+        
+            $request1 = $this->request->getData();
+            $request1['address_origin'] = $this->request->getData('address_origin_1');
+            $request1['address_destination'] = $this->request->getData('address_destination_1');
+            $request1['date'] = $this->request->getData('date_route_1') != null?
+                    $this->request->getData('date_route_1')
+                    :$this->request->getData('date');
+            $request1['departure_time'] = $this->request->getData('departure_time_route_1');
+            $request1['people_count'] = 2;
+            $request1['modality_code'] = SharedTravel::$localities[$localityId1]['code'].SharedTravel::$localities[$localityId2]['code'];
+            $request1 = array_merge($request1, SharedTravel::_routeFromOriginDestination($localityId1, $localityId2));
+
+            $request2 = $this->request->getData();
+            $request2['address_origin'] = $this->request->getData('address_origin_2');
+            $request2['address_destination'] = $this->request->getData('address_destination_2');
+            $request2['date'] = $this->request->getData('date_route_2') != null?
+                    $this->request->getData('date_route_2')
+                    :$this->request->getData('date');
+            $request2['departure_time'] = $this->request->getData('departure_time_route_2');
+            $request2['people_count'] = 2;
+            $request2['modality_code'] = SharedTravel::$localities[$localityId2]['code'].SharedTravel::$localities[$localityId3]['code'];
+            $request2 = array_merge($request2, SharedTravel::_routeFromOriginDestination($localityId2, $localityId3));
+
+            $result = $this->_doBook($request1);
+            $OK = $result['success'];
+            $route1 = $result['request'];
+            if(!$OK) {
+                $datasource->rollback();
+                $this->Flash->error(__('Ocurrió un error realizando la solicitud.'), ['key'=>'form']);
+            }
+
+            $result = $this->_doBook($request2);
+            $OK = $result['success'];
+            $route2 = $result['request'];
+            if(!$OK) {
+                $datasource->rollback();
+                $this->Flash->error(__('Ocurrió un error realizando la solicitud.'), ['key'=>'form']);
+            }            
+
+            if($OK) {
+                $datasource->commit();
+                /*// Guardar algunos datos en la session para si el cliente quiere crear mas solicitudes que no tenga que repetirlas
+                // TODO: Guardarlos en una Cookie???
+                $session = $this->request->session();
+                $session->write('user_email', $request['SharedTravel']['email']);
+                $session->write('user_people_count', $request['SharedTravel']['people_count']);
+                $session->write('user_name_id', $request['SharedTravel']['name_id']);*/
+
+                return $this->redirect(['controller'=>'shared-rides', 'action' => 'thanks', 
+                    '?'=>[
+                        't1'=>$route1['SharedTravel']['id_token'], 
+                        't2'=>$route2['SharedTravel']['id_token']]]);
+            }
+        }
+        
+        // Cualquier metodo que no sea POST o PUT > ERROR
+        throw new \Cake\Network\Exception\MethodNotAllowedException();
+        
+        /*// Sanity check
+        if($comboStringKey == null || !array_key_exists($comboStringKey, SharedTravel::$combos)) throw new NotFoundException();
+        
+        $this->set('combo', SharedTravel::$combos[$comboStringKey]);
+        
+        $this->viewBuilder()->setLayout('mobirise/book_combo');
+        $this->render('mobirise/taxi_combo');*/
+        
     }
     
     private function _checkSecurity() {

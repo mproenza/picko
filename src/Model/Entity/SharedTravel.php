@@ -108,6 +108,102 @@ class SharedTravel extends Entity {
         return null;
     }
     
+    public static $combos = [
+        // HABANA
+        'habana-cayo-coco-via-trinidad' => [
+            'route1'=>['origin_id'=>0, 'destination_id'=>1],
+            'route2'=>['origin_id'=>1, 'destination_id'=>5],
+            'private_taxi_price'=>250,
+            'viazul'=>[
+                'destination'=>'Ciego de Ávila', 
+                'price_x_seat'=>27,
+                'earlier_arrival_time'=>'4 pm',
+                'private_taxi_price_to_final_destination'=>70,
+                'private_taxi_ride_time'=>'2 hrs']
+        ],
+        'habana-cayo-coco-via-cienfuegos' => [
+            'route1'=>['origin_id'=>0, 'destination_id'=>4],
+            'route2'=>['origin_id'=>4, 'destination_id'=>5],
+            'private_taxi_price'=>250,
+            'viazul'=>[
+                'destination'=>'Ciego de Ávila', 
+                'price_x_seat'=>27,
+                'earlier_arrival_time'=>'4 pm',
+                'private_taxi_price_to_final_destination'=>70,
+                'private_taxi_ride_time'=>'2 hrs']
+        ],
+        'habana-cayo-guillermo-via-trinidad' => [
+            'route1'=>['origin_id'=>0, 'destination_id'=>1],
+            'route2'=>['origin_id'=>1, 'destination_id'=>6],
+            'private_taxi_price'=>250,
+            'viazul'=>[
+                'destination'=>'Ciego de Ávila', 
+                'price_x_seat'=>27,
+                'earlier_arrival_time'=>'4 pm',
+                'private_taxi_price_to_final_destination'=>90,
+                'private_taxi_ride_time'=>'2 hrs']
+                
+        ],
+        'habana-cayo-guillermo-via-cienfuegos' => [
+            'route1'=>['origin_id'=>0, 'destination_id'=>4],
+            'route2'=>['origin_id'=>4, 'destination_id'=>6],
+            'private_taxi_price'=>250,
+            'viazul'=>[
+                'destination'=>'Ciego de Ávila', 
+                'price_x_seat'=>27,
+                'earlier_arrival_time'=>'4 pm',
+                'private_taxi_price_to_final_destination'=>90,
+                'private_taxi_ride_time'=>'2 hrs']
+        ],
+        
+        // VARADERO
+        'varadero-cayo-coco-via-trinidad' => [
+            'route1'=>['origin_id'=>3, 'destination_id'=>1],
+            'route2'=>['origin_id'=>1, 'destination_id'=>5],
+            'private_taxi_price'=>250,
+            'viazul'=>[
+                'destination'=>'Ciego de Ávila',
+                'price_x_seat'=>19,
+                'earlier_arrival_time'=>'3:20 am',
+                'private_taxi_price_to_final_destination'=>70,
+                'private_taxi_ride_time'=>'2 hrs']
+        ],
+        'varadero-cayo-coco-via-cienfuegos' => [
+            'route1'=>['origin_id'=>3, 'destination_id'=>4],
+            'route2'=>['origin_id'=>4, 'destination_id'=>5],
+            'private_taxi_price'=>250,
+            'viazul'=>[
+                'destination'=>'Ciego de Ávila', 
+                'price_x_seat'=>19,
+                'earlier_arrival_time'=>'3:20 am',
+                'private_taxi_price_to_final_destination'=>70,
+                'private_taxi_ride_time'=>'2 hrs']
+        ],
+        'varadero-cayo-guillermo-via-trinidad' => [
+            'route1'=>['origin_id'=>3, 'destination_id'=>1],
+            'route2'=>['origin_id'=>1, 'destination_id'=>6],
+            'private_taxi_price'=>250,
+            'viazul'=>[
+                'destination'=>'Ciego de Ávila', 
+                'price_x_seat'=>19,
+                'earlier_arrival_time'=>'3:20 am',
+                'private_taxi_price_to_final_destination'=>90,
+                'private_taxi_ride_time'=>'2 hrs']
+                
+        ],
+        'varadero-cayo-guillermo-via-cienfuegos' => [
+            'route1'=>['origin_id'=>3, 'destination_id'=>4],
+            'route2'=>['origin_id'=>4, 'destination_id'=>6],
+            'private_taxi_price'=>250,
+            'viazul'=>[
+                'destination'=>'Ciego de Ávila', 
+                'price_x_seat'=>19,
+                'earlier_arrival_time'=>'3:20 am',
+                'private_taxi_price_to_final_destination'=>90,
+                'private_taxi_ride_time'=>'2 hrs']
+        ],
+    ];
+    
     public static $routes = [
         ['origin_id'=>0, 'destination_id'=>2, 'price_x_seat'=>25, 'departure_times'=>[11]],
         ['origin_id'=>0, 'destination_id'=>3, 'price_x_seat'=>25, 'departure_times'=>[8, 14]],
@@ -117,6 +213,7 @@ class SharedTravel extends Entity {
         ['origin_id'=>0, 'destination_id'=>9, 'price_x_seat'=>35, 'departure_times'=>[8, 14]],
         ['origin_id'=>0, 'destination_id'=>7, 'price_x_seat'=>35, 'departure_times'=>[8, 14]],
         ['origin_id'=>0, 'destination_id'=>10, 'price_x_seat'=>50, 'departure_times'=>[8]],
+        
         ['origin_id'=>1, 'destination_id'=>0, 'price_x_seat'=>35, 'departure_times'=>[8, 14]],
         ['origin_id'=>1, 'destination_id'=>3, 'price_x_seat'=>35, 'departure_times'=>[8, 14]],
         ['origin_id'=>1, 'destination_id'=>2, 'price_x_seat'=>50, 'departure_times'=>[8]],
@@ -126,6 +223,7 @@ class SharedTravel extends Entity {
         ['origin_id'=>1, 'destination_id'=>6, 'price_x_seat'=>40, 'departure_times'=>[8]],
         ['origin_id'=>1, 'destination_id'=>8, 'price_x_seat'=>30, 'departure_times'=>[8, 14]],
         ['origin_id'=>1, 'destination_id'=>9, 'price_x_seat'=>30, 'departure_times'=>[8, 14]],
+        
         ['origin_id'=>2, 'destination_id'=>0, 'price_x_seat'=>25, 'departure_times'=>[8, 14]],
         ['origin_id'=>2, 'destination_id'=>3, 'price_x_seat'=>45, 'departure_times'=>[8, 14]],
         ['origin_id'=>2, 'destination_id'=>1, 'price_x_seat'=>50, 'departure_times'=>[8]],
@@ -133,12 +231,14 @@ class SharedTravel extends Entity {
         ['origin_id'=>2, 'destination_id'=>7, 'price_x_seat'=>45, 'departure_times'=>[8]],
         ['origin_id'=>2, 'destination_id'=>8, 'price_x_seat'=>45, 'departure_times'=>[8]],
         ['origin_id'=>2, 'destination_id'=>9, 'price_x_seat'=>45, 'departure_times'=>[8]],
+        
         ['origin_id'=>3, 'destination_id'=>0, 'price_x_seat'=>30, 'departure_times'=>[8, 14]],
         ['origin_id'=>3, 'destination_id'=>2, 'price_x_seat'=>50, 'departure_times'=>[8]],
         ['origin_id'=>3, 'destination_id'=>1, 'price_x_seat'=>35, 'departure_times'=>[14]],
         ['origin_id'=>3, 'destination_id'=>4, 'price_x_seat'=>35, 'departure_times'=>[14]],
         ['origin_id'=>3, 'destination_id'=>7, 'price_x_seat'=>35, 'departure_times'=>[14]],
         ['origin_id'=>3, 'destination_id'=>10, 'price_x_seat'=>50, 'departure_times'=>[14]],
+        
         ['origin_id'=>4, 'destination_id'=>0, 'price_x_seat'=>35, 'departure_times'=>[9, 14]],
         ['origin_id'=>4, 'destination_id'=>2, 'price_x_seat'=>50, 'departure_times'=>[9]],
         ['origin_id'=>4, 'destination_id'=>3, 'price_x_seat'=>35, 'departure_times'=>[9, 14]],
@@ -147,32 +247,38 @@ class SharedTravel extends Entity {
         ['origin_id'=>4, 'destination_id'=>6, 'price_x_seat'=>55, 'departure_times'=>[7]],
         ['origin_id'=>4, 'destination_id'=>8, 'price_x_seat'=>35, 'departure_times'=>[9, 14]],
         ['origin_id'=>4, 'destination_id'=>9, 'price_x_seat'=>35, 'departure_times'=>[9, 14]],
+        
         ['origin_id'=>5, 'destination_id'=>0, 'price_x_seat'=>60, 'departure_times'=>[14]],
         ['origin_id'=>5, 'destination_id'=>3, 'price_x_seat'=>60, 'departure_times'=>[14]],
         ['origin_id'=>5, 'destination_id'=>1, 'price_x_seat'=>45, 'departure_times'=>[14]],
         ['origin_id'=>5, 'destination_id'=>4, 'price_x_seat'=>45, 'departure_times'=>[14]],
         ['origin_id'=>5, 'destination_id'=>7, 'price_x_seat'=>50, 'departure_times'=>[14]],
         ['origin_id'=>5, 'destination_id'=>10, 'price_x_seat'=>50, 'departure_times'=>[14]],
+        
         ['origin_id'=>6, 'destination_id'=>0, 'price_x_seat'=>65, 'departure_times'=>[13]],
         ['origin_id'=>6, 'destination_id'=>3, 'price_x_seat'=>65, 'departure_times'=>[13]],
         ['origin_id'=>6, 'destination_id'=>1, 'price_x_seat'=>50, 'departure_times'=>[13]],
         ['origin_id'=>6, 'destination_id'=>4, 'price_x_seat'=>50, 'departure_times'=>[13]],
         ['origin_id'=>6, 'destination_id'=>7, 'price_x_seat'=>50, 'departure_times'=>[13]],
         ['origin_id'=>6, 'destination_id'=>10, 'price_x_seat'=>50, 'departure_times'=>[13]],
+        
         ['origin_id'=>7, 'destination_id'=>0, 'price_x_seat'=>35, 'departure_times'=>[8]],
         ['origin_id'=>7, 'destination_id'=>2, 'price_x_seat'=>45, 'departure_times'=>[8]],
         ['origin_id'=>7, 'destination_id'=>3, 'price_x_seat'=>35, 'departure_times'=>[8]],
         ['origin_id'=>7, 'destination_id'=>8, 'price_x_seat'=>35, 'departure_times'=>[8]],
         ['origin_id'=>7, 'destination_id'=>9, 'price_x_seat'=>35, 'departure_times'=>[8]],
+        
         ['origin_id'=>8, 'destination_id'=>0, 'price_x_seat'=>35, 'departure_times'=>[10]],
         ['origin_id'=>8, 'destination_id'=>1, 'price_x_seat'=>35, 'departure_times'=>[10, 16]],
         ['origin_id'=>8, 'destination_id'=>3, 'price_x_seat'=>35, 'departure_times'=>[10]],
         ['origin_id'=>8, 'destination_id'=>2, 'price_x_seat'=>50, 'departure_times'=>[10]],
         ['origin_id'=>8, 'destination_id'=>4, 'price_x_seat'=>30, 'departure_times'=>[10, 16]],
+        
         ['origin_id'=>9, 'destination_id'=>0, 'price_x_seat'=>35, 'departure_times'=>[11]],
         ['origin_id'=>9, 'destination_id'=>2, 'price_x_seat'=>50, 'departure_times'=>[11]],
         ['origin_id'=>9, 'destination_id'=>1, 'price_x_seat'=>35, 'departure_times'=>[11, 16]],
         ['origin_id'=>9, 'destination_id'=>4, 'price_x_seat'=>35, 'departure_times'=>[11, 16]],
+        
         ['origin_id'=>10, 'destination_id'=>0, 'price_x_seat'=>50, 'departure_times'=>[14]],
         ['origin_id'=>10, 'destination_id'=>3, 'price_x_seat'=>50, 'departure_times'=>[14]],
         ['origin_id'=>10, 'destination_id'=>2, 'price_x_seat'=>75, 'departure_times'=>[14]],
@@ -184,9 +290,9 @@ class SharedTravel extends Entity {
         // Evitar ponerle los datos extra a las rutas si ya se hizo (esto es porque se pudiera llamar a _routeFull() varias veces en una ejecucion)
         if(isset($route['isFull']) && $route['isFull']) return $route;
         
-        $route['origin'] = self::$localities[$route['origin_id']]['name'];
+        $route['origin'] = __(self::$localities[$route['origin_id']]['name']);
         $route['origin_short'] = self::$localities[$route['origin_id']]['short'];
-        $route['destination'] = self::$localities[$route['destination_id']]['name'];
+        $route['destination'] = __(self::$localities[$route['destination_id']]['name']);
         $route['destination_short'] = self::$localities[$route['destination_id']]['short'];
         $route['code'] = self::$localities[$route['origin_id']]['code'].self::$localities[$route['destination_id']]['code'];
         $route['slug'] = 'taxi-'.self::$localities[$route['origin_id']]['slug'].'--'.self::$localities[$route['destination_id']]['slug'];
@@ -208,6 +314,7 @@ class SharedTravel extends Entity {
         foreach ($route['departure_times'] as $time) {
             $route['departure_times_desc'][] = TimeUtil::getTimeAmPM($time);
         }
+        $route['departure_times_desc_string'] = implode(' | ', $route['departure_times_desc']);
         
         $route['isFull'] = true;
         
@@ -307,6 +414,11 @@ class SharedTravel extends Entity {
         
         return $dts;
     }
+    public function getRouteDepartureTimesDescString() {
+        $departureTimes = $this->getRouteDepartureTimesDesc();
+        
+        return implode(' | ', $departureTimes);
+    }
     
     /**
      * Retorna null si no hay matcheo
@@ -352,7 +464,10 @@ class SharedTravel extends Entity {
         }
         if($destId === null) return null;
         
-        // Buscar la ruta que coincida con los id del origen y el destino
+        
+        return self::_routeFromOriginDestination($originId, $destId);
+        
+        /*// Buscar la ruta que coincida con los id del origen y el destino
         $route = null;
         foreach (self::$routes as $r) {
             if($r['origin_id'] == $originId && $r['destination_id'] == $destId) {
@@ -361,8 +476,20 @@ class SharedTravel extends Entity {
             }
         }
         
-        return $route;
+        return $route;*/
     }
+    public static function _routeFromOriginDestination($originId, $destinationId) {
+        // Buscar la ruta que coincida con los id del origen y el destino
+        $route = null;
+        foreach (self::$routes as $r) {
+            if($r['origin_id'] == $originId && $r['destination_id'] == $destinationId) {
+                $route = $r;
+                break;
+            }
+        }
+        
+        return $route;
+    } 
     
     public static $STATE_PENDING = 'P'; // Cuando se crea
     public static $STATE_ACTIVATED = 'A'; //Cuando se activa (se le envian los datos a Andiel para comenzar a gestionar)

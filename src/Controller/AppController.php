@@ -16,6 +16,7 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use App\Model\Entity\SharedTravel;
 
 /**
  * Application Controller
@@ -143,6 +144,43 @@ class AppController extends Controller
                     'description'=>__d('meta', 'Reserva traslado económico La Habana > Trinidad con visita a Cienfuegos por sólo $99 total para 2 personas'),
                     'hreflang'=>true
                 ),
+                'taxi-combo' =>  [
+                    'title'=>function($viewVars, $request) {
+                        $route1 = SharedTravel::_routeFull(
+                                SharedTravel::_routeFromOriginDestination(
+                                        $viewVars['combo']['route1']['origin_id'], 
+                                        $viewVars['combo']['route1']['destination_id']));
+
+                        $route2 = SharedTravel::_routeFull(
+                                SharedTravel::_routeFromOriginDestination(
+                                        $viewVars['combo']['route2']['origin_id'], 
+                                        $viewVars['combo']['route2']['destination_id']));
+                    
+                        return __d('meta', 'Taxi de {0} a {1} via {2} | Económico', 
+                            $route1['origin'], 
+                            $route2['destination'],
+                            $route1['destination']);
+                    },
+                    'description'=>function($viewVars, $request) {
+                        $route1 = SharedTravel::_routeFull(
+                                SharedTravel::_routeFromOriginDestination(
+                                        $viewVars['combo']['route1']['origin_id'], 
+                                        $viewVars['combo']['route1']['destination_id']));
+
+                        $route2 = SharedTravel::_routeFull(
+                                SharedTravel::_routeFromOriginDestination(
+                                        $viewVars['combo']['route2']['origin_id'], 
+                                        $viewVars['combo']['route2']['destination_id']));
+                        
+                        $peopleCount = 2;
+                        $priceRoute1 = $route1['price_x_seat']*$peopleCount;
+                        $priceRoute2 = $route2['price_x_seat']*$peopleCount;
+                        $totalPriceCombo = $priceRoute1 + $priceRoute2;
+                        
+                        return __d('meta', 'Combina 2 traslados en taxi colectivo de {0} a {1} y llega de manera económica por ${2} total para {3} personas', $route1['origin'], $route2['destination'], $totalPriceCombo, $peopleCount);
+                    },
+                    'hreflang'=>true
+                ],
                 'press-release'=>array('title'=>__d('meta', 'Lanzamiento de PickoCar | Reseña para la Prensa'), 'description'=>__d('meta', 'Reseña para la prensa del lanzamiento de PickoCar en Cuba')),
                 'taxi-vs-viazul'=>array('title'=>__d('meta', 'Taxi compartido en Cuba con precios similares al bus Viazul'), 'description'=>__d('meta', 'PickoCar es un servicio de taxi compartido en Cuba con excelentes precios y rutas que conectan destinos como {0} y otros', 'La Habana, Viñales, Trinidad, Varadero, Cayo Guillermo')),
                 /*'faq'=>array('title'=>__d('meta', 'Preguntas Frecuentes'), 'description'=>__d('meta', 'Preguntas y respuestas sobre cómo conseguir un taxi para moverte por Cuba usando YoTeLlevo')),

@@ -19,6 +19,7 @@ use Cake\Network\Exception\ForbiddenException;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
 use Cake\Event\Event;
+use App\Model\Entity\SharedTravel;
 
 /**
  * Static content controller
@@ -69,7 +70,18 @@ class PagesController extends AppController
             if(in_array($page, ['share-taxi-cuba', 'taxi-vs-viazul'])) $this->viewBuilder()->setLayout('mobirise/empty');
             if($page == 'havana-cienfuegos-trinidad') $this->viewBuilder()->setLayout('mobirise/book_combo');
             if($page == 'faq') $this->viewBuilder()->setLayout('mobirise/empty'); 
-            if($page == 'taxi-fleet') $this->viewBuilder()->setLayout('mobirise/taxi_fleet'); 
+            if($page == 'taxi-fleet') $this->viewBuilder()->setLayout('mobirise/taxi_fleet');
+            
+            if($page == 'taxi-combo') {
+                // Sanity check
+                $comboStringKey = $subpage;
+                if($comboStringKey == null || !array_key_exists($comboStringKey, SharedTravel::$combos)) throw new NotFoundException();
+
+                $this->set('combo', SharedTravel::$combos[$comboStringKey]);
+                
+                $this->viewBuilder()->setLayout('mobirise/book_combo');
+                return $this->render('taxi_combo');
+            }
             
             $this->render(implode('/', $path));
         } catch (MissingTemplateException $exception) {

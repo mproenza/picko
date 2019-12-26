@@ -21,7 +21,7 @@ if($this->request->session()->read('user_name_id')) $nameIdValue = $this->reques
         </div>
         <div class="row">
             <div class="col-md-6" style="margin-top: 40px">
-                <div><small><b><?php echo __d('/mobirise/hav_cfg_tri', 'TAXI {0} > {1}', 'LA HABANA', 'CIENFUEGOS')?></b></small></div>
+                <div><b><?php echo __d('/mobirise/hav_cfg_tri', 'TAXI {0} > {1}', 'LA HABANA', 'CIENFUEGOS')?></b></div>
                 <br>
                 <small>* <?= __d('/mobirise/hav_cfg_tri', '{0} asientos', 2)?> > <b>$69</b></small>
                 <br>
@@ -40,7 +40,7 @@ if($this->request->session()->read('user_name_id')) $nameIdValue = $this->reques
             </div>
             
             <div class="col-md-6" style="margin-top: 40px">
-                <div><small><b><?php echo __d('/mobirise/hav_cfg_tri', 'TAXI {0} > {1}', 'CIENFUEGOS', 'TRINIDAD')?></b></small></div>
+                <div><b><?php echo __d('/mobirise/hav_cfg_tri', 'TAXI {0} > {1}', 'CIENFUEGOS', 'TRINIDAD')?></b></div>
                 <br>
                 <small>* <?= __d('/mobirise/hav_cfg_tri', '{0} asientos', 2)?> > <b>$30</b></small>
                 <br>

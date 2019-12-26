@@ -16,8 +16,12 @@ msgstr ""
 
 
 #: View/SharedTravels/home.ctp:8
-msgid "Comparte tu taxi en {0}. Gasta menos para llegar a cada destino"
-msgstr "Share your taxi in {0}. Spend less getting to each destination"
+msgid "Comparte tu taxi en {0}"
+msgstr "Share your taxi in {0}"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Gasta menos para llegar a cada destino"
+msgstr "Spend less getting to each destination"
 
 #: View/SharedTravels/home.ctp:8
 msgid "Llega desde / hasta {0} y otros. Haz cada traslado junto a otros viajeros que reservaron tu misma ruta. <strong>Paga sólo por tus asientos.</strong>"

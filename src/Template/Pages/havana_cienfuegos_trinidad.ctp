@@ -138,7 +138,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="media-container-column col-lg-8" data-form-type="formoid">
-                <?= $this->element('hav_cfg_tri/form_booking_hav_cfg_tri');?>
+                <?= $this->element('combos/form_booking_hav_cfg_tri');?>
             </div>
         </div>
     </div>

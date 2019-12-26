@@ -21,8 +21,10 @@
         <div class="media-container">
             <div class="col-md-12 align-center">
                 <h1 class="mbr-section-title pb-3 mbr-white mbr-bold mbr-fonts-style display-2">
-                    <span style="font-weight: normal;"><br></span><br>
-                      <?= __d('/mobirise/home', 'Comparte tu taxi en {0}. Gasta menos para llegar a cada destino', 'Cuba')?>
+                    <br><br>
+                    <?= __d('/mobirise/home', 'Comparte tu taxi en {0}', 'Cuba')?>
+                    <br>
+                    <small><?= __d('/mobirise/home', 'Gasta menos para llegar a cada destino', 'Cuba')?></small>
                 </h1>
                 <p class="mbr-text pb-3 mbr-white mbr-fonts-style display-5">
                     <?= __d('/mobirise/home', 'Llega desde / hasta {0} y otros. Haz cada traslado junto a otros viajeros que reservaron tu misma ruta. <strong>Paga sólo por tus asientos.</strong>', 'La Habana, Trinidad, Viñales, Varadero, Cayo Guillermo')?>
@@ -194,39 +196,10 @@
     </div>
 </section>
 
-<!--<section class="mbr-section info2 cid-rmp8Fbk1ML" id="info2-8">
-    <div class="container">
-        <div class="row main justify-content-center">
-            <div class="media-container-column col-12 col-lg-3 col-md-4">
-                <div class="mbr-section-btn align-left py-4"><a class="btn btn-success display-7" href="#<?php echo __d('meta', 'rutas-y-precios')?>">
-              <?= __d('/mobirise/home', 'Comenzar a reservar mis traslados')?></a></div>
-            </div>
-            <div class="media-container-column title col-12 col-lg-7 col-md-6">
-                <h2 class="align-right mbr-bold mbr-white pb-3 mbr-fonts-style display-2">
-                  <?= __d('/mobirise/home', 'La magia de compartir taxi y ahorrar dinero en tu viaje a Cuba')?></h2>
-                <h3 class="mbr-section-subtitle align-right mbr-light mbr-white mbr-fonts-style display-5">
-                    <?php echo __d('/mobirise/home', 'En un traslado de <b>La Habana a Trinidad</b> en que se pagarían <b>{0} - {1} a un taxi privado</b> -sin importar cuántas personas sean-<b> a 2 personas les costaría en PickoCar {2} en total ({3} por asiento)</b>, ahorrándose entre {4} y {5}.', '<big>$130</big>', '<big>$160</big>', '$70', '$35', '$60', '$90')?>
-                </h3>
-            </div>
-        </div>
-    </div>
-</section>-->
-
 <section class="toggle1 cid-rmACGoAqAT" id="<?= __d('meta', 'rutas-y-precios')?>">
     <div class="container">
         <div class="media-container-row">
             <div class="col-12">
-
-                <!--<div class="section-head text-center space30">
-                    <h2 class="mbr-section-title pb-5 mbr-fonts-style display-2">
-                  <?= __d('/mobirise/home', 'Estas son las rutas, precios y horarios de nuestros taxis en Cuba')?>
-                    </h2>
-                    <h3><?= __d('/mobirise/home', 'Reserva tus asientos hacia tu destino:')?></h3>
-                    <br/>
-                    <div><?= __d('/mobirise/home', 'Cada taxi acomoda a <strong>{0} pasajeros</strong>', 4)?></div>
-                    <div><?= __d('/mobirise/home', 'El taxi te recoge en tu estacia u hotel')?></div>
-                    <br/>
-                </div>-->
                 <div class="section-head text-center space30">
                     <h2 class="mbr-section-title pb-5 mbr-fonts-style display-2">
                     <?= __d('/mobirise/home', 'Rutas, precios y horarios de nuestros taxis en Cuba')?>
@@ -248,9 +221,47 @@
     </div>
 </section>
 
+<section class="counters5 counters cid-rLNmNmoe0c" id="counters5-3y">    
+    <div class="container pt-4 mt-2">
+        <h2 class="mbr-section-title pb-3 align-center mbr-fonts-style display-5">
+            <?= __d('/mobirise/combos', '¿No encuentras la ruta que necesitas?')?>
+        </h2>
+        <h3 class="mbr-section-subtitle pb-5 align-center mbr-fonts-style display-5">
+            <?= __d('/mobirise/combos', '<b>Hemos creado rutas alternativas</b> usando taxis colectivos con precios económicos, que pueden serte útiles.')?>
+            <br><br>
+            &#x1F447 &#x1F447 &#x1F447
+        </h3>
+        <div class="row justify-content-center">
+            <div class="cards-block">
+                <div class="cards-container">
+                    <?php foreach (SharedTravel::$combos as $key=>$c):?>
+                    <div class="card px-3 align-left col-6">
+                        <div class="panel-item p-4 d-flex">
+                            <div class="card-text">
+                                <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-5">
+                                    <?= $this->Html->link(
+                                            __d('/mobirise/combos', '<b>{0} a {1}</b> via {2}',
+                                                __(SharedTravel::$localities[$c['route1']['origin_id']]['name']),
+                                                __(SharedTravel::$localities[$c['route2']['destination_id']]['name']),
+                                                __(SharedTravel::$localities[$c['route1']['destination_id']]['name'])),
+                                            
+                                            ['controller'=>'Pages', 'action'=>'display', 'taxi-combo', $key],
+                                            ['escape'=>false]
+                                        );
+                                    ?>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endforeach;?>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <section class="counters5 counters cid-rnfgdix17n" id="<?= __d('meta', 'debes-saber')?>">
-    <div class="container pt-4 mt-2">
+    <div class="container pt-4">
         <?= $this->element('/mobirise/you_must_know')?>
         <div class="mbr-section-btn align-center py-2">
             <a class="btn btn-md btn-success display-7" href="#<?php echo __d('meta', 'rutas-y-precios')?>">

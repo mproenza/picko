@@ -115,3 +115,11 @@ msgstr "Taxi Havana > Cienfuegos > Trinidad on the same day"
 #: App/Controller/AppController.php:8
 msgid "Reserva traslado económico La Habana > Trinidad con visita a Cienfuegos por sólo $99 total para 2 personas"
 msgstr "Book low-budget ride Havana > Trinidad with a 5-hours visit in Cienfuegos for only $99 total for 2 people"
+
+#: App/Controller/AppController.php:8
+msgid "Taxi de {0} a {1} via {2} | Económico"
+msgstr "Taxi from {0} to {1} via {2} | Economic prices"
+
+#: App/Controller/AppController.php:8
+msgid "Combina 2 traslados en taxi colectivo de {0} a {1} y llega de manera económica por ${2} total para {3} personas"
+msgstr "Combine 2 rides in shared taxi from {0} to {1} and arrive affordably for ${2} total for {3} people"

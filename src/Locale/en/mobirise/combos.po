@@ -1,0 +1,209 @@
+#: View/SharedTravels/home.ctp:8
+msgid "Traslado económico de {0} a {1}"
+msgstr "Affordable ride from {0} to {1}"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Precio: {0} total para {1} pasajeros"
+msgstr "Price: {0} total for {1} passengers"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Traslados en taxi colectivo"
+msgstr "Rides in shared taxi"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Salida {0} de {1} hacia {2}"
+msgstr "Departure {0} from {1} to {2}"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Haces estancia en {0} una noche"
+msgstr "Stay in {0} one night"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Continúas a {0} al próximo día saliendo {1}"
+msgstr "Continue to {0} the next day at {1}"
+
+#: View/SharedTravels/home.ctp:8
+msgid "RESERVAR TRASLADO ECONÓMICO"
+msgstr "BOOK LOW-BUDGET RIDE"
+
+#: View/SharedTravels/home.ctp:8
+msgid "¿Por qué hacer estancia en {0}?"
+msgstr "Why stay in {0}?"
+
+#: View/SharedTravels/home.ctp:8
+msgid "¿Por qué no ir directo a {0}?"
+msgstr "Why not go straight to {0} the same day?"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Si llevas un tiempo investigando para tu viaje a Cuba, debes haber notado que ir directo de {0} a {1} no es muy fácil lograrlo de manera económica."
+msgstr "If you have been researching your trip to Cuba, you must have noticed that going directly from {0} to {1} is not easy to achieve in an economical way."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Hay pocas opciones:"
+msgstr "There are a few options:"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Un taxi privado cuesta {0} como mínimo. Esta alternativa NO es económica."
+msgstr "A private taxi is {0} at the least. This alternative is NOT economical."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Puedes ir en {6} hasta {0} (cada asiento cuesta {1}), y luego tomar un taxi privado por {2} desde ahí. Esta alternativa es económica, pero el bus demora en llegar y el horario más temprano de arribo a {0} es {3}. Luego hay que seguir a {4} por {5} más, y además tienes que gestionar la combinación con un taxi privado."
+msgstr "You can take {6} to {0} (each seat is {1}) and then take a private taxi for {2} from there. This alternative is economical, but it takes long to arrive in bus and the earlier arrival time in {0} is {3}. Then you have to continue to {4} for {5} more, and also you have to manage to combine with the private taxi by yourself."
+
+#: View/SharedTravels/home.ctp:8
+msgid "En PickoCar proponemos una alternativa diferente para hacerlo económico:"
+msgstr "At PickoCar we propose a different alternative to make this ride affordably:"
+
+#: View/SharedTravels/home.ctp:8
+msgid "<strong>Combinar 2 traslados en taxi colectivo</strong>: uno de <b>{0} a {1}</b> y otro de <b>{1} a {2}</b>. Esta opción tiene el inconveniente de que NO se puede hacer el mismo día, pero resulta económico y {1} es uno de los destinos más atractivos de la isla."
+msgstr "<strong>Combine 2 rides in collective/shared taxi</strong>: one from <b>{0} to {1}</b> and another from <b>{1} to {2}</b>. This option has the inconvenience that it CAN'T be done on the same day, but it is very affordable and {1} is one of the best destinations in the island."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Lo haríamos de la siguiente manera:"
+msgstr "We would do it the following way:"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Taxi {0} > {1} con salida {2}"
+msgstr "Taxi {0} > {1} with departure at {2}"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Taxi {0} > {1} con salida {2} al siguiente día"
+msgstr "Taxi {0} > {1} with departure at {2} the next day"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Recogida en <strong>taxi colectivo</strong> en tu estancia u hotel en {0}."
+msgstr "Pick up in <strong>shared taxi</strong> at your accommodation or hotel in {0}."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Compartirás el taxi con otros {0} pasajeros."
+msgstr "You will share the taxi with ther {0} passengers."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Precio: {0} por asiento"
+msgstr "Price: {0} per seat"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Reserva taxi de {0} a {1}"
+msgstr "Book taxi from {0} to {1}"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Combina 2 traslados en taxi colectivo para hacerlo de manera ECONÓMICA"
+msgstr "Combine 2 rides in shared taxi and do it AFFORDABLY"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Estas reservaciones sólo están disponibles para {0} personas"
+msgstr "These bookings are only available for {0} passengers"
+
+#: View/SharedTravels/home.ctp:8
+msgid "El precio total es {0}"
+msgstr "The total price is {0}"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Precio de este segundo taxi: <strong>{0}</strong> (2 personas)"
+msgstr "Price of this second taxi: <strong>{0}</strong> (2 seats)"
+
+#: View/SharedTravels/home.ctp:8
+msgid "<b>{0} a {1}</b> via {2}"
+msgstr "<b>{0} to {1}</b> via {2}"
+
+#: View/SharedTravels/home.ctp:8
+msgid "¿No encuentras la ruta que necesitas?"
+msgstr "Did not find the route you were looking for?"
+
+#: View/SharedTravels/home.ctp:8
+msgid "<b>Hemos creado rutas alternativas</b> usando taxis colectivos con precios económicos, que pueden serte útiles."
+msgstr "<b>We have created some alternative routes</b> using shared taxis with economical prices, which you might find helpful."
+
+
+
+
+
+
+
+#: View/SharedTravels/home.ctp:8
+msgid "Luego otro taxi te recogerá a las 5 pm en el punto que especifiques en Cienfuegos (puede ser el mismo de llegada u otro) y te llevará hasta tu próxima estancia en Trinidad."
+msgstr "Then another taxi will pick you up at 5 pm at the place in Cienfuegos you indicat in the form, and it will take you to your next accommodation in Trinidad."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Este taxi termina su servicio al llegar a {0}"
+msgstr "This taxi ends its service when it arrives in {0}"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Conoce {0} en tu ruta de<br>{1} a {2}"
+msgstr "See {0} in your route<br>{1} to {2}"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Al solicitar este servicio generaremos 2 reservaciones de taxi compartido en nuestra agenda para la fecha que selecciones"
+msgstr "When you request this service, we will generate 2 separate shared taxi bookings in our agenda for the date you pick"
+
+
+
+#: View/SharedTravels/home.ctp:8
+msgid "Sugerencias para tu visita a Cienfuegos"
+msgstr "Suggestions for your visit in Cienfuegos"
+
+#: View/SharedTravels/home.ctp:8
+msgid "¿Dónde comer al llegar?"
+msgstr "Where to eat when you arrive?"
+
+#: View/SharedTravels/home.ctp:8
+msgid "A Cienfuegos llegarás sobre las 12 del mediodía, por lo que seguro deberás comer algo. Nuestra sugerencia es:"
+msgstr "You will arrive in Cienfuegos by 12 noon, so you must eat something for sure. Our suggestion is:"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Evita emplear 1 hora o más haciendo un almuerzo en un restaurante."
+msgstr "Avoid spending 1 hour or more having lunch at a restaurant."
+
+#: View/SharedTravels/home.ctp:8
+msgid "En el mismo centro histórico (Boulevard de Cienfuegos) hay múltiples ofertas locales; hay locales de pizzas, pastas, sandwiches y bebidas . Muchas ofertas son en CUP (Pesos Cubanos, NO CUC), que salen más baratas."
+msgstr "At the very historical center (Cienfuegos Boulevard) there are multiple local offers; there are pizzas, pastas, sandwiches and drinks. Many offers are in CUP (Cuban Pesos, NOT CUC), which are cheaper."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Usar estas opciones locales de cafetería te dará más tiempo para disfrutar Cienfuegos y te será mucho más económico."
+msgstr "Using these local cafeteria options will give you more time to enjoy Cienfuegos and it will be much cheaper."
+
+
+
+##### THANK YOU PAGE
+#: View/SharedTravels/home.ctp:8
+msgid "Ya tenemos tus solicitudes de taxi compartido."
+msgstr "We already have your requests for shared taxi."
+
+#: View/SharedTravels/home.ctp:8
+msgid "{0} personas para hacer la ruta {1} > {2}  > {3} el {4}."
+msgstr "{0} people to do the route {1} > {2}  > {3} on {4}."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Precio total: {0}"
+msgstr "Total price: {0}"
+
+#: View/SharedTravels/home.ctp:8
+msgid "<b>Te enviamos 2 correos por separado a {0}</b> con un enlace para confirmar cada solicitud."
+msgstr "<b>We sent 2 separate emails at {0}</b> with a link to activate each request."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Por favor asegúrate de activar ambas solicitudes para nosotros comenzar a coordinar todo."
+msgstr "Please make sure you activate both of them so we can start to arrange everything."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Estos son los datos de las solicitudes"
+msgstr "This is the info we have of your requests"
+
+
+
+###### FORM
+#: View/SharedTravels/home.ctp:8
+msgid "DATOS {0} > {1}"
+msgstr "INFO {0} > {1}"
+
+#: View/SharedTravels/home.ctp:8
+msgid "{0} asientos"
+msgstr "{0} seats"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Recogida {0}"
+msgstr "Pick up at {0}"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Reservar ruta {0} por {1}"
+msgstr "Book route {0} for {1}"

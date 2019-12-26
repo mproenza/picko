@@ -112,12 +112,19 @@ Router::scope('/:language', function (RouteBuilder $routes) {
     $routes->connect('/havana-cienfuegos-trinidad', ['controller' => 'Pages', 'action' => 'display', 'havana-cienfuegos-trinidad'], ['routeClass' => 'UrlI18nRoute'])
             ->setPatterns(['language' => 'en|es']);
     
+    $routes->connect('/taxi-combo/*', ['controller' => 'Pages', 'action' => 'display', 'taxi-combo'], ['routeClass' => 'UrlI18nRoute'])
+            ->setPatterns(['language' => 'en|es']);
+    
     
     // Shared Rides
+    /*$routes->connect('/taxi-combo/*', ['controller' => 'SharedTravels', 'action' => 'book_taxi_combo'], ['routeClass' => 'UrlI18nRoute'])
+            ->setPatterns(['language' => 'en|es']);*/
+    
     $routes->connect('/shared-rides/:action/*', ['controller' => 'SharedTravels'], ['routeClass' => 'UrlI18nRoute'])
             ->setPatterns(['language' => 'en|es']);
     $routes->connect('/shared-rides/*', ['controller' => 'SharedTravels', 'action' => 'index'], ['routeClass' => 'UrlI18nRoute'])
             ->setPatterns(['language' => 'en|es']);
+    
     
     // Email Queue
     $routes->connect('/email-queue/:action/*', ['plugin'=>'EmailQueue', 'controller' => 'EmailQueues'], ['routeClass' => 'UrlI18nRoute'])

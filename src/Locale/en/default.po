@@ -73,3 +73,6 @@ msgstr "Havana"
 
 msgid "reservar"
 msgstr "book"
+
+msgid "bus Viazul"
+msgstr "Viazul bus"
