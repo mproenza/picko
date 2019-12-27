@@ -228,8 +228,6 @@
         </h2>
         <h3 class="mbr-section-subtitle pb-5 align-center mbr-fonts-style display-5">
             <?= __d('/mobirise/combos', '<b>Hemos creado rutas alternativas</b> usando taxis colectivos con precios económicos, que pueden serte útiles.')?>
-            <br><br>
-            &#x1F447 &#x1F447 &#x1F447
         </h3>
         <div class="row justify-content-center">
             <div class="cards-block">
