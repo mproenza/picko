@@ -34,7 +34,7 @@ $totalPriceCombo = $priceRoute1 + $priceRoute2;
                     via <?= $route1['destination']?>
                 </h1>
                 <h3 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-5">
-                    <strong><?= __d('/mobirise/combos', 'Precio: {0} total para {1} pasajeros', $totalPriceCombo, 2)?></strong>
+                    <strong><?= __d('/mobirise/combos', 'Precio: {0} total para {1} pasajeros', '$'.$totalPriceCombo, 2)?></strong>
                     <br>
                     <strong><?= __d('/mobirise/combos', 'Traslados en taxi colectivo')?></strong>
                 </h3>
