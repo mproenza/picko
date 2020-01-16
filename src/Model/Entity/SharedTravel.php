@@ -25,7 +25,7 @@ class SharedTravel extends Entity {
         5=>['name'=>'Cayo Coco', 'slug'=>'cayo-coco', 'code'=>'CAC', 'short'=>'C. Coco'],
         6=>['name'=>'Cayo Guillermo', 'slug'=>'cayo-guillermo', 'code'=>'CAG', 'short'=>'C. Guillermo'],
         8=>['name'=>'Playa Larga', 'slug'=>'playa-larga', 'code'=>'PLL', 'short'=>'P. Larga'],
-        9=>['name'=>'Playa Girón', 'slug'=>'playa-giron', 'code'=>'PLG', 'short'=>'P. Giron'],
+        9=>['name'=>'Playa Girón', 'slug'=>'playa-giron', 'code'=>'PLG', 'short'=>'P. Giron', 'use_as_origin'=>false],
     );
     
     public static $routes_info = [
@@ -281,7 +281,7 @@ class SharedTravel extends Entity {
         
         ['origin_id'=>10, 'destination_id'=>0, 'price_x_seat'=>50, 'departure_times'=>[14]],
         ['origin_id'=>10, 'destination_id'=>3, 'price_x_seat'=>50, 'departure_times'=>[14]],
-        ['origin_id'=>10, 'destination_id'=>2, 'price_x_seat'=>75, 'departure_times'=>[14]],
+        //['origin_id'=>10, 'destination_id'=>2, 'price_x_seat'=>75, 'departure_times'=>[14]],
         ['origin_id'=>10, 'destination_id'=>1, 'price_x_seat'=>35, 'departure_times'=>[14]],
         ['origin_id'=>10, 'destination_id'=>4, 'price_x_seat'=>35, 'departure_times'=>[14]],
         ['origin_id'=>10, 'destination_id'=>7, 'price_x_seat'=>35, 'departure_times'=>[14]],

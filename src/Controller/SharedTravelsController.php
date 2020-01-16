@@ -760,5 +760,26 @@ class SharedTravelsController extends AppController {
         
         return array_column($users, 'id');
     }
+    
+    
+    
+    // TRANSACTIONAL EMAILS
+    public function sendReconfirmationEmail($idToken) {
+        
+        $datasource = \Cake\Datasource\ConnectionManager::get('default');
+        $datasource->begin();
+        
+        $OK = $this->SharedTravelActions->sendReconfirmationEmail($idToken);
+
+        if(!$OK) {
+            // TODO: Enviar notificacion de fallo?
+            $datasource->rollback();
+            throw new \Cake\Network\Exception\InternalErrorException('Ocurrió un error enviando el correo de reconfirmación de la solicitud');
+        } 
+        
+        $datasource->commit();
+        
+        return $this->redirect($this->referer());
+    }
 
 }

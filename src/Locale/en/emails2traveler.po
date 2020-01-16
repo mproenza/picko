@@ -1,0 +1,31 @@
+#: View/Elements/menu.ctp:8
+msgid "Le escribe {0} de PickoCar acá en Cuba."
+msgstr "This is {0} from PickoCar here in Cuba."
+
+#: View/Elements/menu.ctp:8
+msgid "Espero estén teniendo excelentes días aquí en la isla!"
+msgstr "Hope you are having amazing days here in the island!"
+
+#: View/Elements/menu.ctp:8
+msgid "Le escribo rápidamente sólo para <b>reconfirmar el servicio de taxi compartido</b> que usted reservó con nosotros para la fecha {0} a las {1} para ir de {2} a {3}, {4} personas."
+msgstr "I am quickly reaching out just to <b>reconfirm the shared taxi service</b> that you booked with us for next {0} at {1} to go from {2} to {3}, {4} people."
+
+#: View/Elements/menu.ctp:8
+msgid "Aquí puede ver los detalles de su solicitud:"
+msgstr "Here you can see the details of your request:"
+
+#: View/Elements/menu.ctp:8
+msgid "Todo está listo y el taxi les recogerá sobre esa hora en la dirección indicada:"
+msgstr "Everything is ready and the taxi will go pick you up by that time at the address you indicated:"
+
+#: View/Elements/menu.ctp:8
+msgid "Por favor déjeme saber si hubiera algún cambio de planes, si hay que hacer algún ajuste a la reservación o si puedo ayudar en algo más."
+msgstr "Please let me know if there is any change of plans, if we must adjust something in the booking or if I can help in anything else."
+
+#: View/Elements/menu.ctp:8
+msgid "Tengan un agradable traslado y que disfruten {0}!"
+msgstr "Have a nice ride and enjoy {0}!"
+
+#: View/Elements/menu.ctp:8
+msgid "Este es un correo automático a nombre de su Asistente de PickoCar (servicio de taxi compartido en Cuba) sobre un servicio que usted tiene reservado y <b>CONFIRMADO</b> en nuestra agenda. Puede responder el correo directamente para comunicarse con su asistente."
+msgstr "This is an automatic email in behalf of your Assistant from PickoCar (shared taxi service in Cuba) about a service that you booked and is <b>CONFIRMED</b> in our agenda. You can reply this email directly to communicate with your assistant."

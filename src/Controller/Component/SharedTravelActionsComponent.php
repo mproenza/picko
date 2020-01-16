@@ -59,10 +59,63 @@ class SharedTravelActionsComponent extends Component {
 
               // Email para mi
             $Email = new Email('hola');
-            $Email->to('martin@yotellevocuba.com')->subject('CONFIRMADA: PickoCar #'.$entity->id)->send('http://pickocar.com/shared-rides/view/'.$entity->id_token);
+            $Email->to('martin@yotellevocuba.com')->subject('CONFIRMADA: PickoCar #'.$entity->id)->send('http://pickocar.com/shared-rides/view/'.$entity->id);
         }
 
         return $OK;
     }
-}
+    
+    
+    // TRANSACTIONAL EMAILS
+    public function sendReconfirmationEmail($idToken) {
+        
+        $STTable = TableRegistry::get('SharedTravels');
+                
+        $entity = $STTable->findByToken($idToken, ['hydrate'=>true]);
+        
+        // Sanity checks
+        if($entity == null || empty($entity)) {
+            throw new \Cake\Network\Exception\NotFoundException('Esta solicitud no se encuentra en el servidor');
+        }
 
+        // TODO: Verificar que la solicitud no este expirada?
+        
+        if($entity->state != SharedTravel::$STATE_CONFIRMED) { // No permitir enviar correo
+            throw new \Cake\Network\Exception\GoneException('La solicitud NO ESTÁ CONFIRMADA: estado -> '.$entity->state);
+        }
+        
+        $OK = true;
+
+        if ($OK) {
+            $lang = $entity->lang;
+
+            $origin = $entity->getOriginName();
+            $destination = $entity->getDestinationName();
+            
+            $subject = 'Taxi '.$origin.' - '.$destination.' con PickoCar';
+            if ($lang == 'en')
+                $subject = 'Taxi '.$origin.' - '.$destination.' with PickoCar';
+
+            /*// Buscar todas las solicitudes activadas para mostrarle al cliente el resumen
+            $all_requests = $STTable->findActiveRequests($entity->email, ['hydrate'=>true]);*/
+            
+            // Email de parte del customer assistant
+            $customer_assistant = 'customer_assistant_'.$entity->lang;
+            $OK = EmailsUtil::email(
+                $entity->email,
+                $subject,
+                array('request' => $entity),
+                $customer_assistant,
+                'email2traveler/request_reconfirmation',
+                array('lang'=>$lang, 'enqueue'=>true)
+            );
+
+             // Email para mi
+            $Email = new Email('hola');
+            $Email->to('martin@yotellevocuba.com')->subject('ENVIADO EMAIL RECONFIRMACION: PickoCar #'.$entity->id)->send('http://pickocar.com/shared-rides/admin/'.$entity->id);
+        }
+
+        return $OK;
+    }
+    
+}

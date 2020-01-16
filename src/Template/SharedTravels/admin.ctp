@@ -16,17 +16,20 @@ use App\Util\TimeUtil;
             <div><?= $this->Html->link(
                     'Activar', 
                     ['controller'=>'shared-rides', 'action'=>'activate', $request['SharedTravel']['activation_token']],
-                    ['class'=>'btn btn-info', 'confirm'=>'¿Está seguro que quiere ACTIVAR esta solicitud?'])?></div>
+                    ['class'=>'btn btn-info', 'confirm'=>'¿Está seguro que quiere ACTIVAR esta solicitud?'])?>
+            </div>
             <br/>
             <div><?= $this->Html->link(
                     'Confirmar', 
                     array('controller'=>'shared-rides', 'action'=>'confirm', $request['SharedTravel']['id_token']),
-                    array('class'=>'btn btn-primary', 'confirm'=>'¿Está seguro que quiere ConFIRMAR esta solicitud?'))?></div>
+                    array('class'=>'btn btn-primary', 'confirm'=>'¿Está seguro que quiere CONFIRMAR esta solicitud?'))?>
+            </div>
             <br/>
             <div><?= $this->Html->link(
                     'Cancelar', 
                     array('controller'=>'shared-rides', 'action'=>'cancel', $request['SharedTravel']['id_token']),
-                    array('class'=>'btn btn-danger', 'confirm'=>'¿Está seguro que quiere CAnCELAR esta solicitud?'))?></div>
+                    array('class'=>'btn btn-danger', 'confirm'=>'¿Está seguro que quiere CANCELAR esta solicitud?'))?>
+            </div>
             <br/>
             <br/>
             <?php $fechaCambiada = $request['SharedTravel']['original_date'] != $request['SharedTravel']['date']?>
@@ -139,8 +142,6 @@ use App\Util\TimeUtil;
                 </fieldset>
             <?= $this->Form->end(); ?>
             
-            
-            
             <!-- FINAL STATE -->
             <br/>
             <br/>
@@ -161,6 +162,30 @@ use App\Util\TimeUtil;
                     <?= $this->Form->submit('Actualizar Estado Final')?>
                 </fieldset>
                 <?= $this->Form->end(); ?>
+            </div>
+            
+            <!-- CORREOS (RECONFIRMACION, NO AEROPUERTO, ...) -->
+            <br/>
+            <br/>
+            <legend>CORREOS</legend>
+            <div>
+                <div><?= $this->Html->link(
+                    'Reconfirmar con el Cliente', 
+                    ['controller'=>'shared-rides', 'action'=>'send-reconfirmation-email', $request['SharedTravel']['id_token']],
+                    ['class'=>'btn btn-warning', 'confirm'=>'¿Está seguro que quiere ENVIAR AL CLIENTE EL CORREO DE RECONFIRMACIÓN de esta solicitud?'])?>
+                </div>
+                <!--<br/>
+                <div><?= $this->Html->link(
+                        'Confirmar', 
+                        array('controller'=>'shared-rides', 'action'=>'confirm', $request['SharedTravel']['id_token']),
+                        array('class'=>'btn btn-primary', 'confirm'=>'¿Está seguro que quiere ConFIRMAR esta solicitud?'))?>
+                </div>
+                <br/>
+                <div><?= $this->Html->link(
+                        'Cancelar', 
+                        array('controller'=>'shared-rides', 'action'=>'cancel', $request['SharedTravel']['id_token']),
+                        array('class'=>'btn btn-danger', 'confirm'=>'¿Está seguro que quiere CAnCELAR esta solicitud?'))?>
+                </div>-->
             </div>
         </div>
     </div>

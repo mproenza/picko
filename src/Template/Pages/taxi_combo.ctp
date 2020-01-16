@@ -17,7 +17,6 @@ $priceRoute2 = $route2['price_x_seat']*$peopleCount;
 $totalPriceCombo = $priceRoute1 + $priceRoute2;
 ?>
 
-
 <?= $this->element('/mobirise/menu', ['isHome'=>true])?>
 
 <section class="cid-rLoPVsPKTH mbr-fullscreen mbr-parallax-background" id="header2-3o">
