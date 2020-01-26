@@ -77,17 +77,20 @@ class SharedTravel extends Entity {
         4 => [
             5=>['kms'=>'320', 'hrs'=>'4'],
             6=>['kms'=>'360', 'hrs'=>'4.30'],
+            7=>['kms'=>'75', 'hrs'=>'1.30'],
             8=>['kms'=>'150', 'hrs'=>'2'],
             9=>['kms'=>'110', 'hrs'=>'1.30'],
-            10=>['kms'=>'150', 'hrs'=>'2'],
+            10=>['kms'=>'180', 'hrs'=>'2.30'],
         ],
         
         5 => [
-            7=>['kms'=>'250', 'hrs'=>'3'],
+            7=>['kms'=>'200', 'hrs'=>'3'],
+            10=>['kms'=>'230', 'hrs'=>'3.30'],
         ],
         
         6 => [
             7=>['kms'=>'290', 'hrs'=>'3.30'],
+            10=>['kms'=>'260', 'hrs'=>'4'],
         ],
         
         7 => [
@@ -242,7 +245,9 @@ class SharedTravel extends Entity {
         ['origin_id'=>4, 'destination_id'=>0, 'price_x_seat'=>35, 'departure_times'=>[9, 14]],
         ['origin_id'=>4, 'destination_id'=>2, 'price_x_seat'=>50, 'departure_times'=>[9]],
         ['origin_id'=>4, 'destination_id'=>3, 'price_x_seat'=>35, 'departure_times'=>[9, 14]],
-        ['origin_id'=>4, 'destination_id'=>1, 'price_x_seat'=>20, 'departure_times'=>[7, 17]],        
+        ['origin_id'=>4, 'destination_id'=>1, 'price_x_seat'=>20, 'departure_times'=>[7, 17]],  
+        ['origin_id'=>4, 'destination_id'=>7, 'price_x_seat'=>35, 'departure_times'=>[7]],
+        ['origin_id'=>4, 'destination_id'=>10, 'price_x_seat'=>35, 'departure_times'=>[7]],
         ['origin_id'=>4, 'destination_id'=>5, 'price_x_seat'=>50, 'departure_times'=>[7]],
         ['origin_id'=>4, 'destination_id'=>6, 'price_x_seat'=>55, 'departure_times'=>[7]],
         ['origin_id'=>4, 'destination_id'=>8, 'price_x_seat'=>35, 'departure_times'=>[9, 14]],

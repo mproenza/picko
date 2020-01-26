@@ -98,7 +98,6 @@ class SharedTravelsTable extends Table {
 
         return $request;
     }
-    
     public function findByActivationToken($token, array $options = []) {
         $request = $this->find('all', $options)
         ->where(['activation_token' => $token])
@@ -106,13 +105,18 @@ class SharedTravelsTable extends Table {
 
         return $request;	
     }
-    
     public function findById($id, array $options = []) {
         $request = $this->find('all', $options)
         ->where(['id' => $id])
         ->first();
 
         return $request;
+    }
+    public function findAllConfirmedByDate($date, array $options = []) {
+        $requests = $this->find('all', $options)
+        ->where(['date' => $date, 'state' => SharedTravel::$STATE_CONFIRMED]);
+                
+        return $requests;
     }
 
     //Encuentra las solicitudes activas de un usuario
@@ -123,7 +127,7 @@ class SharedTravelsTable extends Table {
         ->where([
             'email'=>$userEmail, // Que sean de este usuario
             //'activated'=>true, // Que esten activadas
-            'state IN'=>[SharedTravel::$STATE_ACTIVATED, SharedTravel::$STATE_CONFIRMED], // Activadas o canceladas
+            'state IN'=>[SharedTravel::$STATE_ACTIVATED, SharedTravel::$STATE_CONFIRMED], // Activadas o confirmadas
             'date >'=>$today // Que no esten expiradas
                 ])
         ->order('date ASC, id ASC');
