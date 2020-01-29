@@ -44,7 +44,7 @@ $totalPriceCombo = $priceRoute1 + $priceRoute2;
     </div>
     
     <div class="mbr-section-btn text-center pt-4">
-        <?= $this->Html->link(__d('/mobirise/combos', 'Ver detalles de taxi {0}'.'<br/>via '.$route1['destination'], '<br>'.$route1['origin'].' - '.$route2['destination']), 
+        <?= $this->Html->link(__d('/mobirise/combos', 'Ver detalles de taxi {0}', '<br>'.$route1['origin'].' - '.$route2['destination']).'<br/>via '.$route1['destination'], 
         ['controller' => 'Pages', 'action' => 'display', 'taxi-combo', $comboSlug],
         ['class'=>'btn btn-primary display-4', 'escape'=>false, 'target'=>'_blank'])?>
     </div>
