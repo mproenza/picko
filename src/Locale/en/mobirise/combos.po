@@ -207,3 +207,13 @@ msgstr "Pick up at {0}"
 #: View/SharedTravels/home.ctp:8
 msgid "Reservar ruta {0} por {1}"
 msgstr "Book route {0} for {1}"
+
+
+###### COMBO CARDS
+#: View/SharedTravels/home.ctp:8
+msgid "Combina 2 traslados"
+msgstr "Combines 2 rides"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Ver detalles de taxi {0}"
+msgstr "See details of taxi {0}"

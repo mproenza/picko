@@ -117,10 +117,11 @@ class SharedTravel extends Entity {
             'route1'=>['origin_id'=>0, 'destination_id'=>1],
             'route2'=>['origin_id'=>1, 'destination_id'=>5],
             'private_taxi_price'=>250,
+            'picko_private_taxi_price'=>250,
             'viazul'=>[
                 'destination'=>'Ciego de Ávila', 
                 'price_x_seat'=>27,
-                'earlier_arrival_time'=>'4 pm',
+                'earlier_arrival_time'=>'2 pm',
                 'private_taxi_price_to_final_destination'=>70,
                 'private_taxi_ride_time'=>'2 hrs']
         ],
@@ -131,7 +132,7 @@ class SharedTravel extends Entity {
             'viazul'=>[
                 'destination'=>'Ciego de Ávila', 
                 'price_x_seat'=>27,
-                'earlier_arrival_time'=>'4 pm',
+                'earlier_arrival_time'=>'2 pm',
                 'private_taxi_price_to_final_destination'=>70,
                 'private_taxi_ride_time'=>'2 hrs']
         ],
@@ -142,7 +143,7 @@ class SharedTravel extends Entity {
             'viazul'=>[
                 'destination'=>'Ciego de Ávila', 
                 'price_x_seat'=>27,
-                'earlier_arrival_time'=>'4 pm',
+                'earlier_arrival_time'=>'2 pm',
                 'private_taxi_price_to_final_destination'=>90,
                 'private_taxi_ride_time'=>'2 hrs']
                 
@@ -154,7 +155,7 @@ class SharedTravel extends Entity {
             'viazul'=>[
                 'destination'=>'Ciego de Ávila', 
                 'price_x_seat'=>27,
-                'earlier_arrival_time'=>'4 pm',
+                'earlier_arrival_time'=>'2 pm',
                 'private_taxi_price_to_final_destination'=>90,
                 'private_taxi_ride_time'=>'2 hrs']
         ],
@@ -206,6 +207,15 @@ class SharedTravel extends Entity {
                 'private_taxi_ride_time'=>'2 hrs']
         ],
     ];
+    
+    public static function getCombosStartingAt($originId) {
+        $combos = [];
+        foreach (self::$combos as $key=>$c) {
+            if($c['route1']['origin_id'] == $originId) $combos[] = [$key=>$c];
+        }
+        
+        return $combos;
+    }
     
     public static $routes = [
         ['origin_id'=>0, 'destination_id'=>2, 'price_x_seat'=>25, 'departure_times'=>[11]],

@@ -221,7 +221,7 @@
     </div>
 </section>
 
-<section class="counters5 counters cid-rLNmNmoe0c" id="counters5-3y">    
+<!--<section class="counters5 counters cid-rLNmNmoe0c" id="counters5-3y">    
     <div class="container pt-4 mt-2">
         <h2 class="mbr-section-title pb-3 align-center mbr-fonts-style display-5">
             <?= __d('/mobirise/combos', '¿No encuentras la ruta que necesitas?')?>
@@ -256,7 +256,7 @@
             </div>
         </div>
     </div>
-</section>
+</section>-->
 
 <section class="counters5 counters cid-rnfgdix17n" id="<?= __d('meta', 'debes-saber')?>">
     <div class="container pt-4">
