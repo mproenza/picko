@@ -27,6 +27,22 @@ msgid "RESERVAR TRASLADO ECONÓMICO"
 msgstr "BOOK LOW-BUDGET RIDE"
 
 #: View/SharedTravels/home.ctp:8
+msgid "En PickoCar organizamos traslados en taxi colectivo a varios destinos de Cuba todos los días."
+msgstr "At PickoCar we organize rides in shared taxi to several destinations in Cuba every day."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Sin embargo, <strong>NO ofrecemos la ruta directa entre {0} y {1}</strong>."
+msgstr "However, <strong>we DO NOT offer a direct route between {0} and {1}</strong>."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Hemos diseñado una alternativa económica usando la misma red de taxis colectivos que usamos todos los días, para que puedas hacer esta ruta."
+msgstr "We have designed an economic alternative using the same shared taxi network we use every day, so that you can do this route."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Sigue leyendo"
+msgstr "Keep reading"
+
+#: View/SharedTravels/home.ctp:8
 msgid "¿Por qué hacer estancia en {0}?"
 msgstr "Why stay in {0}?"
 
@@ -45,6 +61,14 @@ msgstr "There are a few options:"
 #: View/SharedTravels/home.ctp:8
 msgid "Un taxi privado cuesta {0} como mínimo. Esta alternativa NO es económica."
 msgstr "A private taxi is {0} at the least. This alternative is NOT economical."
+
+#: View/SharedTravels/home.ctp:8
+msgid "En PickoCar organizamos taxi privado directo desde {0} hasta {1}."
+msgstr "At PickoCar we organize direct private taxi from {0} to {1}."
+
+#: View/SharedTravels/home.ctp:8
+msgid "Contáctanos para un taxi privado por {0}"
+msgstr "Contact us for a private taxi for {0}"
 
 #: View/SharedTravels/home.ctp:8
 msgid "Puedes ir en {6} hasta {0} (cada asiento cuesta {1}), y luego tomar un taxi privado por {2} desde ahí. Esta alternativa es económica, pero el bus demora en llegar y el horario más temprano de arribo a {0} es {3}. Luego hay que seguir a {4} por {5} más, y además tienes que gestionar la combinación con un taxi privado."

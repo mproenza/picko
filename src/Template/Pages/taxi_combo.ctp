@@ -60,6 +60,22 @@ $totalPriceCombo = $priceRoute1 + $priceRoute2;
     </div>
 </section>
 
+<section class="mbr-section article content9 cid-rP5Y8PgfLs" id="content9-40">
+    <div class="container">
+        <div class="inner-container" style="width: 100%;">
+            <hr class="line" style="width: 10%;">
+            <div class="section-text align-center mbr-fonts-style display-5">
+                <?= __d('/mobirise/combos', 'En PickoCar organizamos traslados en taxi colectivo a varios destinos de Cuba todos los días.')?>
+                <br>
+                <?= __d('/mobirise/combos', 'Sin embargo, <strong>NO ofrecemos la ruta directa entre {0} y {1}</strong>.', $route1['origin'], $route2['destination'])?>
+                <br>
+                <?= __d('/mobirise/combos', 'Hemos diseñado una alternativa económica usando la misma red de taxis colectivos que usamos todos los días, para que puedas hacer esta ruta.')?>
+                <?= __d('/mobirise/combos', 'Sigue leyendo')?>...</div>
+            <hr class="line" style="width: 10%;">
+        </div>
+        </div>
+</section>
+
 <section class="mbr-section content4 cid-rLoRKj4DVf" id="content4-3t">
     <div class="container">
         <div class="media-container-row">
@@ -71,7 +87,15 @@ $totalPriceCombo = $priceRoute1 + $priceRoute2;
                     </p>
                     <p><?= __d('/mobirise/combos', 'Hay pocas opciones:')?></p>
                     <ul>
-                        <li><?= __d('/mobirise/combos', 'Un taxi privado cuesta {0} como mínimo. Esta alternativa NO es económica.', '$'.$combo['private_taxi_price'])?></li>
+                        <li>
+                            <?= __d('/mobirise/combos', 'Un taxi privado cuesta {0} como mínimo. Esta alternativa NO es económica.', '$'.$combo['private_taxi_price'])?>
+                            <br><br>
+                            <span class="alert alert-success align-center mbr-fonts-style display-7 p-2" style="display: inline-block">
+                                <?= __d('/mobirise/combos', 'En PickoCar organizamos taxi privado directo desde {0} hasta {1}.', $route1['origin'], $route2['destination'])?>
+                                <br>
+                                <div class="align-center"><big><strong><?= $this->Html->link(__d('/mobirise/combos', 'Contáctanos para un taxi privado por {0}', '$'.$combo['private_taxi_price']), ['controller' => 'Contact', 'action' => 'index'], ['style'=>'color:inherit'])?></strong></big></div>
+                            </span>
+                        </li>
                         <li><?= __d('/mobirise/combos', 'Puedes ir en {6} hasta {0} (cada asiento cuesta {1}), y luego tomar un taxi privado por {2} desde ahí. Esta alternativa es económica, pero el bus demora en llegar y el horario más temprano de arribo a {0} es {3}. Luego hay que seguir a {4} por {5} más, y además tienes que gestionar la combinación con un taxi privado.', 
                                 $combo['viazul']['destination'], 
                                 '$'.$combo['viazul']['price_x_seat'],
