@@ -64,6 +64,7 @@ class SharedTravelsController extends AppController {
     }
 
     public function book($routeSlug = null) {
+        
         if ($this->request->is('post') || $this->request->is('put')) {
             
             if(!$this->_checkSecurity()) throw new \Cake\Network\Exception\ForbiddenException();
@@ -171,13 +172,7 @@ class SharedTravelsController extends AppController {
         }
     }
     
-    /**
-     * @params $localityId1, $localityId2, $localityId3: Los ids de las localidaes en la combinacion
-     * $localityId1: id localidad origen
-     * $localityId2: id localidad intermedia
-     * $localityId3: id localidad destino
-     */
-    public function bookTaxiCombo($comboStringKey = null) {
+    public function bookTaxiCombo() {
         
         if ($this->request->is('post') || $this->request->is('put')) {
             
@@ -244,17 +239,8 @@ class SharedTravelsController extends AppController {
             }
         }
         
-        // Cualquier metodo que no sea POST o PUT > ERROR
+        // Cualquier metodo que no sea POST o PUT -> ERROR
         throw new \Cake\Network\Exception\MethodNotAllowedException();
-        
-        /*// Sanity check
-        if($comboStringKey == null || !array_key_exists($comboStringKey, SharedTravel::$combos)) throw new NotFoundException();
-        
-        $this->set('combo', SharedTravel::$combos[$comboStringKey]);
-        
-        $this->viewBuilder()->setLayout('mobirise/book_combo');
-        $this->render('mobirise/taxi_combo');*/
-        
     }
     
     private function _checkSecurity() {

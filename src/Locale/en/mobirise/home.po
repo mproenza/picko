@@ -44,6 +44,10 @@ msgid "VER RUTAS DE TAXI Y PRECIOS"
 msgstr "SEE TAXI ROUTES AND PRICES"
 
 #: View/SharedTravels/home.ctp:8
+msgid "VER TODAS LAS RUTAS DE TAXI Y PRECIOS"
+msgstr "SEE ALL TAXI ROUTES AND PRICES"
+
+#: View/SharedTravels/home.ctp:8
 msgid "En PickoCar organizamos viajes compartidos en taxi hacia diferentes destinos en {0} todos los días"
 msgstr "At PickoCar we organize shared rides in taxi to different destinations in {0} every day"
 

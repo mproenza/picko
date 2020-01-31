@@ -138,6 +138,14 @@ msgstr "Did not find the route you were looking for?"
 msgid "<b>Hemos creado rutas alternativas</b> usando taxis colectivos con precios económicos, que pueden serte útiles."
 msgstr "<b>We have created some alternative routes</b> using shared taxis with economical prices, which you might find helpful."
 
+#: View/SharedTravels/home.ctp:8
+msgid "También te puede interesar:"
+msgstr "You may also be iterested:"
+
+#: View/SharedTravels/home.ctp:8
+msgid "Taxi de {0} a {1} via {2}"
+msgstr "Taxi from {0} to {1} via {2}"
+
 
 
 

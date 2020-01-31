@@ -6079,7 +6079,7 @@ section.lazy-placeholder:after {
   color: #c1c1c1 !important;
 }
 .cid-rLoPVsPKTH {
-  background-image: url("../../../assets/images/habana-cienfuegos-trinidad-2000x879.jpg");
+  background-image: url("../../../assets/images/habana-trinidad-cayo-coco-guillermo-ok-2000x954.jpg");
 }
 .cid-rLoPVsPKTH .mbr-text,
 .cid-rLoPVsPKTH .mbr-section-btn {
@@ -6184,64 +6184,17 @@ section.lazy-placeholder:after {
 .cid-rLoPVJnm1l textarea.form-control {
   min-height: 188px;
 }
-.cid-rLoPVMOdvl {
+.cid-rPbJjti3wz {
   padding-top: 60px;
   padding-bottom: 60px;
-  background-color: #f9f9f9;
+  background-color: #efefef;
 }
-.cid-rLoPVMOdvl p {
+.cid-rPbJjti3wz .mbr-section-subtitle {
   color: #767676;
+  text-align: left;
 }
-.cid-rLoPVMOdvl .mbr-section-subtitle {
-  color: #767676;
-}
-.cid-rLoPVMOdvl .accordion-content {
-  flex-basis: 100%;
-  -webkit-flex-basis: 100%;
-}
-.cid-rLoPVMOdvl .panel-group {
-  width: 100%;
-}
-.cid-rLoPVMOdvl .card {
-  border-radius: 0px;
-  margin-bottom: -1px;
-}
-.cid-rLoPVMOdvl .card .card-header {
-  border-radius: 0px;
-  border: 0px;
-  padding: 0;
-}
-.cid-rLoPVMOdvl .card .card-header a.panel-title {
-  margin-bottom: 0;
-  font-style: normal;
-  font-weight: 500;
-  display: block;
-  text-decoration: none !important;
-  margin-top: -1px;
-  line-height: normal;
-}
-.cid-rLoPVMOdvl .card .card-header a.panel-title:focus {
-  text-decoration: none !important;
-}
-.cid-rLoPVMOdvl .card .card-header a.panel-title h4 {
-  padding: 1.3rem 2rem;
-  border: 1px solid #dfdfdf;
-  margin-bottom: 0;
-}
-.cid-rLoPVMOdvl .card .card-header a.panel-title h4 .sign {
-  padding-right: 1rem;
-}
-.cid-rLoPVMOdvl .mbr-figure {
-  -webkit-align-self: flex-start;
-  align-self: flex-start;
-  padding-left: 4rem;
-}
-@media (max-width: 991px) {
-  .cid-rLoPVMOdvl .mbr-figure {
-    padding-right: 0;
-    padding-left: 0;
-    padding-top: 2rem;
-  }
+.cid-rPbJjti3wz H2 {
+  text-align: left;
 }
 .cid-rLp5fSgo9R {
   padding-top: 90px;

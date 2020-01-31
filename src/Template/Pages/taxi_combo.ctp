@@ -127,10 +127,7 @@ $totalPriceCombo = $priceRoute1 + $priceRoute2;
     <div class="container">
         <div class="row">
             <!--Titles-->
-            <div class="title pb-5 col-12">
-                
-                
-            </div>
+            <div class="title pb-5 col-12"></div>
             <!--Card-1-->
             <div class="card px-3 col-12">
                 <div class="card-wrapper media-container-row media-container-row">
@@ -205,6 +202,40 @@ $totalPriceCombo = $priceRoute1 + $priceRoute2;
         </div>
     </div>
 </section>
+
+<section class="mbr-section content4 cid-rPbJjti3wz" id="content4-43">
+    <div class="container">
+        <div class="media-container-row">
+            <div class="title col-12 col-md-8">
+                <h2 class="align-center pb-3 mbr-fonts-style display-5"><?= __d('/mobirise/combos', 'También te puede interesar:')?></h2>
+                <h3 class="mbr-section-subtitle align-center mbr-light mbr-fonts-style display-5">
+                    <ul>
+                        <?php foreach (SharedTravel::$combos as $key => $c):?>
+                            <?php
+                            $notSameRoute = $key != $comboSlug;
+                            $sameOrigin = $c['route1']['origin_id'] == $route1['origin_id'];
+                            ?>
+                            <?php if($notSameRoute && $sameOrigin):?>
+                                <li>
+                                    <?= $this->Html->link(
+                                            __d('/mobirise/combos', 'Taxi de {0} a {1} via {2}',
+                                                    __(SharedTravel::$localities[$c['route1']['origin_id']]['name']),
+                                                    __(SharedTravel::$localities[$c['route2']['destination_id']]['name']),
+                                                    __(SharedTravel::$localities[$c['route1']['destination_id']]['name'])),
+                                            ['controller'=>'Pages', 'action'=>'display', 'taxi-combo', $key])?>
+                                </li>
+                            <?php endif;?>
+                        <?php endforeach;?>
+                    </ul>
+                </h3>
+                <div class="mbr-section-btn align-center py-4">
+                    <?php echo $this->Html->link(__d('/mobirise/home', 'VER TODAS LAS RUTAS DE TAXI Y PRECIOS'), ['_name'=>'homepage', '#'=>__d('meta', 'rutas-y-precios')], array('class' => 'btn btn-primary display-4')) ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 <!--<section class="cid-rLp5fSgo9R" id="social-buttons1-3u">
 

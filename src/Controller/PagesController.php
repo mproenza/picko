@@ -78,6 +78,7 @@ class PagesController extends AppController
                 if($comboStringKey == null || !array_key_exists($comboStringKey, SharedTravel::$combos)) throw new NotFoundException();
 
                 $this->set('combo', SharedTravel::$combos[$comboStringKey]);
+                $this->set('comboSlug', $comboStringKey);
                 
                 $this->viewBuilder()->setLayout('mobirise/book_combo');
                 return $this->render('taxi_combo');
