@@ -301,7 +301,7 @@ class SharedTravelsController extends AppController {
             // Correo con link de activacion
             $OK = EmailsUtil::email(
                 $request['SharedTravel']['email'],
-                __d('shared_travels', 'Confirma tu solicitud de viaje compartido'),
+                __d('shared_travels', 'Verifica y activa tu solicitud de taxi compartido en Cuba'),
                 array('request' => $request),
                 'hola',
                 'activate_request',

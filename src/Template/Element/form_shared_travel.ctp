@@ -11,7 +11,7 @@ if($this->request->session()->read('user_name_id')) $nameIdValue = $this->reques
 
 <div>
     <?php 
-    echo $this->Form->create('SharedTravel', array('url' => ['controller' => 'shared-rides', 'action' => 'book', $route['slug']], 'id'=>'SharedTravelForm'.$route['code'], 'novalidate'));?>
+    echo $this->Form->create('SharedTravel', array('url' => ['controller' => 'shared-rides', 'action' => 'book', $route['slug']]/*, 'id'=>'SharedTravelForm'.$route['code']*/, 'novalidate'));?>
     <?php echo $this->Flash->render('form')?>
     <fieldset>
         <div class="row" style="margin: 0px;padding: 0px">
@@ -24,7 +24,7 @@ if($this->request->session()->read('user_name_id')) $nameIdValue = $this->reques
                 echo $this->Form->input('price_x_seat', array('type' => 'hidden', 'value'=>$route['price_x_seat']));
                 ?>
 
-                <?php echo $this->Form->custom_date('date', array('label' => __d('shared_travels', 'Fecha en que necesitas el servicio'), 'autocomplete'=>'off', 'dateFormat' => 'dd/mm/yyyy', 'required', 'invalid-feedback'=>__d('errors', 'Escriba una fecha válida: 2 días después de hoy como mínimo y en formato dd/mm/aaaa')));?>
+                <?php echo $this->Form->custom_date('date', array('label' => __d('shared_travels', 'Fecha en que necesitas el servicio'), 'readonly'=>'readonly', 'autocomplete'=>'off', 'dateFormat' => 'dd/mm/yyyy', 'required', 'invalid-feedback'=>__d('errors', 'Escriba una fecha válida: 2 días después de hoy como mínimo y en formato dd/mm/aaaa')));?>
                 <br/>
                 
                 <?php $radios = []?>

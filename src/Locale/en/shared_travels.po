@@ -396,6 +396,9 @@ msgstr "it was paired with other requests to fill one of our 4 pax cars"
 #: Controller/SharedTravelsController.php:8
 msgid "Confirma tu solicitud de viaje compartido"
 msgstr "Confirm your request for a shared ride"
+#: Controller/SharedTravelsController.php:8
+msgid "Verifica y activa tu solicitud de taxi compartido en Cuba"
+msgstr "Review and activate your request for a shared taxi in Cuba"
 
 #: View/Emails/email2user_activate_request.ctp:8
 msgid "Usted solicitó un transfer de {0} personas desde {1} hasta {2} el día {3} con recogida a las {4}."
@@ -406,16 +409,19 @@ msgid "Precio total por las {0} personas: {1}"
 msgstr "Total price for {0} people: {1}"
 
 #: View/Emails/email2user_activate_request.ctp:8
-msgid "Antes de comenzar los arreglos, usted debe confirmar la solicitud haciendo click en el siguiente enlace"
-msgstr "Before we start the arrangements, you must confirm the request by clicking in the following link"
+msgid "Por favor revisa la solicitud y luego actívala haciendo click en el siguiente enlace. Activarla es necesario para nosotros comenzar a arreglar el traslado."
+msgstr "Please review the request and then activate it by clicking in the following link. Activating it is necessary for us to start arranging the ride."
 
 #: View/Emails/email2user_activate_request.ctp:8
 msgid "Confirmar los datos de mi solicitud"
 msgstr "Confirm the info of my request"
+#: View/Emails/email2user_activate_request.ctp:8
+msgid "Activar y aprobar esta solicitud"
+msgstr "Activate and approve this request"
 
 #: View/Emails/email2user_activate_request.ctp:8
-msgid "Gracias de antemano, y saludos"
-msgstr "Thanks in advance, and regards"
+msgid "Gracias de antemano y saludos"
+msgstr "Thanks in advance and regards"
 
 #: View/Emails/email2user_activate_request.ctp:8
 msgid "El equipo de"

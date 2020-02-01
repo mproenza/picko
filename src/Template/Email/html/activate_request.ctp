@@ -7,10 +7,14 @@
 
 <p><?php echo __d('shared_travels', 'Precio total por las {0} personas: {1}', $request['SharedTravel']['people_count'], '<b>'. SharedTravel::getTotalPrice($request['SharedTravel']).' cuc</b>')?></p>
 
-<p><?php echo __d('shared_travels', 'Antes de comenzar los arreglos, usted debe confirmar la solicitud haciendo click en el siguiente enlace')?>:</p>
+---
+<div><?php echo $this->element('shared_travel_templates/shared_travel_customer_email', compact('request'))?></div>
+---
 
-<p><?php echo $this->Html->link(__d('shared_travels', 'Confirmar los datos de mi solicitud'), array('language'=>$request['SharedTravel']['lang'], 'controller' => 'shared-rides', 'action' => 'activate', $request['SharedTravel']['activation_token']/*, '_full'=>true*/), ['fullBase'=>true] )?></p>
+<p><?php echo __d('shared_travels', 'Por favor revisa la solicitud y luego actívala haciendo click en el siguiente enlace. Activarla es necesario para nosotros comenzar a arreglar el traslado.')?></p>
 
-<p><?php echo __d('shared_travels', 'Gracias de antemano, y saludos')?>,</p>
+<p><?php echo $this->Html->link(__d('shared_travels', 'Activar y aprobar esta solicitud'), array('language'=>$request['SharedTravel']['lang'], 'controller' => 'shared-rides', 'action' => 'activate', $request['SharedTravel']['activation_token']/*, '_full'=>true*/), ['fullBase'=>true] )?></p>
+
+<p>Gracias!</p>
 
 <p><?php echo __d('shared_travels', 'El equipo de')?> <a href="https://pickocar.com">PickoCar</a></p>

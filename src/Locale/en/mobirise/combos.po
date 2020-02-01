@@ -140,7 +140,7 @@ msgstr "<b>We have created some alternative routes</b> using shared taxis with e
 
 #: View/SharedTravels/home.ctp:8
 msgid "También te puede interesar:"
-msgstr "You may also be iterested:"
+msgstr "You may also be interested:"
 
 #: View/SharedTravels/home.ctp:8
 msgid "Taxi de {0} a {1} via {2}"
