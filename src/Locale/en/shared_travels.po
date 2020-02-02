@@ -311,6 +311,9 @@ msgstr "Reference"
 #: View/Elements/shared_travel.ctp:8
 msgid "Precio <b>{0} personas</b> x <b>{1}</b>"
 msgstr "Price <b>{0} people</b> x <b>{1}</b>"
+#: View/Elements/shared_travel.ctp:8
+msgid "<b>{0} personas</b> x <b>{1}</b>"
+msgstr "<b>{0} people</b> x <b>{1}</b>"
 
 #: View/Elements/shared_travel.ctp:8
 msgid "Recargo"
@@ -409,7 +412,7 @@ msgid "Precio total por las {0} personas: {1}"
 msgstr "Total price for {0} people: {1}"
 
 #: View/Emails/email2user_activate_request.ctp:8
-msgid "Por favor revisa la solicitud y luego actívala haciendo click en el siguiente enlace. Activarla es necesario para nosotros comenzar a arreglar el traslado."
+msgid "Por favor revisa la solicitud y luego actívala haciendo click en el siguiente enlace. Activarla es necesario para nosotros comenzar a organizar el traslado."
 msgstr "Please review the request and then activate it by clicking in the following link. Activating it is necessary for us to start arranging the ride."
 
 #: View/Emails/email2user_activate_request.ctp:8
@@ -418,6 +421,10 @@ msgstr "Confirm the info of my request"
 #: View/Emails/email2user_activate_request.ctp:8
 msgid "Activar y aprobar esta solicitud"
 msgstr "Activate and approve this request"
+
+#: View/Emails/email2user_activate_request.ctp:8
+msgid "DATOS DE TU SOLICITUD"
+msgstr "INFO OF YOUR REQUEST"
 
 #: View/Emails/email2user_activate_request.ctp:8
 msgid "Gracias de antemano y saludos"

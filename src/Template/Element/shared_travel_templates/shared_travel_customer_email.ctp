@@ -30,7 +30,7 @@ use App\Util\TimeUtil;
     <div>
         <?php $total = $request['SharedTravel']['people_count'] * $request['SharedTravel']['price_x_seat']?>
         
-            <?= __d('shared_travels', 'Precio <b>{0} personas</b> x <b>{1}</b>', $request['SharedTravel']['people_count'], $request['SharedTravel']['price_x_seat'])?>
+            <?= __d('shared_travels', '<b>{0} personas</b> x <b>{1}</b>', $request['SharedTravel']['people_count'], $request['SharedTravel']['price_x_seat'])?>
 
             <?php if($request['SharedTravel']['fee_total'] > 0) {
                 $total += $request['SharedTravel']['fee_total'];
