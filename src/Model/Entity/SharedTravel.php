@@ -238,12 +238,12 @@ class SharedTravel extends Entity {
         ['origin_id'=>1, 'destination_id'=>9, 'price_x_seat'=>30, 'departure_times'=>[8, 14]],
         
         ['origin_id'=>2, 'destination_id'=>0, 'price_x_seat'=>25, 'departure_times'=>[8, 14]],
-        ['origin_id'=>2, 'destination_id'=>3, 'price_x_seat'=>45, 'departure_times'=>[8, 14]],
+        ['origin_id'=>2, 'destination_id'=>3, 'price_x_seat'=>50, 'departure_times'=>[8, 14]],
         ['origin_id'=>2, 'destination_id'=>1, 'price_x_seat'=>50, 'departure_times'=>[8]],
         ['origin_id'=>2, 'destination_id'=>4, 'price_x_seat'=>50, 'departure_times'=>[8]],
-        ['origin_id'=>2, 'destination_id'=>7, 'price_x_seat'=>45, 'departure_times'=>[8]],
-        ['origin_id'=>2, 'destination_id'=>8, 'price_x_seat'=>45, 'departure_times'=>[8]],
-        ['origin_id'=>2, 'destination_id'=>9, 'price_x_seat'=>45, 'departure_times'=>[8]],
+        ['origin_id'=>2, 'destination_id'=>7, 'price_x_seat'=>50, 'departure_times'=>[8]],
+        ['origin_id'=>2, 'destination_id'=>8, 'price_x_seat'=>50, 'departure_times'=>[8]],
+        ['origin_id'=>2, 'destination_id'=>9, 'price_x_seat'=>50, 'departure_times'=>[8]],
         
         ['origin_id'=>3, 'destination_id'=>0, 'price_x_seat'=>30, 'departure_times'=>[8, 14]],
         ['origin_id'=>3, 'destination_id'=>2, 'price_x_seat'=>50, 'departure_times'=>[8]],
@@ -283,10 +283,10 @@ class SharedTravel extends Entity {
         ['origin_id'=>7, 'destination_id'=>8, 'price_x_seat'=>35, 'departure_times'=>[8]],
         ['origin_id'=>7, 'destination_id'=>9, 'price_x_seat'=>35, 'departure_times'=>[8]],
         
-        ['origin_id'=>8, 'destination_id'=>0, 'price_x_seat'=>35, 'departure_times'=>[10]],
+        ['origin_id'=>8, 'destination_id'=>0, 'price_x_seat'=>35, 'departure_times'=>[8]],
+        ['origin_id'=>8, 'destination_id'=>3, 'price_x_seat'=>35, 'departure_times'=>[8]],
+        ['origin_id'=>8, 'destination_id'=>2, 'price_x_seat'=>50, 'departure_times'=>[8]],
         ['origin_id'=>8, 'destination_id'=>1, 'price_x_seat'=>35, 'departure_times'=>[10, 16]],
-        ['origin_id'=>8, 'destination_id'=>3, 'price_x_seat'=>35, 'departure_times'=>[10]],
-        ['origin_id'=>8, 'destination_id'=>2, 'price_x_seat'=>50, 'departure_times'=>[10]],
         ['origin_id'=>8, 'destination_id'=>4, 'price_x_seat'=>30, 'departure_times'=>[10, 16]],
         
         ['origin_id'=>9, 'destination_id'=>0, 'price_x_seat'=>35, 'departure_times'=>[11]],
