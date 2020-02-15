@@ -238,3 +238,7 @@ msgstr "Links"
 #: View/SharedTravels/home.ctp:8
 msgid "Contacto"
 msgstr "Contact"
+
+#TRUSTPILOT
+msgid "Recolectando opiniones desde Febrero 2020"
+msgstr "Collecting reviews since February 2020"

@@ -17,6 +17,7 @@ namespace App\Controller;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
 use App\Model\Entity\SharedTravel;
+use Cake\I18n\I18n;
 
 /**
  * Application Controller
@@ -110,6 +111,8 @@ class AppController extends Controller
         }
         
         $this->set('meta', $meta);
+        
+        $this->set('appLang', I18n::getLocale());
     }
 
     private function _getPageMeta($key) {

@@ -64,6 +64,16 @@
     </div>
 </section>
 
+<section class="mbr-section article content1 cid-rQw1GADX5a" id="content1-45">
+    <div class="container">
+        <div class="media-container-row">
+            <div class="mbr-text col-12 mbr-fonts-style display-7 col-md-8">
+                <?= $this->element('mobirise/trustpilot_widget')?>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="counters1 counters cid-rmp3EpvjUY" id="counters1-7">
     <div class="container">
         <div class="row">
@@ -209,6 +219,10 @@
                     <div><?= __d('/mobirise/home', 'Quedas en contacto con un Asistente a Clientes para cualquier trámite')?></div>
                     <div style="color: salmon"><big><?= __d('/mobirise/home', 'Cancela en cualquier momento si tus planes cambian')?></big></div>
                     <br/>
+                    
+                    <div class="mbr-text col-12 mbr-fonts-style display-7 text-center">
+                        <?= $this->element('mobirise/trustpilot_widget')?>
+                    </div>
                 </div>
                 
                 <div class="clearfix"></div>

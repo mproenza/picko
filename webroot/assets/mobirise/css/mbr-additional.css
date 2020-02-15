@@ -1031,8 +1031,20 @@ section.lazy-placeholder:after {
 .cid-rmoXljlUVD .card {
   padding-bottom: 1.5rem;
 }
+.cid-rQw1GADX5a {
+  padding-top: 60px;
+  padding-bottom: 0px;
+  background-color: #ffffff;
+}
+.cid-rQw1GADX5a .mbr-text,
+.cid-rQw1GADX5a blockquote {
+  color: #767676;
+}
+.cid-rQw1GADX5a .mbr-text P {
+  text-align: center;
+}
 .cid-rmp3EpvjUY {
-  padding-top: 90px;
+  padding-top: 60px;
   padding-bottom: 90px;
   background-color: #ffffff;
 }
