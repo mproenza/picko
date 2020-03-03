@@ -249,8 +249,8 @@ class SharedTravel extends Entity {
         ['origin_id'=>1, 'destination_id'=>10, 'price_x_seat'=>40, 'departure_times'=>[8]],
         ['origin_id'=>1, 'destination_id'=>5, 'price_x_seat'=>40, 'departure_times'=>[8]],
         ['origin_id'=>1, 'destination_id'=>6, 'price_x_seat'=>40, 'departure_times'=>[8]],
-        ['origin_id'=>1, 'destination_id'=>8, 'price_x_seat'=>30, 'departure_times'=>[8, 14]],
-        ['origin_id'=>1, 'destination_id'=>9, 'price_x_seat'=>30, 'departure_times'=>[8, 14]],
+        ['origin_id'=>1, 'destination_id'=>8, 'price_x_seat'=>35, 'departure_times'=>[8, 14]],
+        ['origin_id'=>1, 'destination_id'=>9, 'price_x_seat'=>35, 'departure_times'=>[8, 14]],
         
         ['origin_id'=>2, 'destination_id'=>0, 'price_x_seat'=>30, 'departure_times'=>[8, 14]],
         ['origin_id'=>2, 'destination_id'=>3, 'price_x_seat'=>50, 'departure_times'=>[8, 14]],
