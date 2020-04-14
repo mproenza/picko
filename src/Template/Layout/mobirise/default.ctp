@@ -72,7 +72,8 @@ echo $this->fetch('css_top');
   
 </head>
 <body>
-
+    <?php echo $this->element('covid19/ribbon')?>
+    
     <?php echo $this->fetch('content'); ?>
     
     <?php

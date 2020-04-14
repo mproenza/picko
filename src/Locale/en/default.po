@@ -76,3 +76,8 @@ msgstr "book"
 
 msgid "bus Viazul"
 msgstr "Viazul bus"
+
+
+# COVID19 RIBBON
+msgid "Cuba está<br><b style="color: orangered">CERRADA a turismo</b> debido a COVID-19<br>Cuídate!"
+msgstr "Cuba is<br><b style="color: orangered">CLOSED to toursim</b> due to COVID-19<br>Take care!"
